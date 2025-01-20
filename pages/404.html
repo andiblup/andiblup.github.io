@@ -1,0 +1,12 @@
+<section x-data="{ 
+    init() {
+
+    breadCrumbs = getBreadCrumbsArray();
+    breadCrumbs = [{name: '404 - Back to Home', path: '/'}];
+    }
+ }" x-init="init()">
+    <h1>Seite nicht gefunden</h1>
+    <p>Entschuldigung, die angeforderte Seite existiert nicht. </p>
+    <br>
+    <a class="btn btn-secondary" onclick="route()" href="/">Zurück zur Startseite</a>
+</section>

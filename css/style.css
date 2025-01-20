@@ -1,0 +1,321 @@
+:root {
+    /* Light Mode Colors */
+    --primary-color: #008080; /* Teal */
+    --secondary-color: #5f6f81; /* Grau-Blau */
+    --background-color: #f5f5f5; /* Hellgrau */
+    --text-color: #212529; /* Dunkelgrau-Schwarz */
+    --button-text-color: #ffffff;
+    --button-text-hover-color: #e0e0e0; /* Helles Grau für Hover */
+    --navbar-bg-color: #e0e0e0; /* Hellgrau, dunkler als main-content */
+    --popover-bg-color: #ffffff;
+    --card-bg-color: #ffffff;
+    --icon-bg-color: #ffffff;
+    --icon-color: #212529;
+    
+    /* Dark Mode Colors */
+    --primary-color-dark: #006666; /* Dunkleres Teal */
+    --secondary-color-dark: #4a5568; /* Dunkleres Grau-Blau */
+    --background-color-dark: #1c1c1c; /* Sehr Dunkelgrau */
+    --text-color-dark: #e0e0e0; /* Hellgrau */
+    --button-text-color-dark: #ffffff;
+    --button-text-hover-color-dark: #c2c2c2; /* Dunkleres Grau für Hover */
+    --navbar-bg-color-dark: #2a2a2a; /* Dunkelgrau */
+    --popover-bg-color-dark: #343a40;
+    --card-bg-color-dark: #2e2e2e; /* Etwas dunkleres Grau für Karten */
+    --card-text-color-dark: #f5f5f5; /* Hellgrau für Text in Karten */
+    --icon-bg-color-dark: #3e3e3e;
+    --icon-color-dark: #e0e0e0;
+
+
+    /* Default Colors */
+    --primary: var(--primary-color);
+    --secondary: var(--secondary-color);
+    --background: var(--background-color);
+    --text: var(--text-color);
+    --button-text: var(--button-text-color);
+    --button-text-hover: var(--button-text-hover-color);
+    --navbar-bg: var(--navbar-bg-color);
+    --popover-bg: var(--popover-bg-color);
+    --card-bg: var(--card-bg-color);
+    --icon-bg: var(--icon-bg-color);
+    --icon-color: var(--icon-color);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --primary: var(--primary-color-dark);
+    --secondary: var(--secondary-color-dark);
+    --background: var(--background-color-dark);
+    --text: var(--text-color-dark);
+    --button-text: var(--button-text-color-dark);
+    --button-text-hover: var(--button-text-hover-color-dark);
+    --navbar-bg: var(--navbar-bg-color-dark);
+    --popover-bg: var(--popover-bg-color-dark);
+    --card-bg: var(--card-bg-color-dark);
+    --icon-bg: var(--icon-bg-color-dark);
+    --icon-color: var(--icon-color-dark);
+    --card-text-color: var(--card-text-color-dark);
+
+}
+
+/* Override Bootstrap Variables */
+body, html {
+    height: 100%;
+    background-color: var(--background) !important;
+    color: var(--text) !important;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-dark) !important;
+    border-color: var(--primary-color-dark) !important;
+}
+.btn-primary:active {
+    background-color: var(--secondary-color-dark) !important;
+    border-color: var(--secondary-color-dark) !important;
+}
+
+#body {
+    min-height: 100vh;
+}
+
+#root {
+    /* display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;  */
+    /* background-color: red!important; */
+
+}
+#main-content {
+    /* flex: 1; */
+    /* min-height: calc(100vh - 150px); */
+}
+#app {
+    /* height: 100%;
+    display: flex;
+    flex-direction: column; */
+    margin-left: 30px;
+    margin-right: 25px;
+    margin-top: 70px;
+    margin-bottom: 15px;
+    /* -100 footer, -31 = topbar - margin | works on different screens*/
+    min-height: calc(100vh - 131px);
+}
+
+footer {
+    background: var(--navbar-bg);
+    color: var(--text);
+    height: 100px; /* Feste Höhe */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#footer-container {
+    /* height: 100%;
+    display: flex;
+    flex-direction: column; */
+    margin-left: 0.5rem;
+}
+
+
+#sidebar {
+    width: 30%;
+    max-width: 300px;
+    min-width: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    background-color: var(--navbar-bg);
+    transition: transform 0.3s ease, width 0.3s ease;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+    margin-top: 50px;
+    border-top: 1px black solid;
+}
+
+#sidebar.collapsed {
+    width: 20px;
+    border-top: 0px black solid;
+}
+
+#sidebar.collapsed .nav-link {
+    visibility: hidden;
+}
+
+#main-content {
+    padding-left: 10px;
+    transition: padding-left 0.3s ease;
+    height: 100%;
+}
+
+.topbar {
+    height: 50px;
+    background-color: var(--navbar-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+#toggle-sidebar {
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#toggle-sidebar .icon {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 50px;
+    height: 50px;
+    background-color: var(--icon-bg);
+    color: var(--icon-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-size: 1.6rem;
+}
+
+#toggle-sidebar.collapsed .icon {
+    transform: rotate(180deg);
+}
+
+.dimmed-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.dimmed-overlay.visible {
+    display: block;
+}
+
+/* Dark Mode Card Styles */
+.dark-mode .card {
+    background-color: var(--card-bg);
+    color: var(--card-text-color);
+}
+
+.popover-header {
+    color: black;
+}
+
+
+#main-content-inner {
+    margin: 5%;
+    margin-top: 75px;
+}
+
+
+
+
+/* ELEVATION */
+.elevated-shadow {
+    box-shadow:
+        0 8px 16px var(--box-shadow-light-hover),
+        0 12px 40px var(--box-shadow-dark-hover);
+    /* transform: translateY(-5px); */
+}
+.elevated-shadow:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 8px 16px var(--box-shadow-light-hover),
+        0 12px 40px var(--box-shadow-dark-hover);
+    /* transform: translateY(-5px); */
+}
+
+.elevated {
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.elevated:hover {
+    box-shadow:
+        0 8px 16px var(--box-shadow-light-hover),
+        0 12px 40px var(--box-shadow-dark-hover);
+    transform: translateY(-2px);
+}
+.elevated-soft {
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.elevated-soft:hover {
+    box-shadow:
+        0 8px 16px var(--box-shadow-light-hover),
+        0 12px 40px var(--box-shadow-dark-hover);
+    transform: translateY(-1px);
+}
+/* ELEVATION END */
+
+/* MODAL */
+.modal-dialog-scrollable {
+    max-height: calc(100% - 1rem);
+}
+
+.modal-content {
+    max-height: 100%;
+    overflow-y: auto !important; /* Ermöglicht das Scrollen innerhalb des Modal-Inhalts */
+    animation: bounceIn 0.5s;
+}
+
+@keyframes bounceIn {
+    0%,
+    20%,
+    40%,
+    60%,
+    80%,
+    100% {
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+/* MODAL END */

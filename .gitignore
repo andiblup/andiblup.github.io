@@ -1,0 +1,4 @@
+# Ignore Visual Studio Code folder
+# settings.json inkludes:
+# vscode liveServer extension redirection to index.html
+#.vscode/
