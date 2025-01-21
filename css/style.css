@@ -59,6 +59,37 @@
 }
 
 /* Override Bootstrap Variables */
+
+/* Im Standard-Fall (Light Mode) kannst du es so anpassen: */
+/* Im “Light Mode” */
+.dropdown-menu {
+    background-color: var(--card-bg) !important; /* Oder var(--popover-bg), wie du magst */
+    color: var(--text) !important;
+    border: none; /* optional */
+  }
+  
+  /* Im “Dark Mode” */
+  .dark-mode .dropdown-menu {
+    background-color: var(--card-bg) !important; /* oder var(--card-bg-color-dark), falls du eine extra Var hast */
+    color: var(--text-color-dark) !important;     /* Aus deiner .dark-mode Variablen */
+  }
+  
+  /* Optional: Items, Hover, Divider etc. */
+  .dropdown-item {
+    color: var(--text) !important;
+  }
+  .dark-mode .dropdown-item {
+    color: var(--text-color-dark) !important;
+  }
+  .dark-mode .dropdown-item:hover {
+    background-color: var(--primary-color-dark) !important;
+    color: var(--button-text-color-dark) !important;
+  }
+  
+
+/* Override end */
+
+/* General Styles */
 body, html {
     height: 100%;
     background-color: var(--background) !important;

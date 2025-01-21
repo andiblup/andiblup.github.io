@@ -1,15 +1,19 @@
 <section x-data="{ 
-    init() {
+    pageLang: {},
+    async init() {
 
     breadCrumbs = getBreadCrumbsArray();
+    
+    const lang = localStorage.getItem('appLang') || 'en';
+    // console.log('lang: ' + document.documentElement.lang);
+    // console.log(lang);
+    // console.log(breadCrumbs[breadCrumbs.length - 1]);
+    const fileName = breadCrumbs[breadCrumbs.length - 1].path.substring(2, breadCrumbs[breadCrumbs.length - 1].length);
+
+    const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    this.pageLang = await response.json();
     }
  }" x-init="init()">
-    <h1>ANANAS</h1>
-    <p>Mein Name ist Alfred Narjes. Ich bin spezialisiert auf Fullstack Entwicklung.</p>
-    <p>Skills:</p>
-    <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Frameworks: React, Vue.js</li>
-        <li>Backend: Node.js, Express</li>
-    </ul>
+    <h1 x-text="pageLang.header"></h1>
+    <p x-text="pageLang.tagline"></p>
 </section>

@@ -1,20 +1,23 @@
 <section x-data="{ 
-    init() {
+    pageLang: {},
+    async init() {
 
     breadCrumbs = getBreadCrumbsArray();
+    
+    const lang = localStorage.getItem('appLang') || 'en';
+    const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase();
+// console.log(breadCrumbs[breadCrumbs.length - 1].name.toLowerCase());
+
+    const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    this.pageLang = await response.json();
     }
  }" x-init="init()">
 
-    <h1>Willkommen auf meiner Portfolio-Seite!</h1>
-    <p>Ich bin ein Entwickler mit Leidenschaft für kreative Lösungen und Technologie.</p>
+    <h1 x-text="pageLang.header"></h1>
+    <p x-text="pageLang.tagline"></p>
+    <!-- <h1>Willkommen auf meiner Portfolio-Seite!</h1>
+    <p>Ich bin ein Entwickler mit Leidenschaft für kreative Lösungen und Technologie.</p> -->
 
-
-    <!-- <div class="d-flex w-vw justify-content-center">
-        <embed src="assets/cv.pdf" width="830px" height="1200px" />
-        <embed src="assets/cv.pdf" width="300px" height="600px" />
-    </div> -->
-
-    <!-- If screenwidt _ 1050px-->
 
     <div x-data="{ 
         showEmbed: false,
@@ -33,36 +36,7 @@
             });
         }
     }">
-        <!-- <div class="row justify-content-center">
-                <div class="col-12 col-md-8">
-                    <div style="height: 80vh; width: 100%; overflow: auto; margin: 0 auto;">
-                        <embed src="assets/cv.pdf" width="70vh" style="display: block; width: 100%; height: 100%;" />
-                    </div>
-                </div>
-            </div> -->
-        <!-- <a href="assets/cv.pdf" target="_blank" class="btn btn-primary">
-                View on new Tab -->
-        <!-- <div x-show="screenSize > 1500" class="container my-4"> -->
-
-        <!-- <div x-if="screenSize > 1500" class="container my-4">
-    
-            <div class="d-none d-lg-block" style="height: 80vh; overflow:auto;">
-                <embed src="assets/cv.pdf" type="application/pdf" style="width:100%; height:100%;" />
-            </div>
-
-        </div>
-        <div x-show="screenSize <= 1500">
-              </a>
-            <div class="d-lg-none">
-                <a href="assets/cv.pdf" target="_blank" class="btn btn-primary">
-                    View in new Tab
-                </a>
-            </div>
-        </div> -->
         <template x-if="showEmbed && screenSize >= 990">
-            <!-- <div style="height:80vh; overflow:auto;">
-                <embed src="assets/cv.pdf" type="application/pdf" style="width:100%; height:100%;" />
-            </div> -->
             <div class="row justify-content-center">
                 <div class="col-12 col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5">
                     <div style="height: 100vh; width: 100%; overflow: auto; margin: 0 auto;">
