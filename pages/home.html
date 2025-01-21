@@ -14,19 +14,29 @@
         <embed src="assets/cv.pdf" width="300px" height="600px" />
     </div> -->
 
+    <!-- If screenwidt _ 1050px-->
     <!-- Container für etwas Abstand oben/unten -->
-    <div class="container my-4">
-        <!-- Reihe mit zentriertem Inhalt -->
-        <div class="row justify-content-center">
-            <!-- Spalte, die auf mobilen Geräten 12 Spalten breit ist und auf md-Geräten 8 Spalten -->
-            <div class="col-12 col-md-8">
-                <!-- Ein zusätzlicher Wrapper, um Höhe/Scroll zu kontrollieren -->
-                <div style="height: 80vh; width: 100%; overflow: auto; margin: 0 auto;">
-                    <!-- PDF-Einbettung -->
-                    <embed src="assets/cv.pdf" width="70vh" 
-                    style="display: block; width: 100%; height: 100%;"/>
+    <div x-data="{
+        screenSize: window.innerWidth
+    }">
+        <div x-show="screenSize > 1500" class="container my-4">
+            <!-- Reihe mit zentriertem Inhalt -->
+            <div class="row justify-content-center">
+                <!-- Spalte, die auf mobilen Geräten 12 Spalten breit ist und auf md-Geräten 8 Spalten -->
+                <div class="col-12 col-md-8">
+                    <!-- Ein zusätzlicher Wrapper, um Höhe/Scroll zu kontrollieren -->
+                    <div style="height: 80vh; width: 100%; overflow: auto; margin: 0 auto;">
+                        <!-- PDF-Einbettung -->
+                        <embed src="assets/cv.pdf" width="70vh" style="display: block; width: 100%; height: 100%;" />
+                    </div>
                 </div>
             </div>
+        </div>
+        <div x-show="screenSize <= 1500">
+            <a href="assets/cv.pdf" target="_blank" class="btn btn-primary">
+                View on new Tab
+              </a>
+              
         </div>
     </div>
 
