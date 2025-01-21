@@ -1,12 +1,23 @@
 <section x-data="{ 
-    init() {
+    pageLang: {},
+    async init() {
 
-    breadCrumbs = getBreadCrumbsArray();
+    // breadCrumbs = getBreadCrumbsArray();
     breadCrumbs = [{name: '404 - Back to Home', path: '/'}];
+    const lang = localStorage.getItem('appLang') || 'en';
+    
+    const fileName = '404';
+
+    const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    this.pageLang = await response.json();
     }
  }" x-init="init()">
-    <h1>Seite nicht gefunden</h1>
+    <!-- <h1>Seite nicht gefunden</h1>
     <p>Entschuldigung, die angeforderte Seite existiert nicht. </p>
+    <br> -->
+    <!-- <a class="btn btn-secondary" onclick="route(event)" href="#/">Zurück zur Startseite</a> -->
+    <h1 x-text="pageLang.title"></h1>
+    <p x-text="pageLang.description"></p>
     <br>
-    <a class="btn btn-secondary" onclick="route(event)" href="#/">Zurück zur Startseite</a>
+    <a class="btn btn-secondary" onclick="route(event)" href="#/" x-text="pageLang.button"></a>
 </section>

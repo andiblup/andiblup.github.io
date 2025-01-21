@@ -2,8 +2,15 @@
 <html :lang="currentLang" x-data="{
     pageTitle: 'Portfolio',
     breadCrumbs: [],
-    currentLang: navigator.language || navigator.userLanguage || 'en',
-    currentLang:  navigator.language || navigator.userLanguage || localStorage.getItem('appLang') || 'en',
+    // currentLang: navigator.language || navigator.userLanguage || 'en',
+    currentLang:   ((localStorage.getItem('appLang') 
+                   || navigator.language 
+                   || navigator.userLanguage 
+                   || 'en')
+                  .slice(0,2)
+                  .toLowerCase() === 'de') 
+                ? 'de' 
+                : 'en',
     changeLang(newLang) {
         this.currentLang = newLang;
         document.documentElement.lang = newLang;
@@ -199,7 +206,6 @@
     <script src="/js/router.js"></script>
     <script src="/js/sidebar.js"></script>
     <script src="/js/theme.js"></script>
-    <!-- <script src="/js/i18n-store.js"></script> -->
 
     <script>
         // Initialize
