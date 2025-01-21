@@ -4,6 +4,7 @@ const routes = {
   "/": "/pages/home.html",
   "/about": "/pages/about.html",
   "/contact": "/pages/contact.html",
+  "/projects": "/pages/projects/overview.html",
   "/projects/overview": "/pages/projects/overview.html",
   "/projects/example": "/pages/projects/example.html"
 }
@@ -81,26 +82,55 @@ const route = (event) => {
 //       .join("");
 //   };
 const getBreadCrumbsArray = () => {
-  if (window.location.pathname === "/") {
-    return [{ name: "Home", path: "/" }];
-  }
-  const segments = window.location.pathname
-    .split('/')
-    .filter(Boolean);
+  // if (window.location.pathname === "/") {
+  //   return [{ name: "Home", path: "#/" }];
+  // }
+  // const segments = window.location.pathname
+  //   .split('/')
+  //   .filter(Boolean);
 
-  // Erzeuge ein Array von Objekten { name, path }
+  // // Erzeuge ein Array von Objekten { name, path }
+  // const breadCrumbs = segments.map((segment, index) => {
+  //   // Den absoluten Pfad bis einschließlich dieses Segments zusammensetzen
+  //   const path = '/' + segments.slice(0, index + 1).join('/').toLowerCase();
+  //   const name =
+  //     segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase();
+  //   return {
+  //     name: name,
+  //     path: path
+  //   };
+  // });
+
+  // // console.log(breadCrumbs);
+
+  // return breadCrumbs;
+
+  // Aktuellen Hash auslesen, z. B. "#/projects/example"
+  let hash = window.location.hash;
+  if (!hash || hash === "#/") {
+    // Startseite => nur "Home"
+    return [{ name: "Home", path: "#/" }];
+  }
+
+  // Entferne das führende "#/"
+  // Damit bleibt z. B. "projects/example"
+  hash = hash.replace(/^#\//, "");
+
+  // In Segmente aufsplitten
+  const segments = hash.split("/").filter(Boolean);
+  // z. B. ["projects", "example"]
+
+  // Jedes Segment in ein { name, path } wandeln
   const breadCrumbs = segments.map((segment, index) => {
-    // Den absoluten Pfad bis einschließlich dieses Segments zusammensetzen
-    const path = '/' + segments.slice(0, index + 1).join('/').toLowerCase();
-    const name =
-      segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase();
-    return {
-      name: name,
-      path: path
-    };
+    // Pfad: "#/" + alle Segmente bis hier
+    const link = "#/" + segments.slice(0, index + 1).join("/");
+    // Name: Erster Buchstabe groß, Rest klein
+    const name = segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase();
+    return { name, path: link };
   });
 
-  // console.log(breadCrumbs);
+  // Ganz vorne noch Home rein
+  breadCrumbs.unshift({ name: "Home", path: "#/" });
 
   return breadCrumbs;
 };
