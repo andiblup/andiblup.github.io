@@ -45,10 +45,10 @@
         <div id="sidebar" class="navbar collapsed">
             <ul class="nav flex-column mt-3 elevated-shadow" x-data="{openProjects: false}">
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="/">Home</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="#/">Home</a>
                 </li>
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="/about">About</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="#/about">About</a>
                 </li>
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openProjects = !openProjects"
@@ -59,18 +59,18 @@
                     </a>
                 </li>
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="/projects/example">Example</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="#/projects/example">Example</a>
 
                 </li>
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="/projects/overview">Overview</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="#/projects/overview">Overview</a>
 
                 </li>
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="/contact">Contact</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="#/contact">Contact</a>
                 </li>
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="/anans">404</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route()" href="#/ananas">404</a>
                 </li>
             </ul>
             <div id="toggle-sidebar">
