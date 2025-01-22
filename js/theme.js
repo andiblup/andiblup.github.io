@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // const icon = toggleButton.firstChild.firstChild;
 
     // Check Local Storage for theme preference    
-    const currentTheme = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'light';
+    const currentTheme = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'dark';
     if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
         toggleButton.classList.remove('bi-moon');
