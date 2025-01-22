@@ -4,6 +4,10 @@
 
     breadCrumbs = getBreadCrumbsArray();
     
+    if (typeof initIconCarousel === 'function') {
+         initIconCarousel();
+      }
+
     const lang = localStorage.getItem('appLang') || 'en';
     const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase();
 // console.log(breadCrumbs[breadCrumbs.length - 1].name.toLowerCase());
@@ -54,5 +58,11 @@
         </template>
     </div>
 
+    <div id="iconCarousel"></div>
+
+
+
+
 
 </section>
+<script src="/js/carousel.js"></script>
