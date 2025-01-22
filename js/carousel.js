@@ -48,6 +48,7 @@
         { class: 'devicon-jetpackcompose-plain', label: 'Android Jetpack Compose' },
         { class: 'devicon-dart-plain', label: 'Dart' },
         { class: 'devicon-flutter-plain', label: 'Flutter' },
+        { class: 'devicon-python-plain', label: 'Python' },
         { class: 'devicon-postgresql-plain', label: 'Postgre' },
         { class: 'devicon-mariadb-original', label: 'MariaDB' },
         { class: 'devicon-sqlite-plain', label: 'SQLite' },
@@ -111,7 +112,7 @@
     
       // Fülle den inneren Track initial mit "visibleCount" Icon-Blöcken
       track.innerHTML = '';
-      for (let i = 0; i < visibleCount; i++) {
+      for (let i = 0; i <= visibleCount; i++) {
         const iconData = iconsList[i % iconsList.length];
         track.appendChild(createIconBlock(iconData));
         currentIconIndex = i % iconsList.length;

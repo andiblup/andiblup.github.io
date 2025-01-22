@@ -6,9 +6,11 @@
     overflow: hidden;       /* Überschüssiger Inhalt wird verborgen */
     background-color: var(--navbar-bg, #fff);
     color: var(--text, #212529);
-    margin: 0 auto 20px;    /* Abstand zum darunterliegenden Inhalt */
-  }
-  
+    /* margin: 0 auto 20px; */
+    margin: 1rem;
+    margin-left: -2rem;
+}
+
   /* Der innere Track, der per JS erzeugt und animiert wird */
   #carouselTrack {
     display: flex;
