@@ -1,9 +1,9 @@
 /* Container, der den sichtbaren Bereich definiert */
 #iconCarousel {
     position: relative;
-    width: 100vw;           /* Volle Viewport-Breite */
-    height: 120px;          /* Höhe des Karussells */
-    overflow: hidden;       /* Überschüssiger Inhalt wird verborgen */
+    width: 100vw; /* Volle Viewport-Breite */
+    height: 120px; /* Höhe des Karussells */
+    overflow: hidden; /* Überschüssiger Inhalt wird verborgen */
     background-color: var(--navbar-bg, #fff);
     color: var(--text, #212529);
     /* margin: 0 auto 20px; */
@@ -11,64 +11,75 @@
     margin-left: -2rem;
 }
 
-  /* Der innere Track, der per JS erzeugt und animiert wird */
-  #carouselTrack {
+/* Der innere Track, der per JS erzeugt und animiert wird */
+#carouselTrack {
     display: flex;
-    align-items: stretch;   /* Damit die Icon-Blöcke die gesamte Höhe einnehmen */
+    align-items: stretch; /* Damit die Icon-Blöcke die gesamte Höhe einnehmen */
     height: 100%;
     will-change: transform;
-  }
-  
-  /* Icon-Block: Enthält das Icon und das Label */
-  .icon-block {
+}
+
+/* Icon-Block: Enthält das Icon und das Label */
+.icon-block {
     display: flex;
     flex-direction: column;
-    height: 100%;           /* Gesamthöhe des Blocks entspricht dem Carousel */
+    height: 100%; /* Gesamthöhe des Blocks entspricht dem Carousel */
     box-sizing: border-box;
-    padding: 5px 0;         /* 5px Abstand oben und unten */
-  }
-  
-  /* Icon-Container: Füllt den restlichen Platz über dem Label */
-  .icon-container {
+    padding: 5px 0; /* 5px Abstand oben und unten */
+}
+
+/* Icon-Container: Füllt den restlichen Platz über dem Label */
+.icon-container {
     flex: 1 1 auto;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-end;  /* Icon möglichst am unteren Rand des verfügbaren Raums ausrichten */
-  }
-  
-  /* Label-Container: Steht unter dem Icon */
-  .label-container {
+    align-items: flex-end; /* Icon möglichst am unteren Rand des verfügbaren Raums ausrichten */
+}
+
+/* Label-Container: Steht unter dem Icon */
+.label-container {
     flex: 0 0 auto;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 5px;       /* Kleiner Abstand zwischen Icon und Text */
-  }
-  
-  /* Standard-Styles für das Icon (z.B. für zusätzliche Margins falls nötig) */
-  .icon-block i {
+    padding-top: 5px; /* Kleiner Abstand zwischen Icon und Text */
+}
+
+/* Standard-Styles für das Icon (z.B. für zusätzliche Margins falls nötig) */
+.icon-block i {
     display: block;
-  }
-  
-  /* Styles für das Label */
-  .icon-label {
+}
+
+/* Styles für das Label */
+.icon-label {
     margin: 0;
     font-size: 0.9rem;
     text-align: center;
-  }
-  
-  /* Responsive Anpassungen über Media Queries */
-  @media (max-width: 480px) {
+}
+
+/* Responsive Anpassungen über Media Queries */
+@media (max-width: 480px) {
     .icon-block {
-      padding: 3px 0;
+        padding: 3px 0;
     }
     .label-container {
-      padding-top: 3px;
+        padding-top: 3px;
     }
     .icon-label {
-      font-size: 0.8rem;
+        font-size: 0.8rem;
     }
-  }
-  
+}
+
+.icon-block i.icons-custom-mapbox {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='white' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: inherit; /* Ermöglicht die Farbsteuerung via CSS */
+}

@@ -62,6 +62,7 @@
         { class: 'devicon-jira-plain', label: 'Jira' },
         { class: 'devicon-slack-plain', label: 'Slack' },
         { class: 'devicon-markdown-plain', label: 'Markdown' },
+        { class: 'icons-custom-mapbox', label: 'Mapbox' },
       ];
     
       let currentIconIndex = 0;
