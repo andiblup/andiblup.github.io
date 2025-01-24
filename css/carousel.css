@@ -6,9 +6,16 @@
     overflow: hidden; /* Überschüssiger Inhalt wird verborgen */
     background-color: var(--navbar-bg, #fff);
     color: var(--text, #212529);
-    /* margin: 0 auto 20px; */
     margin: 1rem;
     margin-left: -2rem;
+}
+
+/* Styles für inline-card */
+#iconCarousel.inline-card {
+    background-color: inherit; /* Hintergrundfarbe der übergeordneten Card übernehmen */
+    width: 100%; /* Breite an die übergeordnete Card anpassen */
+    margin: 0; /* Entferne zusätzliche Ränder */
+    overflow: hidden; /* Keine Überläufe */
 }
 
 /* Der innere Track, der per JS erzeugt und animiert wird */
@@ -82,4 +89,9 @@
     background-repeat: no-repeat;
     background-position: center;
     color: inherit; /* Ermöglicht die Farbsteuerung via CSS */
+}
+
+/* Optional: Anpassung der Icons innerhalb inline-card */
+#iconCarousel.inline-card .icon-block i {
+    color: inherit; /* Erbt die Farbe von der übergeordneten Card */
 }

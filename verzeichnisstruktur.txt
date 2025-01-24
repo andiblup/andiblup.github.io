@@ -1,6 +1,9 @@
+Auflistung der Ordnerpfade
+Volumeseriennummer : 7480-2932
 C:.
 ¦   .gitignore
 ¦   index.html
+¦   README.md
 ¦   verzeichnisstruktur.txt
 ¦   _redirects
 ¦   
@@ -24,6 +27,9 @@ C:.
 ¦       custom.css
 ¦       old_style.css
 ¦       style.css
+¦       
++---data
+¦       iconLists.json
 ¦       
 +---js
 ¦       carousel.js

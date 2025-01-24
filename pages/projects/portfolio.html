@@ -14,26 +14,84 @@
 
     <!-- <h1 x-text="pageLang.title"></h1>
     <p x-text="pageLang.description"></p> -->
-    <h1>Portfolio</h1>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <div class="card py-2">
+        <div>
+            <h1 class="ms-3">Portfolio</h1>
+            <div class="ms-3">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore
+                    et
+                    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                    rebum.
+                    Stet
+                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                    amet,
+                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam
+                    erat,
+                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                    gubergren,
+                    no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
-<div class="card">
-    <h2>Techstack</h2>
+            </div>
+            <div class="mb-3" x-data="{showTechstack: true}">
+                <h2 class="ms-3">Techstack <span @click="showTechstack = !showTechstack"><i
+                            :class="{'bi': true, 'bi-chevron-up': showTechstack,'bi-chevron-down': !showTechstack}"></i></span>
+                </h2>
 
-    <div id="iconCarousel" class="inline-card" data-icon-list="portfolio"></div>
-</div>
+                <div x-show="showTechstack" id="iconCarousel" class="inline-card mb-3" data-icon-list="portfolio"></div>
 
-    <h2>Installation</h2>
-   
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
 
-    <h2>Pictures</h2>
-   
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <div class="mb-3" x-data="{showInstallation: true}">
+            <h2 class="ms-3">Installation <span @click="showInstallation = !showInstallation"><i
+                        :class="{'bi': true, 'bi-chevron-up': showInstallation,'bi-chevron-down': !showInstallation}"></i></span>
+            </h2>
+            <div class="ms-3" x-show="showInstallation">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore
+                    et
+                    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                    rebum.
+                    Stet
+                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                    amet,
+                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam
+                    erat,
+                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                    gubergren,
+                    no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <div class="mb-3" x-data="{showPictures: true}">
+            <h2 class="ms-3">Pictures <span @click="showPictures = !showPictures"><i
+                        :class="{'bi': true, 'bi-chevron-up': showPictures,'bi-chevron-down': !showPictures}"></i></span>
+            </h2>
 
-    <!-- New carousel with new icons list, icon list should be defined somewhere else -->
+            <div class="ms-3" x-show="showPictures">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore
+                    et
+                    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                    rebum.
+                    Stet
+                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                    amet,
+                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam
+                    erat,
+                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                    gubergren,
+                    no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
-
+            </div>
+        </div>
+    </div>
 
 
 
