@@ -1,4 +1,3 @@
-
 const routes = {
   404: "/pages/404.html",
   "/": "/pages/home.html",
@@ -6,6 +5,7 @@ const routes = {
   "/contact": "/pages/contact.html",
   "/projects": "/pages/projects/overview.html",
   "/projects/overview": "/pages/projects/overview.html",
+  "/projects/portfolio": "/pages/projects/portfolio.html",
   "/projects/example": "/pages/projects/example.html"
 }
 
@@ -31,19 +31,38 @@ const handleLocation = async () => {
 
     const html = await response.text();
     document.querySelector("#app").innerHTML = html;
+
+    // Nach dem Einfügen der neuen Seite, initialisiere das Karussell falls vorhanden
+    const newCarousel = document.querySelector("#app #iconCarousel");
+    if (newCarousel) {
+        const listName = newCarousel.getAttribute("data-icon-list");
+        if (listName && typeof window.initIconCarousel === 'function') {
+            window.initIconCarousel(listName);
+        }
+    }
+
   } catch (error) {
     console.error("Error loading page:", error);
 
     console.log(document.querySelector("#app"));
 
-    document.querySelector("#app").innerHTML = await fetch(routes[404]).then((data) => data.text());
+    const errorPage = await fetch(routes["404"]);
+    const errorHtml = await errorPage.text();
+    document.querySelector("#app").innerHTML = errorHtml;
 
+    // Initialisiere ggf. das Karussell auf der 404-Seite
+    const errorCarousel = document.querySelector("#app #iconCarousel");
+    if (errorCarousel) {
+        const listName = errorCarousel.getAttribute("data-icon-list");
+        if (listName && typeof window.initIconCarousel === 'function') {
+            window.initIconCarousel(listName);
+        }
+    }
   }
 
 }
 
 const route = (event) => {
-
   // event.preventDefault();
   // window.location.hash = event.target.getAttribute("href").replace("#", "");
   handleLocation();
@@ -91,4 +110,5 @@ window.onpopstate = handleLocation;
 window.route = route;
 window.routes = routes;
 
+// Initialisiere beim ersten Laden
 handleLocation();

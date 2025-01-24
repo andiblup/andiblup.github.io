@@ -1,0 +1,62 @@
+C:.
+¦   .gitignore
+¦   index.html
+¦   verzeichnisstruktur.txt
+¦   _redirects
+¦   
++---.vscode
+¦       settings.json
+¦       
++---assets
+¦       cv.pdf
+¦       
++---components
+¦   +---footer
+¦   ¦       footer.html
+¦   ¦       footer.js
+¦   ¦       
+¦   +---navbar
+¦           navbar.html
+¦           navbar.js
+¦           
++---css
+¦       carousel.css
+¦       custom.css
+¦       old_style.css
+¦       style.css
+¦       
++---js
+¦       carousel.js
+¦       i18n-store.js
+¦       router.js
+¦       sidebar.js
+¦       theme.js
+¦       
++---lang
+¦   +---404
+¦   ¦       de.json
+¦   ¦       en.json
+¦   ¦       
+¦   +---about
+¦   ¦       de.json
+¦   ¦       en.json
+¦   ¦       
+¦   +---home
+¦   ¦       de.json
+¦   ¦       en.json
+¦   ¦       
+¦   +---portfolio
+¦           de.json
+¦           en.json
+¦           
++---pages
+    ¦   404.html
+    ¦   about.html
+    ¦   contact.html
+    ¦   home.html
+    ¦   
+    +---projects
+            example.html
+            overview.html
+            portfolio.html
+            

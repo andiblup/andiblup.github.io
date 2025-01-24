@@ -5,9 +5,6 @@
     breadCrumbs = getBreadCrumbsArray();
     
     const lang = localStorage.getItem('appLang') || 'en';
-    // console.log('lang: ' + document.documentElement.lang);
-    // console.log(lang);
-    // console.log(breadCrumbs[breadCrumbs.length - 1]);
     const fileName = breadCrumbs[breadCrumbs.length - 1].path.substring(2, breadCrumbs[breadCrumbs.length - 1].length);
 
     const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
