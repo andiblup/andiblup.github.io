@@ -42,5 +42,11 @@
         { "class": "devicon-alpinejs-plain", "label": "Alpine.js" },
         { "class": "devicon-git-plain", "label": "Git" },
         { "class": "devicon-github-plain", "label": "Github" }
+    ],
+    "badui": [
+        {"class": "devicon-html5-plain", "label": "HTML"},
+        {"class": "devicon-css3-plain", "label": "CSS"},
+        {"class": "devicon-javascript-plain", "label": "JS"},
+        {"class": "devicon-bootstrap-plain", "label": "Bootstrap"}
     ]
 }

@@ -48,13 +48,14 @@
 
     <div id="root">
         <div id="sidebar" class="navbar collapsed">
-            <ul class="nav flex-column mt-3 elevated-shadow" x-data="{openProjects: false}">
+            <ul class="nav flex-column mt-3 elevated-shadow" x-data="{openProjects: false, openDemos: false}">
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/">Home</a>
                 </li>
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about">About</a>
                 </li>
+                
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openProjects = !openProjects"
                         onclick="{}" style="gap: 0.5rem;">Projects
@@ -71,11 +72,32 @@
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
                         href="#/projects/overview">Overview</a>
                 </li>
-                <li class="nav-item elevated">
+                <!-- <li class="nav-item elevated"> -->
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
                         href="#/projects/portfolio">Portfolio</a>
                 </li>
+                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
+                        href="#/projects/badui">BadUI</a>
+                </li>
+
+                <li class="nav-item elevated">
+                    <a class="nav-link d-flex align-items-center btn btn-nav" @click="openDemos = !openDemos"
+                        onclick="{}" style="gap: 0.5rem;">Demos
+
+                        <i :class="{'bi': true, 'bi-chevron-down': !openDemos, 'bi-chevron-up': openDemos}"
+                            style="font-size: inherit; display: inline-block; vertical-align: middle;"></i>
+                    </a>
+                </li>
+                <li x-show="openDemos" class="ps-3 nav-item elevated">
+                    <a class="nav-link d-flex btn btn-nav" target="_blank" href="/demos/badui/main/main.html">BadUI</a>
+                </li>
+                <li x-show="openDemos" class="ps-3 nav-item elevated">
+                    <a class="nav-link d-flex btn btn-nav" target="_blank" href="/demos/dino/dino.html">BadUI Dino Game</a>
+                </li>
+
+
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/contact">Contact</a>
                 </li>

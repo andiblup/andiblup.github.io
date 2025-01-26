@@ -1,0 +1,347 @@
+
+@font-face {
+    font-family: 'WILD WORLD';
+    src: url("../assets/fonts/WILD\ WORLD.otf");
+}
+
+@font-face {
+    font-family: 'fira code';
+    src: url("../assets/fonts/firacode/ttf/FiraCode-Medium.ttf");
+}
+
+html {
+    height: 100%;
+    background-color: blueviolet;
+}
+
+body {
+    min-height: 100%;
+    padding: -50%;
+    font-family: 'WILD WORLD';
+}
+
+#body {
+    background-image: url("../dino/imgs/ufo.png");
+
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    /*flex-direction: column;*/
+}
+
+#content {
+    background-color: black;
+    flex-grow: 1;
+    margin: 38px;
+}
+
+.label {
+    display: flex;
+    justify-content: center;
+}
+
+.innerLabel {
+    font-family: 'WILD WORLD';
+    margin: 1%;
+    color: lime;
+}
+
+.alert {
+    animation: alerting 0.01s infinite;
+}
+
+@keyframes alerting {
+    0% {
+        color: white !important;
+    }
+
+    100% {
+        color: red !important;
+    }
+}
+
+/**/
+.slidecontainer {
+    width: 100%;
+    /* Width of the outside container */
+}
+
+.slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    background: aqua;
+    outline: none;
+    /* Set transparency (for mouse-over effects on hover) */
+    opacity: 0.7;
+    /* 0.2 seconds verzögerung */
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: url('../dino/imgs/ufo.png');
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: url('../dino/imgs/ufo.png');
+    cursor: pointer;
+}
+
+.choose{
+    color: lime;
+    
+}
+
+
+.slid-out{
+    color: lime;
+}
+
+.slider-math{
+    color: lime;
+}
+
+.row{
+    min-height: 5%;
+    min-width: 10%;
+}
+
+.row-1{
+
+}
+
+.row-2{
+    
+}
+
+.row-3{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 0.5%;
+}
+
+.row-4{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 2.5%;
+    
+}
+
+.row-5{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-6{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-7{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-8{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-9{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-10{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-11{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-12{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-13{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.name{
+
+}
+
+.name-space{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.name-repeat{
+    
+}
+
+.password{
+    
+}
+
+.password-repeat{
+    
+}
+
+::placeholder { /* ALL Placeholder 
+    color: lime;*/
+    color: lime;
+    opacity: 1; /* Firefox */
+    animation: glowing 0.1s infinite;
+    
+}
+
+@keyframes glowing {
+    0%{
+        color: lime!important;
+    }
+
+    20%{
+        color: blueviolet!important;
+    }
+
+    50%{
+        color: blueviolet!important;
+    }
+
+    80%{
+        color: blueviolet!important;
+    }
+
+    100%{
+        color: lime!important;
+    }
+}
+
+.fields{
+    min-width: 5%;
+    max-width: 40%;
+    border-radius: 15%;
+    border: 2px dashed lime;
+    background-color: rgb(115, 115, 115);
+}
+
+.horizon{   /* hr besteht nur aus einem border */
+    width: 80%;
+    border-radius: 100%;
+    border: 3px solid lime;
+}
+
+.slider-math{
+
+}
+
+.tutorial-btn{
+    color: black;
+    background-color: black;
+}
+.tutorial-btn:hover{
+    color: lime!important;
+    border: 2px solid lime;
+}
+
+#playground{
+    background-color: black;
+    color: lime;
+    resize: none;
+    outline: none;
+    border-style: none; 
+    border-color: Transparent; 
+    overflow: auto;
+    text-align: center;
+    margin: 1%;
+}
+
+.write-timer{
+    background-color: black;
+}
+.write-timer:hover{
+    border-radius: 20%;
+    border: 2px dotted lime;
+}
+
+.instructions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lime;
+    font-size: 60%;
+    margin-bottom: -1%;
+}
+
+.shortcut-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1px!important;
+    border: 1px solid blueviolet;
+}
+#shortcut{
+    background-color: lime;
+    min-width: 30px;
+    height: 1px!important;
+    width: 1px!important;
+    border: 1px solid black;
+}
+
+
+.add{ 
+    width: 100px;
+    height: 100px;
+    background-color: chocolate;
+    background-image: url("../assets/imgs/penisGurke.png");
+    background-size: 100px 200px; 
+    border: 1px solid lime;
+    box-shadow: blueviolet; 
+    margin: 0.3%;
+}
+
+.guidance{ 
+    width: 100px;
+    height: 100px;
+    background-color: chocolate;
+    background-image: url("../assets/imgs/penisGurke.png");
+    background-size: 100px 200px; 
+    border: 1px solid lime;
+    box-shadow: blueviolet; 
+    margin: 0.3%;
+}

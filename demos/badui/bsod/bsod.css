@@ -1,0 +1,108 @@
+
+@font-face {
+    font-family: 'WILD WORLD';
+    src: url("../assets/fonts/WILD\ WORLD.otf");
+}
+
+@font-face {
+    font-family: 'fira code';
+    src: url("../assets/fonts/firacode/FiraCode-Medium.ttf");
+}
+
+button{
+    display: block;
+    min-width: 1000px;
+    min-height: 800px;
+    max-height: 100px;
+}
+
+.whiteBody{
+    background-color: white;
+
+}
+
+.blueBody{
+    background-color: rgb(1, 119, 215);
+    margin: 3%;
+}
+
+.qr{
+    
+}
+
+.smiley{
+    display: flex;
+    justify-content: flex-start;
+    font-size:1800%;
+    margin-bottom: 0%;
+}
+
+#qrContainer{
+    display: flex;
+}
+
+p{
+    display: block;
+    color: rgb(1, 119, 215);
+    font-size: 300%;
+    margin: 0;
+    text-align: start;
+}
+
+.percentage{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 0.5%;
+    margin-bottom: 4%;
+    margin-top: 1%;
+}
+
+.blueText{
+    text-align: start;
+    min-width: 1000px;
+    max-width: 1400px;
+}
+
+#fullscreen{
+    background: transparent;
+    border: none !important;
+}
+
+.fullscreen{
+    
+}
+
+.pWrapper{
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 2%;
+    min-width: 200px;
+    max-width: 1200px;
+}
+
+.errorMessage{
+    font-size: 180%!important;
+    display: flex;
+    justify-content: flex-start;
+    min-width: 200px;
+    max-width: 1200px;
+}
+
+.errorCodeMessage{
+    font-size: 180%!important;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10%;
+    min-width: 1200px;
+}
+
+.errorCode{
+    font-size: 180%!important;
+    display: flex;
+    justify-content: flex-start;
+    min-width: 1200px;
+}

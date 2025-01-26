@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOgIN</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+
+<body id="body">
+    <div class="content" id="content">
+        <div class="label innerLabel">ANMELDUNG</div>
+        <div class="label" id="label">
+            <span class="label innerLabel">NUR NOCH</span>
+            <span class="label innerLabel">00</span>
+            <span class="label innerLabel">:</span>
+            <span class="label innerLabel" id="counterMin">00</span>
+            <span class="label innerLabel">:</span>
+            <span class="label innerLabel" id="counterSec">00</span>
+            <span class="label innerLabel">Zeit lang gratis!</span>
+        </div>
+        <div class="row-1 row">
+            <div class="instructions">
+                <p>USE SLIDER FOR GIVEINGUS YOUR DATA</p>
+                <div class="shortcut-wrap">
+                    <button id="shortcut"></button>
+                </div>
+            </div>
+        </div>
+        <div class="row-2 row">
+            <input type="range" min="0" max="400" value="331" class="slider" id="sliderValue">
+        </div>
+        <div class="row-3"> <!-- 26 buchst + 10 zahlen + @ + . + _ + \\s = 40 -->
+            <span class="choose"> </span>
+            <span class="choose">a</span>
+            <span class="choose">b</span>
+            <span class="choose">c</span>
+            <span class="choose">d</span>
+            <span class="choose">e</span>
+            <span class="choose">f</span>
+            <span class="choose">g</span>
+            <span class="choose">h</span>
+            <span class="choose">i</span>
+            <span class="choose">j</span>
+            <span class="choose">k</span>
+            <span class="choose">l</span>
+            <span class="choose">m</span>
+            <span class="choose">n</span>
+            <span class="choose">o</span>
+            <span class="choose">p</span>
+            <span class="choose">q</span>
+            <span class="choose">r</span>
+            <span class="choose">s</span>
+            <span class="choose">t</span>
+            <span class="choose">u</span>
+            <span class="choose">v</span>
+            <span class="choose">w</span>
+            <span class="choose">x</span>
+            <span class="choose">y</span>
+            <span class="choose">z</span>
+            <span class="choose">0</span>
+            <span class="choose">1</span>
+            <span class="choose">2</span>
+            <span class="choose">3</span>
+            <span class="choose">4</span>
+            <span class="choose">5</span>
+            <span class="choose">6</span>
+            <span class="choose">7</span>
+            <span class="choose">8</span>
+            <span class="choose">9</span>
+            <span class="choose">@</span>
+            <span class="choose">.</span>
+            <span class="choose">_</span>
+        </div>
+        <div class="row-4 row"> <!-- value -->
+            <div class="slid-out"></div>
+            <button class="write-timer" id="writeTimer">ANSCHREIBUNG</button>
+            <div class="slider-math"></div>
+        </div>
+        <div class="row-4 5 row">
+            <textarea placeholder="WENN SIE ÜBUNG BRAUCHEN DANN SCHREIBEN SIE MICH AN" id="playground" cols="90" rows="1" readonly></textarea>
+        </div>
+        <div class="row-5 row">
+            <input type="password" placeholder="BENUTZERNAME" class="name fields" id="username" disabled>
+            <input type="password" placeholder="BENUTZERNAME WIEDERHOLEN" class="name-repeat fields" id="usernameRepeat" disabled>
+            <div class="name-space"></div>
+            <input type="password" placeholder="PASSWORT" class="password fields" id="password" disabled>
+            <input type="password" placeholder="PASSWORT WIEDERHOLEN" class="password-repeat fields" id="passwordRepeat" disabled>
+        </div>
+        <div class="row-6 row">
+            <button class="btn nextField">NEXT FIELD</button>
+        </div>
+        <div class="row-7 row">
+            <input type="password" placeholder="E-MAIL" class="mail fields" id="mail" disabled>
+            <input type="password" placeholder="E-MAIL WIEDERHOLEN" class="mail-repeat fields" id="mailRepeat" disabled>
+            <div class="name-space"></div>
+            <input type="password" placeholder="ADDRESSE" class="address fields" id="address" disabled>
+            <input type="password" placeholder="Wann sind Sie NICHT zuhause?" class="when-home fields" id="whenHome" disabled>
+        </div>
+        <div class="row-8 row">
+            <!-- maybe i will need it -->
+            <button class="btn tutorial-btn" id="tutorialBtn">TUTORIAL</button>
+        </div>
+        <hr class="horizon">
+
+        <div class="row-9 row">
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+        </div>
+
+        <div class="row-10 row">
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <button class="guidance"></button>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+            <div class="add"></div>
+        </div>
+
+    </div>
+    <script src="./login.js"></script>
+</body>
+
+</html>

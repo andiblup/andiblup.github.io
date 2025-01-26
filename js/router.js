@@ -1,15 +1,47 @@
-const routes = {
-  404: "/pages/404.html",
-  "/": "/pages/home.html",
-  "/about": "/pages/about.html",
-  "/contact": "/pages/contact.html",
-  "/projects": "/pages/projects/overview.html",
-  "/projects/overview": "/pages/projects/overview.html",
-  "/projects/portfolio": "/pages/projects/portfolio.html",
-  "/projects/example": "/pages/projects/example.html"
+// const routes = {
+//   404: "/pages/404.html",
+//   "/": "/pages/home.html",
+//   "/about": "/pages/about.html",
+//   "/contact": "/pages/contact.html",
+//   "/projects": "/pages/projects/overview.html",
+//   "/projects/overview": "/pages/projects/overview.html",
+//   "/projects/portfolio": "/pages/projects/portfolio.html",
+//   "/projects/example": "/pages/projects/example.html"
+// }
+
+let routes = {};
+
+// Funktion zum Laden der Routen aus der JSON-Datei
+async function loadRoutes() {
+  try {
+    const response = await fetch('/data/routes.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log('Routen geladen:', data);
+    routes = data;
+  } catch (error) {
+    console.error('Fehler beim Laden der Routen:', error);
+    // Fallback-Routen, falls das Laden fehlschlägt
+    // routes = {
+    //   "404": "/pages/404.html",
+    //   "/": "/pages/home.html",
+    //   "/about": "/pages/about.html",
+    //   "/contact": "/pages/contact.html",
+    //   "/projects": "/pages/projects/overview.html",
+    //   "/projects/overview": "/pages/projects/overview.html",
+    //   "/projects/portfolio": "/pages/projects/portfolio.html",
+    //   "/projects/example": "/pages/projects/example.html"
+    // };
+  }
 }
 
 const handleLocation = async () => {
+  // Sicherstellen, dass die Routen geladen sind
+  if (Object.keys(routes).length === 0) {
+    await loadRoutes();
+  }
 
   // Falls der Nutzer noch keinen Hash hat (z. B. erste Seite: #/ ), setze standardmäßig #/
   if (!window.location.hash) {

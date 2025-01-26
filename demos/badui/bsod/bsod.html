@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+    <link rel="stylesheet" href="./bsod.css">
+</head>
+
+<body class="blueBody">
+    <button id="fullscreen" class="fullscreen">
+
+        <div>
+            <p class="smiley">:(</p>
+            <p class="blueText"><br>Auf dem PC ist ein Problem aufgetreten. Er muss neu gestartet werden. Es werden
+                einige Fehlerinformationen gesammelt, und dann wird ein Neustart ausgeführt.</p>
+
+            <p class="percentage">(<span id="percentageValue">0</span> % abgeschlossen)<br></p>
+        </div>
+
+        <div id="qrContainer" class="spaceing">
+            <!-- <img id="qrImg" src="../assets/imgs/customQr.PNG"> -->
+            <div class="pWrapper">
+                <p class="errorMessage">
+                    Weitere Informationen zu diesem Problem und mögliche Lösungen finden Sie unter
+                    https://www.windows.com/stopcode
+                </p>
+                <p class="errorCodeMessage">
+                    Halten Sie folgende Infos bereit, wenn Sie den Support anrufen:
+                </p>
+                <p class="errorCode">
+                    Stillstandcode: IRQL NOT LESS OR EQUAL
+                </p>
+            </div>
+        </div>
+
+    </button>
+    <script src="./bsod.js"></script>
+</body>
+
+</html>
