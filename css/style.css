@@ -12,7 +12,7 @@
     --icon-bg-color: #ffffff;
     --icon-color: #212529;
     --background-color-hover: #d1d1d1;
-    
+
     /* Dark Mode Colors */
     --primary-color-dark: #006666; /* Dunkleres Teal */
     --secondary-color-dark: #4a5568; /* Dunkleres Grau-Blau */
@@ -27,7 +27,6 @@
     --icon-bg-color-dark: #3e3e3e;
     --icon-color-dark: #e0e0e0;
     --background-color-hover-dark: #3c3c3c;
-
 
     /* Default Colors */
     --primary: var(--primary-color);
@@ -60,21 +59,20 @@
     --card-text-color: var(--card-text-color-dark);
     --background-color-hover: var(--background-color-hover-dark);
 
-    --bs-btn-color: var(--text-color-dark)!important;
-
+    --bs-btn-color: var(--text-color-dark) !important;
 }
 
 /* Override Bootstrap Variables */
 
 .h2 {
-    font-size: 2rem!important;
-    font-weight: 500!important;
-    line-height: 1.2!important;
-    margin-bottom: 0.5rem!important;
+    font-size: 2rem !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .dark-mode .border {
-    border: 1px solid #3b3b3b!important;
+    border: 1px solid #3b3b3b !important;
 }
 
 .card-img-top {
@@ -92,7 +90,7 @@
 }
 
 .card-img-top::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -110,23 +108,69 @@
 }
 
 .card-icons-top::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    /* rgba(252, 252, 252, 0.1), */
-    rgba(95, 0, 136, 0.200),
-    rgba(66, 0, 219, 0.200),
-    rgba(2, 43, 178, 0.2),
-    rgba(16, 126, 177, 0.2),
-    rgba(0, 154, 128, 0.2)
-    
-  );
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        /* rgba(252, 252, 252, 0.1), */ rgba(95, 0, 136, 0.2),
+        rgba(66, 0, 219, 0.2),
+        rgba(2, 43, 178, 0.2),
+        rgba(16, 126, 177, 0.2),
+        rgba(0, 154, 128, 0.2)
+    );
+    pointer-events: none;
+}
+
+.icon-grad-hover {
+    /* Ensure the icon is treated like a “block” for background-clip */
+    display: inline-block;
+
+    /* Same gradient as your .btn-grad-hover */
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7);
+    background-size: 300% 100%;
+    background-position: 0 0;
+
+    /* Clip background to text (WebKit syntax needed for Chrome/Safari) */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Make the actual text color transparent so the gradient shows through */
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    /* Fade/slide the gradient on hover */
+    transition: background-position 0.4s ease-in-out;
+}
+
+/* Animate the gradient sweep on hover */
+.icon-grad-hover:hover {
+    background-position: 100% 0;
+    cursor: pointer;
+}
+
+.bi {
+    display: inline-block!important;
+
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7)!important;
+    background-size: 300% 100%!important;
+    background-position: 0 0!important;
+
+    -webkit-background-clip: text!important;
+    background-clip: text!important;
+
+    color: transparent!important;
+    -webkit-text-fill-color: transparent!important;
+
+    transition: background-position 0.4s ease-in-out!important;
+}
+
+.bi:hover {
+    background-position: 100% 0!important;
+    /* cursor: pointer!important; */
 }
 
 
@@ -135,9 +179,8 @@
 }
 
 .btn-primary {
-    color: var(--text-color)!important;
+    color: var(--text-color) !important;
 }
-
 
 /* Im Standard-Fall (Light Mode) kannst du es so anpassen: */
 /* Im “Light Mode” */
@@ -145,31 +188,31 @@
     background-color: var(--card-bg) !important; /* Oder var(--popover-bg), wie du magst */
     color: var(--text) !important;
     border: 1px solid var(--text-color) !important; /* Oder eine andere Farbe */
-  }
-  
-  /* Im “Dark Mode” */
-  .dark-mode .dropdown-menu {
+}
+
+/* Im “Dark Mode” */
+.dark-mode .dropdown-menu {
     background-color: var(--card-bg) !important; /* oder var(--card-bg-color-dark), falls du eine extra Var hast */
-    color: var(--text-color-dark) !important;     /* Aus deiner .dark-mode Variablen */
-  }
-  
-  /* Optional: Items, Hover, Divider etc. */
-  .dropdown-item {
+    color: var(--text-color-dark) !important; /* Aus deiner .dark-mode Variablen */
+}
+
+/* Optional: Items, Hover, Divider etc. */
+.dropdown-item {
     color: var(--text) !important;
-  }
-  .dark-mode .dropdown-item {
+}
+.dark-mode .dropdown-item {
     color: var(--text-color-dark) !important;
-  }
-  .dark-mode .dropdown-item:hover {
+}
+.dark-mode .dropdown-item:hover {
     background-color: var(--background-color-hover) !important;
     color: var(--button-text-color-dark) !important;
-  }
-  
+}
 
 /* Override end */
 
 /* General Styles */
-body, html {
+body,
+html {
     height: 100%;
     background-color: var(--background) !important;
     color: var(--text) !important;
@@ -199,7 +242,6 @@ body, html {
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;  */
     /* background-color: red!important; */
-
 }
 #main-content {
     /* flex: 1; */
@@ -234,7 +276,6 @@ footer {
     margin-left: 0.5rem;
 }
 
-
 #sidebar {
     width: 30%;
     max-width: 300px;
@@ -245,7 +286,9 @@ footer {
     height: 100%;
     z-index: 1000;
     background-color: var(--navbar-bg);
-    transition: transform 0.3s ease, width 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        width 0.3s ease;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -343,14 +386,10 @@ footer {
     color: black;
 }
 
-
 #main-content-inner {
     margin: 5%;
     margin-top: 75px;
 }
-
-
-
 
 /* ELEVATION */
 .elevated-shadow {
@@ -379,6 +418,7 @@ footer {
         0 8px 16px var(--box-shadow-light-hover),
         0 12px 40px var(--box-shadow-dark-hover);
     transform: translateY(-2px);
+    /* border: 1px solid transparent; */
 }
 .elevated-soft {
     transition:

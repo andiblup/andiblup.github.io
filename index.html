@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html :lang="currentLang" x-data="{
     pageTitle: 'Portfolio',
+    colorize: true,
     breadCrumbs: [],
     // currentLang: navigator.language || navigator.userLanguage || 'en',
     currentLang:   ((localStorage.getItem('appLang') 
@@ -144,7 +145,7 @@
 
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
-                        <a class="btn"><i class="bi bi-gear"></i></a>
+                        <a class="btn" x-on:click="colorize = !colorize"><i class="bi bi-gear"></i></a>
                         <a class="btn"  id="theme-toggle-button">
                             <i id="theme-toggle-icon"
                             :class="{ 'bi cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
@@ -208,15 +209,15 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <!-- Social Media Icons -->
                     <div class="ms-3 ">
-                        <a href="https://twitter.com" target="_blank" class="me-3"
+                        <a href="https://twitter.com" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
                             <i style="font-size: 1rem;" class="bi bi-linkedin"></i>
                         </a>
-                        <a href="https://github.com" target="_blank" class="me-3"
+                        <a href="https://github.com" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
                             <i style="font-size: 1rem;" class="bi bi-github"></i>
                         </a>
-                        <a href="https://gitlab.com" target="_blank" class="me-3"
+                        <a href="https://gitlab.com" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
                             <i style="font-size: 1rem;" class="bi bi-gitlab"></i>
                         </a>
