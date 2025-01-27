@@ -8,7 +8,9 @@
         const response = await fetch('/lang/overview/' + lang + '.json'); 
         this.pageLang = await response.json(); 
         // console.log(this.pageLang);
-        pageTitle = breadCrumbs[breadCrumbs.length - 1].name;
+        // pageTitle = breadCrumbs[breadCrumbs.length - 1].name;
+        document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+
     } 
 }">
     <div class="card py-2">
