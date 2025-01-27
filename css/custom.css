@@ -13,7 +13,7 @@
 
 /* Apply color styling to all <a> tags */
 a {
-    color: var(--text-color); /* Use the text color variable for consistency */
+    color: var(--text-color)!important; /* Use the text color variable for consistency */
     text-decoration: none; /* Optional: removes underline from links */
 }
 
@@ -29,7 +29,7 @@ a:focus {
 
 /* Ensure <a> tags adapt to dark mode */
 .dark-mode a {
-    color: var(--text-color-dark); /* Adapt to dark mode text color */
+    color: var(--text-color-dark)!important; /* Adapt to dark mode text color */
 }
 
 .dark-mode a:hover, .dark-mode a:focus {

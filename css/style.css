@@ -2,13 +2,13 @@
     /* Light Mode Colors */
     --primary-color: #008080; /* Teal */
     --secondary-color: #5f6f81; /* Grau-Blau */
-    --background-color: #f5f5f5; /* Hellgrau */
+    --background-color: #b3b3b3; /* Hellgrau */
     --text-color: #212529; /* Dunkelgrau-Schwarz */
     --button-text-color: #ffffff;
     --button-text-hover-color: #e0e0e0; /* Helles Grau für Hover */
     --navbar-bg-color: #e0e0e0; /* Hellgrau, dunkler als main-content */
     --popover-bg-color: #ffffff;
-    --card-bg-color: #ffffff;
+    --card-bg-color: #e0e0e0;
     --icon-bg-color: #ffffff;
     --icon-color: #212529;
     
@@ -65,7 +65,7 @@
 .dropdown-menu {
     background-color: var(--card-bg) !important; /* Oder var(--popover-bg), wie du magst */
     color: var(--text) !important;
-    border: none; /* optional */
+    border: 1px solid var(--text-color) !important; /* Oder eine andere Farbe */
   }
   
   /* Im “Dark Mode” */
@@ -245,6 +245,15 @@ footer {
     display: block;
 }
 
+/* Card */
+.card {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
 /* Dark Mode Card Styles */
 .dark-mode .card {
     background-color: var(--card-bg);

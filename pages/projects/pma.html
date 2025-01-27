@@ -1,0 +1,35 @@
+<section x-data="{ 
+    pageLang: {}, 
+    async init() { 
+        breadCrumbs = getBreadCrumbsArray(); 
+        const lang = localStorage.getItem('appLang') || 'en'; 
+        const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase(); 
+        const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
+        this.pageLang = await response.json(); 
+    } 
+}" x-init="init()">
+
+    <div class="card py-2">
+        <h1 class="ms-3" x-text="'Project Management Assistant'"></h1>
+        <p class="ms-3" x-text="pageLang.description"></p>
+        
+ 
+
+        <div class="mb-3" x-data="{showTechstack: true}">
+            <h2 class="ms-3">
+                <span x-text="'Techstack'"></span>
+                <span class="cursor-pointer" @click="showTechstack = !showTechstack">
+                    <i :class="{'bi': true, 'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"></i>
+                </span>
+            </h2>
+            <div x-show="showTechstack">
+                <ul>
+                
+                </ul>
+                <div id="iconCarousel" class="inline-card mb-3" data-icon-list="fantasyQuest"></div>
+
+            </div>
+        </div>
+        
+    </div>
+</section>
