@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const toggleButton = document.getElementById('theme-toggle');
+    const toggleButton = document.getElementById('theme-toggle-button');
+    const toggleIcon = document.getElementById('theme-toggle-icon');
     const body = document.body;
     // const icon = toggleButton.firstChild.firstChild;
 
@@ -7,16 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentTheme = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'dark';
     if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
-        toggleButton.classList.remove('bi-moon');
-        toggleButton.classList.add('bi-sun');
+        toggleIcon.classList.remove('bi-moon');
+        toggleIcon.classList.add('bi-sun');
     }
 
     toggleButton.addEventListener('click', function () {
         if (body.classList.contains('dark-mode')) {
             body.classList.remove('dark-mode');
             localStorage.setItem('theme', 'light');
-            toggleButton.classList.remove('bi-sun');
-            toggleButton.classList.add('bi-moon');
+            toggleIcon.classList.remove('bi-sun');
+            toggleIcon.classList.add('bi-moon');
             // try {
             //     const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
 
@@ -50,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             body.classList.add('dark-mode');
             localStorage.setItem('theme', 'dark');
-            toggleButton.classList.remove('bi-moon');
-            toggleButton.classList.add('bi-sun');
+            toggleIcon.classList.remove('bi-moon');
+            toggleIcon.classList.add('bi-sun');
             // try {
             //     const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
 

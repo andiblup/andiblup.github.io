@@ -2,7 +2,7 @@
     /* Light Mode Colors */
     --primary-color: #008080; /* Teal */
     --secondary-color: #5f6f81; /* Grau-Blau */
-    --background-color: #b3b3b3; /* Hellgrau */
+    --background-color: #efefef; /* Hellgrau */
     --text-color: #212529; /* Dunkelgrau-Schwarz */
     --button-text-color: #ffffff;
     --button-text-hover-color: #e0e0e0; /* Helles Grau für Hover */
@@ -60,6 +60,8 @@
     --card-text-color: var(--card-text-color-dark);
     --background-color-hover: var(--background-color-hover-dark);
 
+    --bs-btn-color: var(--text-color-dark)!important;
+
 }
 
 /* Override Bootstrap Variables */
@@ -70,6 +72,45 @@
     line-height: 1.2!important;
     margin-bottom: 0.5rem!important;
 }
+
+.dark-mode .border {
+    border: 1px solid #3b3b3b!important;
+}
+
+.card-img-top {
+    background-color: var(--card-bg); /* Karte und Bild konsistent halten */
+    border-radius: 25px 25px 0 0; /* Gleicher Radius wie Karte */
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0; /* Kein eigener Radius */
+}
+
+.card-img-top::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), var(--card-bg)); /* Transparenz reduziert */
+    pointer-events: none; /* Gradient bleibt nur visueller Effekt */
+}
+
+.card-footer {
+    background-color: var(--card-bg);
+}
+
+.btn-primary {
+    color: var(--text-color)!important;
+}
+
+
 /* Im Standard-Fall (Light Mode) kannst du es so anpassen: */
 /* Im “Light Mode” */
 .dropdown-menu {

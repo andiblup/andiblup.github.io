@@ -7,26 +7,24 @@
         
         const response = await fetch('/lang/overview/' + lang + '.json'); 
         this.pageLang = await response.json(); 
-        // console.log(this.pageLang);
-        // pageTitle = breadCrumbs[breadCrumbs.length - 1].name;
         document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
 
     } 
 }">
-    <div class="card py-2">
+    <!-- <div class="card py-2">
         <h1 class="ms-3 mb-3" x-text="pageLang.header"></h1>
         <p class="ms-3" x-text="pageLang.description"></p>
 
         <hr>
-<!-- <a class="mb-3" onclick="route(event)" href="/#/projects/portfolio"><h2 class="d-inline" x-text="pageLang.projects.portfolio.title"></h2></a> -->
-            
-<div>
-    <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.portfolio.title" onclick="route(event)"
+        <div>
+            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.portfolio.title" onclick="route(event)"
                     href="/#/projects/portfolio"></a></h2>
             <p class="ps-3" x-text="pageLang.projects.portfolio.description"></p>
         </div>
 
-        <div class="px-3"><hr width="100%"></div>
+        <div class="px-3">
+            <hr width="100%">
+        </div>
 
         <div>
             <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.badui.title" onclick="route(event)"
@@ -34,7 +32,9 @@
             <p class="ps-3" x-text="pageLang.projects.badui.description"></p>
         </div>
 
-        <div class="px-3"><hr width="100%"></div>
+        <div class="px-3">
+            <hr width="100%">
+        </div>
 
         <div>
             <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.doGether.title" onclick="route(event)"
@@ -42,7 +42,9 @@
             <p class="ps-3" x-text="pageLang.projects.doGether.description"></p>
         </div>
 
-        <div class="px-3"><hr width="100%"></div>
+        <div class="px-3">
+            <hr width="100%">
+        </div>
 
         <div>
             <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.fantasyQuest.title" onclick="route(event)"
@@ -50,14 +52,110 @@
             <p class="ps-3" x-text="pageLang.projects.fantasyQuest.description"></p>
         </div>
 
-        <div class="px-3"><hr width="100%"></div>
+        <div class="px-3">
+            <hr width="100%">
+        </div>
 
         <div>
-            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.pma.title" onclick="route(event)" href="/#/projects/pma"></a>
+            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.pma.title" onclick="route(event)"
+                    href="/#/projects/pma"></a>
             </h2>
             <p class="ps-3" x-text="pageLang.projects.pma.description"></p>
         </div>
 
+    </div> -->
+
+    <div class="container py-5">
+        <h1 class="text-center mb-5" x-text="pageLang.header"></h1>
+        <p class="text-center mb-4" x-text="pageLang.description"></p>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- Portfolio Card -->
+            <div class="col">
+                <a onclick="route(event)" href="/#/projects/portfolio">
+                    <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                        <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                            <img src="/assets/img/doGether/home.png" alt=""
+                                style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" x-text="pageLang.projects.portfolio.title"></h2>
+                            <p class="card-text" x-text="pageLang.projects.portfolio.description"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- Bad UI Card -->
+            <div class="col">
+                <a onclick="route(event)" href="/#/projects/badui">
+                    <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                        <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                            <img src="/assets/img/doGether/home.png" alt=""
+                                style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" x-text="pageLang.projects.badui.title"></h2>
+                            <p class="card-text" x-text="pageLang.projects.badui.description"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Do Gether Card -->
+            <div class="col">
+                <a onclick="route(event)" href="/#/projects/doGether">
+                    <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                        <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                            <img src="/assets/img/doGether/home.png" alt=""
+                                style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" x-text="pageLang.projects.doGether.title"></h2>
+                            <p class="card-text" x-text="pageLang.projects.doGether.description"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Fantasy Quest Card -->
+            <div class="col">
+                <a onclick="route(event)" href="/#/projects/fantasyQuest">
+                    <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                        <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                            <img src="/assets/img/doGether/home.png" alt=""
+                                style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" x-text="pageLang.projects.fantasyQuest.title"></h2>
+                            <p class="card-text" x-text="pageLang.projects.fantasyQuest.description"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- PMA Card -->
+            <div class="col">
+                <a onclick="route(event)" href="/#/projects/pma">
+                    <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                        <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                            <img src="/assets/img/doGether/home.png" alt=""
+                                style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" x-text="pageLang.projects.pma.title"></h2>
+                            <p class="card-text" x-text="pageLang.projects.pma.description"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 
 </section>

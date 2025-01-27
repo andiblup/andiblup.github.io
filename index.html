@@ -145,15 +145,17 @@
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
                         <a class="btn"><i class="bi bi-gear"></i></a>
-                        <a class="btn"><i id="theme-toggle"
-                            :class="{ 'bi cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i></a>
+                        <a class="btn"  id="theme-toggle-button">
+                            <i id="theme-toggle-icon"
+                            :class="{ 'bi cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                        </a>
                         <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="bi bi-translate"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
-                                <h3 class="dropdown-header">Language</h3>
+                                <h3 class="dropdown-header" x-text="(currentLang === 'de') ? 'Sprache' : 'Language'"></h3>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
