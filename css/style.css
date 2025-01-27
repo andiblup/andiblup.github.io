@@ -11,6 +11,7 @@
     --card-bg-color: #e0e0e0;
     --icon-bg-color: #ffffff;
     --icon-color: #212529;
+    --background-color-hover: #cccccc;
     
     /* Dark Mode Colors */
     --primary-color-dark: #006666; /* Dunkleres Teal */
@@ -25,6 +26,7 @@
     --card-text-color-dark: #f5f5f5; /* Hellgrau für Text in Karten */
     --icon-bg-color-dark: #3e3e3e;
     --icon-color-dark: #e0e0e0;
+    --background-color-hover-dark: #3c3c3c;
 
 
     /* Default Colors */
@@ -39,6 +41,7 @@
     --card-bg: var(--card-bg-color);
     --icon-bg: var(--icon-bg-color);
     --icon-color: var(--icon-color);
+    --background-color-hover: var(--background-color-hover);
 }
 
 /* Dark Mode Styles */
@@ -55,11 +58,18 @@
     --icon-bg: var(--icon-bg-color-dark);
     --icon-color: var(--icon-color-dark);
     --card-text-color: var(--card-text-color-dark);
+    --background-color-hover: var(--background-color-hover-dark);
 
 }
 
 /* Override Bootstrap Variables */
 
+.h2 {
+    font-size: 2rem!important;
+    font-weight: 500!important;
+    line-height: 1.2!important;
+    margin-bottom: 0.5rem!important;
+}
 /* Im Standard-Fall (Light Mode) kannst du es so anpassen: */
 /* Im “Light Mode” */
 .dropdown-menu {
@@ -82,7 +92,7 @@
     color: var(--text-color-dark) !important;
   }
   .dark-mode .dropdown-item:hover {
-    background-color: var(--primary-color-dark) !important;
+    background-color: var(--background-color-hover) !important;
     color: var(--button-text-color-dark) !important;
   }
   

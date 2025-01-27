@@ -1,0 +1,28 @@
+{
+
+    "header": "Overview",
+    "description": "Here you can see all projects and a little description",
+    "projects": {
+        "portfolio": {
+            "title": "Portfolio",
+            "description": "This is my portfolio, where I show my projects and skills."
+        },
+        "badui": {
+            "title": "Bad UI",
+            "description": "As one of our initial tasks at CODERS.BAY Vienna, we were tasked with creating a website in 2 weeks using HTML5, CSS3, and JavaScript, designed to make user interaction as challenging as possible. This project allowed us to freely explore working with vanilla JavaScript and express our creativity in a unique way."
+        },
+        "doGether": {
+            "title": "Do Gether",
+            "description": "Do Gether is a social media platform designed to connect like-minded individuals with shared interests. The core idea is to bring people together to engage in shared activities."
+        },
+        "fantasyQuest": {
+            "title": "Fantasy Quest",
+            "description": "The idea behind the app was to create a combination of Pokémon Go, the original Pokémon games, and Final Fantasy 1."
+        },
+        "pma": {
+            "title": "PMA",
+            "description": "A project management application for you to manage your projects."
+        }
+    }
+
+}

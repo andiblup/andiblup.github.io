@@ -19,11 +19,9 @@ a {
 
 a:hover {
     color: var(--text-color); 
+    background-color: var(--background-color-hover, #d1d1d1)!important;
 }
 
-a:focus {
-    color: var(--primary);
-}
 
 
 
@@ -32,8 +30,19 @@ a:focus {
     color: var(--text-color-dark)!important; /* Adapt to dark mode text color */
 }
 
-.dark-mode a:hover, .dark-mode a:focus {
+.dark-mode a:hover {
     color: var(--text-color-dark); /* Adapt hover effect to dark mode primary color */
+    background-color: var(--background-color-hover);
+}
+
+.btn:hover {
+    background-color: var(--background-color-hover, #d1d1d1)!important;
+    color: var(--text-color);
+}
+
+.dark-mode .btn:hover {
+    background-color: var(--background-color-hover);
+    color: var(--text-color-dark);
 }
 
 

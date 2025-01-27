@@ -1,6 +1,6 @@
 {
     "header": "Willkommen bei Fantasy Quest!",
-    "description": "Das Spiel ist eine Mischung aus Rollenspiel und Geocaching. Inspiriert wurde es von Pokémon Go, der traditionellen Pokémon-Reihe und Final Fantasy 1. Spieler können Charaktere erstellen, die eine von vier Rollen übernehmen: Dunkelmagier, Krieger, Heiler oder Dieb. Die Charaktere bewegen sich in der Overworld und treffen auf Gegner, indem sie eine bestimmte Strecke zurücklegen. Es gibt drei verschiedene Gegnertypen mit individuellen Werten und Angriffen. Diese App ist ein Prototyp und enthält nicht alle geplanten Funktionen.",
+    "description": "Die Idee hinter der App war es eine Kombination aus Pokemon Go, den originalen Pokemon Spielen und Final Fantasy 1 zu schaffen. Spieler können Charaktere erstellen, die eine von vier Rollen übernehmen: Dunkelmagier, Krieger, Heiler oder Dieb. Die Charaktere bewegen sich in der Overworld und treffen auf Gegner, indem sie eine bestimmte Strecke zurücklegen. Es gibt drei verschiedene Gegnertypen mit individuellen Werten und Angriffen. Diese App ist ein Prototyp und enthält nicht alle geplanten Funktionen.",
     "features": {
       "title": "Funktionen",
       "roles": "Charaktererstellung mit vier Rollen: Dunkelmagier, Krieger, Heiler und Dieb.",

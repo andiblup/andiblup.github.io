@@ -68,7 +68,7 @@
 
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
-                        href="#/projects/overview">Overview</a>
+                        href="#/projects">Overview</a>
                 </li>
                 <!-- <li class="nav-item elevated"> -->
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
@@ -132,7 +132,7 @@
 
                                     <span> / </span>
                                 </template>
-                                <a :href="crumb.path" @click="route()" x-text="crumb.name">
+                                <a class="btn" :href="crumb.path" @click="route()" x-text="crumb.name">
                                 </a>
                             </span>
                         </template>
@@ -144,9 +144,9 @@
 
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
-                        <i class="bi bi-gear me-3"></i>
-                        <i id="theme-toggle" style="cursor: pointer;"
-                            :class="{ 'bi me-3': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                        <a class="btn"><i class="bi bi-gear"></i></a>
+                        <a class="btn"><i id="theme-toggle"
+                            :class="{ 'bi cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i></a>
                         <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="bi bi-translate"></i>
@@ -160,7 +160,7 @@
                             </li>
 
                             <li>
-                                <button class="dropdown-item d-flex align-items-center"
+                                <button class="dropdown-item btn d-flex align-items-center"
                                     @click="changeLang('en');location.reload();" style="text-align: start;">
                                     <div class="fi fi-us"></div>
                                     <div style="width: 10px;"></div>
@@ -168,7 +168,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button class="dropdown-item d-flex align-items-center "
+                                <button class="dropdown-item btn d-flex align-items-center "
                                     @click="changeLang('de');location.reload();" style="text-align: start;">
                                     <div class="fi fi-de"></div>
                                     <div style="width: 10px;"></div>

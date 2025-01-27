@@ -1,9 +1,61 @@
 <section x-data="{ 
-    init() {
+    pageLang: {}, 
+    async init() { 
+        breadCrumbs = getBreadCrumbsArray(); 
+        const lang = localStorage.getItem('appLang') || 'en'; 
+        console.log('/lang/overview/' + lang + '.json');
+        
+        const response = await fetch('/lang/overview/' + lang + '.json'); 
+        this.pageLang = await response.json(); 
+        // console.log(this.pageLang);
+        pageTitle = breadCrumbs[breadCrumbs.length - 1].name;
+    } 
+}">
+    <div class="card py-2">
+        <h1 class="ms-3 mb-3" x-text="pageLang.header"></h1>
+        <p class="ms-3" x-text="pageLang.description"></p>
 
-    breadCrumbs = getBreadCrumbsArray();
-    }
- }" x-init="init()">
- <p>Übersicht</p>
+        <hr>
+<!-- <a class="mb-3" onclick="route(event)" href="/#/projects/portfolio"><h2 class="d-inline" x-text="pageLang.projects.portfolio.title"></h2></a> -->
+            
+<div>
+    <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.portfolio.title" onclick="route(event)"
+                    href="/#/projects/portfolio"></a></h2>
+            <p class="ps-3" x-text="pageLang.projects.portfolio.description"></p>
+        </div>
+
+        <div class="px-3"><hr width="100%"></div>
+
+        <div>
+            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.badui.title" onclick="route(event)"
+                    href="/#/projects/badui"></a></h2>
+            <p class="ps-3" x-text="pageLang.projects.badui.description"></p>
+        </div>
+
+        <div class="px-3"><hr width="100%"></div>
+
+        <div>
+            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.doGether.title" onclick="route(event)"
+                    href="/#/projects/doGether"></a></h2>
+            <p class="ps-3" x-text="pageLang.projects.doGether.description"></p>
+        </div>
+
+        <div class="px-3"><hr width="100%"></div>
+
+        <div>
+            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.fantasyQuest.title" onclick="route(event)"
+                    href="/#/projects/fantasyQuest"></a></h2>
+            <p class="ps-3" x-text="pageLang.projects.fantasyQuest.description"></p>
+        </div>
+
+        <div class="px-3"><hr width="100%"></div>
+
+        <div>
+            <h2><a class="btn mb-3 h2 ps-3" x-text="pageLang.projects.pma.title" onclick="route(event)" href="/#/projects/pma"></a>
+            </h2>
+            <p class="ps-3" x-text="pageLang.projects.pma.description"></p>
+        </div>
+
+    </div>
 
 </section>
