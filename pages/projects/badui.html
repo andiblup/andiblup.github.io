@@ -17,10 +17,11 @@
     <div class="card py-2">
         <div>
             <h1 class="ms-3 d-flex justify-content-between align-items-center">BadUI <span>
-                <a class="me-2" href="/pages/demos/dino/dino.html" target="_blank"><i class="bi bi-globe"></i></a>
-                <a class="me-5" href="https://github.com/andiblup/Bad-UI-UX/" target="_blank"><i class="bi bi-github"></i></a>
-            
-            </span></h1>
+                    <a class="me-2" href="/pages/demos/dino/dino.html" target="_blank"><i class="bi bi-globe"></i></a>
+                    <a class="me-5" href="https://github.com/andiblup/Bad-UI-UX/" target="_blank"><i
+                            class="bi bi-github"></i></a>
+
+                </span></h1>
             <div class="ms-3">
                 <p>
                     As one of our initial tasks at CODERS.BAY Vienna, we were tasked with creating a website in 2 weeks
@@ -88,7 +89,43 @@
         </div>
     </div>
 
+    <div class="container" x-data="{ 
+        width: 476, 
+        height: 288,
+        startPresentation() {
+            document.getElementById('overlay').classList.add('visible')
+            const iframe = document.getElementById('powerpoint');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                // Chrome, Safari und Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                // Internet Explorer / Edge
+                iframe.msRequestFullscreen();
+            }       
+        }
+    }">
+        <button x-on:click="startPresentation()">Toggle Powerpoint</button>
+        <!-- Eingabefelder -->
+        <label>Breite</label>
+        <input max="1920" type="number" x-model="width" class="form-control" placeholder="Breite">
 
+        <label>Höhe</label>
+        <input max="1080" type="number" x-model="height" class="form-control" placeholder="Höhe">
 
+        <!-- iframe mit dynamischer Größe -->
+        <div class="iframe-container">
+            <iframe id="powerpoint" style="position: relative; z-index: 1001!important;"
+                src="https://1drv.ms/p/s!AoMbuy81J8LflrBpi7IOP3cI94KhQg?embed=1&amp;em=2&amp;wdAr=1.7777777777777777"
+                :width="width" :height="height" frameborder="0">Dies ist ein eingebettetes <a target="_blank"
+                    href="https://office.com">Microsoft Office</a>-Präsentation, unterstützt von <a target="_blank"
+                    href="https://office.com/webapps">Office</a>.</iframe>
+
+        </div>
+    </div>
 
 </section>
