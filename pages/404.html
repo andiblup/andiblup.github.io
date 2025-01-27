@@ -2,7 +2,6 @@
     pageLang: {},
     async init() {
 
-    // breadCrumbs = getBreadCrumbsArray();
     breadCrumbs = [{name: '404 - Back to Home', path: '/'}];
     const lang = localStorage.getItem('appLang') || 'en';
     
@@ -13,13 +12,42 @@
     document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
 
     }
- }" x-init="init()">
-    <!-- <h1>Seite nicht gefunden</h1>
-    <p>Entschuldigung, die angeforderte Seite existiert nicht. </p>
-    <br> -->
-    <!-- <a class="btn btn-secondary" onclick="route(event)" href="#/">Zurück zur Startseite</a> -->
-    <h1 x-text="pageLang.title"></h1>
-    <p x-text="pageLang.description"></p>
-    <br>
-    <a class="btn btn-secondary" onclick="route(event)" href="#/" x-text="pageLang.button"></a>
+ }">
+
+    <div class="container py-5">
+        <h1 class="text-center" x-text="404"></h1>
+        <h1 class="text-center" x-text="pageLang.title"></h1>
+        <div class="row row-cols-1 text-center">
+            <p x-text="pageLang.description"></p>
+            <br>
+        </div>
+        <div class="d-flex justify-content-center"><a class="btn" onclick="route(event)" href="#/"
+                x-text="pageLang.button"></a></div>
+    </div>
+
+
+
+
+    <!-- <div class="container py-5">
+            
+            <div class="col">
+                <a onclick="route(event)" href="/#">
+                    <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                        <div class="card-img-top position-relative d-flex justify-content-center" style="height: 90%; overflow: hidden;">
+                            <img src="https://http.cat/404" alt=""
+                                style="width: 80%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title" x-text="pageLang.title"></h2>
+                            <p class="card-text" x-text="pageLang.description"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+
+
 </section>

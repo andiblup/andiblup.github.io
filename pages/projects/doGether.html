@@ -1,3 +1,4 @@
+<!-- 
 <section x-data="{ 
     pageLang: {}, 
     async init() { 
@@ -175,57 +176,280 @@
     </div>
 
 
+</section> -->
 
-    <!-- <div class="card py-2">
-        <h1 class="ms-3" x-text="pageLang.header"></h1>
-        <p class="ms-3" x-text="pageLang.description"></p>
+
+
+<section
+x-data="{ 
+    pageLang: {}, 
+    async init() { 
+        breadCrumbs = getBreadCrumbsArray(); 
+        const lang = localStorage.getItem('appLang') || 'en'; 
+        const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase(); 
+        console.log('/lang/' + fileName + '/' + lang + '.json');
         
-        <div class="ms-3">
-            <h2 x-text="pageLang.features.title"></h2>
-            <ul>
-                <li x-text="pageLang.features.groups"></li>
-                <li x-text="pageLang.features.filters"></li>
-                <li x-text="pageLang.features.personalization"></li>
-                <li x-text="pageLang.features.posts"></li>
+        const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
+        this.pageLang = await response.json(); 
+        document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+        console.log(this.pageLang);
+        
+        
+
+    } 
+}"
+  x-init="init()"
+  class="py-5"
+>
+  <!-- TOP CONTAINER: Header & Description -->
+  <div class="container mb-5">
+    <div class="d-flex align-items-end justify-content-center">
+      <h1 class="text-center mb-3 me-2" x-text="pageLang.header"></h1>
+      <span class="mb-3">together</span>
+    </div>
+    <p class="text-center mt-1 mb-4" x-text="pageLang.description"></p>
+  </div>
+
+  <!-- <div class="col">
+    <a  x-data="{ showTechstack: true }">
+        <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+            <div x-show="showTechstack" class="card-icons-top position-relative" style="height: 150px; overflow: hidden;">
+
+                    <div id="iconCarousel" class="inline-card mb-3" data-icon-list="doGether"
+                    style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;"></div>
+            
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h2 class="card-title mb-0" x-text="pageLang.techstack.title"></h2>
+                    <i
+                      class="bi cursor-pointer ms-2"
+                      :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
+                      @click="showTechstack = !showTechstack"
+                    ></i>
+                  </div>
+            </div>
+        </div>
+    </a>
+</div> -->
+
+  <!-- TECH STACK CARD -->
+   <!-- card-icons-top makes gradient, still dont know if i want it -->
+  <div class="container mb-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card card-icons-top shadow border" style="border-radius: 25px;">
+          <div class="card-body" x-data="{ showTechstack: true }">
+            
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0 " x-text="pageLang.techstack.title"></h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
+                @click="showTechstack = !showTechstack"
+              ></i>
+            </div>
+
+           
+            <div x-show="showTechstack" class="mt-3">
+              <div id="iconCarousel" class="inline-card mb-3" data-icon-list="doGether"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES & INSTALLATION ROW -->
+  <div class="container mb-5">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <!-- FEATURES CARD -->
+      <div class="col">
+        <div class="card shadow border h-100" style="border-radius: 25px;">
+          <div class="card-body d-flex flex-column" x-data="{ showFeatures: true }">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h2 class="card-title mb-0" x-text="pageLang.features.title"></h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showFeatures, 'bi-chevron-down': !showFeatures}"
+                @click="showFeatures = !showFeatures"
+              ></i>
+            </div>
+
+            <ul x-show="showFeatures" class="ps-4">
+              <li x-text="pageLang.features.groups"></li>
+              <li x-text="pageLang.features.filters"></li>
+              <li x-text="pageLang.features.personalization"></li>
+              <li x-text="pageLang.features.posts"></li>
             </ul>
+          </div>
         </div>
-        
-        <div class="mb-3" x-data="{showTechstack: true}">
-            <h2 class="ms-3">
-                <span x-text="pageLang.techstack.title"></span>
-                <span @click="showTechstack = !showTechstack">
-                    <i :class="{'bi': true, 'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"></i>
-                </span>
-            </h2>
-            <div x-show="showTechstack">
-                <ul>
-                    <li x-text="pageLang.techstack.ssr"></li>
-                    <li x-text="pageLang.techstack.inertia"></li>
-                    <li x-text="pageLang.techstack.api"></li>
-                    <li x-text="pageLang.techstack.performance"></li>
-                </ul>
-                <div x-show="showTechstack" id="iconCarousel" class="inline-card mb-3" data-icon-list="doGether"></div>
+      </div>
 
+      <!-- INSTALLATION CARD -->
+      <div class="col">
+        <div class="card shadow border h-100" style="border-radius: 25px;">
+          <div class="card-body d-flex flex-column" x-data="{ showInstallation: true }">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h2 class="card-title mb-0" x-text="pageLang.installation.title"></h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"
+                @click="showInstallation = !showInstallation"
+              ></i>
             </div>
-        </div>
 
-        <div class="mb-3" x-data="{showInstallation: true}">
-            <h2 class="ms-3">
-                <span x-text="pageLang.installation.title"></span>
-                <span @click="showInstallation = !showInstallation">
-                    <i :class="{'bi': true, 'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"></i>
-                </span>
-            </h2>
-            <div x-show="showInstallation">
-                <ol>
-                    <li x-text="pageLang.installation.step1"></li>
-                    <li x-text="pageLang.installation.step2"></li>
-                    <li x-text="pageLang.installation.step3"></li>
-                    <li x-text="pageLang.installation.step4"></li>
-                    <li x-text="pageLang.installation.step5"></li>
-                    <li x-text="pageLang.installation.step6"></li>
-                </ol>
-            </div>
+            <ol x-show="showInstallation" class="ps-4">
+              <li x-text="pageLang.installation.step1"></li>
+              <li x-text="pageLang.installation.step2"></li>
+              <li x-text="pageLang.installation.step3"></li>
+              <li x-text="pageLang.installation.step4"></li>
+              <li x-text="pageLang.installation.step5"></li>
+              <li x-text="pageLang.installation.step6"></li>
+            </ol>
+          </div>
         </div>
-    </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGES / CAROUSEL CARD -->
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;" x-data="{ showImages: true }">
+          <div class="card-body">
+            <!-- Title + Toggle Icon -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0" x-text="pageLang.images.title"></h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showImages, 'bi-chevron-down': !showImages}"
+                @click="showImages = !showImages"
+              ></i>
+            </div>
+
+            <!-- Carousel -->
+            <div class="mt-3" x-show="showImages">
+              <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators mt-5 mb-0">
+                  <template x-for="n in 9" :key="n">
+                    <button
+                      :class="n===1 ? 'active' : ''"
+                      :aria-current="n===1 ? 'true' : 'false'"
+                      :data-bs-slide-to="n-1"
+                      data-bs-target="#carouselExampleCaptions"
+                      :aria-label="'Slide ' + n">
+                    </button>
+                  </template>
+                </div>
+
+                <!-- Carousel Inner -->
+                <div
+                  class="carousel-inner"
+                  x-data="{ 
+                    images: [],
+                    async init() {
+                      // fetch the same JSON
+                      const breadCrumbs = getBreadCrumbsArray();
+                      const lang = localStorage.getItem('appLang') || 'en';
+                      const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase();
+                      const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
+                      const data = await response.json();
+
+                      this.images = [
+                        {
+                          path: '/assets/img/doGether/home.png',
+                          description: data.images.home.description,
+                          title: data.images.home.title
+                        },
+                        {
+                          path: '/assets/img/doGether/register.png',
+                          description: data.images.register.description,
+                          title: data.images.register.title
+                        },
+                        {
+                          path: '/assets/img/doGether/post1.png',
+                          description: data.images.post1.description,
+                          title: data.images.post1.title
+                        },
+                        {
+                          path: '/assets/img/doGether/post2.png',
+                          description: data.images.post2.description,
+                          title: data.images.post2.title
+                        },
+                        {
+                          path: '/assets/img/doGether/post3.png',
+                          description: data.images.post3.description,
+                          title: data.images.post3.title
+                        },
+                        {
+                          path: '/assets/img/doGether/postCreate.png',
+                          description: data.images.postCreate.description,
+                          title: data.images.postCreate.title
+                        },
+                        {
+                          path: '/assets/img/doGether/profileEdit1.png',
+                          description: data.images.profileEdit1.description,
+                          title: data.images.profileEdit1.title
+                        },
+                        {
+                          path: '/assets/img/doGether/profileEdit2.png',
+                          description: data.images.profileEdit2.description,
+                          title: data.images.profileEdit2.title
+                        },
+                        {
+                          path: '/assets/img/doGether/searchUser.png',
+                          description: data.images.searchUser.description,
+                          title: data.images.searchUser.title
+                        }
+                      ];
+                    }
+                  }"
+                  x-init="init()"
+                >
+                  <template x-for="(image, idx) in images" :key="idx">
+                    <div :class="idx === 0 ? 'carousel-item active' : 'carousel-item'">
+                      <img
+                        :src="image.path"
+                        class="d-block w-100"
+                        style="border-radius: 12px; object-fit: cover;"
+                        alt="Slide"
+                        loading="lazy"
+                      >
+                      <div class="d-flex flex-column align-items-center justify-content-center mt-2">
+                        <h5 class="mb-0" x-text="image.title"></h5>
+                        <p x-text="image.description"></p>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+
+                <!-- Controls -->
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div> <!-- end carousel -->
+            </div> <!-- end showImages -->
+          </div> <!-- end card-body -->
+        </div> <!-- end card -->
+      </div>
+    </div>
+  </div>
 </section>

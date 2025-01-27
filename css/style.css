@@ -102,6 +102,34 @@
     pointer-events: none; /* Gradient bleibt nur visueller Effekt */
 }
 
+.card-icons-top {
+    background-color: var(--card-bg); /* Karte und Bild konsistent halten */
+    border-radius: 25px 25px 0 0; /* Gleicher Radius wie Karte */
+    position: relative;
+    overflow: hidden;
+}
+
+.card-icons-top::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    /* rgba(252, 252, 252, 0.1), */
+    rgba(95, 0, 136, 0.200),
+    rgba(66, 0, 219, 0.200),
+    rgba(2, 43, 178, 0.2),
+    rgba(16, 126, 177, 0.2),
+    rgba(0, 154, 128, 0.2)
+    
+  );
+  pointer-events: none;
+}
+
+
 .card-footer {
     background-color: var(--card-bg);
 }
