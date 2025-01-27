@@ -90,26 +90,96 @@
     </div>
 
     <div class="container" x-data="{ 
-        width: 476, 
-        height: 288,
-        startPresentation() {
-            document.getElementById('overlay').classList.add('visible')
-            const iframe = document.getElementById('powerpoint');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) {
-                // Firefox
-                iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) {
-                // Chrome, Safari und Opera
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) {
-                // Internet Explorer / Edge
-                iframe.msRequestFullscreen();
-            }       
-        }
+       width: 476, 
+       height: 288,
+       isCinema: false,
+
+       // Vollbild starten
+       startPresentation() {
+         document.getElementById('overlay').classList.add('visible');
+         const iframe = document.getElementById('powerpoint');
+
+         // Evtl. muss zuerst exitCinema() aufgerufen werden,
+         // falls wir vorher im Kino-Modus waren
+         this.exitCinema(false);
+
+         // Browser-Vollbild anfordern
+         if (iframe.requestFullscreen) {
+           iframe.requestFullscreen();
+         } else if (iframe.mozRequestFullScreen) {
+           iframe.mozRequestFullScreen();
+         } else if (iframe.webkitRequestFullscreen) {
+           iframe.webkitRequestFullscreen();
+         } else if (iframe.msRequestFullscreen) {
+           iframe.msRequestFullscreen();
+         }
+       },
+
+       // Kino-Modus: Iframe & Button werden auf fixed und große Abmessung gesetzt
+       startCinema() {
+         document.getElementById('overlay').classList.add('visible');
+         this.isCinema = true;
+         const iframe = document.getElementById('powerpoint');
+         // „Close“-Button holen
+         const closeBtn = document.getElementById('close-icon');
+         
+         // Iframe „Kino“-Style
+         iframe.style.position = 'fixed';
+         iframe.style.top = (window.innerHeight / 20) + 'px';
+         iframe.style.left = (window.innerWidth / 20) + 'px';
+         iframe.style.width = '90%';
+         iframe.style.height = '90%';
+
+         // Button ebenfalls „fixed“ und in der selben Ecke
+         closeBtn.style.position = 'fixed';
+         closeBtn.style.top = (window.innerHeight / 20 + 10) + 'px';
+         closeBtn.style.left = 'auto';
+         // Ermitteln, wo rechts sein soll:
+         //  -> Da wir 90% Breite nehmen, bleiben 5% auf jeder Seite frei.
+         //  -> Man könnte hier dynamisch rechnen oder einfach px-Werte schätzen.
+         closeBtn.style.right = (window.innerWidth / 20 + 10) + 'px';
+         closeBtn.style.zIndex = 2001; 
+       },
+
+       // Iframe & Button wieder zurück
+       exitCinema(hideOverlay = true) {
+         const iframe = document.getElementById('powerpoint');
+         const closeBtn = document.getElementById('close-icon');
+        this.isCinema = false;
+         // Overlay ausblenden, wenn gewünscht
+         if (hideOverlay) {
+           document.getElementById('overlay').classList.remove('visible');
+         }
+
+         // Aus dem Browser-Vollbild gehen (falls gerade aktiv)
+         if (document.fullscreenElement) {
+           if (document.exitFullscreen) {
+             document.exitFullscreen();
+           } else if (document.mozCancelFullScreen) {
+             document.mozCancelFullScreen();
+           } else if (document.webkitExitFullscreen) {
+             document.webkitExitFullscreen();
+           } else if (document.msExitFullscreen) {
+             document.msExitFullscreen();
+           }
+         }
+
+         // Iframe zurückstellen
+         iframe.style.position = 'relative';
+         iframe.style.top = 'auto';
+         iframe.style.left = 'auto';
+         iframe.style.width = this.width + 'px';
+         iframe.style.height = this.height + 'px';
+
+         // Button zurückstellen (auf absolute Position innerhalb des Containers)
+         closeBtn.style.position = 'absolute';
+         closeBtn.style.top = '10px';
+         closeBtn.style.right = '10px';
+         closeBtn.style.left = 'auto';
+       }
     }">
-        <button x-on:click="startPresentation()">Toggle Powerpoint</button>
+        <button x-on:click="startPresentation()">Fullscreen Powerpoint</button>
+        <button x-on:click="startCinema()">Cinema experience</button>
         <!-- Eingabefelder -->
         <label>Breite</label>
         <input max="1920" type="number" x-model="width" class="form-control" placeholder="Breite">
@@ -118,12 +188,16 @@
         <input max="1080" type="number" x-model="height" class="form-control" placeholder="Höhe">
 
         <!-- iframe mit dynamischer Größe -->
-        <div class="iframe-container">
+        <div id="powerpoint-container" class="iframe-container">
             <iframe id="powerpoint" style="position: relative; z-index: 1001!important;"
                 src="https://1drv.ms/p/s!AoMbuy81J8LflrBpi7IOP3cI94KhQg?embed=1&amp;em=2&amp;wdAr=1.7777777777777777"
                 :width="width" :height="height" frameborder="0">Dies ist ein eingebettetes <a target="_blank"
                     href="https://office.com">Microsoft Office</a>-Präsentation, unterstützt von <a target="_blank"
                     href="https://office.com/webapps">Office</a>.</iframe>
+            
+                    <div x-show="isCinema" id="close-icon" class="close-icon" x-on:click="exitCinema()">
+                        <i class="bi bi-x"></i>
+            </div>
 
         </div>
     </div>
