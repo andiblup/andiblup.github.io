@@ -9,6 +9,8 @@
 
     const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
     this.pageLang = await response.json();
+    document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+
     }
  }" x-init="init()">
 
