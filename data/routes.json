@@ -6,5 +6,7 @@
     "/projects": "/pages/projects/overview.html",
     "/projects/overview": "/pages/projects/overview.html",
     "/projects/portfolio": "/pages/projects/portfolio.html",
-    "/projects/badui": "/pages/projects/badui.html"
+    "/projects/badui": "/pages/projects/badui.html",
+    "/projects/doGether": "/pages/projects/doGether.html",
+    "/projects/fantasyQuest": "/pages/projects/fantasyQuest.html"
   }

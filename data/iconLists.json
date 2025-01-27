@@ -11,6 +11,7 @@
         { "class": "devicon-vitejs-plain", "label": "Vitejs" },
         { "class": "devicon-php-plain", "label": "PHP" },
         { "class": "devicon-laravel-plain", "label": "Laravel" },
+        { "class": "icons-custom-inertia", "label": "Inertia" },
         { "class": "devicon-java-plain", "label": "Java" },
         { "class": "devicon-maven-plain", "label": "Maven" },
         { "class": "devicon-hibernate-plain", "label": "Hibernate" },
@@ -48,5 +49,33 @@
         {"class": "devicon-css3-plain", "label": "CSS"},
         {"class": "devicon-javascript-plain", "label": "JS"},
         {"class": "devicon-bootstrap-plain", "label": "Bootstrap"}
+    ],
+    "fantasyQuest": [
+        { "class": "devicon-java-plain", "label": "Java" },
+        { "class": "devicon-maven-plain", "label": "Maven" },
+        { "class": "devicon-spring-original", "label": "Spring" },
+        { "class": "devicon-kotlin-plain", "label": "Kotlin" },
+        { "class": "devicon-jetpackcompose-plain", "label": "Android Jetpack Compose" },
+        { "class": "devicon-mariadb-original", "label": "MariaDB" },
+        { "class": "devicon-groovy-plain", "label": "Groovy" },
+        { "class": "devicon-gradle-original", "label": "Gradle" },
+        { "class": "devicon-androidstudio-plain", "label": "Android Studio" },
+        { "class": "devicon-intellij-plain", "label": "Intellij" },
+        { "class": "devicon-postman-plain", "label": "Postman" },
+        { "class": "devicon-jira-plain", "label": "Jira" },
+        { "class": "icons-custom-mapbox", "label": "Mapbox" }
+    ],
+    "doGether": [
+        { "class": "devicon-html5-plain", "label": "HTML" },
+        { "class": "devicon-css3-plain", "label": "CSS" },
+        { "class": "devicon-javascript-plain", "label": "JS" },
+        { "class": "devicon-vuejs-plain", "label": "Vue.js" },
+        { "class": "devicon-vuetify-plain", "label": "Vuetify" },
+        { "class": "devicon-laravel-plain", "label": "Laravel" },
+        { "class": "icons-custom-inertia", "label": "Inertia" },
+        { "class": "devicon-mariadb-plain", "label": "MariaDB" },
+        { "class": "devicon-git-plain", "label": "Git" },
+        { "class": "devicon-gitlab-plain", "label": "Gitlab" },
+        { "class": "devicon-vscode-plain", "label": "VS Code" }
     ]
 }

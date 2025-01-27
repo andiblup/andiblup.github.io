@@ -1,0 +1,66 @@
+<section x-data="{ 
+    pageLang: {}, 
+    async init() { 
+        breadCrumbs = getBreadCrumbsArray(); 
+        const lang = localStorage.getItem('appLang') || 'en'; 
+        const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase(); 
+        const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
+        this.pageLang = await response.json(); 
+    } 
+}" x-init="init()">
+
+    <div class="card py-2">
+        <h1 class="ms-3" x-text="pageLang.header"></h1>
+        <p class="ms-3" x-text="pageLang.description"></p>
+        
+        <div class="ms-3">
+            <h2 x-text="pageLang.features.title"></h2>
+            <ul>
+                <li x-text="pageLang.features.roles"></li>
+                <li x-text="pageLang.features.overworld"></li>
+                <li x-text="pageLang.features.enemies"></li>
+                <li x-text="pageLang.features.technology"></li>
+                <li x-text="pageLang.features.database"></li>
+            </ul>
+        </div>
+
+        <div class="mb-3" x-data="{showTechstack: true}">
+            <h2 class="ms-3">
+                <span x-text="'Techstack'"></span>
+                <span class="cursor-pointer" @click="showTechstack = !showTechstack">
+                    <i :class="{'bi': true, 'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"></i>
+                </span>
+            </h2>
+            <div x-show="showTechstack">
+                <ul>
+                
+                </ul>
+                <div id="iconCarousel" class="inline-card mb-3" data-icon-list="fantasyQuest"></div>
+
+            </div>
+        </div>
+        
+        <div class="mb-3" x-data="{showInstallation: true}">
+            <h2 class="ms-3">
+                <span x-text="pageLang.installation.title"></span>
+                <span @click="showInstallation = !showInstallation">
+                    <i :class="{'bi': true, 'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"></i>
+                </span>
+            </h2>
+            <div x-show="showInstallation">
+                <ol>
+                    <li x-text="pageLang.installation.step1"></li>
+                    <li x-text="pageLang.installation.step2"></li>
+                    <li x-text="pageLang.installation.step3"></li>
+                    <li x-text="pageLang.installation.step4"></li>
+                    <li x-text="pageLang.installation.step5"></li>
+                    <li x-text="pageLang.installation.step6"></li>
+                    <li x-text="pageLang.installation.step7"></li>
+                    <li x-text="pageLang.installation.step8"></li>
+                    <li x-text="pageLang.installation.step9"></li>
+                    <li x-text="pageLang.installation.step10"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>

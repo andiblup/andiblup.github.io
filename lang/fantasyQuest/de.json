@@ -1,0 +1,26 @@
+{
+    "header": "Willkommen bei Fantasy Quest!",
+    "description": "Das Spiel ist eine Mischung aus Rollenspiel und Geocaching. Inspiriert wurde es von Pokémon Go, der traditionellen Pokémon-Reihe und Final Fantasy 1. Spieler können Charaktere erstellen, die eine von vier Rollen übernehmen: Dunkelmagier, Krieger, Heiler oder Dieb. Die Charaktere bewegen sich in der Overworld und treffen auf Gegner, indem sie eine bestimmte Strecke zurücklegen. Es gibt drei verschiedene Gegnertypen mit individuellen Werten und Angriffen. Diese App ist ein Prototyp und enthält nicht alle geplanten Funktionen.",
+    "features": {
+      "title": "Funktionen",
+      "roles": "Charaktererstellung mit vier Rollen: Dunkelmagier, Krieger, Heiler und Dieb.",
+      "overworld": "Bewegung in der Overworld und Begegnung mit Gegnern durch Fortbewegung.",
+      "enemies": "Drei Gegnertypen mit unterschiedlichen Stats und Angriffen.",
+      "technology": "Geschrieben in Kotlin mit Mapbox API für die Kartenanzeige und einer Spring Boot API für Backend-Datenverarbeitung.",
+      "database": "Verwendung von MariaDB für die Datenspeicherung."
+    },
+    "installation": {
+      "title": "Installation",
+      "step1": "Empfohlene Software: XAMPP, IntelliJ, Android Studio (Version Giraffe 2022.3.1 Patch 4).",
+      "step2": "Warum XAMPP? MySQL und Tomcat werden benötigt.",
+      "step3": "Spring Boot Backend starten.",
+      "step4": "Lokale IP-Adresse herausfinden und im Frontend-Code ändern.",
+      "step5": "Frontend-Code anpassen: Öffne die App in Android Studio, suche die Datei 'HostIP.kt' und trage die lokale IP-Adresse in die Variable 'hostIP' ein.",
+      "step6": "MariaDB-Server auf dem lokalen Rechner starten (empfohlen: XAMPP, alternativ manuelle Konfiguration).",
+      "step7": "Datenbank seeden: Rufe die folgende URL über einen HTTP GET Request auf (lokale Entwicklungsumgebung): http://localhost:8080/api/init.",
+      "step8": "Mapbox API Key erstellen und in der Datei 'settings.gradle.kts' einfügen. Benutzername (Mapbox) und API-Schlüssel in den Credentials hinterlegen.",
+      "step9": "Nach der Installation der App: Berechtigungen auf dem Handy aktivieren (Standortzugriff). Gehe zu App-Info -> Berechtigungen -> Standort -> 'Immer erlauben' oder 'Nur während der Nutzung erlauben'. Aktiviere 'Genauer Standort'.",
+      "step10": "Für Benutzer 'a' und 'testuser' ist ein 'Play'-Button in der Overworld-Ansicht verfügbar, um Kämpfe zu starten."
+    }
+  }
+  

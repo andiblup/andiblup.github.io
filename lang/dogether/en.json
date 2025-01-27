@@ -1,0 +1,28 @@
+{
+    "header": "Welcome to Do Gether!",
+    "description": "Do Gether is a social media platform designed to connect like-minded individuals with shared interests. The core idea is to bring people together to engage in shared activities.",
+    "features": {
+      "title": "Features",
+      "groups": "Creation and connection of groups.",
+      "filters": "Versatile search and filtering options, including activity type, skill level, time, location, and required participant count.",
+      "personalization": "Profile personalization with images, interests, and a description.",
+      "posts": "Classic posting feature with comments, reactions, and polls."
+    },
+    "techstack": {
+      "title": "Techstack",
+      "ssr": "Combination of Laravel SSR and SPA using Inertia.js for optimal performance.",
+      "inertia": "Inertia.js enables caching of pages and lazy loading of components.",
+      "api": "REST API for data handling and DTO conversion.",
+      "performance": "Use of lazy loading, prefetching, and SEO optimization."
+    },
+    "installation": {
+      "title": "Installation",
+      "step1": "Copy the .env.example file and rename it to .env.",
+      "step2": "Fill in the database and mail information (e.g., using a Gmail App Key).",
+      "step3": "Create a database and update the .env file with connection details (MariaDB is recommended).",
+      "step4": "Run the following commands: composer install, php artisan key:generate, php artisan migrate, php artisan db:seed, php artisan serve.",
+      "step5": "Open the provided URL in your browser.",
+      "step6": "Install frontend dependencies: npm install, npm run dev."
+    }
+  }
+  
