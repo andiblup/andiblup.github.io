@@ -1,5 +1,6 @@
 <section x-data="{ 
     pageLang: {},
+    overviewPageLang: {},
     async init() {
 
     breadCrumbs = getBreadCrumbsArray();
@@ -14,16 +15,196 @@
 
     const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
     this.pageLang = await response.json();
+    this.overviewPageLang = await fetch('/lang/overview/' + lang + '.json').then(response => response.json());
     document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
 
     }
  }" x-init="init()">
 
-    <h1 x-text="pageLang.header"></h1>
-    <p x-text="pageLang.tagline"></p>
-    <!-- <h1>Willkommen auf meiner Portfolio-Seite!</h1>
-    <p>Ich bin ein Entwickler mit Leidenschaft für kreative Lösungen und Technologie.</p> -->
+    <div class="container pt-5">
+        <h1 class="text-center mb-3" x-text="pageLang.header"></h1>
+        <p class="text-center mb-4" x-text="pageLang.tagline"></p>
+        <div class="container pb-5">
 
+            <h1 class="text-center mb-4 mt-5" x-text="overviewPageLang.header"></h1>
+            <p class="text-center mb-2" x-text="overviewPageLang.description"></p>
+
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Portfolio Card -->
+                <div class="col">
+                    <a onclick="route(event)" href="/#/projects/portfolio">
+                        <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                            <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="/assets/img/portfolio.png" alt=""
+                                    style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title" x-text="overviewPageLang.projects.portfolio.title"></h2>
+                                <p class="card-text" x-text="overviewPageLang.projects.portfolio.description"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <!-- Bad UI Card -->
+                <div class="col">
+                    <a onclick="route(event)" href="/#/projects/badui">
+                        <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                            <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="/assets/img/dino.png" alt=""
+                                    style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title" x-text="overviewPageLang.projects.badui.title"></h2>
+                                <p class="card-text" x-text="overviewPageLang.projects.badui.description"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Do Gether Card -->
+                <div class="col">
+                    <a onclick="route(event)" href="/#/projects/doGether">
+                        <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                            <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="/assets/img/doGether/post3.png" alt=""
+                                    style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title" x-text="overviewPageLang.projects.doGether.title"></h2>
+                                <p class="card-text" x-text="overviewPageLang.projects.doGether.description"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Fantasy Quest Card -->
+                <div class="col">
+                    <a onclick="route(event)" href="/#/projects/fantasyQuest">
+                        <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                            <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="/assets/img/fantasyQuest.png" alt=""
+                                    style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title" x-text="overviewPageLang.projects.fantasyQuest.title"></h2>
+                                <p class="card-text" x-text="overviewPageLang.projects.fantasyQuest.description"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- PMA Card -->
+                <div class="col">
+                    <a onclick="route(event)" href="/#/projects/pma">
+                        <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                            <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                                <img src="/assets/img/pma.png" alt=""
+                                    style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title" x-text="overviewPageLang.projects.pma.title"></h2>
+                                <p class="card-text" x-text="overviewPageLang.projects.pma.description"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center text-center pt-3">
+        <h1 class="">Techstack</h1>
+    </div>
+    <div class="" id="iconCarousel" data-icon-list="home"></div>
+
+
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+
+
+            <!-- <p class="text-center mb-4" x-text="pageLang.tagline"></p> -->
+
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+                <div class="card p-2" style="border-radius: 12px;">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+                                aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
+                                aria-label="Slide 8"></button>
+                        </div>
+                        <div class="carousel-inner" x-data="{
+                            isFirst: true,
+                            images: [
+                                '/assets/img/pictures/1.jpg',
+                                '/assets/img/pictures/0.jpg',
+                                '/assets/img/pictures/2.jpg',
+                                '/assets/img/pictures/3.jpg',
+                                '/assets/img/pictures/4.jpg',
+                                '/assets/img/pictures/5.jpg',
+                                '/assets/img/pictures/6.png',
+                                '/assets/img/pictures/7.jpg',
+
+                            ],
+                        }">
+                            <template x-for="(image, index) in images" :key="index">
+                                <div :class="index === 0 ? 'carousel-item active' : 'carousel-item'">
+                                    <img style="border-radius: 12px;" :src="image" class="d-block w-100" loading="lazy"
+                                        alt="Slide">
+                                </div>
+                            </template>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" x-text="pageLang.title"></h5>
+                        <p class="card-text" x-text="pageLang.description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="my-5"></div>
+    <div class="my-5"></div>
+
+    <!-- <a href="/assets/cv.pdf" target="_blank" class="btn">
+        View CV PDF
+    </a>
 
     <div x-data="{ 
         showEmbed: false,
@@ -56,13 +237,8 @@
                     View CV PDF
                 </a>
             </div>
-    </div>
-
-    <div id="iconCarousel" data-icon-list="home"></div>
-
-
+    </div> -->
 
 
 
 </section>
-<!-- <script src="/js/carousel.js"></script> -->

@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const themeToggle = document.getElementById("theme-toggle");
+    // const themeToggle = document.getElementById("theme-toggle");
     const sidebarToggle = document.getElementById("toggle-sidebar");
     const sidebar = document.querySelector("#sidebar");
 
     // Toggle Theme
-    themeToggle.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme); // Persist theme
-    });
+    // themeToggle.addEventListener("click", () => {
+    //     const currentTheme = document.documentElement.getAttribute("data-theme");
+    //     const newTheme = currentTheme === "dark" ? "light" : "dark";
+    //     document.documentElement.setAttribute("data-theme", newTheme);
+    //     localStorage.setItem("theme", newTheme); // Persist theme
+    // });
 
     // Persist Theme on Reload
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    // const savedTheme = localStorage.getItem("theme") || "light";
+    // document.documentElement.setAttribute("data-theme", savedTheme);
 
     // Sidebar Toggle
     // if (sidebarToggle) {

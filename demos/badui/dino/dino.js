@@ -193,9 +193,7 @@ setInterval(() => {
 		/*
 		 * TODO: muss zur bearbeitung auskommentiert werden!!!!
 		 * // TODO: DAS MACHT ES ERST EXTRA BESCHISSEN !!!!!!!! 
-		 */ if (confirm("Game Over!\n" + "Your total score is: " + score + noobOrNot) && score >= scoreCondition) {
-			window.open('../bsod/bsod.html','_self');	// _self <-- !WICHTIG
-		};
+		 */ 
 		/**/
 		score = 0;
 		document.title = "Score: " + score;

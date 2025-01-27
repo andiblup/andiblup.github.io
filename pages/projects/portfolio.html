@@ -14,8 +14,26 @@
     }
  }" x-init="init()">
 
-    <!-- <h1 x-text="pageLang.title"></h1>
-    <p x-text="pageLang.description"></p> -->
+    <div class="container">
+
+        <div class="col">
+            <a onclick="route(event)" href="/#/projects/portfolio">
+                <div class="card h-100 shadow border" style="border-radius: 25px; overflow: hidden;">
+                    <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
+                        <img src="/assets/img/portfolio.png" alt=""
+                            style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title" x-text="pageLang.projects.portfolio.title"></h2>
+                        <p class="card-text" x-text="pageLang.projects.portfolio.description"></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        
+    </div>
     <div class="card py-2">
         <div>
             <h1 class="ms-3">Portfolio</h1>

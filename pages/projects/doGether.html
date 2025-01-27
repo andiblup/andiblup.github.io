@@ -9,11 +9,174 @@
         const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
         this.pageLang = await response.json(); 
         document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+        console.log(this.pageLang);
+        
+        
 
     } 
 }">
+    <div class="container pt-5">
 
-    <div class="card py-2">
+        <div class="d-flex align-items-end justify-content-center">
+            <h1 class="text-center mb-3" x-text="pageLang.header"></h1><span class="ms-2 mb-3">together</span>
+        </div>
+        <p class="text-center mt-1 mb-4" x-text="pageLang.description"></p>
+
+
+    </div>
+
+    <div class="my-3 card p-2 " x-data="{showTechstack: true}">
+        <h2 class="mb-4 d-flex justify-content-center align-items-center">
+            <span x-text="pageLang.techstack.title"></span>
+            <span @click="showTechstack = !showTechstack">
+                <i
+                    :class="{'bi ms-2 cursor-pointer': true, 'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"></i>
+            </span>
+        </h2>
+        <div x-show="showTechstack">
+
+            <div x-show="showTechstack" id="iconCarousel" class="inline-card mb-3" data-icon-list="doGether"></div>
+
+        </div>
+    </div>
+
+    <div class="container pt-5">
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+
+            <div class="col card p-2 mx-4" x-data="{showFeatures: true}">
+
+                <div class="ms-3">
+                    <h2 class="ms-3">
+                        <span x-text="pageLang.features.title"></span>
+                        <span @click="showFeatures = !showFeatures">
+                            <i
+                                :class="{'bi cursor-pointer': true, 'bi-chevron-up': showFeatures, 'bi-chevron-down': !showFeatures}"></i>
+                        </span>
+                    </h2>
+                    <ul x-show="showFeatures">
+                        <li x-text="pageLang.features.groups"></li>
+                        <li x-text="pageLang.features.filters"></li>
+                        <li x-text="pageLang.features.personalization"></li>
+                        <li x-text="pageLang.features.posts"></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="col card p-2 mx-4" x-data="{showInstallation: true}">
+                <h2 class="ms-3">
+                    <span x-text="pageLang.installation.title"></span>
+                    <span @click="showInstallation = !showInstallation">
+                        <i
+                            :class="{'bi cursor-pointer': true, 'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"></i>
+                    </span>
+                </h2>
+                <div x-show="showInstallation">
+                    <ol>
+                        <li x-text="pageLang.installation.step1"></li>
+                        <li x-text="pageLang.installation.step2"></li>
+                        <li x-text="pageLang.installation.step3"></li>
+                        <li x-text="pageLang.installation.step4"></li>
+                        <li x-text="pageLang.installation.step5"></li>
+                        <li x-text="pageLang.installation.step6"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container pt-5 mb-5">
+        <div class="col card p-2" x-data="{showImages: true}">
+
+            <div class="ms-3">
+                <h2 class="ms-3">
+                    <span x-text="pageLang.images.title"></span>
+                    <span @click="showImages = !showImages">
+                        <i
+                            :class="{'bi cursor-pointer': true, 'bi-chevron-up': showImages, 'bi-chevron-down': !showImages}"></i>
+                    </span>
+                </h2>
+                <div class="p-2" x-show="showImages">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators mt-5 mb-0">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6"
+                                aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7"
+                                aria-label="Slide 8"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8"
+                                aria-label="Slide 9"></button>
+                        </div>
+                        <div class="carousel-inner" x-data="{
+                        images: [],
+                        pageLang: {},
+                        async init() {
+                            breadCrumbs = getBreadCrumbsArray(); 
+                            const lang = localStorage.getItem('appLang') || 'en'; 
+                            const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase(); 
+                            console.log('/lang/' + fileName + '/' + lang + '.json');
+                            
+                            const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
+                            this.pageLang = await response.json();
+                            this.images = [
+                                {path: '/assets/img/doGether/home.png', description: this.pageLang.images.home.description, title: this.pageLang.images.home.title},
+                                {path: '/assets/img/doGether/register.png', description: this.pageLang.images.register.description, title: this.pageLang.images.register.title},
+                                {path: '/assets/img/doGether/post1.png', description: this.pageLang.images.post1.description, title: this.pageLang.images.post1.title},
+                                {path: '/assets/img/doGether/post2.png', description: this.pageLang.images.post2.description, title: this.pageLang.images.post2.title},
+                                {path: '/assets/img/doGether/post3.png', description: this.pageLang.images.post3.description, title: this.pageLang.images.post3.title},
+                                {path: '/assets/img/doGether/postCreate.png', description: this.pageLang.images.postCreate.description , title: this.pageLang.images.postCreate.title},
+                                {path: '/assets/img/doGether/profileEdit1.png', description: this.pageLang.images.profileEdit1.description , title: this.pageLang.images.profileEdit1.title},
+                                {path: '/assets/img/doGether/profileEdit2.png', description: this.pageLang.images.profileEdit2.description, title: this.pageLang.images.profileEdit2.title},
+                                {path: '/assets/img/doGether/searchUser.png', description: this.pageLang.images.searchUser.description, title: this.pageLang.images.searchUser.title},
+                            ]
+                            
+                        }
+                    }" x-init="init()">
+                            <template x-for="(image, index) in images" :key="index">
+                                <div :class="index === 0 ? 'carousel-item active' : 'carousel-item'">
+                                    <img style="border-radius: 12px;" :src="image.path" class="d-block w-100"
+                                        loading="lazy" alt="Slide">
+                                    <div class="d-flex flex-column align-items-center justify-content-center">
+                                        <h5 class="mb-0" x-text="image.title"></h5>
+                                        <p x-text="image.description"></p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="card py-2">
         <h1 class="ms-3" x-text="pageLang.header"></h1>
         <p class="ms-3" x-text="pageLang.description"></p>
         
@@ -64,5 +227,5 @@
                 </ol>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>

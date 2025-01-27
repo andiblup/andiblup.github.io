@@ -1,28 +1,74 @@
 {
-    "header": "Willkommen bei Do Gether!",
-    "description": "Do Gether ist eine Social-Media-Plattform, die es ermöglicht, Gleichgesinnte mit denselben Interessen zu finden und sich mit ihnen zu verbinden. Die Hauptidee ist, Menschen mit ähnlichen Interessen zusammenzubringen, um diese gemeinsam auszuüben.",
-    "features": {
-      "title": "Funktionen",
-      "groups": "Erstellung und Verbindung von Gruppen.",
-      "filters": "Vielseitige Such- und Filteroptionen, einschließlich Aktivität, Niveau, Zeit, Ort und benötigter Teilnehmeranzahl.",
-      "personalization": "Personalisierung des Profils mit Bildern, Interessen und einer Beschreibung.",
-      "posts": "Klassische Posting-Funktion mit Kommentaren, Reaktionen und Umfragen."
+  "header": "Do Gether",
+  "description": "Do Gether ist eine Social-Media-Plattform, die es ermöglicht, Gleichgesinnte mit denselben Interessen zu finden und sich mit ihnen zu verbinden. Die Hauptidee ist, Menschen mit ähnlichen Interessen zusammenzubringen, um diese gemeinsam auszuüben.",
+  "features": {
+    "title": "Funktionen",
+    "groups": "Erstellung und Verbindung von Gruppen.",
+    "filters": "Vielseitige Such- und Filteroptionen, einschließlich Aktivität, Niveau, Zeit, Ort und benötigter Teilnehmeranzahl.",
+    "personalization": "Personalisierung des Profils mit Bildern, Interessen und einer Beschreibung.",
+    "posts": "Klassische Posting-Funktion mit Kommentaren, Reaktionen und Umfragen."
+  },
+  "techstack": {
+    "title": "Techstack",
+    "ssr": "Kombination von Laravel SSR und SPA durch Inertia.js für optimale Performance.",
+    "inertia": "Inertia.js ermöglicht das Caching von Seiten und das Nachladen von Komponenten.",
+    "api": "REST API für Datenverwaltung und DTO-Konvertierung.",
+    "performance": "Verwendung von Lazy Loading, Prefetching und SEO-Optimierung."
+  },
+  "installation": {
+    "title": "Installation",
+    "step1": "Kopiere die .env.example Datei und benenne sie in .env um.",
+    "step2": "Fülle die Datenbank- und Mailinformationen aus (z. B. mit einem Gmail-App-Key).",
+    "step3": "Erstelle eine Datenbank und füge die Verbindungsdetails in die .env Datei ein (MariaDB wird empfohlen).",
+    "step4": "Führe die folgenden Befehle aus: composer install, php artisan key:generate, php artisan migrate, php artisan db:seed, php artisan serve.",
+    "step5": "Öffne die angegebene URL im Browser.",
+    "step6": "Installiere die Frontend-Abhängigkeiten: npm install, npm run dev."
+  },
+  "images": {
+    "title": "Bilder",
+    "home": {
+      "title": "Startseite",
+      "description": "Die Startseite zeigt die neuesten Gruppen und Posts an.",
+      "alt": "Startseite von Do Gether"
     },
-    "techstack": {
-      "title": "Techstack",
-      "ssr": "Kombination von Laravel SSR und SPA durch Inertia.js für optimale Performance.",
-      "inertia": "Inertia.js ermöglicht das Caching von Seiten und das Nachladen von Komponenten.",
-      "api": "REST API für Datenverwaltung und DTO-Konvertierung.",
-      "performance": "Verwendung von Lazy Loading, Prefetching und SEO-Optimierung."
+    "register": {
+      "title": "Registrierung",
+      "description": "Registrierung mit E-Mail und Passwort.",
+      "alt": "Registrierungsseite von Do Gether"
     },
-    "installation": {
-      "title": "Installation",
-      "step1": "Kopiere die .env.example Datei und benenne sie in .env um.",
-      "step2": "Fülle die Datenbank- und Mailinformationen aus (z. B. mit einem Gmail-App-Key).",
-      "step3": "Erstelle eine Datenbank und füge die Verbindungsdetails in die .env Datei ein (MariaDB wird empfohlen).",
-      "step4": "Führe die folgenden Befehle aus: composer install, php artisan key:generate, php artisan migrate, php artisan db:seed, php artisan serve.",
-      "step5": "Öffne die angegebene URL im Browser.",
-      "step6": "Installiere die Frontend-Abhängigkeiten: npm install, npm run dev."
+    "post1": {
+      "title": "Post erstellen",
+      "description": "Erstellung eines Posts mit Bildern und Umfragen.",
+      "alt": "Post erstellen auf Do Gether"
+    },
+    "post2": {
+      "title": "Post kommentieren",
+      "description": "Kommentieren eines Posts und Reaktionen auf Kommentare.",
+      "alt": "Post kommentieren auf Do Gether"
+    },
+    "post3": {
+      "title": "Reaktionen",
+      "description": "Übersicht über alle 5 Reaktionen.",
+      "alt": "Reaktionsübersicht auf Do Gether"
+    },
+    "postCreate": {
+      "title": "Post erstellen",
+      "description": "Erstellung eines Posts mit Beschreibung und Bild.",
+      "alt": "Gruppe erstellen auf Do Gether"
+    },
+    "profileEdit1": {
+      "title": "Profil bearbeiten",
+      "description": "Bearbeiten des Profils mit Bild und Beschreibung.",
+      "alt": "Profil bearbeiten auf Do Gether"
+    },
+    "profileEdit2": {
+      "title": "Profil bearbeiten",
+      "description": "Bearbeiten des Profils mit Interessen und Beschreibung."
+    },
+    "searchUser": {
+      "title": "Benutzer suchen",
+      "description": "Suche nach Benutzern mit Filteroptionen.",
+      "alt": "Benutzer suchen auf Do Gether"
     }
   }
-  
+}
