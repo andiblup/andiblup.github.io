@@ -9,6 +9,12 @@
 //   "/projects/example": "/pages/projects/example.html"
 // }
 
+if (window.location === 'https://andiblup.github.io/portfolio/' || window.location === 'https://andiblup.github.io/portfolio') {
+  window.location.href = 'https://andiblup.github.io/';
+} else if (window.location.href === '127.0.0.1:5500/portfolio' || window.location.href === '127.0.0.1:5500/portfolio/') {
+  window.location.href = '127.0.0.1:5500/';
+}
+
 //! Workaround für das Problem, dass die SVGs nicht korrekt angezeigt werden
 function colorizeSVGs() {
 
@@ -23,64 +29,64 @@ function colorizeSVGs() {
   if (window.location.hash === '#/projects/doGether' || window.location.hash === '#/' || window.location.hash === '') {
     let times = 80;
     const intervalIdInertia = setInterval(() => {
-        try {
-            const inertiaIcons = document.querySelectorAll('.icons-custom-inertia');
-            console.log(inertiaIcons);
+      try {
+        const inertiaIcons = document.querySelectorAll('.icons-custom-inertia');
+        console.log(inertiaIcons);
 
-            inertiaIcons.forEach(icon => {
-                const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g transform='translate(0,200) scale(0.1,-0.1)' fill='${svgColor}' stroke='none'><path d='M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m900 205 l205 -205 -205 -205 -205 -205 -213 0 -214 0 196 201 c108 110 196 205 196 209 0 4 -88 99 -196 209 l-196 201 214 0 213 0 205 -205z m636 0 l203 -205 -203 -205 -203 -205 -212 0 c-116 0 -211 3 -211 7 0 4 89 97 197 205 l198 198 -198 198 c-108 108 -197 201 -197 205 0 4 95 7 212 7 l211 0 203 -205z'/></g></svg>`;
-                const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
-                icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
-                icon.style.backgroundSize = 'contain';
-                icon.style.backgroundRepeat = 'no-repeat';
-                icon.style.backgroundPosition = 'center';
-            });
+        inertiaIcons.forEach(icon => {
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g transform='translate(0,200) scale(0.1,-0.1)' fill='${svgColor}' stroke='none'><path d='M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m900 205 l205 -205 -205 -205 -205 -205 -213 0 -214 0 196 201 c108 110 196 205 196 209 0 4 -88 99 -196 209 l-196 201 214 0 213 0 205 -205z m636 0 l203 -205 -203 -205 -203 -205 -212 0 c-116 0 -211 3 -211 7 0 4 89 97 197 205 l198 198 -198 198 c-108 108 -197 201 -197 205 0 4 95 7 212 7 l211 0 203 -205z'/></g></svg>`;
+          const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
+          icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
+          icon.style.backgroundSize = 'contain';
+          icon.style.backgroundRepeat = 'no-repeat';
+          icon.style.backgroundPosition = 'center';
+        });
 
-            if (inertiaIcons.length > 0) {
-                clearInterval(intervalIdInertia);
-                console.log('Icons found, stopping interval.');
-            }
-            times--;
-            if (times === 0) {
-                clearInterval(intervalIdInertia);
-                console.log('Maximum attempts reached, stopping interval.');
-            }
-        } catch (warn) {
-            console.warn('Error: ', warn);
+        if (inertiaIcons.length > 0) {
+          clearInterval(intervalIdInertia);
+          console.log('Icons found, stopping interval.');
         }
+        times--;
+        if (times === 0) {
+          clearInterval(intervalIdInertia);
+          console.log('Maximum attempts reached, stopping interval.');
+        }
+      } catch (warn) {
+        console.warn('Error: ', warn);
+      }
     }, 3000);
-}
+  }
 
-if (window.location.hash === '#/projects/fantasyQuest' || window.location.hash === '#/' || window.location.hash === '') {
+  if (window.location.hash === '#/projects/fantasyQuest' || window.location.hash === '#/' || window.location.hash === '') {
     let times = 80;
     const intervalIdMapbox = setInterval(() => {
-        try {
-            const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
-            console.log(mapboxIcons);
+      try {
+        const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
+        console.log(mapboxIcons);
 
-            mapboxIcons.forEach(icon => {
-                const svg = `<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='${svgColor}' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/></svg>`;
-                const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
-                icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
-                icon.style.backgroundSize = 'contain';
-                icon.style.backgroundRepeat = 'no-repeat';
-                icon.style.backgroundPosition = 'center';
-            });
+        mapboxIcons.forEach(icon => {
+          const svg = `<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='${svgColor}' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/></svg>`;
+          const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
+          icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
+          icon.style.backgroundSize = 'contain';
+          icon.style.backgroundRepeat = 'no-repeat';
+          icon.style.backgroundPosition = 'center';
+        });
 
-            if (mapboxIcons.length > 0) {
-                clearInterval(intervalIdMapbox);
-                console.log('Icons found, stopping interval.');
-            }
-            times--;
-            if (times === 0) {
-                clearInterval(intervalIdMapbox);
-                console.log('Maximum attempts reached, stopping interval.');
-            }
-        } catch (warn) {
-            console.warn('Error: ', warn);
+        if (mapboxIcons.length > 0) {
+          clearInterval(intervalIdMapbox);
+          console.log('Icons found, stopping interval.');
         }
+        times--;
+        if (times === 0) {
+          clearInterval(intervalIdMapbox);
+          console.log('Maximum attempts reached, stopping interval.');
+        }
+      } catch (warn) {
+        console.warn('Error: ', warn);
+      }
     }, 2000);
-}
+  }
 
   // if (window.location.hash === '#/projects/doGether' || window.location.hash === '#/' || window.location.hash === '') {
   //   let times = 8;
@@ -177,6 +183,11 @@ const handleLocation = async () => {
     await loadRoutes();
   }
 
+  if (window.location === 'https://andiblup.github.io/portfolio/' || window.location === 'https://andiblup.github.io/portfolio') {
+    window.location.href = 'https://andiblup.github.io/';
+  } else if (window.location.href === '127.0.0.1:5500/portfolio' || window.location.href === '127.0.0.1:5500/portfolio/') {
+    window.location.href = '127.0.0.1:5500/';
+  }
   // Falls der Nutzer noch keinen Hash hat (z. B. erste Seite: #/ ), setze standardmäßig #/
   if (!window.location.hash) {
     window.location.hash = "#/";
@@ -237,6 +248,11 @@ const handleLocation = async () => {
 const route = (event) => {
   // event.preventDefault();
   // window.location.hash = event.target.getAttribute("href").replace("#", "");
+  if (window.location === 'https://andiblup.github.io/portfolio/' || window.location === 'https://andiblup.github.io/portfolio') {
+    window.location.href = 'https://andiblup.github.io/';
+  } else if (window.location.href === '127.0.0.1:5500/portfolio' || window.location.href === '127.0.0.1:5500/portfolio/') {
+    window.location.href = '127.0.0.1:5500/';
+  }
   handleLocation();
 }
 

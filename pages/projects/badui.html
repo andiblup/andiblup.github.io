@@ -14,94 +14,135 @@
     }
  }" x-init="init()">
 
-    <div class="card py-2">
-        <div>
-            <h1 class="ms-3 d-flex justify-content-between align-items-center">BadUI <span>
-                    <a class="me-2" href="/pages/demos/dino/dino.html" target="_blank"><i class="bi bi-globe"></i></a>
-                    <a class="me-5" href="https://github.com/andiblup/Bad-UI-UX/" target="_blank"><i
-                            class="bi bi-github"></i></a>
-
-                </span></h1>
-            <div class="ms-3">
-                <p>
-                    As one of our initial tasks at CODERS.BAY Vienna, we were tasked with creating a website in 2 weeks
-                    using HTML5, CSS3, and JavaScript, designed to make user interaction as challenging as possible.
-                    This project allowed us to freely explore working with vanilla JavaScript and express our creativity
-                    in a unique way.
-                </p>
-
-            </div>
-            <div class="mb-3" x-data="{showTechstack: true}">
-                <h2 class="ms-3">Techstack <span @click="showTechstack = !showTechstack"><i
-                            :class="{'bi': true, 'bi-chevron-up': showTechstack,'bi-chevron-down': !showTechstack}"></i></span>
-                </h2>
-
-                <div x-show="showTechstack" id="iconCarousel" class="inline-card mb-3" data-icon-list="badui"></div>
-
-            </div>
-        </div>
-
-        <div class="mb-3" x-data="{showInstallation: true}">
-            <h2 class="ms-3">Installation <span @click="showInstallation = !showInstallation"><i
-                        :class="{'bi': true, 'bi-chevron-up': showInstallation,'bi-chevron-down': !showInstallation}"></i></span>
-            </h2>
-            <div class="ms-3" x-show="showInstallation">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore
-                    et
-                    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                    rebum.
-                    Stet
-                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-                    amet,
-                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam
-                    erat,
-                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                    gubergren,
-                    no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-        <div class="mb-3" x-data="{showPictures: true}">
-            <h2 class="ms-3">Pictures <span @click="showPictures = !showPictures"><i
-                        :class="{'bi': true, 'bi-chevron-up': showPictures,'bi-chevron-down': !showPictures}"></i></span>
-            </h2>
-
-            <div class="ms-3" x-show="showPictures">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore
-                    et
-                    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                    rebum.
-                    Stet
-                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-                    amet,
-                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam
-                    erat,
-                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                    gubergren,
-                    no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-            </div>
-        </div>
+<div class="container mb-5">
+    <div class="d-flex align-items-center justify-content-center">
+      <!-- Haupt-Titel -->
+      <h1 class="text-center me-2">BadUI</h1>
+      <!-- Links -->
+      <span class="mt-3 me-3 d-flex">
+        <a class="btn text-center" href="/pages/demos/dino/dino.html" target="_blank">
+          <i class="bi bi-globe"></i>
+        </a>
+        <a class="btn text-center ms-2" href="https://github.com/andiblup/Bad-UI-UX/" target="_blank">
+          <i class="bi bi-github"></i>
+        </a>
+      </span>
     </div>
+    <!-- Beschreibung / Einleitungstext -->
+    <p class="text-center mt-1 mb-4">
+      As one of our initial tasks at CODERS.BAY Vienna, we were tasked with creating a website in 2 weeks using HTML5, 
+      CSS3, and JavaScript, designed to make user interaction as challenging as possible. This project allowed us to 
+      freely explore working with vanilla JavaScript and express our creativity in a unique way.
+    </p>
+  </div>
 
-    <div class="container" x-data="{ 
-       width: 476, 
+  <!-- TECH STACK CARD -->
+  <div class="container mb-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div :class="{'card shadow border': true, 'card-icons-top': colorize }" style="border-radius: 25px;">
+          <div class="card-body" x-data="{ showTechstack: true }">
+            <!-- Titel + Toggle-Icon -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0">Techstack</h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
+                @click="showTechstack = !showTechstack"
+              ></i>
+            </div>
+            <!-- Inhalt: Icon-Carousel -->
+            <div x-show="showTechstack" class="mt-3">
+              <div id="iconCarousel" class="inline-card mb-3" data-icon-list="badui"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTALLATION CARD -->
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;">
+          <div class="card-body" x-data="{ showInstallation: true }">
+            <!-- Titel + Toggle-Icon -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0">Installation</h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"
+                @click="showInstallation = !showInstallation"
+              ></i>
+            </div>
+            <!-- Inhalt: Installationstext -->
+            <div class="mt-3" x-show="showInstallation">
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
+                tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At 
+                vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, 
+                no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
+                tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PICTURES CARD -->
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;" x-data="{ showPictures: true }">
+          <div class="card-body">
+            <!-- Titel + Toggle-Icon -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0">Pictures</h2>
+              <i
+                class="bi cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showPictures, 'bi-chevron-down': !showPictures}"
+                @click="showPictures = !showPictures"
+              ></i>
+            </div>
+            <!-- Inhalt: Bilder-Text (oder Galerie/Carousel) -->
+            <div class="mt-3" x-show="showPictures">
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
+                tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, 
+                no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
+                tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container card my-4" x-data="{ 
+        showPP: true,
+        width: 476, 
        height: 288,
        isCinema: false,
+       origin: 'https://1drv.ms/p/s!AoMbuy81J8LflrBpi7IOP3cI94KhQg?embed=1&amp;em=2&amp;wdAr=1.7777777777777777',
+       src: 'https://1drv.ms/p/s!AoMbuy81J8LflrBpi7IOP3cI94KhQg?embed=1&amp;em=2&amp;wdAr=1.7777777777777777',
 
        // Vollbild starten
        startPresentation() {
-         document.getElementById('overlay').classList.add('visible');
+        //  document.getElementById('overlay').classList.add('visible');
          const iframe = document.getElementById('powerpoint');
 
-         // Evtl. muss zuerst exitCinema() aufgerufen werden,
-         // falls wir vorher im Kino-Modus waren
-         this.exitCinema(false);
+         this.exitCinema(this.isCinema);
 
          // Browser-Vollbild anfordern
          if (iframe.requestFullscreen) {
@@ -176,30 +217,91 @@
          closeBtn.style.top = '10px';
          closeBtn.style.right = '10px';
          closeBtn.style.left = 'auto';
-       }
+       },
     }">
-        <button x-on:click="startPresentation()">Fullscreen Powerpoint</button>
-        <button x-on:click="startCinema()">Cinema experience</button>
-        <!-- Eingabefelder -->
-        <label>Breite</label>
-        <input max="1920" type="number" x-model="width" class="form-control" placeholder="Breite">
 
-        <label>Höhe</label>
-        <input max="1080" type="number" x-model="height" class="form-control" placeholder="Höhe">
+        <div class="d-flex align-items-center justify-content-between">
+            <h2 class="mb-0 "> Powerpoint</h2>
+            <i class="bi cursor-pointer ms-2" :class="{'bi-chevron-up': showPP, 'bi-chevron-down': !showPP}"
+                @click="showPP = !showPP"></i>
+        </div>
 
-        <!-- iframe mit dynamischer Größe -->
-        <div id="powerpoint-container" class="iframe-container">
-            <iframe id="powerpoint" style="position: relative; z-index: 1001!important;"
-                src="https://1drv.ms/p/s!AoMbuy81J8LflrBpi7IOP3cI94KhQg?embed=1&amp;em=2&amp;wdAr=1.7777777777777777"
-                :width="width" :height="height" frameborder="0">Dies ist ein eingebettetes <a target="_blank"
-                    href="https://office.com">Microsoft Office</a>-Präsentation, unterstützt von <a target="_blank"
-                    href="https://office.com/webapps">Office</a>.</iframe>
-            
-                    <div x-show="isCinema" id="close-icon" class="close-icon" x-on:click="exitCinema()">
-                        <i class="bi bi-x"></i>
+
+
+        <div class="" x-show="showPP">
+            <div class="buttons">
+                <a class="btn" x-on:click="startPresentation()"><i class="bi bi-fullscreen"></i></a>
+                <a class="btn" x-on:click="startCinema()"><i class="bi bi-film"></i></a>
+                <a class="btn" x-on:click="
+                document.getElementById('powerpoint-container').innerHTML = ``;
+                document.getElementById('powerpoint-container').innerHTML = `
+                <iframe id=' powerpoint' style='position: relative; z-index: 1001!important;' :src='src'
+                    :width='width' :height='height' frameborder='0'></iframe>
+    
+                    <div x-show='isCinema' id='close-icon' class='close-icon' x-on:click='exitCinema()'>
+                        <i class='bi bi-x'></i>
+                    </div>`"><i class="bi bi-arrow-counterclockwise"></i>
+                </a>
             </div>
 
+            <div style="margin-bottom: 0.75rem;">
+
+
+                    <div x-data="{
+                        increment() { 
+                            width++; 
+                        },
+                        decrement() { 
+                            width--; 
+                        }
+                    }">
+                    <i style="color: red!important;" class="btn" @click="decrement">-</i>
+                    <div x-data="{
+                        isFocused: false,
+                        val: '',
+                        get shouldFloat() {
+                          // Label floated, wenn Fokus oder nicht-leeres Feld
+                          return this.isFocused || val != '';
+                        }
+                    }" class="md-input-wrapper">
+                    
+                      <!-- Input-Feld -->
+                      <input 
+                        type="number"
+                        class="md-input-field shadow"
+                        x-model.number="val"
+                        @focus="isFocused = true"
+                        @blur="isFocused = false"
+                      />
+                    
+                      <label 
+                        class="md-label"
+                        
+                        :class="{ 'label-float': shouldFloat }"
+                      >Width
+                      </label>
+                    </div>
+                    <i style="color: green!important;" class="btn" @click="increment">+</i>
+                </div>
+
+                <!-- <label style="display: inline-block; width: 60px; margin-left:1rem;">Höhe</label>
+                <input type="number" x-model.number="height" min="100" max="1080" class="form-control"
+                    style="width:100px;"> -->
+            </div>
+
+            <div id="powerpoint-container">
+
+                <iframe id="powerpoint" style="position: relative; z-index: 1001!important;" :src="src" :width="width"
+                    :height="height" frameborder="0">Dies ist ein eingebettetes <a target="_blank"
+                        href="https://office.com">Microsoft Office</a>-Präsentation, unterstützt von <a target="_blank"
+                        href="https://office.com/webapps">Office</a>.</iframe>
+
+                <div x-show="isCinema" id="close-icon" class="close-icon" x-on:click="exitCinema()">
+                    <i class="bi bi-x"></i>
+                </div>
+            </div>
         </div>
+
     </div>
 
 </section>
