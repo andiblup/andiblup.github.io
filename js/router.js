@@ -250,8 +250,6 @@ const route = (event) => {
   // window.location.hash = event.target.getAttribute("href").replace("#", "");
   if (window.location === 'https://andiblup.github.io/portfolio/' || window.location === 'https://andiblup.github.io/portfolio') {
     window.location.href = 'https://andiblup.github.io/';
-  } else if (window.location.href === '127.0.0.1:5500/portfolio' || window.location.href === '127.0.0.1:5500/portfolio/') {
-    window.location.href = '127.0.0.1:5500/';
   }
   handleLocation();
 }
@@ -277,7 +275,7 @@ const getBreadCrumbsArray = () => {
     // Pfad: "#/" + alle Segmente bis hier
     const link = "#/" + segments.slice(0, index + 1).join("/");
     // Name: Erster Buchstabe groß, Rest klein
-    const name = segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase();
+    const name = segment.charAt(0).toUpperCase() + segment.slice(1);
     return { name, path: link };
   });
 
