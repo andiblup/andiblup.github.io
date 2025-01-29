@@ -616,14 +616,13 @@ footer {
     cursor: pointer;
 }
 
-
-/* Tooltip-Basis-Stile */
-.tooltip {
+/* angularly */
+/* .tooltip {
     position: absolute;
     padding: 8px 12px;
     background-color: var(--card-bg, #fff);
     color: var(--text, #000);
-    border-radius: 4px;
+    border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
     z-index: 1000;
@@ -633,37 +632,162 @@ footer {
     transform: translateY(10px);
 }
 
-/* Tooltip sichtbar */
 .tooltip.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Gradient Border, wenn colorize=true */
 .tooltip.colorize {
     border: 2px solid;
     border-image: linear-gradient(45deg, #667eea, #764ba2, #6b8dd6, #8e37d7) 1;
+    border-radius: 8px; 
 }
 
-/* Arrow Styling */
 .tooltip::after {
     content: '';
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: 0;
+    height: 0;
     border-style: solid;
 }
 
-/* Arrow oben */
 .tooltip.top::after {
     top: 100%;
     border-width: 6px 6px 0 6px;
     border-color: var(--card-bg, #fff) transparent transparent transparent;
 }
 
-/* Arrow unten */
 .tooltip.bottom::after {
     bottom: 100%;
     border-width: 0 6px 6px 6px;
     border-color: transparent transparent var(--card-bg, #fff) transparent;
+} */
+
+
+/* Filled gradient */
+
+/* .tooltip {
+    position: absolute;
+    padding: 8px 12px;
+    background-color: var(--card-bg, #fff);
+    color: var(--text, #000);
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateY(10px);
 }
+
+.tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tooltip.colorize::before {
+    content: '';
+    position: absolute;
+    top: -2px; 
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #6b8dd6, #8e37d7);
+    border-radius: 10px; 
+    z-index: -1; 
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.tooltip.top::after {
+    top: 100%;
+    border-width: 6px 6px 0 6px;
+    border-color: var(--card-bg, #fff) transparent transparent transparent;
+}
+
+.tooltip.bottom::after {
+    bottom: 100%;
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent var(--card-bg, #fff) transparent;
+} */
+
+
+/* Ever grad */
+.tooltip {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+
+.tooltip-border {
+    padding: 2px; 
+    border-radius: 12px; 
+}
+
+.tooltip.visible.colorize .tooltip-border {
+    background: linear-gradient(45deg, #667eea, #764ba2, #6b8dd6, #8e37d7);
+
+}
+
+.tooltip-content {
+    position: relative;
+    padding: 8px 12px;
+    background-color: var(--card-bg, #fff);
+    color: var(--text, #000);
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.tooltip.visible .tooltip-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+.tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tooltip-content::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.tooltip.top .tooltip-content::after {
+    top: 100%;
+    border-width: 6px 6px 0 6px;
+    border-color: var(--text) transparent transparent transparent;
+}
+
+.tooltip.bottom .tooltip-content::after {
+    bottom: 100%;
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent var(--text) transparent;
+}
+
+
+
+
+
+
