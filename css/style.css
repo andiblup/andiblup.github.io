@@ -152,7 +152,7 @@
     cursor: pointer;
 }
 
-.bi {
+.bi-grad {
     display: inline-block!important;
 
     background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7)!important;
@@ -186,7 +186,11 @@
     width: 30px;
     height: 30px;
     line-height: 20px;
+    border: 1px solid #ccc;
     box-shadow: 0 0 3px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   #powerpoint-container {
@@ -209,6 +213,13 @@
   }
   .powerpoint-component .buttons {
     margin-bottom: 0.75rem;
+  }
+
+  .Embed.WACFrame:hover{
+    border: 1px solid var(--text)!important;
+  }
+  .Embed.WACFrame:hover{
+    border: 1px solid #D04423!important;
   }
 
   .my-number-input {

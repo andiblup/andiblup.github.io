@@ -20,6 +20,16 @@
         // Seite neu laden (SPA),
         // damit das neu geladene Template gleich in der neuen Sprache kommt:
         handleLocation(); 
+    },
+    init() {
+        document.querySelectorAll('.bi').forEach(element => {
+                        element.classList.toggle('bi-grad');
+                    });
+        this.$watch('colorize', (newVal, oldVal) => {
+                document.querySelectorAll('.bi').forEach(element => {
+                        element.classList.toggle('bi-grad');
+                    });
+        });
     }
 }">
 
@@ -145,10 +155,11 @@
 
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
-                        <a class="btn" x-on:click="colorize = !colorize"><i class="bi bi-gear"></i></a>
+                        <a class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-palette"></i></a>
                         <a class="btn"  id="theme-toggle-button">
                             <i id="theme-toggle-icon"
-                            :class="{ 'bi cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                            class="bi"
+                            :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
                         </a>
                         <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
