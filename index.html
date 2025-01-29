@@ -22,9 +22,9 @@
         handleLocation(); 
     },
     init() {
-        document.querySelectorAll('.bi').forEach(element => {
-                        element.classList.toggle('bi-grad');
-                    });
+        // document.querySelectorAll('.bi').forEach(element => {
+        //                 element.classList.toggle('bi-grad');
+        //             });
         this.$watch('colorize', (newVal, oldVal) => {
                 document.querySelectorAll('.bi').forEach(element => {
                         element.classList.toggle('bi-grad');
@@ -155,15 +155,16 @@
 
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
-                        <a class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-palette"></i></a>
+                        <a class="btn" href="/assets/cv.pdf" target="_blank"><i class="bi bi-grad bi-file-earmark-person"></i></a>
+                        <a class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-grad bi-palette"></i></a>
                         <a class="btn"  id="theme-toggle-button">
                             <i id="theme-toggle-icon"
-                            class="bi"
+                            class="bi bi-grad"
                             :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
                         </a>
                         <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-translate"></i>
+                            <i class="bi bi-grad bi-translate"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
