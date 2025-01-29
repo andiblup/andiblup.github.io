@@ -26,12 +26,14 @@
         //                 element.classList.toggle('bi-grad');
         //             });
         this.$watch('colorize', (newVal, oldVal) => {
-                document.querySelectorAll('.bi').forEach(element => {
-                        element.classList.toggle('bi-grad');
-                    });
+            document.querySelectorAll('.bi').forEach(element => {
+                    element.classList.toggle('bi-grad');
+                });
+            document.documentElement.dataset.colorize = this.colorize;
         });
+        document.documentElement.dataset.colorize = this.colorize;
     }
-}">
+}" :data-colorize="colorize">
 
 <head>
     <meta charset="UTF-8">
@@ -78,8 +80,7 @@
                 </li>
 
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
-                        href="#/projects">Overview</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects">Overview</a>
                 </li>
                 <!-- <li class="nav-item elevated"> -->
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
@@ -155,12 +156,12 @@
 
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
-                        <a class="btn" href="/assets/cv.pdf" target="_blank"><i class="bi bi-grad bi-file-earmark-person"></i></a>
+                        <a data-tooltip="Ich bin ein Tooltip" class="btn" href="/assets/cv.pdf" target="_blank"><i
+                                class="bi bi-grad bi-file-earmark-person"></i></a>
                         <a class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-grad bi-palette"></i></a>
-                        <a class="btn"  id="theme-toggle-button">
-                            <i id="theme-toggle-icon"
-                            class="bi bi-grad"
-                            :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                        <a class="btn" id="theme-toggle-button">
+                            <i id="theme-toggle-icon" class="bi bi-grad"
+                                :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
                         </a>
                         <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -168,7 +169,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
-                                <h3 class="dropdown-header" x-text="(currentLang === 'de') ? 'Sprache' : 'Language'"></h3>
+                                <h3 class="dropdown-header" x-text="(currentLang === 'de') ? 'Sprache' : 'Language'">
+                                </h3>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -305,7 +307,7 @@
                 icon.classList.add('bi-chevron-right');
             });
 
-            
+
 
             //? Cookies
 
@@ -333,7 +335,7 @@
             //                 icon.style.backgroundPosition = 'center';
             //             });
 
-                        
+
             //             if (inertiaIcons.length > 0) {
             //                 clearInterval(intervalIdInertia);
             //             }
@@ -362,7 +364,7 @@
             //                 icon.style.backgroundPosition = 'center';
             //             });
 
-                        
+
             //             if (inertiaIcons.length > 0) {
             //                 clearInterval(intervalIdMapbox);
             //             }
@@ -392,6 +394,8 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 
     <!-- <script src="/js/carousel.js"></script> -->
+    <div id="tooltip" class="tooltip"></div>
+    <script src="/js/tooltip.js"></script>
 </body>
 
 </html>
