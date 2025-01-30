@@ -153,23 +153,23 @@
 }
 
 .bi-grad {
-    display: inline-block!important;
+    display: inline-block !important;
 
-    background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7)!important;
-    background-size: 300% 100%!important;
-    background-position: 0 0!important;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7) !important;
+    background-size: 300% 100% !important;
+    background-position: 0 0 !important;
 
-    -webkit-background-clip: text!important;
-    background-clip: text!important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
 
-    color: transparent!important;
-    -webkit-text-fill-color: transparent!important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
 
-    transition: background-position 0.4s ease-in-out!important;
+    transition: background-position 0.4s ease-in-out !important;
 }
 
 .bi:hover {
-    background-position: 100% 0!important;
+    background-position: 100% 0 !important;
     /* cursor: pointer!important; */
 }
 
@@ -187,63 +187,63 @@
     height: 30px;
     line-height: 20px;
     border: 1px solid #ccc;
-    box-shadow: 0 0 3px rgba(0,0,0,.5);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  #powerpoint-container {
+#powerpoint-container {
     position: relative;
-  }
+}
 
-  /* Container für die Komponente */
-  .powerpoint-component {
+/* Container für die Komponente */
+.powerpoint-component {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 1rem;
     margin: 1rem 0;
     background: #f9f9f9;
-  }
-  .powerpoint-component h2 {
+}
+.powerpoint-component h2 {
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
     font-weight: 600;
-  }
-  .powerpoint-component .buttons {
+}
+.powerpoint-component .buttons {
     margin-bottom: 0.75rem;
-  }
+}
 
-  .Embed.WACFrame:hover{
-    border: 1px solid var(--text)!important;
-  }
-  .Embed.WACFrame:hover{
-    border: 1px solid #D04423!important;
-  }
+.Embed.WACFrame:hover {
+    border: 1px solid var(--text) !important;
+}
+.Embed.WACFrame:hover {
+    border: 1px solid #d04423 !important;
+}
 
-  .my-number-input {
+.my-number-input {
     display: inline-flex;
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 2px;
-  }
-  .my-number-input button {
+}
+.my-number-input button {
     background: transparent;
     border: none;
     padding: 4px 8px;
     cursor: pointer;
     font-weight: bold;
-  }
-  .my-number-input input {
+}
+.my-number-input input {
     width: 60px;
     border: none;
     text-align: center;
     outline: none; /* Entfernt Focus-Ring, Bootstrap überschreibt ggf. */
-  }
+}
 
-  /* Für Chrome, Safari, Edge (Chromium-basiert), Opera */
+/* Für Chrome, Safari, Edge (Chromium-basiert), Opera */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -255,16 +255,16 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-  .md-input-wrapper {
+.md-input-wrapper {
     position: relative;
     display: inline-block;
     margin: 1rem 0;
     font-family: sans-serif;
-  }
+}
 
-  /* Das eigentliche Input */
-  .md-input-field {
-    width: 200px;         /* Beispielbreite, anpassbar */
+/* Das eigentliche Input */
+.md-input-field {
+    width: 200px; /* Beispielbreite, anpassbar */
     padding: 0.75rem 0.75rem 0.75rem 0.75rem;
     border: 1px solid var(--card-bg);
     border-radius: 4px;
@@ -273,39 +273,38 @@ input[type="number"] {
     transition: border-color 0.2s ease;
     color: var(--text);
     background: var(--card-bg);
-  }
-
-  .md-input-field:focus {
-    border-color: var(--text);
-  }
-
-    /* Das Label */
-    .md-label {
-        position: absolute;
-        top: -8px;
-        left: 0px;
-        pointer-events: none;  /* Klicks gehen durchs Label hindurch */
-        font-size: 1rem;
-        transition: 0.2s ease all;
-        background: none;
-        padding: 2px;
-        /*! overflow hidden and max-height < 2 * fontsize dastroys overflow */
-        overflow: hidden;
-        max-height: 1.5rem;
-      }
-  
-      /* Wenn das Label "floated" ist (Input-Fokus oder Wert vorhanden) */
-      .label-float {
-        top: -10px;      /* Schwebe über dem Input */
-        background-color: var(--card-bg);
-        /* opacity: 0.8; */
-    }
-
-#no-grad-icon {
-    color: var(--text)!important;
-    background-color: var(--icon-color)!important;
 }
 
+.md-input-field:focus {
+    border-color: var(--text);
+}
+
+/* Das Label */
+.md-label {
+    position: absolute;
+    top: -8px;
+    left: 0px;
+    pointer-events: none; /* Klicks gehen durchs Label hindurch */
+    font-size: 1rem;
+    transition: 0.2s ease all;
+    background: none;
+    padding: 2px;
+    /*! overflow hidden and max-height < 2 * fontsize dastroys overflow */
+    overflow: hidden;
+    max-height: 1.5rem;
+}
+
+/* Wenn das Label "floated" ist (Input-Fokus oder Wert vorhanden) */
+.label-float {
+    top: -10px; /* Schwebe über dem Input */
+    background-color: var(--card-bg);
+    /* opacity: 0.8; */
+}
+
+#no-grad-icon {
+    color: var(--text) !important;
+    background-color: var(--icon-color) !important;
+}
 
 .card-footer {
     background-color: var(--card-bg);
@@ -665,7 +664,6 @@ footer {
     border-color: transparent transparent var(--card-bg, #fff) transparent;
 } */
 
-
 /* Filled gradient */
 
 /* .tooltip {
@@ -722,7 +720,6 @@ footer {
     border-color: transparent transparent var(--card-bg, #fff) transparent;
 } */
 
-
 /* Ever grad */
 .tooltip {
     position: absolute;
@@ -731,15 +728,13 @@ footer {
     pointer-events: none;
 }
 
-
 .tooltip-border {
-    padding: 2px; 
-    border-radius: 12px; 
+    padding: 2px;
+    border-radius: 12px;
 }
 
 .tooltip.visible.colorize .tooltip-border {
     background: linear-gradient(45deg, #667eea, #764ba2, #6b8dd6, #8e37d7);
-
 }
 
 .tooltip-content {
@@ -747,10 +742,12 @@ footer {
     padding: 8px 12px;
     background-color: var(--card-bg, #fff);
     color: var(--text, #000);
-    border-radius: 10px; 
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
-    transition: opacity 0.2s, transform 0.2s;
+    transition:
+        opacity 0.2s,
+        transform 0.2s;
     transform: translateY(10px);
     opacity: 0;
 }
@@ -765,7 +762,7 @@ footer {
 }
 
 .tooltip-content::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -786,8 +783,11 @@ footer {
     border-color: transparent transparent var(--text) transparent;
 }
 
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
 
-
-
-
-
+.scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

@@ -1,0 +1,199 @@
+/* toast.css */
+
+/* Fest positionierter Toast-Container (oben rechts) */
+#toast-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Allgemeines Toast-Styling */
+.custom-toast {
+    position: relative; /* Ermöglicht absolute Positionierung der Buttons */
+    min-width: 250px;
+    max-width: 25vw; /* Maximale Breite auf 25% der Viewport-Breite begrenzt */
+    padding: 10px 20px;
+    padding-bottom: 40px; /* Platz für den Pin-Button unten */
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Vertikale Anordnung der Inhalte */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatteneffekt */
+    animation: slideIn 0.5s forwards;
+    overflow: hidden;
+    background-color: #333; /* Standard Hintergrundfarbe */
+    transition: background-color 0.3s ease; /* Übergang für Hover-Effekt */
+}
+
+/* Toast-Typen */
+.custom-toast-success {
+    background-color: #28a745;
+}
+
+.custom-toast-error {
+    background-color: #dc3545;
+}
+
+.custom-toast-info {
+    background-color: #17a2b8;
+}
+
+.custom-toast-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Hover-Effekte */
+.custom-toast-success:hover {
+    background-color: #218838; /* Leicht dunkler */
+}
+
+.custom-toast-error:hover {
+    background-color: #c82333; /* Leicht dunkler */
+}
+
+.custom-toast-info:hover {
+    background-color: #138496; /* Leicht dunkler */
+}
+
+.custom-toast-warning:hover {
+    background-color: #ffd54f; /* Leicht heller */
+    color: #212529; /* Textfarbe bleibt erhalten */
+}
+
+/* Schließen-Button */
+.custom-toast .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Pin-Button */
+.custom-toast .pin-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Toast-Inhalt */
+.custom-toast .toast-content {
+    display: flex;
+    align-items: center; /* Vertikal zentriert */
+    gap: 10px;
+}
+
+/* Icons */
+.custom-toast .toast-icon {
+    font-size: 24px; /* Größere Icons für bessere Sichtbarkeit */
+    flex-shrink: 0; /* Verhindert, dass das Icon schrumpft */
+}
+
+/* Icons nach Toast-Typen */
+.custom-toast-success .toast-icon,
+.custom-toast-error .toast-icon,
+.custom-toast-info .toast-icon {
+    color: #fff;
+}
+
+.custom-toast-warning .toast-icon {
+    color: #212529;
+}
+
+/* Toast-Body */
+.custom-toast .toast-body {
+    flex: 1; /* Nimmt den verbleibenden Platz ein */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertikal zentriert den Text */
+}
+
+/* Progress Bar */
+.custom-toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: width 0.1s linear;
+}
+
+/* Animationen */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* SlideOut Klasse für die Ausblendanimation */
+.slideOut {
+    animation: slideOut 0.5s forwards;
+}
+
+.transparent-toast {
+    /* background-color: red; */
+    position: relative;
+    color: transparent;
+    box-shadow: none;
+    width: 50px;
+    height: 40px;
+    border-radius: 25px;
+    border: 1px solid color-mix(in srgb, var(--text) 40%, transparent);
+    margin-right: -40px;
+    margin-left: auto;
+}
+
+/* .transparent-toast .close-btn{
+display: none;
+}
+
+.transparent-toast .toast-icon{
+display: none;
+}
+
+.transparent-toast .toast-title{
+display: none;
+}
+
+.transparent-toast .toast-message{
+display: none;
+}
+
+.transparent-toast .progress{
+display: none;
+}
+
+.transparent-toast .pin-btn{
+display: none;
+} */
+.transparent-toast > *:not(.toast-icon) { display: none; }
+

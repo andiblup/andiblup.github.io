@@ -27,7 +27,9 @@
         //             });
         this.$watch('colorize', (newVal, oldVal) => {
             document.querySelectorAll('.bi').forEach(element => {
-                    element.classList.toggle('bi-grad');
+                    if (!element.classList.contains('no-grad')) {
+                        element.classList.toggle('bi-grad');
+                    }
                 });
             document.documentElement.dataset.colorize = this.colorize;
         });
@@ -53,11 +55,16 @@
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/svg-icon-color.css">
+    <link rel="stylesheet" href="/css/toast.css">
+
+
 
 </head>
 
-<body id="body">
+<body id="body" class="scrollbar-none">
 
+    <!-- toast notifications -->
+    <div id="toast-container"></div>
     <div class="dimmed-overlay" id="overlay"></div>
 
     <div id="root">
@@ -74,7 +81,7 @@
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openProjects = !openProjects"
                         onclick="{}" style="gap: 0.5rem;">Projects
 
-                        <i :class="{'bi': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}"
+                        <i :class="{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}"
                             style="font-size: inherit; display: inline-block; vertical-align: middle;"></i>
                     </a>
                 </li>
@@ -106,7 +113,7 @@
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openDemos = !openDemos"
                         onclick="{}" style="gap: 0.5rem;">Demos
 
-                        <i :class="{'bi': true, 'bi-chevron-down': !openDemos, 'bi-chevron-up': openDemos}"
+                        <i :class="{'bi no-grad': true, 'bi-chevron-down': !openDemos, 'bi-chevron-up': openDemos}"
                             style="font-size: inherit; display: inline-block; vertical-align: middle;"></i>
                     </a>
                 </li>
@@ -209,7 +216,7 @@
                     © - DevNest - Alfred Narjes - Wien
                 </div>
             </div> -->
-            <footer x-data="{ 
+            <footer style="border-radius: 0px;" x-data="{ 
                 screenWidth: window.innerWidth,
                 init() {
                   // Aktualisiere screenWidth, sobald das Browserfenster geändert wird
@@ -223,17 +230,21 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <!-- Social Media Icons -->
                     <div class="ms-3 ">
-                        <a href="https://twitter.com" target="_blank" class="btn"
+                        <a href="https://www.linkedin.com/in/alfred-narjes-b25ab7252/" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
                             <i style="font-size: 1rem;" class="bi bi-linkedin"></i>
                         </a>
-                        <a href="https://github.com" target="_blank" class="btn"
+                        <a href="https://github.com/andiblup" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
                             <i style="font-size: 1rem;" class="bi bi-github"></i>
                         </a>
-                        <a href="https://gitlab.com" target="_blank" class="btn"
+                        <a href="https://gitlab.com/andiblup" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
                             <i style="font-size: 1rem;" class="bi bi-gitlab"></i>
+                        </a>
+                        <a href="mailto:alfred.narjes@gmail.com" target="_blank" class="btn"
+                            style="text-decoration: none; color: var(--icon-color);">
+                            <i style="font-size: 1rem;" class="bi bi-envelope"></i>
                         </a>
                     </div>
 
@@ -393,8 +404,9 @@
         crossorigin="anonymous"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
 
-    <!-- <script src="/js/carousel.js"></script> -->
-     
+
+
+
     <!-- <div id="tooltip" class="tooltip"></div> -->
     <div id="tooltip" class="tooltip">
         <div class="tooltip-border">
@@ -403,6 +415,58 @@
         </div>
     </div>
     <script src="/js/tooltip.js"></script>
+
+
+    <!-- Beispiel-Buttons zum Testen -->
+    <div style="margin: 20px;">
+        <button onclick="Toast.show('success', 'Erfolg', 'Deine Aktion war erfolgreich!')"
+            class="btn btn-success">Erfolg Toast</button>
+        <button onclick="Toast.show('error', 'Fehler', 'Etwas ist schief gelaufen.')" class="btn btn-danger">Fehler
+            Toast</button>
+        <button onclick="Toast.show('info', 'Info', 'Dies ist eine Informationsmeldung.')" class="btn btn-info">Info
+            Toast</button>
+        <button onclick="window.Toast.show('warning', 'Warnung oida voll die warnung ich warne die warnung die warnung soll gewarnt sein', 'Überprüfe deine Eingabenllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll.')"
+            class="btn btn-warning">Warnung Toast</button>
+        <button onclick="console.log(window.Toast)" class="btn btn-secondary">Toast Objekt Loggen</button>
+        <button
+            onclick="document.getElementById('toast-container').innerHTML = `<div id='ananas' style='height: 400px; width: 400px; background-color: red;'> </div>`"
+            class="btn btn-secondary">Toast Objekt Loggen</button>
+        <button onclick="document.getElementById('ananas').innerHTML = `<p> ananas </p>`" class="btn btn-secondary">Toast Objekt
+            Loggen</button>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+
+        <div class="toast-error">
+            <button class="close-btn"><i class="bi bi-x"></i></button>
+            <div class="toast-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+            <div class="toast-body">
+                <strong class="toast-title">Warnung</strong>
+                <div class="toast-message">Überprüfe deine Eingaben.</div>
+            </div>
+            <div class="progress" style="width: 0%;"></div>
+            <button class="pin-btn"><i class="bi bi-pin-angle-fill"></i></button>
+        </div>
+        
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+
+        <div class="custom-toast toast-success">
+            <button class="close-btn"><i class="bi bi-x"></i></button>
+            <div class="toast-icon"><i class="bi bi-check-circle-fill"></i></div>
+            <div class="toast-body">
+                <strong class="toast-title">Erfolg</strong>
+                <div class="toast-message">Deine Aktion war erfolgreich!</div>
+            </div>
+            <div class="progress"></div>
+            <button class="pin-btn"><i class="bi bi-pin-angle-fill"></i></button>
+        </div>
+
+    </div>
+
+    <script src="/js/toast.js"></script>
+
 </body>
 
 </html>
