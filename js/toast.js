@@ -1,6 +1,6 @@
 // toast.js
 
-(function() {
+(function () {
     // Toastr-Konfiguration
     const toastrOptions = {
         closeButton: true,
@@ -16,9 +16,9 @@
         extendedTimeOut: 2000, // in ms
         showEasing: 'swing',
         hideEasing: 'linear',
-        showMethod: 'slideIn',
-        hideMethod: 'slideOut',
-        tapToDismiss: false, 
+        showMethod:  (this.positionClass === 'toast-top-right' || this.positionClass === 'toast-bottom-right' ) ? 'slideInRight' : 'slideInLeft',
+        hideMethod: (this.positionClass === 'toast-top-right' || this.positionClass === 'toast-bottom-right' ) ? 'slideOutRight' : 'slideOutLeft',
+        tapToDismiss: false,
     };
 
     // Toast-Objekt
@@ -68,7 +68,7 @@
             console.log(`Showing ${type} title: ${title} toast: ${message}`);
 
             const toast = document.createElement('div');
-            toast.classList.add('custom-toast', `custom-toast-${type}`);
+            toast.classList.add('custom-toast', `custom-toast-${type}`, this.options.showMethod);
 
             toast.innerHTML = `
                 ${this.options.closeButton ? '<button class="close-btn"><i class="bi bi-x no-grad"></i></button>' : ''}
@@ -84,7 +84,10 @@
             // Schließen-Button Event
             if (this.options.closeButton) {
                 const closeBtn = toast.querySelector('.close-btn');
-                closeBtn.addEventListener('click', () => this.removeToast(toast));
+                closeBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    this.removeToast(toast)
+                });
             }
 
             // Pin-Button Event
@@ -151,34 +154,99 @@
                 //     clearInterval(progressInterval);
                 //     progress.style.width = '100%';
                 // });
-                toast.addEventListener('click', () => {
+                toast.addEventListener('contextmenu', (event) => {
+                    // if (toast.classList.contains('transparent-toast')) {
+                    //     event.preventDefault();
+                    //     this.removeToast(toast);
+                    //     return false;
+                    // }
+                    // event.preventDefault();
+                    // console.log("Vor Toast entfernt.");
+                    // console.log(toast);
+                    event.preventDefault();
+                    this.removeToast(toast);
+                    return false;
+                    // console.log("Toast entfernt.");
+                    // console.log(toast);
+                    
+                    
+                });
+                toast.addEventListener('click', (event) => {
                     // toast.style.opacity = (toast.style.opacity === '1') ? '0.7' : '1';
                     // toast.style.opacity = '0';
-                    console.log("Toast angeklickt.");
-                    console.log(toast.classList.contains('pinned'));
-                    console.log(toast.classList.contains('transparent-toast'));
-                    console.log(toast.classList);
-                    console.log(type);
-                    
-                    console.log(toast);
-                    
-                    
+
+
+                    //! Clicking in toast
+                    event.stopPropagation();
+                    event.preventDefault();
+                    // console.log("Toast angeklickt.");
+                    // console.log(toast.classList.contains('pinned'));
+                    // console.log(toast.classList.contains('transparent-toast'));
+                    // console.log(toast.classList);
+                    // console.log(type);
+
+                    // console.log(toast);
+
+
+                    // Wenn recht drann dann neu slide in right
+                    // if (toast.classList.contains('slideInRight')) {
+                    //     toast.classList.remove('slideInRight');
+                    //     toast.classList.add('slideInRight');
+                    // }
+
                     // if (!toast.classList.contains('pinned')) {
                     //     toast.classList.toggle('transparent-toast');
                     // }
+                    console.log("\n\n\n\n\n\nToast angeklickt.");
+                    console.log(toast);
+                    // console.log(this.options.positionClass);
                     
-                    toast.classList.toggle('custom-toast');
+
+                    if (this.options.positionClass === 'toast-top-right') {
+                        console.log("yahhuuuu");
+                        
+                        if (toast.classList.contains('slideOutRight')) {
+                            toast.classList.remove('slideOutRight');
+                            toast.classList.add('slideInRight');
+                            console.log('before slideOutRight');
+                            console.log('now slideInRight');
+                            
+                        } 
+                        // else if (!toast.classList.contains('slideOutRight') && !toast.classList.contains('slideInRight')) {
+                        //     toast.classList.add('slideOutRight');
+                        //     // toast.classList.add('slideOutRight');
+                        // } 
+                        else {
+                            toast.classList.remove('slideInRight');
+                            toast.classList.add('slideOutRight');
+                            console.log('before slideInRight');
+                            console.log('now slideOutRight');
+                        }
+
+                        toast.classList.toggle('custom-toast');
+                        toast.classList.toggle('transparent-toast');
+
+                        console.log("Toast NOCHMAL angeklickt.");
+                    console.log(toast);
+                    console.log('\n\n\n\n\n\n');
+                    
+                    }
+                    // if (!toast.classList.contains('slideInRight')) {
+                    //     toast.classList.add('slideInRight');
+                    // }
+                    // if (!toast.classList.contains('slideInRight')) {
+                    // toast.classList.add('slideOutRight');
+                    // }
                     // toast.classList.toggle(`custom-toast-${type}`);
-                    toast.classList.toggle('transparent-toast');
-                    
-                    
+
+
                     // if (toast.classList.contains('pinned')) {
                     //     toast.classList.toggle('transparent-toast');
                     // }   
-                    
-                    
-                    
-                    
+
+
+
+
                 });
             }
 
@@ -210,7 +278,35 @@
          */
         removeToast(toast) {
             if (!toast) return;
-            toast.classList.add('slideOut');
+
+            if (this.options.positionClass === 'toast-top-right') {
+                toast.classList.toggle('slideOutRight');
+                // if (!toast.classList.contains('transparent-toast')) {
+                //     toast.classList.add('transparent-toast');
+                //     toast.classList.toggle('custom-toast');
+                // }
+                console.log("Toast entfernt.");
+                console.log(toast);
+                // if (toast.classList.contains('slideInRight')) {
+                //     toast.classList.remove('slideInRight');
+                // }
+                // if (toast.classList.contains('slideOutRight')) {
+                //     toast.classList.remove('slideOutRight');
+                // }
+                // if (toast.classList.contains('slideOutRightAway')) {
+                //     toast.classList.remove('slideOutRightAway');
+                // }
+
+                // !slideOutRight
+                if (!toast.classList.contains('slideOutRight')) {
+                    toast.classList.add('slideOutRightAway');
+                } else {
+                    toast.click();
+                }
+                
+            }
+
+            // toast.classList.toggle('transparent-toast');
             toast.addEventListener('animationend', () => {
                 toast.remove();
             });
@@ -263,7 +359,7 @@
     window.Toast = new Toast(toastrOptions);
 
     // Globale Funktion zur Modifizierung der Toast-Konfigurationen
-    window.modifyToastrConfigs = function(newConfigs) {
+    window.modifyToastrConfigs = function (newConfigs) {
         window.Toast.modifyConfigs(newConfigs);
     };
 
@@ -274,16 +370,19 @@
         window.Toast.show('info', 'Click me', 'I know you want it.');
         let pin = true;
         document.querySelectorAll('.custom-toast').forEach(toast => {
-        
+
             // toast.classList.add('pinned');
             if (pin) {
-                toast.classList.add('transparent-toast');
-                toast.classList.remove('custom-toast');
+                toast.classList.add('slideInRight')
+
+                // toast.classList.toggle('custom-toast');
+                // toast.classList.toggle('transparent-toast');
+                toast.click();
                 pin = false;
             }
             // click on .pin-btn child element of this toast
             toast.querySelector('.pin-btn').click();
-        
+
         });
     });
 

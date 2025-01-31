@@ -4,7 +4,8 @@
 #toast-container {
     position: fixed;
     top: 80px;
-    right: 20px;
+    /* right: 20px; */
+    right: 0px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -23,7 +24,7 @@
     display: flex;
     flex-direction: column; /* Vertikale Anordnung der Inhalte */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatteneffekt */
-    animation: slideIn 0.5s forwards;
+    /* animation: slideIn 0.5s forwards; */
     overflow: hidden;
     background-color: #333; /* Standard Hintergrundfarbe */
     transition: background-color 0.3s ease; /* Übergang für Hover-Effekt */
@@ -134,30 +135,106 @@
 /* Animationen */
 @keyframes slideIn {
     from {
-        transform: translateY(-20px);
+        transform: translateY(-60px);
+        transform: translateX(-20px);
         opacity: 0;
     }
     to {
         transform: translateY(0);
+        transform: translateX(-20px);
+        opacity: 1;
+    }
+}
+@keyframes slideInRight {
+    from {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-20px);
         opacity: 1;
     }
 }
 
 @keyframes slideOut {
     from {
+        /* transform: translateX(-20px); */
         transform: translateY(0);
         opacity: 1;
     }
     to {
-        transform: translateY(-20px);
+        /* transform: translateX(-20px); */
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+}
+
+
+@keyframes slideOutRight {
+    0% {
+        border-radius: 25px;
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(20px);
+
+    }
+}
+
+/* @keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(600px);
+        opacity: 0;
+    }
+} */
+
+/* @keyframes slideOutRight {
+    from {
+        transform: translateX(-200px);
+        opacity: 1;
+        background-color: red;
+    }
+    to {
+        transform: translateX(10px);
+        opacity: 1;
+        background-color: red;
+    }
+} */
+
+@keyframes slideOutRightAway {
+    from {
+        transform: translateX(20px);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(80px);
         opacity: 0;
     }
 }
 
 /* SlideOut Klasse für die Ausblendanimation */
+
+.slideIn {
+    animation: slideIn 0.5s forwards;
+}
+.slideInRight {
+    animation: slideInRight 0.5s forwards;
+}
+
 .slideOut {
     animation: slideOut 0.5s forwards;
 }
+.slideOutRight {
+    animation: slideOutRight 0.5s forwards;
+}
+.slideOutRightAway { /* !important to override old animation*/
+    animation: slideOutRightAway 1s forwards!important; 
+}
+
 
 .transparent-toast {
     /* background-color: red; */
@@ -168,9 +245,13 @@
     height: 40px;
     border-radius: 25px;
     border: 1px solid color-mix(in srgb, var(--text) 40%, transparent);
-    margin-right: -40px;
+    /* margin-right: -40px; */
+    padding-left: 2px;
     margin-left: auto;
+    animation: slideOutRight 0.5s forwards;
 }
+
+
 
 /* .transparent-toast .close-btn{
 display: none;

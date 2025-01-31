@@ -1,15 +1,13 @@
-
-/* General style to hide scrollbars */
+/* 
 .navbar .nav {
     overflow-y: auto;
-    scrollbar-width: none; /* for Firefox */
-    -ms-overflow-style: none;  /* for Internet Explorer and Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;  
 }
 
-/* Hides the scrollbar while still allowing scrolling */
 .navbar .nav::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-}
+    display: none; 
+} */
 
 /* Apply color styling to all <a> tags */
 a {

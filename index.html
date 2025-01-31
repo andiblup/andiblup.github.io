@@ -69,10 +69,11 @@
 
     <div id="root">
         <div id="sidebar" class="navbar collapsed">
-            <ul class="nav flex-column mt-3 elevated-shadow" x-data="{openProjects: false, openDemos: false}">
+            <ul class="nav mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow" x-data="{openProjects: false, openDemos: false}">
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/">Home</a>
                 </li>
+
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about">About</a>
                 </li>
@@ -466,6 +467,12 @@
     </div>
 
     <script src="/js/toast.js"></script>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('toggle-sidebar').click();
+        });
+    </script> -->
 
 </body>
 
