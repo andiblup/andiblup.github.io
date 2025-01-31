@@ -382,3 +382,31 @@
 }
 
 
+      /* .custom-modal-content:focus {
+        outline: none;
+      }
+
+      [x-cloak] { display: none; }
+
+      .accordion-button {
+        background-color: var(--background);
+        color: var(--text);
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .accordion-button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .accordion-content {
+        padding: 10px 20px;
+        border-top: 1px solid #e0e0e0;
+      } */

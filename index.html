@@ -295,60 +295,86 @@
 
             <!-- Datenschutzerklärungs-Modal -->
             <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
-                data-animation-out="animate-fadeOut" aria-hidden="true" role="dialog"
+                data-animation-out="animate-fadeOut" data-close-on-overlay="false"
+                aria-hidden="true"
+                role="dialog"
                 aria-labelledby="modal-title-privacy" x-data="{
-                    overlayClose: false,
-                    init() {
-                      // Überprüfe, ob das Einverständnis bereits gegeben wurde
-                      const consent = sessionStorage.getItem('privacyConsent');
-                      if (!consent) {
-                        // Öffne das Modal
-                        Modal.open('privacyModal');
-                      }
-                    },
-                    accept() {
-                      // Speichere das Einverständnis im Session Storage
-                      sessionStorage.setItem('privacyConsent', 'true');
-                      // Schließe das Modal
-                      Modal.close(document.getElementById('privacyModal'));
-                    },
-                    close() {
-                      if (this.overlayClose) {
-                        Modal.close(document.getElementById('privacyModal'));
-                      }
-                    }
-                  }" x-init="init()">
+                sections: {
+                einleitung: false,
+                verantwortlicheStelle: false,
+                datenerfassung: false,
+                keinePersoenlichenDaten: false,
+                datenLoeschen: false,
+                nutzerRechte: false,
+                aenderungen: false,
+                kontakt: false
+                },
+                init() {
+                // Überprüfe, ob das Einverständnis bereits gegeben wurde
+                const consent = sessionStorage.getItem('privacyConsent');
+                if (!consent) {
+                // Öffne das Modal
+                Modal.open('privacyModal');
+                } else {
+                // Setze data-close-on-overlay auf true, wenn Consent bereits gegeben ist
+                const modal = document.getElementById('privacyModal');
+                modal.setAttribute('data-close-on-overlay', 'true');
+                
+                }
+                },
+                toggleSection(section) {
+                this.sections[section] = !this.sections[section];
+                },
+                isSectionOpen(section) {
+                return this.sections[section];
+                },
+                accept() {
+                // Speichere das Einverständnis im Session Storage
+                sessionStorage.setItem('privacyConsent', 'true');
+                // Setze data-close-on-overlay auf true
+                const modal = document.getElementById('privacyModal');
+                modal.setAttribute('data-close-on-overlay', 'true');
+                // Schließe das Modal
+                Modal.close(modal);
+                },
+                handleOverlayClick(event) {
+                const modal = document.getElementById('privacyModal');
+                // const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
+                const closeOnOverlay = sessionStorage.getItem('privacyConsent');
+                const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
+                },
+                handleEscape(event) {
+                const modal = document.getElementById('privacyModal');
+                const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
+                const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
+                if (canClose) {
+                Modal.close(modal);
+                }
+                }
+                }"
+                x-init="init()"
+                >
                 <!-- Modal-Inhalt -->
                 <div class="custom-modal-content" style="max-width: 60%; max-height: 80vh; overflow-y: auto;"
-                    @click.away="overlayClose ? close() : null" @keydown.escape.window="overlayClose ? close() : null">
+                    @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
+
                     <!-- Modal-Titel -->
                     <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold">Datenschutzerklärung</h2>
 
                     <!-- Accordion-Container -->
-                    <div x-data="{ sections: {
-        einleitung: false,
-        verantwortlicheStelle: false,
-        datenerfassung: false,
-        keinePersoenlichenDaten: false,
-        datenLoeschen: false,
-        nutzerRechte: false,
-        aenderungen: false,
-        kontakt: false
-    } }" class="space-y-4">
-
+                    <div class="space-y-4">
                         <!-- Abschnitt 1: Einleitung -->
                         <div>
-                            <button @click="sections.einleitung = !sections.einleitung"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('einleitung')" class="accordion-button">
                                 <span>1. Einleitung</span>
-                                <svg :class="sections.einleitung ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('einleitung') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.einleitung" class="mt-2 px-4">
+                            <div x-show="isSectionOpen('einleitung')" class="accordion-content" x-cloak>
                                 <p>
                                     Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln
                                     Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen
@@ -361,17 +387,16 @@
 
                         <!-- Abschnitt 2: Verantwortliche Stelle -->
                         <div>
-                            <button @click="sections.verantwortlicheStelle = !sections.verantwortlicheStelle"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('verantwortlicheStelle')" class="accordion-button">
                                 <span>2. Verantwortliche Stelle</span>
-                                <svg :class="sections.verantwortlicheStelle ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('verantwortlicheStelle') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.verantwortlicheStelle" class="mt-2 px-4">
+                            <div x-show="isSectionOpen('verantwortlicheStelle')" class="accordion-content" x-cloak>
                                 <p>
                                     Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:
                                     <br><br>
@@ -386,17 +411,16 @@
 
                         <!-- Abschnitt 3: Datenerfassung auf dieser Website -->
                         <div>
-                            <button @click="sections.datenerfassung = !sections.datenerfassung"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('datenerfassung')" class="accordion-button">
                                 <span>3. Datenerfassung auf dieser Website</span>
-                                <svg :class="sections.datenerfassung ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('datenerfassung') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.datenerfassung" class="mt-2 px-4 space-y-2">
+                            <div x-show="isSectionOpen('datenerfassung')" class="accordion-content" x-cloak>
                                 <p>
                                     Unsere Website verwendet den sogenannten <strong>Local Storage</strong>, um
                                     bestimmte Einstellungen wie das Theme (Design) und die Sprache Ihrer
@@ -434,17 +458,16 @@
 
                         <!-- Abschnitt 4: Keine Erhebung persönlicher Daten -->
                         <div>
-                            <button @click="sections.keinePersoenlichenDaten = !sections.keinePersoenlichenDaten"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('keinePersoenlichenDaten')" class="accordion-button">
                                 <span>4. Keine Erhebung persönlicher Daten</span>
-                                <svg :class="sections.keinePersoenlichenDaten ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('keinePersoenlichenDaten') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.keinePersoenlichenDaten" class="mt-2 px-4">
+                            <div x-show="isSectionOpen('keinePersoenlichenDaten')" class="accordion-content" x-cloak>
                                 <p>
                                     Wir möchten ausdrücklich darauf hinweisen, dass wir keinerlei personenbezogene Daten
                                     über Sie erheben, speichern oder verarbeiten. Die im Local Storage gespeicherten
@@ -457,17 +480,16 @@
 
                         <!-- Abschnitt 5: Wie Sie Ihre Daten löschen können -->
                         <div>
-                            <button @click="sections.datenLoeschen = !sections.datenLoeschen"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('datenLoeschen')" class="accordion-button">
                                 <span>5. Wie Sie Ihre Daten löschen können</span>
-                                <svg :class="sections.datenLoeschen ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('datenLoeschen') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.datenLoeschen" class="mt-2 px-4 space-y-2">
+                            <div x-show="isSectionOpen('datenLoeschen')" class="accordion-content" x-cloak>
                                 <p>
                                     Da die gespeicherten Informationen im Local Storage keinerlei persönliche Daten
                                     enthalten, können Sie diese jederzeit problemlos löschen. Hier erfahren Sie, wie Sie
@@ -516,17 +538,16 @@
 
                         <!-- Abschnitt 6: Rechte der Nutzer -->
                         <div>
-                            <button @click="sections.nutzerRechte = !sections.nutzerRechte"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('nutzerRechte')" class="accordion-button">
                                 <span>6. Rechte der Nutzer</span>
-                                <svg :class="sections.nutzerRechte ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('nutzerRechte') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.nutzerRechte" class="mt-2 px-4">
+                            <div x-show="isSectionOpen('nutzerRechte')" class="accordion-content" x-cloak>
                                 <p>
                                     Auch wenn wir keine personenbezogenen Daten erheben, möchten wir Sie darüber
                                     informieren, dass Sie folgende Rechte haben:
@@ -544,17 +565,16 @@
 
                         <!-- Abschnitt 7: Änderungen dieser Datenschutzerklärung -->
                         <div>
-                            <button @click="sections.aenderungen = !sections.aenderungen"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('aenderungen')" class="accordion-button">
                                 <span>7. Änderungen dieser Datenschutzerklärung</span>
-                                <svg :class="sections.aenderungen ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('aenderungen') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.aenderungen" class="mt-2 px-4">
+                            <div x-show="isSectionOpen('aenderungen')" class="accordion-content" x-cloak>
                                 <p>
                                     Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit mit Wirkung für
                                     die Zukunft zu ändern. Eine jeweils aktuelle Version ist auf unserer Website
@@ -566,17 +586,16 @@
 
                         <!-- Abschnitt 8: Kontakt -->
                         <div>
-                            <button @click="sections.kontakt = !sections.kontakt"
-                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                            <button @click="toggleSection('kontakt')" class="accordion-button">
                                 <span>8. Kontakt</span>
-                                <svg :class="sections.kontakt ? 'transform rotate-90' : ''"
+                                <svg :class="isSectionOpen('kontakt') ? 'transform rotate-90' : ''"
                                     class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-                            <div x-show="sections.kontakt" class="mt-2 px-4">
+                            <div x-show="isSectionOpen('kontakt')" class="accordion-content" x-cloak>
                                 <p>
                                     Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte in Anspruch nehmen möchten,
                                     können Sie sich jederzeit an uns wenden:
