@@ -2,24 +2,29 @@
 
 (function () {
     // Toastr-Konfiguration
-    const toastrOptions = {
-        closeButton: true,
-        debug: false,
-        newestOnTop: false,
-        progressBar: true,
-        positionClass: 'toast-top-right',
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: 300, // in ms
-        hideDuration: 1000, // in ms
-        timeOut: 5000, // in ms
-        extendedTimeOut: 2000, // in ms
-        showEasing: 'swing',
-        hideEasing: 'linear',
-        showMethod:  (this.positionClass === 'toast-top-right' || this.positionClass === 'toast-bottom-right' ) ? 'slideInRight' : 'slideInLeft',
-        hideMethod: (this.positionClass === 'toast-top-right' || this.positionClass === 'toast-bottom-right' ) ? 'slideOutRight' : 'slideOutLeft',
-        tapToDismiss: false,
-    };
+    function getToastrOptions(positionClass = 'toast-top-right') {
+        return {
+            closeButton: true,
+            debug: false,
+            newestOnTop: false,
+            progressBar: true,
+            positionClass: positionClass,
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: 300, // in ms
+            hideDuration: 1000, // in ms
+            timeOut: 5000, // in ms
+            extendedTimeOut: 2000, // in ms
+            showEasing: 'swing',
+            hideEasing: 'linear',
+            showMethod:  (positionClass === 'toast-top-right' || positionClass === 'toast-bottom-right' ) ? 'slideInRight' : 'slideInLeft',
+            hideMethod: (positionClass === 'toast-top-right' || positionClass === 'toast-bottom-right' ) ? 'slideOutRight' : 'slideOutLeft',
+            tapToDismiss: false,
+        };
+    }
+    
+    // Nutzung:
+    const toastrOptions = getToastrOptions('toast-top-right');
 
     // Toast-Objekt
     class Toast {
@@ -367,7 +372,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         window.Toast.show('success', 'Welcome!', 'Welcome to my portfolio page.');
         window.Toast.show('warning', 'Current development', 'It is still under development, not every styling, functionally and content has been added yet.<br>Feel free to contact me alfred.narjes@gmail.com.');
-        window.Toast.show('info', 'Click me', 'I know you want it.');
+        window.Toast.show('info', 'Click me', 'Left click to minimize me, right click to remove me.');
         let pin = true;
         document.querySelectorAll('.custom-toast').forEach(toast => {
 

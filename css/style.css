@@ -399,6 +399,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
+    bottom: 0;
 }
 
 #footer-container {
@@ -406,6 +407,7 @@ footer {
     display: flex;
     flex-direction: column; */
     margin-left: 0.5rem;
+    bottom: 0;
 }
 
 /* #sidebar {
