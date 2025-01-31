@@ -295,9 +295,7 @@
 
             <!-- Datenschutzerklärungs-Modal -->
             <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
-                data-animation-out="animate-fadeOut" data-close-on-overlay="false"
-                aria-hidden="true"
-                role="dialog"
+                data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
                 aria-labelledby="modal-title-privacy" x-data="{
                 sections: {
                 einleitung: false,
@@ -309,16 +307,23 @@
                 aenderungen: false,
                 kontakt: false
                 },
+                consent: false,
+                sessionStorageVar: 'privacyConsent',
                 init() {
-                // Überprüfe, ob das Einverständnis bereits gegeben wurde
-                const consent = sessionStorage.getItem('privacyConsent');
+
+                // const consent = sessionStorage.getItem('privacyConsent');
+                this.consent = sessionStorage.getItem('privacyConsent') === 'true';
+                console.log('consent');
+                console.log(consent);
+                
                 if (!consent) {
                 // Öffne das Modal
                 Modal.open('privacyModal');
+
                 } else {
-                // Setze data-close-on-overlay auf true, wenn Consent bereits gegeben ist
-                const modal = document.getElementById('privacyModal');
-                modal.setAttribute('data-close-on-overlay', 'true');
+                // Setze data-close-on-overlay auf true, wenn Consent bereits gegeben ist //! nicht da anders
+                // const modal = document.getElementById('privacyModal');
+                // modal.setAttribute('data-close-on-overlay', 'true');
                 
                 }
                 },
@@ -333,27 +338,36 @@
                 sessionStorage.setItem('privacyConsent', 'true');
                 // Setze data-close-on-overlay auf true
                 const modal = document.getElementById('privacyModal');
-                modal.setAttribute('data-close-on-overlay', 'true');
+                // modal.setAttribute('data-close-on-overlay', 'true');
                 // Schließe das Modal
                 Modal.close(modal);
                 },
                 handleOverlayClick(event) {
                 const modal = document.getElementById('privacyModal');
                 // const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
-                const closeOnOverlay = sessionStorage.getItem('privacyConsent');
-                const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
+                // const closeOnOverlay = sessionStorage.getItem('privacyConsent');
+                // const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
+
+                this.consent = sessionStorage.getItem('privacyConsent') === 'true';
+                modal.setAttribute('data-close-on-overlay', `${this.consent}`);
+                // if (this.consent) {
+                //     console.log('consent');
+                //     console.log(this.consent);
+                //     console.log(event.target);
+                    
+                //     modal.setAttribute('data-close-on-overlay', 'true');
+                // }
                 },
                 handleEscape(event) {
-                const modal = document.getElementById('privacyModal');
-                const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
-                const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
-                if (canClose) {
+                // const modal = document.getElementById('privacyModal');
+                // const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
+                // const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
+                this.consent = sessionStorage.getItem('privacyConsent') === 'true';
+                if (this.consent) {
                 Modal.close(modal);
                 }
                 }
-                }"
-                x-init="init()"
-                >
+                }" x-init="init()">
                 <!-- Modal-Inhalt -->
                 <div class="custom-modal-content" style="max-width: 60%; max-height: 80vh; overflow-y: auto;"
                     @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
@@ -367,12 +381,7 @@
                         <div>
                             <button @click="toggleSection('einleitung')" class="accordion-button">
                                 <span>1. Einleitung</span>
-                                <svg :class="isSectionOpen('einleitung') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('einleitung')" class="accordion-content" x-cloak>
                                 <p>
@@ -389,12 +398,7 @@
                         <div>
                             <button @click="toggleSection('verantwortlicheStelle')" class="accordion-button">
                                 <span>2. Verantwortliche Stelle</span>
-                                <svg :class="isSectionOpen('verantwortlicheStelle') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('verantwortlicheStelle')" class="accordion-content" x-cloak>
                                 <p>
@@ -413,12 +417,6 @@
                         <div>
                             <button @click="toggleSection('datenerfassung')" class="accordion-button">
                                 <span>3. Datenerfassung auf dieser Website</span>
-                                <svg :class="isSectionOpen('datenerfassung') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
                             </button>
                             <div x-show="isSectionOpen('datenerfassung')" class="accordion-content" x-cloak>
                                 <p>
@@ -460,12 +458,7 @@
                         <div>
                             <button @click="toggleSection('keinePersoenlichenDaten')" class="accordion-button">
                                 <span>4. Keine Erhebung persönlicher Daten</span>
-                                <svg :class="isSectionOpen('keinePersoenlichenDaten') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('keinePersoenlichenDaten')" class="accordion-content" x-cloak>
                                 <p>
@@ -482,12 +475,7 @@
                         <div>
                             <button @click="toggleSection('datenLoeschen')" class="accordion-button">
                                 <span>5. Wie Sie Ihre Daten löschen können</span>
-                                <svg :class="isSectionOpen('datenLoeschen') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('datenLoeschen')" class="accordion-content" x-cloak>
                                 <p>
@@ -540,12 +528,7 @@
                         <div>
                             <button @click="toggleSection('nutzerRechte')" class="accordion-button">
                                 <span>6. Rechte der Nutzer</span>
-                                <svg :class="isSectionOpen('nutzerRechte') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('nutzerRechte')" class="accordion-content" x-cloak>
                                 <p>
@@ -567,12 +550,7 @@
                         <div>
                             <button @click="toggleSection('aenderungen')" class="accordion-button">
                                 <span>7. Änderungen dieser Datenschutzerklärung</span>
-                                <svg :class="isSectionOpen('aenderungen') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('aenderungen')" class="accordion-content" x-cloak>
                                 <p>
@@ -588,12 +566,7 @@
                         <div>
                             <button @click="toggleSection('kontakt')" class="accordion-button">
                                 <span>8. Kontakt</span>
-                                <svg :class="isSectionOpen('kontakt') ? 'transform rotate-90' : ''"
-                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+
                             </button>
                             <div x-show="isSectionOpen('kontakt')" class="accordion-content" x-cloak>
                                 <p>
@@ -611,8 +584,7 @@
 
                     <!-- Verstanden Button -->
                     <div class="mt-6 text-right">
-                        <button @click="accept()"
-                            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Verstanden</button>
+                        <a @click="accept()" class="px-4 py-2 btn">Verstanden</a>
                     </div>
                 </div>
             </div>
