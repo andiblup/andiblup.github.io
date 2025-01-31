@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/svg-icon-color.css">
     <link rel="stylesheet" href="/css/toast.css">
+    <link rel="stylesheet" href="/css/modal.css">
 
 
 
@@ -63,13 +64,17 @@
 
 <body id="body" class="scrollbar-none">
 
-    <!-- toast notifications -->
+    <!-- globals -->
     <div id="toast-container"></div>
     <div class="dimmed-overlay" id="overlay"></div>
+    <div class="modal-overlay" :class="{ 'active': openModalId === 'modal1' }" @click="closeModal('modal1')"
+        x-show="openModalId === 'modal1'" x-transition.opacity></div>
+
 
     <div id="root">
         <div id="sidebar" class="navbar collapsed">
-            <ul class="nav mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow" x-data="{openProjects: false, openDemos: false}">
+            <ul class="nav mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow"
+                x-data="{openProjects: false, openDemos: false}">
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/">Home</a>
                 </li>
@@ -212,11 +217,7 @@
             </div>
 
 
-            <!-- <div id="footer-container" class="card w-100" style="height: 50px;">
-                <div class="btn btn-secondary">
-                    © - DevNest - Alfred Narjes - Wien
-                </div>
-            </div> -->
+
             <footer style="border-radius: 0px;" x-data="{ 
                 screenWidth: window.innerWidth,
                 init() {
@@ -274,128 +275,6 @@
     <script src="/js/theme.js"></script>
 
     <script src="/js/carousel.js"></script>
-    <script>
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function () {
-            //? Popovers
-            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl);
-            });
-            /*});
-    
-            document.addEventListener('DOMContentLoaded', function () {*/
-
-            //? Sidebar
-            const sidebarToggle = document.getElementById('toggle-sidebar');
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            // const navElements = document.getElementsByClassName('nav-link');
-
-            sidebarToggle.addEventListener('click', function () {
-                sidebar.classList.toggle('collapsed');
-                overlay.classList.toggle('visible');
-                // Array.from(navElements).forEach(element => {
-                //     element.classList.toggle('display-none')
-                // });
-
-                const icon = sidebarToggle.querySelector('.icon i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('bi-chevron-left');
-                    icon.classList.add('bi-chevron-right');
-                } else {
-                    icon.classList.remove('bi-chevron-right');
-                    icon.classList.add('bi-chevron-left');
-                }
-            });
-
-            overlay.addEventListener('click', function () {
-                sidebar.classList.add('collapsed');
-                overlay.classList.remove('visible');
-
-                const icon = sidebarToggle.querySelector('.icon i');
-                icon.classList.remove('bi-chevron-left');
-                icon.classList.add('bi-chevron-right');
-            });
-
-
-
-            //? Cookies
-
-            // const currentTheme = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'dark';
-            // let svgColor = 'black';
-            // if (currentTheme === 'dark') {
-            //     svgColor = 'white'; 
-            // } else {
-            //     svgColor = 'black';
-            // }
-
-            // if (window.location.hash === '#/projects/doGether' || window.location.hash === '#/' || window.location.hash === '') {
-            //     let times = 8;
-            //     const intervalIdInertia = setInterval(() => {
-            //         try {
-            //             const inertiaIcons = document.querySelectorAll('.icons-custom-inertia');
-            //             console.log(inertiaIcons);
-
-            //             inertiaIcons.forEach(icon => {
-            //                 const svg =  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g transform='translate(0,200) scale(0.1,-0.1)' fill='${svgColor}' stroke='none'><path d='M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m900 205 l205 -205 -205 -205 -205 -205 -213 0 -214 0 196 201 c108 110 196 205 196 209 0 4 -88 99 -196 209 l-196 201 214 0 213 0 205 -205z m636 0 l203 -205 -203 -205 -203 -205 -212 0 c-116 0 -211 3 -211 7 0 4 89 97 197 205 l198 198 -198 198 c-108 108 -197 201 -197 205 0 4 95 7 212 7 l211 0 203 -205z'/></g></svg>`;
-            //                 const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
-            //                 icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
-            //                 icon.style.backgroundSize = 'contain';
-            //                 icon.style.backgroundRepeat = 'no-repeat';
-            //                 icon.style.backgroundPosition = 'center';
-            //             });
-
-
-            //             if (inertiaIcons.length > 0) {
-            //                 clearInterval(intervalIdInertia);
-            //             }
-            //             if (times === 0) {
-            //                 clearInterval(intervalIdInertia);
-            //             }
-            //             times--;
-            //         } catch (warn) {
-            //             console.warn('Error: ', warn);
-            //         }
-            //     }, 1000);
-            // };
-            // if (window.location.hash === '#/projects/fantsyQuest' || window.location.hash === '#/' || window.location.hash === '') {
-            //     let times = 8;
-            //     const intervalIdMapbox = setInterval(() => {
-            //         try {
-            //             const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
-            //             console.log(mapboxIcons);
-
-            //             mapboxIcons.forEach(icon => {
-            //                 const svg =  `<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='${svgColor}' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/></svg>`;
-            //                 const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
-            //                 icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
-            //                 icon.style.backgroundSize = 'contain';
-            //                 icon.style.backgroundRepeat = 'no-repeat';
-            //                 icon.style.backgroundPosition = 'center';
-            //             });
-
-
-            //             if (inertiaIcons.length > 0) {
-            //                 clearInterval(intervalIdMapbox);
-            //             }
-            //             if (times === 0) {
-            //                 clearInterval(intervalIdMapbox);
-            //             }
-            //             times--;
-            //         } catch (warn) {
-            //             console.warn('Error: ', warn);
-            //         }
-            //     }, 1000);
-            // };
-
-
-
-        });
-
-
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -426,45 +305,62 @@
             Toast</button>
         <button onclick="Toast.show('info', 'Info', 'Dies ist eine Informationsmeldung.')" class="btn btn-info">Info
             Toast</button>
-        <button onclick="window.Toast.show('warning', 'Warnung oida voll die warnung ich warne die warnung die warnung soll gewarnt sein', 'Überprüfe deine Eingabenllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll.')"
+        <button
+            onclick="window.Toast.show('warning', 'Warnung oida voll die warnung ich warne die warnung die warnung soll gewarnt sein', 'Überprüfe deine Eingabenllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll.')"
             class="btn btn-warning">Warnung Toast</button>
         <button onclick="console.log(window.Toast)" class="btn btn-secondary">Toast Objekt Loggen</button>
-        <button
-            onclick="document.getElementById('toast-container').innerHTML = `<div id='ananas' style='height: 400px; width: 400px; background-color: red;'> </div>`"
-            class="btn btn-secondary">Toast Objekt Loggen</button>
-        <button onclick="document.getElementById('ananas').innerHTML = `<p> ananas </p>`" class="btn btn-secondary">Toast Objekt
-            Loggen</button>
+
+
     </div>
+    <!-- Old Modal -->
+    <!-- <button data-modal="myModal1" id="btnMyModal1">Modal</button>
+    <div id="myModal1" class="custom-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
 
-    <div class="d-flex justify-content-center align-items-center">
-
-        <div class="toast-error">
-            <button class="close-btn"><i class="bi bi-x"></i></button>
-            <div class="toast-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
-            <div class="toast-body">
-                <strong class="toast-title">Warnung</strong>
-                <div class="toast-message">Überprüfe deine Eingaben.</div>
-            </div>
-            <div class="progress" style="width: 0%;"></div>
-            <button class="pin-btn"><i class="bi bi-pin-angle-fill"></i></button>
+        <div class="custom-modal-content">
+            <span class="close" data-close>&times;</span>
+            <p>Some text in the Modal..</p>
         </div>
-        
-    </div>
+    </div> -->
 
-    <div class="d-flex justify-content-center align-items-center">
 
-        <div class="custom-toast toast-success">
-            <button class="close-btn"><i class="bi bi-x"></i></button>
-            <div class="toast-icon"><i class="bi bi-check-circle-fill"></i></div>
-            <div class="toast-body">
-                <strong class="toast-title">Erfolg</strong>
-                <div class="toast-message">Deine Aktion war erfolgreich!</div>
-            </div>
-            <div class="progress"></div>
-            <button class="pin-btn"><i class="bi bi-pin-angle-fill"></i></button>
+    <!-- <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
+
+
+    <div id="myModal1" class="custom-modal" data-animation-in="bounceIn" data-animation-out="fadeOut" aria-hidden="true"
+        role="dialog" aria-labelledby="modal-title-1" x-data="{ open: false, animClass: '' }" x-show="open"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+        @open-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationIn; open = true }"
+        @close-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationOut; open = false }">
+
+  
+        <div class="custom-modal-content">
+            <span class="close" data-close>&times;</span>
+            <h2 id="modal-title-1">Modal Titel</h2>
+            <p>Einige Inhalte im Modal.</p>
         </div>
+    </div> -->
 
+    <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
+
+    <!-- Modal -->
+    <div id="myModal1" class="custom-modal" data-animation-in="animate-bounceIn" data-animation-out="animate-fadeOut"
+        aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
+
+        <!-- Modal-Inhalt -->
+        <div class="custom-modal-content">
+            <span class="close" data-close>&times;</span>
+            <h2 id="modal-title-1">Modal Titel</h2>
+            <p>Einige Inhalte im Modal..</p>
+        </div>
     </div>
+
+
+    <!-- Einbinden von modal.js nach Alpine.js -->
+
+    <script src="/js/modal.js" defer></script>
+
 
     <script src="/js/toast.js"></script>
 

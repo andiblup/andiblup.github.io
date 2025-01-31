@@ -57,36 +57,36 @@ function colorizeSVGs() {
     }, 3000);
   }
 
-  if (window.location.hash === '#/projects/fantasyQuest' || window.location.hash === '#/' || window.location.hash === '') {
-    let times = 80;
-    const intervalIdMapbox = setInterval(() => {
-      try {
-        const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
-        console.log(mapboxIcons);
+  // if (window.location.hash === '#/projects/fantasyQuest' || window.location.hash === '#/' || window.location.hash === '') {
+  //   let times = 80;
+  //   const intervalIdMapbox = setInterval(() => {
+  //     try {
+  //       const mapboxIcons = document.querySelectorAll('.icons-custom-mapbox');
+  //       console.log(mapboxIcons);
 
-        mapboxIcons.forEach(icon => {
-          const svg = `<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='${svgColor}' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/></svg>`;
-          const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
-          icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
-          icon.style.backgroundSize = 'contain';
-          icon.style.backgroundRepeat = 'no-repeat';
-          icon.style.backgroundPosition = 'center';
-        });
+  //       mapboxIcons.forEach(icon => {
+  //         const svg = `<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path fill='${svgColor}' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/></svg>`;
+  //         const encodedSVG = encodeURIComponent(svg).replace(/'/g, '%27').replace(/"/g, '%22');
+  //         icon.style.backgroundImage = `url("data:image/svg+xml;utf8,${encodedSVG}")`;
+  //         icon.style.backgroundSize = 'contain';
+  //         icon.style.backgroundRepeat = 'no-repeat';
+  //         icon.style.backgroundPosition = 'center';
+  //       });
 
-        if (mapboxIcons.length > 0) {
-          clearInterval(intervalIdMapbox);
-          console.log('Icons found, stopping interval.');
-        }
-        times--;
-        if (times === 0) {
-          clearInterval(intervalIdMapbox);
-          console.log('Maximum attempts reached, stopping interval.');
-        }
-      } catch (warn) {
-        console.warn('Error: ', warn);
-      }
-    }, 2000);
-  }
+  //       if (mapboxIcons.length > 0) {
+  //         clearInterval(intervalIdMapbox);
+  //         console.log('Icons found, stopping interval.');
+  //       }
+  //       times--;
+  //       if (times === 0) {
+  //         clearInterval(intervalIdMapbox);
+  //         console.log('Maximum attempts reached, stopping interval.');
+  //       }
+  //     } catch (warn) {
+  //       console.warn('Error: ', warn);
+  //     }
+  //   }, 2000);
+  // }
 
   // if (window.location.hash === '#/projects/doGether' || window.location.hash === '#/' || window.location.hash === '') {
   //   let times = 8;

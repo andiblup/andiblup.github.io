@@ -1,28 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // const themeToggle = document.getElementById("theme-toggle");
-    const sidebarToggle = document.getElementById("toggle-sidebar");
-    const sidebar = document.querySelector("#sidebar");
+    // const sidebarToggle = document.getElementById("toggle-sidebar");
+    // const sidebar = document.querySelector("#sidebar");
+    //     sidebarToggle.addEventListener("click", () => {
+    //         sidebar.classList.toggle("open");
+    //     });
+    //? Sidebar
+    const sidebarToggle = document.getElementById('toggle-sidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    // const navElements = document.getElementsByClassName('nav-link');
 
-    // Toggle Theme
-    // themeToggle.addEventListener("click", () => {
-    //     const currentTheme = document.documentElement.getAttribute("data-theme");
-    //     const newTheme = currentTheme === "dark" ? "light" : "dark";
-    //     document.documentElement.setAttribute("data-theme", newTheme);
-    //     localStorage.setItem("theme", newTheme); // Persist theme
-    // });
-
-    // Persist Theme on Reload
-    // const savedTheme = localStorage.getItem("theme") || "light";
-    // document.documentElement.setAttribute("data-theme", savedTheme);
-
-    // Sidebar Toggle
-    // if (sidebarToggle) {
-        // sidebarToggle.addEventListener("click", () => {
-        //     sidebar.classList.toggle("sidebar--open");
+    sidebarToggle.addEventListener('click', function () {
+        sidebar.classList.toggle('collapsed');
+        overlay.classList.toggle('visible');
+        // Array.from(navElements).forEach(element => {
+        //     element.classList.toggle('display-none')
         // });
-        sidebarToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-        });
-    // }
-    
+
+        const icon = sidebarToggle.querySelector('.icon i');
+        if (sidebar.classList.contains('collapsed')) {
+            icon.classList.remove('bi-chevron-left');
+            icon.classList.add('bi-chevron-right');
+        } else {
+            icon.classList.remove('bi-chevron-right');
+            icon.classList.add('bi-chevron-left');
+        }
+    });
+
+    overlay.addEventListener('click', function () {
+        sidebar.classList.add('collapsed');
+        overlay.classList.remove('visible');
+
+        const icon = sidebarToggle.querySelector('.icon i');
+        icon.classList.remove('bi-chevron-left');
+        icon.classList.add('bi-chevron-right');
+    });
+
 });
