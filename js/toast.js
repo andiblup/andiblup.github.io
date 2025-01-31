@@ -374,22 +374,29 @@
     };
 
     // Beispiel: Initiale Toasts nach dem Laden anzeigen
-    document.addEventListener('DOMContentLoaded', () => {
-        window.Toast.show('success', 'Welcome!', 'Welcome to my portfolio page.');
-        window.Toast.show('warning', 'Current development', 'It is still under development, not every styling, functionally and content has been added yet.<br>Feel free to contact me alfred.narjes@gmail.com.');
-        window.Toast.show('info', 'Click me', 'Left click to minimize me, right click to remove me.');
-        let pin = true;
+    document.addEventListener('DOMContentLoaded', async() => {
+        
+        // window.Toast.show('success', 'Welcome!', 'Welcome to my portfolio page.');
+        // window.Toast.show('warning', 'Current development', 'It is still under development, not every styling, functionally and content has been added yet.<br>Feel free to contact me alfred.narjes@gmail.com.');
+        // window.Toast.show('info', 'Click me', 'Left click to minimize me, right click to remove me.');
+        
+        const response = await fetch('/lang/index/' + (localStorage.getItem('appLang') || 'en') + '.json');
+        const pageLang = await response.json();
+        window.Toast.show('success', pageLang.toast.success.title, pageLang.toast.success.content);
+        window.Toast.show('warning', pageLang.toast.warning.title, pageLang.toast.warning.content);
+        window.Toast.show('info', pageLang.toast.info.title, pageLang.toast.info.content);
+
         document.querySelectorAll('.custom-toast').forEach(toast => {
 
             // toast.classList.add('pinned');
-            if (pin) {
+            // if (pin) {
                 toast.classList.add('slideInRight')
 
                 // toast.classList.toggle('custom-toast');
                 // toast.classList.toggle('transparent-toast');
                 toast.click();
-                pin = false;
-            }
+                // pin = false;
+            // }
             // click on .pin-btn child element of this toast
             toast.querySelector('.pin-btn').click();
 

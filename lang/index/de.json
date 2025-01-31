@@ -1,0 +1,68 @@
+{
+  "toast": {
+    "success": {
+      "title": "Willkommen!",
+      "content": "Willkommen auf meiner Portfolio-Seite."
+    },
+    "warning": {
+      "title": "Aktuell in Entwicklung",
+      "content": "Die Seite befindet sich noch in der Entwicklung – nicht alle Styles, Funktionen und Inhalte wurden bereits umgesetzt.<br>Bei Fragen kannst du mich gerne kontaktieren: alfred.narjes@gmail.com."
+    },
+    "info": {
+      "title": "Klick mich",
+      "content": "Linksklick, um mich zu minimieren, Rechtsklick, um mich zu entfernen."
+    }
+  },
+  "nav": {
+    "cv": "Lebenslauf",
+    "privacy": "Datenschutzerklärung",
+    "colorize": "Erfülle dein Leben mit Farbe",
+    "theme": "Farbmodus",
+    "language": "Sprache"
+  },
+  "sidebar": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "projects": "Projekte<i :class=\"{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}\"style=\"font-size: inherit; display: inline-block; vertical-align: middle;\"></i>",
+    "overview": "Übersicht",
+    "contact": "Kontakt"
+  },
+  "privacyModal": {
+    "header": "Datenschutzerklärung",
+    "sections": {
+      "introduction": {
+        "title": "1. Einleitung",
+        "content": "Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. In dieser Erklärung informieren wir Sie über die Art, den Umfang und Zweck der Erhebung, Verarbeitung und Nutzung Ihrer Daten auf unserer Website."
+      },
+      "responsibleParty": {
+        "title": "2. Verantwortliche Stelle",
+        "content": "Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:<br><br>Alfred Narjes<br>AT-1230 Vienna<br>alfred.narjes@gmail.com"
+      },
+      "dataCollection": {
+        "title": "3. Datenerfassung auf dieser Website",
+        "content": "Unsere Website verwendet den sogenannten <strong>Local Storage</strong>, um bestimmte Einstellungen wie das Theme (Design) und die Sprache Ihrer Benutzeroberfläche zu speichern. Diese Daten helfen uns dabei, Ihre Präferenzen zu merken und Ihnen ein personalisiertes Nutzungserlebnis zu bieten.<br><br><strong>3.1. Was ist Local Storage?</strong><br>Der <strong>Local Storage</strong> ist eine Funktion moderner Webbrowser, die es ermöglicht, Daten lokal auf Ihrem Gerät zu speichern. Im Gegensatz zu Cookies können mit dem Local Storage größere Datenmengen gespeichert werden, und diese Daten bleiben auch nach dem Schließen des Browsers erhalten, bis sie explizit gelöscht werden.<br><br><strong>3.2. Verwendung von Local Storage auf unserer Website</strong><br>Auf unserer Website nutzen wir den Local Storage ausschließlich für folgende Zwecke:<ul><li><strong>Speichern des gewählten Themes:</strong> Damit wir das von Ihnen bevorzugte Design (z. B. hell oder dunkel) beim nächsten Besuch automatisch anwenden können.</li><li><strong>Speichern der bevorzugten Sprache:</strong> Damit die Benutzeroberfläche in der von Ihnen gewählten Sprache angezeigt wird.</li></ul>Diese gespeicherten Daten umfassen lediglich Ihre Präferenzen und keine personenbezogenen Informationen."
+      },
+      "noPersonalData": {
+        "title": "4. Keine Erhebung persönlicher Daten",
+        "content": "Wir möchten ausdrücklich darauf hinweisen, dass wir keinerlei personenbezogene Daten über Sie erheben, speichern oder verarbeiten. Die im Local Storage gespeicherten Informationen dienen ausschließlich der Verbesserung Ihres Nutzungserlebnisses auf unserer Website und enthalten keine Informationen, die Rückschlüsse auf Ihre Identität zulassen."
+      },
+      "deleteData": {
+        "title": "5. Wie Sie Ihre Daten löschen können",
+        "content": "Da die gespeicherten Informationen im Local Storage keinerlei persönliche Daten enthalten, können Sie diese jederzeit problemlos löschen. Hier erfahren Sie, wie Sie den Local Storage in den gängigsten Browsern leeren können:<br><br><strong>Google Chrome:</strong><br><ol><li>Klicken Sie auf das Drei-Punkte-Menü oben rechts und wählen Sie „Einstellungen“.</li><li>Scrollen Sie nach unten und klicken Sie auf „Erweitert“.</li><li>Unter „Datenschutz und Sicherheit“ wählen Sie „Browserdaten löschen“.</li><li>Wählen Sie den Zeitraum und stellen Sie sicher, dass „Cookies und andere Websitedaten“ sowie „Bilder und Dateien im Cache“ ausgewählt sind.</li><li>Klicken Sie auf „Daten löschen“.</li></ol><br><strong>Mozilla Firefox:</strong><br><ol><li>Klicken Sie auf das Hamburger-Menü oben rechts und wählen Sie „Einstellungen“.</li><li>Gehen Sie zu „Datenschutz & Sicherheit“.</li><li>Unter „Cookies und Website-Daten“ klicken Sie auf „Daten verwalten“.</li><li>Wählen Sie die entsprechenden Daten aus und klicken Sie auf „Entfernen“.</li></ol><br><strong>Microsoft Edge:</strong><br><ol><li>Klicken Sie auf das Drei-Punkte-Menü oben rechts und wählen Sie „Einstellungen“.</li><li>Gehen Sie zu „Datenschutz, Suche und Dienste“.</li><li>Unter „Browserdaten löschen“ klicken Sie auf „Zu löschendes Element auswählen“.</li><li>Wählen Sie die gewünschten Daten aus und klicken Sie auf „Jetzt löschen“.</li></ol><br><strong>Safari (Mac):</strong><br><ol><li>Gehen Sie zu „Safari“ > „Einstellungen“.</li><li>Navigieren Sie zum Tab „Datenschutz“.</li><li>Klicken Sie auf „Websitedaten verwalten“.</li><li>Wählen Sie die gewünschten Daten aus und klicken Sie auf „Entfernen“.</li></ol>"
+      },
+      "userRights": {
+        "title": "6. Rechte der Nutzer",
+        "content": "Auch wenn wir keine personenbezogenen Daten erheben, möchten wir Sie darüber informieren, dass Sie folgende Rechte haben:<ul><li><strong>Recht auf Auskunft:</strong> Sie können jederzeit Auskunft darüber verlangen, welche Daten wir speichern.</li><li><strong>Recht auf Löschung:</strong> Sie können die Löschung der gespeicherten Daten im Local Storage verlangen.</li><li><strong>Recht auf Berichtigung:</strong> Sollten die gespeicherten Daten fehlerhaft sein, haben Sie das Recht, deren Berichtigung zu verlangen.</li></ul>"
+      },
+      "changes": {
+        "title": "7. Änderungen dieser Datenschutzerklärung",
+        "content": "Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit mit Wirkung für die Zukunft zu ändern. Eine jeweils aktuelle Version ist auf unserer Website verfügbar. Bitte überprüfen Sie die Datenschutzerklärung regelmäßig, um sich über etwaige Änderungen zu informieren."
+      },
+      "contact": {
+        "title": "8. Kontakt",
+        "content": "Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte in Anspruch nehmen möchten, können Sie sich jederzeit an uns wenden:<br><br>alfred.narjes@gmail.com"
+      }
+    },
+    "acceptButton": "Verstanden"
+  }
+}

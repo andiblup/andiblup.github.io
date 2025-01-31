@@ -1,0 +1,68 @@
+{
+  "toast": {
+    "success": {
+      "title": "Welcome!",
+      "content": "Welcome to my portfolio page."
+    },
+    "warning": {
+      "title": "Current in development",
+      "content": "It is still under development, not every styling, functionally and content has been added yet.<br>Feel free to contact me alfred.narjes@gmail.com."
+    },
+    "info": {
+      "title": "Click me",
+      "content": "Left click to minimize me, right click to remove me."
+    }
+  },
+  "nav": {
+    "cv": "Curriculum Vitae",
+    "privacy": "Privacy Policy",
+    "colorize": "Infuse your life with color",
+    "theme": "Color Mode",
+    "language": "Language"
+  },
+  "sidebar": {
+    "home": "Home",
+    "about": "About Me",
+    "projects": "Projects<i :class=\"{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}\"style=\"font-size: inherit; display: inline-block; vertical-align: middle;\"></i>",
+    "overview": "Overview",
+    "contact": "Contact"
+  },
+  "privacyModal": {
+    "header": "Privacy Policy",
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "Protecting your personal data is of utmost importance to us. We handle your personal information confidentially and in accordance with legal data protection regulations as well as this privacy policy. In this policy, we inform you about the type, scope, and purpose of the collection, processing, and use of your data on our website."
+      },
+      "responsibleParty": {
+        "title": "2. Responsible Party",
+        "content": "The entity responsible under data protection laws is:<br><br>Alfred Narjes<br>AT-1230 Vienna<br>alfred.narjes@gmail.com"
+      },
+      "dataCollection": {
+        "title": "3. Data Collection on this Website",
+        "content": "Our website uses the so-called <strong>Local Storage</strong> to store certain settings such as the theme (design) and the language of your user interface. This data helps us remember your preferences and provide you with a personalized experience.<br><br><strong>3.1. What is Local Storage?</strong><br>Local Storage is a feature of modern web browsers that allows data to be stored locally on your device. Unlike cookies, Local Storage can store larger amounts of data, and the data remains available even after the browser is closed, until it is explicitly deleted.<br><br><strong>3.2. Use of Local Storage on our Website</strong><br>We use Local Storage on our website exclusively for the following purposes:<ul><li><strong>Storing the selected theme:</strong> So that the design (e.g., light or dark mode) you prefer can be automatically applied on your next visit.</li><li><strong>Storing the preferred language:</strong> So that the user interface is displayed in your chosen language.</li></ul>This stored data only includes your preferences and no personal information."
+      },
+      "noPersonalData": {
+        "title": "4. No Collection of Personal Data",
+        "content": "We would like to point out that we do not collect, store, or process any personal data about you. The information stored in Local Storage is used solely to improve your experience on our website and does not contain any information that could be used to identify you."
+      },
+      "deleteData": {
+        "title": "5. How to Delete Your Data",
+        "content": "Since the information stored in Local Storage does not contain any personal data, you can delete it at any time without any issues. Here is how you can clear Local Storage in the most common browsers:<br><br><strong>Google Chrome:</strong><br><ol><li>Click the three-dot menu in the top right and select 'Settings'.</li><li>Scroll down and click on 'Advanced'.</li><li>Under 'Privacy and security', choose 'Clear browsing data'.</li><li>Select the time range and ensure that 'Cookies and other site data' as well as 'Cached images and files' are checked.</li><li>Click 'Clear data'.</li></ol><br><strong>Mozilla Firefox:</strong><br><ol><li>Click the hamburger menu in the top right and select 'Options'.</li><li>Go to 'Privacy & Security'.</li><li>Under 'Cookies and Site Data', click on 'Manage Data'.</li><li>Select the data you want to remove and click 'Remove'.</li></ol><br><strong>Microsoft Edge:</strong><br><ol><li>Click the three-dot menu in the top right and select 'Settings'.</li><li>Go to 'Privacy, search, and services'.</li><li>Under 'Clear browsing data', click on 'Choose what to clear'.</li><li>Select the desired data and click 'Clear now'.</li></ol><br><strong>Safari (Mac):</strong><br><ol><li>Go to 'Safari' > 'Preferences'.</li><li>Select the 'Privacy' tab.</li><li>Click on 'Manage Website Data'.</li><li>Select the data you want to remove and click 'Remove'.</li></ol>"
+      },
+      "userRights": {
+        "title": "6. User Rights",
+        "content": "Even though we do not collect personal data, we want to inform you that you have the following rights:<ul><li><strong>Right to Information:</strong> You can request information about the data we store at any time.</li><li><strong>Right to Deletion:</strong> You can request the deletion of the data stored in Local Storage.</li><li><strong>Right to Correction:</strong> If the stored data is incorrect, you have the right to request its correction.</li></ul>"
+      },
+      "changes": {
+        "title": "7. Changes to this Privacy Policy",
+        "content": "We reserve the right to change this privacy policy at any time with future effect. The current version is always available on our website. Please review the privacy policy regularly to stay informed about any changes."
+      },
+      "contact": {
+        "title": "8. Contact",
+        "content": "If you have any questions regarding data protection or wish to exercise your rights, you can contact us at any time:<br><br>alfred.narjes@gmail.com"
+      }
+    },
+    "acceptButton": "Understood"
+  }
+}

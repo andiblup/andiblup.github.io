@@ -13,6 +13,8 @@
                   .toLowerCase() === 'de') 
                 ? 'de' 
                 : 'en',
+    pageLang: {},
+
     changeLang(newLang) {
         this.currentLang = newLang;
         document.documentElement.lang = newLang;
@@ -22,10 +24,11 @@
         // damit das neu geladene Template gleich in der neuen Sprache kommt:
         handleLocation(); 
     },
-    init() {
-        // document.querySelectorAll('.bi').forEach(element => {
-        //                 element.classList.toggle('bi-grad');
-        //             });
+    async init() {
+        const lang = localStorage.getItem('appLang') || 'en';
+        const response = await fetch('/lang/index/' + lang + '.json');
+        this.pageLang = await response.json();
+        
         this.$watch('colorize', (newVal, oldVal) => {
             document.querySelectorAll('.bi').forEach(element => {
                     if (!element.classList.contains('no-grad')) {
@@ -74,27 +77,28 @@
 
     <div id="root">
         <div id="sidebar" class="navbar collapsed">
-            <ul class="nav mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow"
+            <ul class="nav my-2 mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow"
                 x-data="{openProjects: false, openDemos: false}">
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/">Home</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/" x-text="pageLang.sidebar.home">Home</a>
                 </li>
 
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about">About</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about" x-text="pageLang.sidebar.about">About</a>
                 </li>
 
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openProjects = !openProjects"
-                        onclick="{}" style="gap: 0.5rem;">Projects
+                        onclick="{}" style="gap: 0.5rem;" x-html="pageLang.sidebar.projects">Projects
 
-                        <i :class="{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}"
-                            style="font-size: inherit; display: inline-block; vertical-align: middle;"></i>
+                        <!-- Icon is in translation because x-text overrides all children -->
+                        <!-- <i :class="{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}"
+                            style="font-size: inherit; display: inline-block; vertical-align: middle;"></i> -->
                     </a>
                 </li>
 
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects">Overview</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects" x-text="pageLang.sidebar.overview">Overview</a>
                 </li>
                 <!-- <li class="nav-item elevated"> -->
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
@@ -134,7 +138,7 @@
 
 
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/contact">Contact</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/contact" x-text="pageLang.sidebar.contact">Contact</a>
                 </li>
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/ananas">404</a>
@@ -170,16 +174,16 @@
 
                         }" class="d-flex align-items-center">
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
-                        <a data-tooltip="Ich bin ein Tooltip" class="btn" href="/assets/cv.pdf" target="_blank"><i
+                        <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank"><i
                                 class="bi bi-grad bi-file-earmark-person"></i></a>
-                        <a data-tooltip="Datenschutz" class="btn" data-modal="privacyModal" class="modal-trigger"><i
+                        <a :data-tooltip="pageLang.nav.privacy"  class="btn" data-modal="privacyModal" class="modal-trigger"><i
                                 class="bi bi-grad bi-shield-shaded"></i></a>
-                        <a class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-grad bi-palette"></i></a>
-                        <a class="btn" id="theme-toggle-button">
+                        <a :data-tooltip="pageLang.nav.colorize"  class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-grad bi-palette"></i></a>
+                        <a :data-tooltip="pageLang.nav.theme"  class="btn" id="theme-toggle-button">
                             <i id="theme-toggle-icon" class="bi bi-grad"
                                 :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
                         </a>
-                        <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        <a :data-tooltip="pageLang.nav.language"  class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="bi bi-grad bi-translate"></i>
                         </a>
@@ -265,7 +269,7 @@
             <!-- <button data-modal="privacyModal" class="modal-trigger" >Datenschutzerklärung anzeigen</button> -->
 
             <!-- Datenschutzerklärungs-Modal -->
-            <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
+            <!-- <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
                 data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
                 aria-labelledby="modal-title-privacy" x-data="{
                 sections: {
@@ -282,21 +286,14 @@
                 sessionStorageVar: 'privacyConsent',
                 init() {
 
-                // const consent = sessionStorage.getItem('privacyConsent');
                 this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
                 console.log('consent');
                 console.log(consent);
                 
                 if (!consent) {
-                // Öffne das Modal
                 Modal.open('privacyModal');
 
-                } else {
-                // Setze data-close-on-overlay auf true, wenn Consent bereits gegeben ist //! nicht da anders
-                // const modal = document.getElementById('privacyModal');
-                // modal.setAttribute('data-close-on-overlay', 'true');
-                
-                }
+                } 
                 },
                 toggleSection(section) {
                 this.sections[section] = !this.sections[section];
@@ -305,51 +302,30 @@
                 return this.sections[section];
                 },
                 accept() {
-                // Speichere das Einverständnis im Session Storage
                 sessionStorage.setItem(this.sessionStorageVar, 'true');
-                // Setze data-close-on-overlay auf true
                 const modal = document.getElementById('privacyModal');
-                // modal.setAttribute('data-close-on-overlay', 'true');
-                // Schließe das Modal
                 Modal.close(modal);
                 },
                 handleOverlayClick(event) {
                 const modal = document.getElementById('privacyModal');
-                // const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
-                // const closeOnOverlay = sessionStorage.getItem('privacyConsent');
-                // const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
 
                 this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
                 modal.setAttribute('data-close-on-overlay', `${this.consent}`);
-                // if (this.consent) {
-                //     console.log('consent');
-                //     console.log(this.consent);
-                //     console.log(event.target);
-                    
-                //     modal.setAttribute('data-close-on-overlay', 'true');
-                // }
                 },
                 handleEscape(event) {
-                // const modal = document.getElementById('privacyModal');
-                // const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
-                // const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
                 this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
                 if (this.consent) {
                 Modal.close(modal);
                 }
                 }
                 }" x-init="init()">
-                <!-- Modal-Inhalt -->
-                <div class="custom-modal-content" style="/*max-width: 60%;*/ max-height: 90vh; overflow-y: auto;"
+                <div class="custom-modal-content" style="max-height: 90vh; overflow-y: auto;"
                     :style="{'max-width': (globalScreenWidth < 689) ? '95%' : '60%'}"
                     @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
 
-                    <!-- Modal-Titel -->
                     <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold">Datenschutzerklärung</h2>
 
-                    <!-- Accordion-Container -->
                     <div class="space-y-4">
-                        <!-- Abschnitt 1: Einleitung -->
                         <div>
                             <p :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer"  @click="toggleSection('einleitung')" class="accordion-button">
                                 <span>1. Einleitung</span>
@@ -366,7 +342,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 2: Verantwortliche Stelle -->
                         <div>
                             <p :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer" @click="toggleSection('verantwortlicheStelle')" >
                                 <span>2. Verantwortliche Stelle</span><i class="bi no-grad ms-2"></i>
@@ -385,7 +360,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 3: Datenerfassung auf dieser Website -->
                         <div>
                             <p @click="toggleSection('datenerfassung')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>3. Datenerfassung auf dieser Website</span>
@@ -426,7 +400,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 4: Keine Erhebung persönlicher Daten -->
                         <div>
                             <p @click="toggleSection('keinePersoenlichenDaten')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>4. Keine Erhebung persönlicher Daten</span>
@@ -443,7 +416,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 5: Wie Sie Ihre Daten löschen können -->
                         <div>
                             <p @click="toggleSection('datenLoeschen')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>5. Wie Sie Ihre Daten löschen können</span>
@@ -496,7 +468,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 6: Rechte der Nutzer -->
                         <div>
                             <p @click="toggleSection('nutzerRechte')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>6. Rechte der Nutzer</span>
@@ -518,7 +489,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 7: Änderungen dieser Datenschutzerklärung -->
                         <div>
                             <p @click="toggleSection('aenderungen')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>7. Änderungen dieser Datenschutzerklärung</span>
@@ -534,7 +504,6 @@
                             </div>
                         </div>
 
-                        <!-- Abschnitt 8: Kontakt -->
                         <div>
                             <p @click="toggleSection('kontakt')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>8. Kontakt</span>
@@ -554,12 +523,170 @@
 
                     </div>
 
-                    <!-- Verstanden Button -->
                     <div class="mt-6 text-right">
                         <a @click="accept()"  :class="{'fs-small': globalScreenWidth < 689 }" class="px-4 py-2 btn btn-success">Verstanden</a>
                     </div>
                 </div>
+            </div> -->
+            <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
+                data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
+                aria-labelledby="modal-title-privacy" x-data="{
+         sections: {
+             introduction: false,
+             responsibleParty: false,
+             dataCollection: false,
+             noPersonalData: false,
+             deleteData: false,
+             userRights: false,
+             changes: false,
+             contact: false
+         },
+         consent: false,
+         sessionStorageVar: 'privacyConsent',
+         init() {
+             // Prüfe, ob bereits Consent im Session Storage gesetzt ist
+             this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
+             console.log('consent', this.consent);
+             
+             if (!this.consent) {
+                 // Öffne das Modal, falls noch kein Consent erteilt wurde
+                 Modal.open('privacyModal');
+             }
+         },
+         toggleSection(section) {
+             this.sections[section] = !this.sections[section];
+         },
+         isSectionOpen(section) {
+             return this.sections[section];
+         },
+         accept() {
+             // Speichere das Einverständnis im Session Storage
+             sessionStorage.setItem(this.sessionStorageVar, 'true');
+             // Schließe das Modal
+             Modal.close(document.getElementById('privacyModal'));
+         },
+         handleOverlayClick(event) {
+             const modal = document.getElementById('privacyModal');
+             this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
+             modal.setAttribute('data-close-on-overlay', `${this.consent}`);
+         },
+         handleEscape(event) {
+             this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
+             if (this.consent) {
+                 Modal.close(document.getElementById('privacyModal'));
+             }
+         }
+     }" x-init="init()">
+                <!-- Modal Content -->
+                <div class="custom-modal-content" style="max-height: 90vh; overflow-y: auto;"
+                    :style="{'max-width': (globalScreenWidth < 689) ? '95%' : '60%'}"
+                    @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
+
+                    <!-- Modal Title -->
+                    <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold"
+                        x-html="pageLang.privacyModal.header"></h2>
+
+                    <!-- Accordion Container -->
+                    <div class="space-y-4">
+
+                        <!-- Section 1: Introduction -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('introduction')">
+                                <span x-html="pageLang.privacyModal.sections.introduction.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('introduction')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.introduction.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Responsible Party -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('responsibleParty')">
+                                <span x-html="pageLang.privacyModal.sections.responsibleParty.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('responsibleParty')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.responsibleParty.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Data Collection on this Website -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('dataCollection')">
+                                <span x-html="pageLang.privacyModal.sections.dataCollection.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('dataCollection')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.dataCollection.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 4: No Collection of Personal Data -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('noPersonalData')">
+                                <span x-html="pageLang.privacyModal.sections.noPersonalData.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('noPersonalData')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.noPersonalData.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 5: How to Delete Your Data -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('deleteData')">
+                                <span x-html="pageLang.privacyModal.sections.deleteData.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('deleteData')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.deleteData.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 6: User Rights -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('userRights')">
+                                <span x-html="pageLang.privacyModal.sections.userRights.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('userRights')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.userRights.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 7: Changes to this Privacy Policy -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('changes')">
+                                <span x-html="pageLang.privacyModal.sections.changes.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('changes')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.changes.content"></p>
+                            </div>
+                        </div>
+
+                        <!-- Section 8: Contact -->
+                        <div>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }"
+                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('contact')">
+                                <span x-html="pageLang.privacyModal.sections.contact.title"></span>
+                            </p>
+                            <div x-show="isSectionOpen('contact')" class="accordion-content" x-cloak>
+                                <p x-html="pageLang.privacyModal.sections.contact.content"></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Accept Button -->
+                    <div class="mt-6 text-right">
+                        <a @click="accept()" :class="{'fs-small': globalScreenWidth < 689 }"
+                            class="px-4 py-2 btn btn-success" x-html="pageLang.privacyModal.acceptButton"></a>
+                    </div>
+                </div>
             </div>
+
 
 
             <footer style="border-radius: 0px;" x-data="{ 
@@ -578,19 +705,23 @@
                     <div class="ms-3 ">
                         <a href="https://www.linkedin.com/in/alfred-narjes-b25ab7252/" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
-                            <i style="font-size: 1rem;" class="bi bi-linkedin"></i>
+                            <i style="font-size: 1rem;" class="bi bi-grad bi-linkedin"></i>
+                        </a>
+                        <a href="http://discordapp.com/users/283929328297836555" target="_blank" class="btn"
+                            style="text-decoration: none; color: var(--icon-color);">
+                            <i style="font-size: 1rem;" class="bi bi-grad bi-discord"></i>
                         </a>
                         <a href="https://github.com/andiblup" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
-                            <i style="font-size: 1rem;" class="bi bi-github"></i>
+                            <i style="font-size: 1rem;" class="bi bi-grad bi-github"></i>
                         </a>
                         <a href="https://gitlab.com/andiblup" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
-                            <i style="font-size: 1rem;" class="bi bi-gitlab"></i>
+                            <i style="font-size: 1rem;" class="bi bi-grad bi-gitlab"></i>
                         </a>
                         <a href="mailto:alfred.narjes@gmail.com" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
-                            <i style="font-size: 1rem;" class="bi bi-envelope"></i>
+                            <i style="font-size: 1rem;" class="bi bi-grad bi-envelope"></i>
                         </a>
                     </div>
 
@@ -641,7 +772,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             if (sessionStorage.getItem('privacyConsent') !== 'true') {
-                
+
                 document.querySelector('[data-modal="privacyModal"]').click();
             }
         });
