@@ -381,6 +381,10 @@
     animation: slideOut 0.5s forwards;
 }
 
+.accordion-button {
+    border-bottom: var(--text) 1px solid;
+}
+
 
       /* .custom-modal-content:focus {
         outline: none;

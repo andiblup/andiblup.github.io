@@ -12,6 +12,15 @@
     --icon-bg-color: #ffffff;
     --icon-color: #212529;
     --background-color-hover: #d1d1d1;
+    --success-color: #28a745;
+    --success-hover-color: #218838;
+    --warning-color: #ffc107;
+    --warning-hover-color: #ffd54f;
+    --error-color: #dc3545;
+    --error-hover-color: #c82333;
+    --info-color: #17a2b8;
+    --info-hover-color: #138496;
+
 
     /* Dark Mode Colors */
     --primary-color-dark: #006666; /* Dunkleres Teal */
@@ -41,6 +50,15 @@
     --icon-bg: var(--icon-bg-color);
     --icon-color: var(--icon-color);
     --background-color-hover: var(--background-color-hover);
+    --success: var(--success-color);
+    --success-hover: var(--success-hover-color);
+    --warning: var(--warning-color);
+    --warning-hover: var(--warning-hover-color);
+    --error: var(--error-color);
+    --error-hover: var(--error-hover-color);
+    --info: var(--info-color);
+    --info-hover: var(--info-hover-color);
+
 }
 
 /* Dark Mode Styles */
@@ -310,9 +328,9 @@ input[type="number"] {
     background-color: var(--card-bg);
 }
 
-.btn-primary {
+/* .btn-primary {
     color: var(--text-color) !important;
-}
+} */
 
 /* Im Standard-Fall (Light Mode) kannst du es so anpassen: */
 /* Im “Light Mode” */
@@ -364,6 +382,25 @@ html {
     background-color: var(--secondary-color-dark) !important;
     border-color: var(--secondary-color-dark) !important;
 }
+.btn-success {
+    background-color: var(--success);
+    border-color: var(--success-hover);
+}
+
+.btn-success:hover {
+    background-color: var(--success-hover) !important;
+    border-color: var(--success) !important;
+}
+/* .btn-success:hover {
+    border: 1px solid; 
+    background-image: linear-gradient(45deg, var(--success-hover), var(--success), var(--success-hover)) !important;
+    border-image: linear-gradient(45deg, black, darkgrey, grey, darkgrey, black) 1 stretch !important;
+}
+.btn-success:active {
+    border: 1px solid;
+    background-image: linear-gradient(45deg, var(--success), var(--success-hover)) !important;
+    border-image: linear-gradient(45deg, var(--success), var(--success-hover)) 1 stretch !important;
+} */
 
 #body {
     min-height: 100vh;
@@ -385,7 +422,8 @@ html {
     flex-direction: column; */
     margin-left: 30px;
     margin-right: 25px;
-    margin-top: 70px;
+    /* margin-top: 70px; */
+    margin-top: 58px;
     margin-bottom: 15px;
     /* -100 footer, -31 = topbar - margin | works on different screens*/
     min-height: calc(100vh - 131px);
@@ -399,7 +437,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     padding: 10px;
-    bottom: 0;
+    /* bottom: 0; */
 }
 
 #footer-container {

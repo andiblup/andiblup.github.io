@@ -32,38 +32,45 @@
 
 /* Toast-Typen */
 .custom-toast-success {
-    background-color: #28a745;
+    /* background-color: #28a745; */
+    background-color: var(--success);
 }
 
 .custom-toast-error {
-    background-color: #dc3545;
+    /* background-color: #dc3545; */
+    background-color: var(--error);
 }
 
 .custom-toast-info {
-    background-color: #17a2b8;
+    /* background-color: #17a2b8; */
+    background-color: var(--info);
 }
 
 .custom-toast-warning {
-    background-color: #ffc107;
-    color: #212529;
+    /* background-color: #ffc107; */
+    background-color: var(--warning);
+    color: var(--card-bg-color-dark);
 }
 
 /* Hover-Effekte */
 .custom-toast-success:hover {
-    background-color: #218838; /* Leicht dunkler */
+    /* background-color: #218838; */
+    background-color: var(--success-hover);
 }
 
 .custom-toast-error:hover {
-    background-color: #c82333; /* Leicht dunkler */
+    /* background-color: #c82333; */
+    background-color: var(--error-hover);
 }
 
 .custom-toast-info:hover {
-    background-color: #138496; /* Leicht dunkler */
+    /* background-color: #138496; */
+    background-color: var(--info-hover);
 }
 
 .custom-toast-warning:hover {
-    background-color: #ffd54f; /* Leicht heller */
-    color: #212529; /* Textfarbe bleibt erhalten */
+    /* background-color: #ffd54f; */
+    background-color: var(--warning-hover);
 }
 
 /* Schließen-Button */

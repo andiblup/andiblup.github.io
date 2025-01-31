@@ -2,6 +2,7 @@
 <html :lang="currentLang" x-data="{
     pageTitle: 'Portfolio',
     colorize: true,
+    globalScreenSize: window.innerWidth,
     breadCrumbs: [],
     // currentLang: navigator.language || navigator.userLanguage || 'en',
     currentLang:   ((localStorage.getItem('appLang') 
@@ -171,6 +172,8 @@
                         <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
                         <a data-tooltip="Ich bin ein Tooltip" class="btn" href="/assets/cv.pdf" target="_blank"><i
                                 class="bi bi-grad bi-file-earmark-person"></i></a>
+                        <a data-tooltip="Datenschutz" class="btn" data-modal="privacyModal" class="modal-trigger"><i
+                                class="bi bi-grad bi-shield-shaded"></i></a>
                         <a class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-grad bi-palette"></i></a>
                         <a class="btn" id="theme-toggle-button">
                             <i id="theme-toggle-icon" class="bi bi-grad"
@@ -227,8 +230,8 @@
             <script src="/js/tooltip.js"></script>
 
 
-            <!-- Beispiel-Buttons zum Testen -->
-            <div style="margin: 20px;">
+            <!-- Beispiel-Buttons zum Testen TOAST-->
+            <!-- <div style="margin: 20px;">
                 <button onclick="Toast.show('success', 'Erfolg', 'Deine Aktion war erfolgreich!')"
                     class="btn btn-success">Erfolg Toast</button>
                 <button onclick="Toast.show('error', 'Fehler', 'Etwas ist schief gelaufen.')"
@@ -241,57 +244,25 @@
                     onclick="window.Toast.show('warning', 'Warnung oida voll die warnung ich warne die warnung die warnung soll gewarnt sein', 'Überprüfe deine Eingabenllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll.')"
                     class="btn btn-warning">Warnung Toast</button>
                 <button onclick="console.log(window.Toast)" class="btn btn-secondary">Toast Objekt Loggen</button>
+            </div> -->
 
-
-            </div>
-            <!-- Old Modal -->
-            <!-- <button data-modal="myModal1" id="btnMyModal1">Modal</button>
-    <div id="myModal1" class="custom-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
-
-        <div class="custom-modal-content">
-            <span class="close" data-close>&times;</span>
-            <p>Some text in the Modal..</p>
-        </div>
-    </div> -->
-
-
+            <!-- Plain Modal, Leagcy -->
             <!-- <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
 
-
-    <div id="myModal1" class="custom-modal" data-animation-in="bounceIn" data-animation-out="fadeOut" aria-hidden="true"
-        role="dialog" aria-labelledby="modal-title-1" x-data="{ open: false, animClass: '' }" x-show="open"
-        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
-        x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-        @open-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationIn; open = true }"
-        @close-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationOut; open = false }">
-
-  
-        <div class="custom-modal-content">
-            <span class="close" data-close>&times;</span>
-            <h2 id="modal-title-1">Modal Titel</h2>
-            <p>Einige Inhalte im Modal.</p>
-        </div>
-    </div> -->
-
-            <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
-
-            <!-- Modal -->
             <div id="myModal1" class="custom-modal" data-animation-in="animate-bounceIn"
                 data-animation-out="animate-fadeOut" aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
 
-                <!-- Modal-Inhalt -->
                 <div class="custom-modal-content">
                     <span class="close" data-close>&times;</span>
                     <h2 id="modal-title-1">Modal Titel</h2>
                     <p>Einige Inhalte im Modal..</p>
                 </div>
-            </div>
+            </div> -->
 
 
             <!-- DATA PRIVACY MODAL -->
             <!-- Button zum Öffnen des Modals -->
-            <button data-modal="privacyModal" class="modal-trigger">Datenschutzerklärung anzeigen</button>
+            <!-- <button data-modal="privacyModal" class="modal-trigger" >Datenschutzerklärung anzeigen</button> -->
 
             <!-- Datenschutzerklärungs-Modal -->
             <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
@@ -312,7 +283,7 @@
                 init() {
 
                 // const consent = sessionStorage.getItem('privacyConsent');
-                this.consent = sessionStorage.getItem('privacyConsent') === 'true';
+                this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
                 console.log('consent');
                 console.log(consent);
                 
@@ -335,7 +306,7 @@
                 },
                 accept() {
                 // Speichere das Einverständnis im Session Storage
-                sessionStorage.setItem('privacyConsent', 'true');
+                sessionStorage.setItem(this.sessionStorageVar, 'true');
                 // Setze data-close-on-overlay auf true
                 const modal = document.getElementById('privacyModal');
                 // modal.setAttribute('data-close-on-overlay', 'true');
@@ -348,7 +319,7 @@
                 // const closeOnOverlay = sessionStorage.getItem('privacyConsent');
                 // const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
 
-                this.consent = sessionStorage.getItem('privacyConsent') === 'true';
+                this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
                 modal.setAttribute('data-close-on-overlay', `${this.consent}`);
                 // if (this.consent) {
                 //     console.log('consent');
@@ -362,14 +333,15 @@
                 // const modal = document.getElementById('privacyModal');
                 // const closeOnOverlay = modal.getAttribute('data-close-on-overlay');
                 // const canClose = closeOnOverlay === null ? true : closeOnOverlay === 'true';
-                this.consent = sessionStorage.getItem('privacyConsent') === 'true';
+                this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
                 if (this.consent) {
                 Modal.close(modal);
                 }
                 }
                 }" x-init="init()">
                 <!-- Modal-Inhalt -->
-                <div class="custom-modal-content" style="max-width: 60%; max-height: 80vh; overflow-y: auto;"
+                <div class="custom-modal-content" style="/*max-width: 60%;*/ max-height: 90vh; overflow-y: auto;"
+                    :style="{'max-width': (globalScreenWidth < 689) ? '95%' : '60%'}"
                     @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
 
                     <!-- Modal-Titel -->
@@ -379,10 +351,10 @@
                     <div class="space-y-4">
                         <!-- Abschnitt 1: Einleitung -->
                         <div>
-                            <button @click="toggleSection('einleitung')" class="accordion-button">
+                            <p :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer"  @click="toggleSection('einleitung')" class="accordion-button">
                                 <span>1. Einleitung</span>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('einleitung')" class="accordion-content" x-cloak>
                                 <p>
                                     Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln
@@ -396,10 +368,10 @@
 
                         <!-- Abschnitt 2: Verantwortliche Stelle -->
                         <div>
-                            <button @click="toggleSection('verantwortlicheStelle')" class="accordion-button">
-                                <span>2. Verantwortliche Stelle</span>
+                            <p :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer" @click="toggleSection('verantwortlicheStelle')" >
+                                <span>2. Verantwortliche Stelle</span><i class="bi no-grad ms-2"></i>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('verantwortlicheStelle')" class="accordion-content" x-cloak>
                                 <p>
                                     Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:
@@ -415,9 +387,9 @@
 
                         <!-- Abschnitt 3: Datenerfassung auf dieser Website -->
                         <div>
-                            <button @click="toggleSection('datenerfassung')" class="accordion-button">
+                            <p @click="toggleSection('datenerfassung')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>3. Datenerfassung auf dieser Website</span>
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('datenerfassung')" class="accordion-content" x-cloak>
                                 <p>
                                     Unsere Website verwendet den sogenannten <strong>Local Storage</strong>, um
@@ -456,10 +428,10 @@
 
                         <!-- Abschnitt 4: Keine Erhebung persönlicher Daten -->
                         <div>
-                            <button @click="toggleSection('keinePersoenlichenDaten')" class="accordion-button">
+                            <p @click="toggleSection('keinePersoenlichenDaten')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>4. Keine Erhebung persönlicher Daten</span>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('keinePersoenlichenDaten')" class="accordion-content" x-cloak>
                                 <p>
                                     Wir möchten ausdrücklich darauf hinweisen, dass wir keinerlei personenbezogene Daten
@@ -473,10 +445,10 @@
 
                         <!-- Abschnitt 5: Wie Sie Ihre Daten löschen können -->
                         <div>
-                            <button @click="toggleSection('datenLoeschen')" class="accordion-button">
+                            <p @click="toggleSection('datenLoeschen')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>5. Wie Sie Ihre Daten löschen können</span>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('datenLoeschen')" class="accordion-content" x-cloak>
                                 <p>
                                     Da die gespeicherten Informationen im Local Storage keinerlei persönliche Daten
@@ -526,10 +498,10 @@
 
                         <!-- Abschnitt 6: Rechte der Nutzer -->
                         <div>
-                            <button @click="toggleSection('nutzerRechte')" class="accordion-button">
+                            <p @click="toggleSection('nutzerRechte')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>6. Rechte der Nutzer</span>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('nutzerRechte')" class="accordion-content" x-cloak>
                                 <p>
                                     Auch wenn wir keine personenbezogenen Daten erheben, möchten wir Sie darüber
@@ -548,10 +520,10 @@
 
                         <!-- Abschnitt 7: Änderungen dieser Datenschutzerklärung -->
                         <div>
-                            <button @click="toggleSection('aenderungen')" class="accordion-button">
+                            <p @click="toggleSection('aenderungen')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>7. Änderungen dieser Datenschutzerklärung</span>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('aenderungen')" class="accordion-content" x-cloak>
                                 <p>
                                     Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit mit Wirkung für
@@ -564,10 +536,10 @@
 
                         <!-- Abschnitt 8: Kontakt -->
                         <div>
-                            <button @click="toggleSection('kontakt')" class="accordion-button">
+                            <p @click="toggleSection('kontakt')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
                                 <span>8. Kontakt</span>
 
-                            </button>
+                            </p>
                             <div x-show="isSectionOpen('kontakt')" class="accordion-content" x-cloak>
                                 <p>
                                     Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte in Anspruch nehmen möchten,
@@ -584,7 +556,7 @@
 
                     <!-- Verstanden Button -->
                     <div class="mt-6 text-right">
-                        <a @click="accept()" class="px-4 py-2 btn">Verstanden</a>
+                        <a @click="accept()"  :class="{'fs-small': globalScreenWidth < 689 }" class="px-4 py-2 btn btn-success">Verstanden</a>
                     </div>
                 </div>
             </div>
@@ -666,11 +638,14 @@
 
     <script src="/js/toast.js"></script>
 
-    <!-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('toggle-sidebar').click();
+            if (sessionStorage.getItem('privacyConsent') !== 'true') {
+                
+                document.querySelector('[data-modal="privacyModal"]').click();
+            }
         });
-    </script> -->
+    </script>
 
 </body>
 

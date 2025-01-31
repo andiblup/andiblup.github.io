@@ -180,10 +180,15 @@
                     // toast.style.opacity = (toast.style.opacity === '1') ? '0.7' : '1';
                     // toast.style.opacity = '0';
 
+                    const selection = window.getSelection();
+
 
                     //! Clicking in toast
                     event.stopPropagation();
                     event.preventDefault();
+                    if (selection && selection.toString().trim() !== "") {
+                        return;
+                    }
                     // console.log("Toast angeklickt.");
                     // console.log(toast.classList.contains('pinned'));
                     // console.log(toast.classList.contains('transparent-toast'));
