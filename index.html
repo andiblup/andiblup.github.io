@@ -217,6 +217,387 @@
             </div>
 
 
+            <!-- <div id="tooltip" class="tooltip"></div> -->
+            <div id="tooltip" class="tooltip">
+                <div class="tooltip-border">
+                    <div class="tooltip-content">
+                    </div>
+                </div>
+            </div>
+            <script src="/js/tooltip.js"></script>
+
+
+            <!-- Beispiel-Buttons zum Testen -->
+            <div style="margin: 20px;">
+                <button onclick="Toast.show('success', 'Erfolg', 'Deine Aktion war erfolgreich!')"
+                    class="btn btn-success">Erfolg Toast</button>
+                <button onclick="Toast.show('error', 'Fehler', 'Etwas ist schief gelaufen.')"
+                    class="btn btn-danger">Fehler
+                    Toast</button>
+                <button onclick="Toast.show('info', 'Info', 'Dies ist eine Informationsmeldung.')"
+                    class="btn btn-info">Info
+                    Toast</button>
+                <button
+                    onclick="window.Toast.show('warning', 'Warnung oida voll die warnung ich warne die warnung die warnung soll gewarnt sein', 'Überprüfe deine Eingabenllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll.')"
+                    class="btn btn-warning">Warnung Toast</button>
+                <button onclick="console.log(window.Toast)" class="btn btn-secondary">Toast Objekt Loggen</button>
+
+
+            </div>
+            <!-- Old Modal -->
+            <!-- <button data-modal="myModal1" id="btnMyModal1">Modal</button>
+    <div id="myModal1" class="custom-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
+
+        <div class="custom-modal-content">
+            <span class="close" data-close>&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div> -->
+
+
+            <!-- <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
+
+
+    <div id="myModal1" class="custom-modal" data-animation-in="bounceIn" data-animation-out="fadeOut" aria-hidden="true"
+        role="dialog" aria-labelledby="modal-title-1" x-data="{ open: false, animClass: '' }" x-show="open"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+        @open-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationIn; open = true }"
+        @close-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationOut; open = false }">
+
+  
+        <div class="custom-modal-content">
+            <span class="close" data-close>&times;</span>
+            <h2 id="modal-title-1">Modal Titel</h2>
+            <p>Einige Inhalte im Modal.</p>
+        </div>
+    </div> -->
+
+            <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
+
+            <!-- Modal -->
+            <div id="myModal1" class="custom-modal" data-animation-in="animate-bounceIn"
+                data-animation-out="animate-fadeOut" aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
+
+                <!-- Modal-Inhalt -->
+                <div class="custom-modal-content">
+                    <span class="close" data-close>&times;</span>
+                    <h2 id="modal-title-1">Modal Titel</h2>
+                    <p>Einige Inhalte im Modal..</p>
+                </div>
+            </div>
+
+
+            <!-- DATA PRIVACY MODAL -->
+            <!-- Button zum Öffnen des Modals -->
+            <button data-modal="privacyModal" class="modal-trigger">Datenschutzerklärung anzeigen</button>
+
+            <!-- Datenschutzerklärungs-Modal -->
+            <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
+                data-animation-out="animate-fadeOut" aria-hidden="true" role="dialog"
+                aria-labelledby="modal-title-privacy" x-data="{
+                    overlayClose: false,
+                    init() {
+                      // Überprüfe, ob das Einverständnis bereits gegeben wurde
+                      const consent = sessionStorage.getItem('privacyConsent');
+                      if (!consent) {
+                        // Öffne das Modal
+                        Modal.open('privacyModal');
+                      }
+                    },
+                    accept() {
+                      // Speichere das Einverständnis im Session Storage
+                      sessionStorage.setItem('privacyConsent', 'true');
+                      // Schließe das Modal
+                      Modal.close(document.getElementById('privacyModal'));
+                    },
+                    close() {
+                      if (this.overlayClose) {
+                        Modal.close(document.getElementById('privacyModal'));
+                      }
+                    }
+                  }" x-init="init()">
+                <!-- Modal-Inhalt -->
+                <div class="custom-modal-content" style="max-width: 60%; max-height: 80vh; overflow-y: auto;"
+                    @click.away="overlayClose ? close() : null" @keydown.escape.window="overlayClose ? close() : null">
+                    <!-- Modal-Titel -->
+                    <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold">Datenschutzerklärung</h2>
+
+                    <!-- Accordion-Container -->
+                    <div x-data="{ sections: {
+        einleitung: false,
+        verantwortlicheStelle: false,
+        datenerfassung: false,
+        keinePersoenlichenDaten: false,
+        datenLoeschen: false,
+        nutzerRechte: false,
+        aenderungen: false,
+        kontakt: false
+    } }" class="space-y-4">
+
+                        <!-- Abschnitt 1: Einleitung -->
+                        <div>
+                            <button @click="sections.einleitung = !sections.einleitung"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>1. Einleitung</span>
+                                <svg :class="sections.einleitung ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.einleitung" class="mt-2 px-4">
+                                <p>
+                                    Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln
+                                    Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen
+                                    Datenschutzvorschriften sowie dieser Datenschutzerklärung. In dieser Erklärung
+                                    informieren wir Sie über die Art, den Umfang und Zweck der Erhebung, Verarbeitung
+                                    und Nutzung Ihrer Daten auf unserer Website.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 2: Verantwortliche Stelle -->
+                        <div>
+                            <button @click="sections.verantwortlicheStelle = !sections.verantwortlicheStelle"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>2. Verantwortliche Stelle</span>
+                                <svg :class="sections.verantwortlicheStelle ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.verantwortlicheStelle" class="mt-2 px-4">
+                                <p>
+                                    Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:
+                                    <br><br>
+                                    [Ihr Unternehmensname]<br>
+                                    [Ihre Adresse]<br>
+                                    [PLZ, Ort]<br>
+                                    [E-Mail-Adresse]<br>
+                                    [Telefonnummer]
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 3: Datenerfassung auf dieser Website -->
+                        <div>
+                            <button @click="sections.datenerfassung = !sections.datenerfassung"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>3. Datenerfassung auf dieser Website</span>
+                                <svg :class="sections.datenerfassung ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.datenerfassung" class="mt-2 px-4 space-y-2">
+                                <p>
+                                    Unsere Website verwendet den sogenannten <strong>Local Storage</strong>, um
+                                    bestimmte Einstellungen wie das Theme (Design) und die Sprache Ihrer
+                                    Benutzeroberfläche zu speichern. Diese Daten helfen uns dabei, Ihre Präferenzen zu
+                                    merken und Ihnen ein personalisiertes Nutzungserlebnis zu bieten.
+                                </p>
+
+                                <h3 class="font-semibold">3.1. Was ist Local Storage?</h3>
+                                <p>
+                                    Der <strong>Local Storage</strong> ist eine Funktion moderner Webbrowser, die es
+                                    ermöglicht, Daten lokal auf Ihrem Gerät zu speichern. Im Gegensatz zu Cookies können
+                                    mit dem Local Storage größere Datenmengen gespeichert werden, und diese Daten
+                                    bleiben auch nach dem Schließen des Browsers erhalten, bis sie explizit gelöscht
+                                    werden.
+                                </p>
+
+                                <h3 class="font-semibold">3.2. Verwendung von Local Storage auf unserer Website</h3>
+                                <p>
+                                    Auf unserer Website nutzen wir den Local Storage ausschließlich für folgende Zwecke:
+                                </p>
+                                <ul class="list-disc list-inside">
+                                    <li><strong>Speichern des gewählten Themes:</strong> Damit wir das von Ihnen
+                                        bevorzugte Design (z.B. helles oder dunkles Theme) beim nächsten Besuch
+                                        automatisch anwenden können.</li>
+                                    <li><strong>Speichern der bevorzugten Sprache:</strong> Damit die Benutzeroberfläche
+                                        in der von Ihnen gewählten Sprache angezeigt wird.</li>
+                                </ul>
+                                <p>
+                                    Diese gespeicherten Daten umfassen lediglich Ihre Präferenzen und keine
+                                    personenbezogenen Informationen wie Name, E-Mail-Adresse oder andere
+                                    identifizierende Daten.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 4: Keine Erhebung persönlicher Daten -->
+                        <div>
+                            <button @click="sections.keinePersoenlichenDaten = !sections.keinePersoenlichenDaten"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>4. Keine Erhebung persönlicher Daten</span>
+                                <svg :class="sections.keinePersoenlichenDaten ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.keinePersoenlichenDaten" class="mt-2 px-4">
+                                <p>
+                                    Wir möchten ausdrücklich darauf hinweisen, dass wir keinerlei personenbezogene Daten
+                                    über Sie erheben, speichern oder verarbeiten. Die im Local Storage gespeicherten
+                                    Informationen dienen ausschließlich der Verbesserung Ihres Nutzungserlebnisses auf
+                                    unserer Website und enthalten keine Informationen, die Rückschlüsse auf Ihre
+                                    Identität zulassen.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 5: Wie Sie Ihre Daten löschen können -->
+                        <div>
+                            <button @click="sections.datenLoeschen = !sections.datenLoeschen"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>5. Wie Sie Ihre Daten löschen können</span>
+                                <svg :class="sections.datenLoeschen ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.datenLoeschen" class="mt-2 px-4 space-y-2">
+                                <p>
+                                    Da die gespeicherten Informationen im Local Storage keinerlei persönliche Daten
+                                    enthalten, können Sie diese jederzeit problemlos löschen. Hier erfahren Sie, wie Sie
+                                    den Local Storage in den gängigsten Browsern leeren können:
+                                </p>
+
+                                <h3 class="font-semibold">Google Chrome:</h3>
+                                <ol class="list-decimal list-inside">
+                                    <li>Klicken Sie auf das Drei-Punkte-Menü oben rechts und wählen Sie „Einstellungen“.
+                                    </li>
+                                    <li>Scrollen Sie nach unten und klicken Sie auf „Erweitert“.</li>
+                                    <li>Unter „Datenschutz und Sicherheit“ wählen Sie „Browserdaten löschen“.</li>
+                                    <li>Wählen Sie den Zeitraum und stellen Sie sicher, dass „Cookies und andere
+                                        Websitedaten“ sowie „Bilder und Dateien im Cache“ ausgewählt sind.</li>
+                                    <li>Klicken Sie auf „Daten löschen“.</li>
+                                </ol>
+
+                                <h3 class="font-semibold">Mozilla Firefox:</h3>
+                                <ol class="list-decimal list-inside">
+                                    <li>Klicken Sie auf das Hamburger-Menü oben rechts und wählen Sie „Einstellungen“.
+                                    </li>
+                                    <li>Gehen Sie zu „Datenschutz & Sicherheit“.</li>
+                                    <li>Unter „Cookies und Website-Daten“ klicken Sie auf „Daten verwalten“.</li>
+                                    <li>Wählen Sie die entsprechenden Daten aus und klicken Sie auf „Entfernen“.</li>
+                                </ol>
+
+                                <h3 class="font-semibold">Microsoft Edge:</h3>
+                                <ol class="list-decimal list-inside">
+                                    <li>Klicken Sie auf das Drei-Punkte-Menü oben rechts und wählen Sie „Einstellungen“.
+                                    </li>
+                                    <li>Gehen Sie zu „Datenschutz, Suche und Dienste“.</li>
+                                    <li>Unter „Browserdaten löschen“ klicken Sie auf „Zu löschendes Element auswählen“.
+                                    </li>
+                                    <li>Wählen Sie die gewünschten Daten aus und klicken Sie auf „Jetzt löschen“.</li>
+                                </ol>
+
+                                <h3 class="font-semibold">Safari (Mac):</h3>
+                                <ol class="list-decimal list-inside">
+                                    <li>Gehen Sie zu „Safari“ > „Einstellungen“.</li>
+                                    <li>Navigieren Sie zum Tab „Datenschutz“.</li>
+                                    <li>Klicken Sie auf „Websitedaten verwalten“.</li>
+                                    <li>Wählen Sie die gewünschten Daten aus und klicken Sie auf „Entfernen“.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 6: Rechte der Nutzer -->
+                        <div>
+                            <button @click="sections.nutzerRechte = !sections.nutzerRechte"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>6. Rechte der Nutzer</span>
+                                <svg :class="sections.nutzerRechte ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.nutzerRechte" class="mt-2 px-4">
+                                <p>
+                                    Auch wenn wir keine personenbezogenen Daten erheben, möchten wir Sie darüber
+                                    informieren, dass Sie folgende Rechte haben:
+                                </p>
+                                <ul class="list-disc list-inside">
+                                    <li><strong>Recht auf Auskunft:</strong> Sie können jederzeit Auskunft darüber
+                                        verlangen, welche Daten wir speichern.</li>
+                                    <li><strong>Recht auf Löschung:</strong> Sie können die Löschung der gespeicherten
+                                        Daten im Local Storage verlangen.</li>
+                                    <li><strong>Recht auf Berichtigung:</strong> Sollten die gespeicherten Daten
+                                        fehlerhaft sein, haben Sie das Recht, deren Berichtigung zu verlangen.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 7: Änderungen dieser Datenschutzerklärung -->
+                        <div>
+                            <button @click="sections.aenderungen = !sections.aenderungen"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>7. Änderungen dieser Datenschutzerklärung</span>
+                                <svg :class="sections.aenderungen ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.aenderungen" class="mt-2 px-4">
+                                <p>
+                                    Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit mit Wirkung für
+                                    die Zukunft zu ändern. Eine jeweils aktuelle Version ist auf unserer Website
+                                    verfügbar. Bitte überprüfen Sie die Datenschutzerklärung regelmäßig, um sich über
+                                    etwaige Änderungen zu informieren.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Abschnitt 8: Kontakt -->
+                        <div>
+                            <button @click="sections.kontakt = !sections.kontakt"
+                                class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 rounded">
+                                <span>8. Kontakt</span>
+                                <svg :class="sections.kontakt ? 'transform rotate-90' : ''"
+                                    class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            <div x-show="sections.kontakt" class="mt-2 px-4">
+                                <p>
+                                    Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte in Anspruch nehmen möchten,
+                                    können Sie sich jederzeit an uns wenden:
+                                    <br><br>
+                                    [E-Mail-Adresse]<br>
+                                    [Telefonnummer]<br>
+                                    [Adresse]
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Verstanden Button -->
+                    <div class="mt-6 text-right">
+                        <button @click="accept()"
+                            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Verstanden</button>
+                    </div>
+                </div>
+            </div>
+
 
             <footer style="border-radius: 0px;" x-data="{ 
                 screenWidth: window.innerWidth,
@@ -287,77 +668,7 @@
 
 
 
-    <!-- <div id="tooltip" class="tooltip"></div> -->
-    <div id="tooltip" class="tooltip">
-        <div class="tooltip-border">
-            <div class="tooltip-content">
-            </div>
-        </div>
-    </div>
-    <script src="/js/tooltip.js"></script>
 
-
-    <!-- Beispiel-Buttons zum Testen -->
-    <div style="margin: 20px;">
-        <button onclick="Toast.show('success', 'Erfolg', 'Deine Aktion war erfolgreich!')"
-            class="btn btn-success">Erfolg Toast</button>
-        <button onclick="Toast.show('error', 'Fehler', 'Etwas ist schief gelaufen.')" class="btn btn-danger">Fehler
-            Toast</button>
-        <button onclick="Toast.show('info', 'Info', 'Dies ist eine Informationsmeldung.')" class="btn btn-info">Info
-            Toast</button>
-        <button
-            onclick="window.Toast.show('warning', 'Warnung oida voll die warnung ich warne die warnung die warnung soll gewarnt sein', 'Überprüfe deine Eingabenllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll.')"
-            class="btn btn-warning">Warnung Toast</button>
-        <button onclick="console.log(window.Toast)" class="btn btn-secondary">Toast Objekt Loggen</button>
-
-
-    </div>
-    <!-- Old Modal -->
-    <!-- <button data-modal="myModal1" id="btnMyModal1">Modal</button>
-    <div id="myModal1" class="custom-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
-
-        <div class="custom-modal-content">
-            <span class="close" data-close>&times;</span>
-            <p>Some text in the Modal..</p>
-        </div>
-    </div> -->
-
-
-    <!-- <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
-
-
-    <div id="myModal1" class="custom-modal" data-animation-in="bounceIn" data-animation-out="fadeOut" aria-hidden="true"
-        role="dialog" aria-labelledby="modal-title-1" x-data="{ open: false, animClass: '' }" x-show="open"
-        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
-        x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-        @open-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationIn; open = true }"
-        @close-modal.window="if ($event.detail.id === 'myModal1') { animClass = $el.dataset.animationOut; open = false }">
-
-  
-        <div class="custom-modal-content">
-            <span class="close" data-close>&times;</span>
-            <h2 id="modal-title-1">Modal Titel</h2>
-            <p>Einige Inhalte im Modal.</p>
-        </div>
-    </div> -->
-
-    <button data-modal="myModal1" class="modal-trigger">Modal Öffnen</button>
-
-    <!-- Modal -->
-    <div id="myModal1" class="custom-modal" data-animation-in="animate-bounceIn" data-animation-out="animate-fadeOut"
-        aria-hidden="true" role="dialog" aria-labelledby="modal-title-1">
-
-        <!-- Modal-Inhalt -->
-        <div class="custom-modal-content">
-            <span class="close" data-close>&times;</span>
-            <h2 id="modal-title-1">Modal Titel</h2>
-            <p>Einige Inhalte im Modal..</p>
-        </div>
-    </div>
-
-
-    <!-- Einbinden von modal.js nach Alpine.js -->
 
     <script src="/js/modal.js" defer></script>
 
