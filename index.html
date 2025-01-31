@@ -61,6 +61,7 @@
     <link rel="stylesheet" href="/css/svg-icon-color.css">
     <link rel="stylesheet" href="/css/toast.css">
     <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/nav.css">
 
 
 
@@ -80,11 +81,13 @@
             <ul class="nav my-2 mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow"
                 x-data="{openProjects: false, openDemos: false}">
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/" x-text="pageLang.sidebar.home">Home</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/"
+                        x-text="pageLang.sidebar.home">Home</a>
                 </li>
 
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about" x-text="pageLang.sidebar.about">About</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about"
+                        x-text="pageLang.sidebar.about">About</a>
                 </li>
 
                 <li class="nav-item elevated">
@@ -98,7 +101,8 @@
                 </li>
 
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects" x-text="pageLang.sidebar.overview">Overview</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects"
+                        x-text="pageLang.sidebar.overview">Overview</a>
                 </li>
                 <!-- <li class="nav-item elevated"> -->
                 <li x-show="openProjects" class="ps-3 nav-item elevated">
@@ -138,7 +142,8 @@
 
 
                 <li class="nav-item elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/contact" x-text="pageLang.sidebar.contact">Contact</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/contact"
+                        x-text="pageLang.sidebar.contact">Contact</a>
                 </li>
                 <li class="nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/ananas">404</a>
@@ -152,9 +157,9 @@
         </div>
 
         <div id="main-content">
-            <div class="topbar">
+
+            <!-- <div class="topbar">
                 <nav class="d-flex w-100 align-items-center justify-content-between">
-                    <!-- <div x-html="window.breadCrumbs()"> -->
                     <div>
                         <template x-for="(crumb, index) in breadCrumbs" :key="index">
                             <span>
@@ -173,7 +178,6 @@
                             darkMode: localStorage.getItem('theme') === 'dark',
 
                         }" class="d-flex align-items-center">
-                        <!-- <input type="text" class="form-control me-2" placeholder="Search"> -->
                         <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank"><i
                                 class="bi bi-grad bi-file-earmark-person"></i></a>
                         <a :data-tooltip="pageLang.nav.privacy"  class="btn" data-modal="privacyModal" class="modal-trigger"><i
@@ -215,7 +219,182 @@
                         </ul>
                     </div>
                 </nav>
+            </div> -->
+
+            <div class="topbar" x-data="{ 
+                menuOpen: false, 
+                darkMode: localStorage.getItem('theme') === 'dark',
+                burgerClicked: false,
+                smallDevice: window.innerWidth < 600,
+              }">
+
+                <template x-if="!smallDevice">
+                    <nav class="d-flex w-100 align-items-center justify-content-between">
+                        <div>
+                            <template x-for="(crumb, index) in breadCrumbs" :key="index">
+                                <span>
+                                    <template x-if="index > 0">
+
+                                        <span> / </span>
+                                    </template>
+                                    <a class="btn" :href="crumb.path" @click="route()" x-text="crumb.name">
+                                    </a>
+                                </span>
+                            </template>
+
+                        </div>
+
+                        <div x-data="{
+                            darkMode: localStorage.getItem('theme') === 'dark',
+
+                        }" class="d-flex align-items-center">
+                            <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank"><i
+                                    class="bi bi-grad bi-file-earmark-person"></i></a>
+                            <a :data-tooltip="pageLang.nav.privacy" class="btn" data-modal="privacyModal"
+                                class="modal-trigger"><i class="bi bi-grad bi-shield-shaded"></i></a>
+                            <a :data-tooltip="pageLang.nav.colorize" class="btn" x-on:click="colorize = !colorize;"><i
+                                    class="bi bi-grad bi-palette"></i></a>
+                            <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
+                                <i id="theme-toggle-icon" class="bi bi-grad"
+                                    :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                            </a>
+                            <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" type="button"
+                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-grad bi-translate"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li>
+                                    <h3 class="dropdown-header"
+                                        x-text="(currentLang === 'de') ? 'Sprache' : 'Language'">
+                                    </h3>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li>
+                                    <button class="dropdown-item btn d-flex align-items-center"
+                                        @click="changeLang('en');location.reload();" style="text-align: start;">
+                                        <div class="fi fi-us"></div>
+                                        <div style="width: 10px;"></div>
+                                        <div style="text-align: start;">English</div>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item btn d-flex align-items-center "
+                                        @click="changeLang('de');location.reload();" style="text-align: start;">
+                                        <div class="fi fi-de"></div>
+                                        <div style="width: 10px;"></div>
+                                        <div style="text-align: start;">Deutsch</div>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </template>
+
+                <template x-if="smallDevice">
+                    <div class="breadcrumb-bar">
+                        <nav class="d-flex align-items-center">
+                            <div>
+                                <template x-for="(crumb, index) in breadCrumbs" :key="index">
+                                    <span>
+                                        <template x-if="index > 0">
+                                            <span> / </span>
+                                        </template>
+                                        <a class="btn" :href="crumb.path" @click="route()" x-text="crumb.name"></a>
+                                    </span>
+                                </template>
+                            </div>
+                        </nav>
+                        <a data-tooltip="expand" class="btn" @click="burgerClicked = !burgerClicked">
+                            <i class="bi bi-grad bi-list"></i>
+                        </a>
+                    </div>
+                </template>
+                <!-- </div> -->
+
+                <div class="icon-bar" x-show="burgerClicked">
+                    <nav class="d-flex align-items-center justify-content-between nav-buttons desktop">
+                        <div class="d-flex align-items-center gap-2">
+                            <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank">
+                                <i class="bi bi-grad bi-file-earmark-person"></i>
+                            </a>
+                            <a :data-tooltip="pageLang.nav.privacy" class="btn" data-modal="privacyModal">
+                                <i class="bi bi-grad bi-shield-shaded"></i>
+                            </a>
+                            <a :data-tooltip="pageLang.nav.colorize" class="btn" @click="colorize = !colorize">
+                                <i class="bi bi-grad bi-palette"></i>
+                            </a>
+                            <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
+                                <i id="theme-toggle-icon" class="bi bi-grad"
+                                    :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                            </a>
+                        </div>
+                        <div class="language-dropdown">
+                            <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-grad bi-translate"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li>
+                                    <h3 class="dropdown-header"
+                                        x-text="(currentLang === 'de') ? 'Sprache' : 'Language'">
+                                    </h3>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <button class="dropdown-item btn d-flex align-items-center"
+                                        @click="changeLang('en'); location.reload();" style="text-align: start;">
+                                        <div class="fi fi-us"></div>
+                                        <div style="width: 10px;"></div>
+                                        <div>English</div>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item btn d-flex align-items-center"
+                                        @click="changeLang('de'); location.reload();" style="text-align: start;">
+                                        <div class="fi fi-de"></div>
+                                        <div style="width: 10px;"></div>
+                                        <div>Deutsch</div>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
             </div>
+
+            <!-- <div class="mobile-menu" x-show="burgerClicked" x-transition>
+                    <nav class="d-flex flex-column gap-2 nav-buttons mobile">
+                        <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank">
+                            <i class="bi bi-file-earmark-person"></i> <span>CV</span>
+                        </a>
+                        <a :data-tooltip="pageLang.nav.privacy" class="btn" data-modal="privacyModal">
+                            <i class="bi bi-shield-shaded"></i> <span>Privacy</span>
+                        </a>
+                        <a :data-tooltip="pageLang.nav.colorize" class="btn" @click="colorize = !colorize">
+                            <i class="bi bi-palette"></i> <span>Colorize</span>
+                        </a>
+                        <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
+                            <i id="theme-toggle-icon" class="bi"
+                                :class="{ 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i> <span>Theme</span>
+                        </a>
+                  
+                        <a :data-tooltip="pageLang.nav.language" class="btn"
+                            @click="changeLang('en'); location.reload();">
+                            <i class="bi bi-translate"></i> <span>English</span>
+                        </a>
+                        <a :data-tooltip="pageLang.nav.language" class="btn"
+                            @click="changeLang('de'); location.reload();">
+                            <i class="bi bi-translate"></i> <span>Deutsch</span>
+                        </a>
+                    </nav>
+                </div> -->
+            <!-- </div> -->
 
             <div id="app">
 
@@ -584,7 +763,8 @@
 
                     <!-- Modal Title -->
                     <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold"
-                        x-html="pageLang.privacyModal.header"></h2>
+                        x-html="pageLang.privacyModal.header">
+                    </h2>
 
                     <!-- Accordion Container -->
                     <div class="space-y-4">
