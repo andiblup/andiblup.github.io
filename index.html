@@ -882,19 +882,43 @@
                 </div>
             </div>
 
-            <div id="analyticsData">
-                <!-- <mod-spinner data-spinner-color="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
 
-                <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
+            <div class="card ms-3">
+                <p>Google Analytics Data</p>
+                <div id="analyticsData">
+                    <!-- <mod-spinner data-spinner-color="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
+
+                    <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
+                </div>
+                <!-- <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
+                <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
+                <!-- <mod-spinner data-spinner-color="primary"></mod-spinner> -->
+                <mod-spinner flare-spinner-color="primary"></mod-spinner>
+
+                <!-- <mod-spinner data-spinner-color="primary"></mod-spinner>
+    <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
+
             </div>
-            <!-- <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
-            <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
-            <!-- <mod-spinner data-spinner-color="primary"></mod-spinner> -->
-            <mod-spinner flare-spinner-color="primary"></mod-spinner>
-            
-            <!-- <mod-spinner data-spinner-color="primary"></mod-spinner>
-            <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
 
+            <div class="card ms-2" x-data="{
+                testData: {},
+                async submitTest() {
+                    // Sende das Test-Event; stelle sicher, dass 'gtag' global verfügbar ist.
+                    gtag('event', 'test_click', {
+                        'event_category': 'Test',
+                        'event_label': 'Test-Button-Klick'
+                    });
+                    console.log('Test-Event wurde ausgelöst.');
+                    // Optional: Rufe anschließend die Funktion zum Abrufen der Testdaten auf:
+                    await initTestAnalytics();
+                }
+            }">
+              <h3>Google Analytics Test Data</h3>
+              <a class="btn" @click="submitTest()">
+                <i class="bi bi-grad bi-bar-chart-fill"></i>
+              </a>
+              <div id="analyticsTestData"></div>
+            </div>
 
 
 
