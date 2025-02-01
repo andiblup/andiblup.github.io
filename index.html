@@ -186,7 +186,7 @@
                         <a :data-tooltip="pageLang.nav.colorize"  class="btn" x-on:click="colorize = !colorize;"><i class="bi bi-grad bi-palette"></i></a>
                         <a :data-tooltip="pageLang.nav.theme"  class="btn" id="theme-toggle-button">
                             <i id="theme-toggle-icon" class="bi bi-grad"
-                                :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                                :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon-fill': !darkMode }"></i>
                         </a>
                         <a :data-tooltip="pageLang.nav.language"  class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -257,7 +257,7 @@
                                     class="bi bi-grad bi-palette"></i></a>
                             <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
                                 <i id="theme-toggle-icon" class="bi bi-grad"
-                                    :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                                    :class="{ 'cursor-pointer': true, 'bi-sun-fill': darkMode, 'bi-moon-fill': !darkMode }"></i>
                             </a>
                             <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -333,7 +333,7 @@
                             </a>
                             <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
                                 <i id="theme-toggle-icon" class="bi bi-grad"
-                                    :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
+                                    :class="{ 'cursor-pointer': true, 'bi-sun-fill': darkMode, 'bi-moon-fill': !darkMode }"></i>
                             </a>
                             <div class="language-dropdown">
                                 <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" id="dropdownMenuButton"
@@ -387,7 +387,7 @@
                         </a>
                         <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
                             <i id="theme-toggle-icon" class="bi"
-                                :class="{ 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i> <span>Theme</span>
+                                :class="{ 'bi-sun': darkMode, 'bi-moon-fill': !darkMode }"></i> <span>Theme</span>
                         </a>
                   
                         <a :data-tooltip="pageLang.nav.language" class="btn"
@@ -907,7 +907,7 @@
                         </a>
                         <a href="mailto:alfred.narjes@gmail.com" target="_blank" class="btn"
                             style="text-decoration: none; color: var(--icon-color);">
-                            <i style="font-size: 1rem;" class="bi bi-grad bi-envelope"></i>
+                            <i style="font-size: 1rem;" class="bi bi-grad bi-envelope-fill"></i>
                         </a>
                     </div>
 
