@@ -77,20 +77,21 @@
 
 
     <div id="root">
-        <div id="sidebar" class="navbar collapsed">
-            <ul class="nav my-2 mb-5 scrollbar-none w-100 flex-column mt-3 elevated-shadow"
-                x-data="{openProjects: false, openDemos: false}">
-                <li class="nav-item elevated">
+        <div id="sidebar" class="navbar collapsed"
+            :style="{'padding-top': (globalScreenSize < 600) ? '50px' : '-50px'}"  >
+            <ul class="nav mb-5 mx-2 scrollbar-none w-100 flex-column elevated-shadow"
+            x-data="{openProjects: false, openDemos: false}">
+                <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/"
                         x-text="pageLang.sidebar.home">Home</a>
                 </li>
 
-                <li class="nav-item elevated">
+                <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/about"
                         x-text="pageLang.sidebar.about">About</a>
                 </li>
 
-                <li class="nav-item elevated">
+                <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openProjects = !openProjects"
                         onclick="{}" style="gap: 0.5rem;" x-html="pageLang.sidebar.projects">Projects
 
@@ -100,31 +101,31 @@
                     </a>
                 </li>
 
-                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects"
                         x-text="pageLang.sidebar.overview">Overview</a>
                 </li>
-                <!-- <li class="nav-item elevated"> -->
-                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                <!-- <li class="ps-2 pe-3 nav-item elevated"> -->
+                <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
                         href="#/projects/portfolio">Portfolio</a>
                 </li>
-                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects/badui">BadUI</a>
                 </li>
-                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)"
                         href="#/projects/doGether">DoGether</a>
                 </li>
-                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav text-start" onclick="route(event)"
                         href="#/projects/fantasyQuest">Fantasy<br>Quest</a>
                 </li>
-                <li x-show="openProjects" class="ps-3 nav-item elevated">
+                <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects/pma">PMA</a>
                 </li>
 
-                <li class="nav-item elevated">
+                <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex align-items-center btn btn-nav" @click="openDemos = !openDemos"
                         onclick="{}" style="gap: 0.5rem;">Demos
 
@@ -132,20 +133,20 @@
                             style="font-size: inherit; display: inline-block; vertical-align: middle;"></i>
                     </a>
                 </li>
-                <li x-show="openDemos" class="ps-3 nav-item elevated">
+                <li x-show="openDemos" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav" target="_blank" href="/demos/badui/main/main.html">BadUI</a>
                 </li>
-                <li x-show="openDemos" class="ps-3 nav-item elevated">
+                <li x-show="openDemos" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav text-start" target="_blank"
                         href="/demos/dino/dino.html">BadUI<br>Dino<br>Game</a>
                 </li>
 
 
-                <li class="nav-item elevated">
+                <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/contact"
                         x-text="pageLang.sidebar.contact">Contact</a>
                 </li>
-                <li class="nav-item elevated">
+                <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/ananas">404</a>
                 </li>
             </ul>
@@ -225,7 +226,7 @@
                 menuOpen: false, 
                 darkMode: localStorage.getItem('theme') === 'dark',
                 burgerClicked: false,
-                smallDevice: window.innerWidth < 600,
+                smallDevice: globalScreenSize < 600,
               }">
 
                 <template x-if="!smallDevice">
@@ -294,29 +295,33 @@
                 </template>
 
                 <template x-if="smallDevice">
-                    <div class="breadcrumb-bar">
-                        <nav class="d-flex align-items-center">
-                            <div>
-                                <template x-for="(crumb, index) in breadCrumbs" :key="index">
-                                    <span>
-                                        <template x-if="index > 0">
-                                            <span> / </span>
-                                        </template>
-                                        <a class="btn" :href="crumb.path" @click="route()" x-text="crumb.name"></a>
-                                    </span>
-                                </template>
-                            </div>
-                        </nav>
-                        <a data-tooltip="expand" class="btn" @click="burgerClicked = !burgerClicked">
+                    <div class="d-flex justify-content-between w-100">
+                        <div class="breadcrumb-bar">
+                            <nav class="d-flex align-items-center">
+                                <div>
+                                    <template x-for="(crumb, index) in breadCrumbs" :key="index">
+                                        <span>
+                                            <template x-if="index > 0">
+                                                <span> / </span>
+                                            </template>
+                                            <a class="btn" :href="crumb.path" @click="route()" x-text="crumb.name"></a>
+                                        </span>
+                                    </template>
+                                </div>
+                            </nav>
+                        </div>
+                        <a data-tooltip="expand" class="btn me-2" @click="burgerClicked = !burgerClicked">
                             <i class="bi bi-grad bi-list"></i>
                         </a>
                     </div>
                 </template>
                 <!-- </div> -->
 
-                <div class="icon-bar" x-show="burgerClicked">
-                    <nav class="d-flex align-items-center justify-content-between nav-buttons desktop">
-                        <div class="d-flex align-items-center gap-2">
+                <div class="icon-barw-100" x-show="burgerClicked">
+                    <nav class="w-100">
+                        <div class="d-flex align-items-center justify-content-evenly">
+                    <!-- <nav class="d-flex align-items-center justify-content-evenly w-100 nav-buttons desktop">
+                        <div class="d-flex align-items-center gap-2"> -->
                             <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank">
                                 <i class="bi bi-grad bi-file-earmark-person"></i>
                             </a>
@@ -330,39 +335,40 @@
                                 <i id="theme-toggle-icon" class="bi bi-grad"
                                     :class="{ 'cursor-pointer': true, 'bi-sun': darkMode, 'bi-moon': !darkMode }"></i>
                             </a>
+                            <div class="language-dropdown">
+                                <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-grad bi-translate"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <h3 class="dropdown-header"
+                                            x-text="(currentLang === 'de') ? 'Sprache' : 'Language'">
+                                        </h3>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item btn d-flex align-items-center"
+                                            @click="changeLang('en'); location.reload();" style="text-align: start;">
+                                            <div class="fi fi-us"></div>
+                                            <div style="width: 10px;"></div>
+                                            <div>English</div>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item btn d-flex align-items-center"
+                                            @click="changeLang('de'); location.reload();" style="text-align: start;">
+                                            <div class="fi fi-de"></div>
+                                            <div style="width: 10px;"></div>
+                                            <div>Deutsch</div>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="language-dropdown">
-                            <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" id="dropdownMenuButton"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-grad bi-translate"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li>
-                                    <h3 class="dropdown-header"
-                                        x-text="(currentLang === 'de') ? 'Sprache' : 'Language'">
-                                    </h3>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <button class="dropdown-item btn d-flex align-items-center"
-                                        @click="changeLang('en'); location.reload();" style="text-align: start;">
-                                        <div class="fi fi-us"></div>
-                                        <div style="width: 10px;"></div>
-                                        <div>English</div>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="dropdown-item btn d-flex align-items-center"
-                                        @click="changeLang('de'); location.reload();" style="text-align: start;">
-                                        <div class="fi fi-de"></div>
-                                        <div style="width: 10px;"></div>
-                                        <div>Deutsch</div>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
+
                     </nav>
                 </div>
 

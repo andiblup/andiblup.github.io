@@ -1,14 +1,14 @@
 .nav {
-    overflow-y: auto!important;
+    overflow-y: auto !important;
     display: block;
 }
 
-#sidebar {
+/* #sidebar {
     width: 30%;
     max-width: 300px;
     min-width: 20px;
     position: fixed;
-    top: 0;
+    top: 50px;
     left: 0;
     height: 100vh; 
     z-index: 1000;
@@ -21,14 +21,52 @@
     display: flex;
     flex-direction: column;
     transform: translateX(0);
-    margin-top: 50px;
     border-top: 1px black solid;
     scrollbar-width: thin; 
     scrollbar-color: var(--text-color) var(--background); 
     
 }
 
+#sidebar.collapsed {
+    width: 20px;
+    border-top: 0px black solid;
+}
 
+#sidebar.collapsed .nav-link {
+    visibility: hidden;
+}  */
+
+#sidebar {
+    width: 15%;
+    max-width: 200px;
+    min-width: 140px; /* für den ausklappten Zustand */
+    position: fixed;
+    top: 50px;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    background-color: var(--navbar-bg);
+    transition: transform 0.3s ease; /* Animation nur für transform */
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0); /* Standard: voll sichtbar */
+    border-top: 1px solid black;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--text-color) var(--background);
+}
+
+/* Im kollabierten Zustand wird die Sidebar nach links geschoben, sodass 20px sichtbar bleiben */
+#sidebar.collapsed {
+    transform: translateX(calc(-100% + 20px));
+    border-top: none;
+}
+
+/* Falls du die Navigationselemente im kollabierten Zustand ausblenden möchtest */
+#sidebar.collapsed .nav-link {
+    visibility: hidden;
+}
 
 #sidebar::-webkit-scrollbar {
     width: 6px;
@@ -42,15 +80,6 @@
     background-color: var(--text-color);
     border-radius: 3px;
 }
-
-#sidebar.collapsed {
-    width: 20px;
-    border-top: 0px black solid;
-}
-
-#sidebar.collapsed .nav-link {
-    visibility: hidden;
-} 
 
 #toggle-sidebar {
     position: absolute;
@@ -76,7 +105,7 @@
 
 #toggle-sidebar.collapsed .icon {
     transform: rotate(180deg);
-}   
+}
 
 /*
 .topbar {
@@ -102,96 +131,92 @@
     right: 0;
     z-index: 1001;
     /* Höhe hier nur für die Topbar – die mobile Menübox kommt zusätzlich */
-  }
-  
-  .breadcrumb-bar {
+}
+
+.breadcrumb-bar {
     padding: 0 15px;
     height: 50px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .icon-bar {
+}
+
+.icon-bar {
     padding: 0 15px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-  }
-  
-  /* Desktop-Navigation (Icons) */
-  .nav-buttons.desktop {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  /* Sprache-Dropdown-Wrapper (Falls notwendig) */
-  .language-dropdown {
+}
+
+/* Desktop-Navigation (Icons) */
+
+/* Sprache-Dropdown-Wrapper (Falls notwendig) */
+.language-dropdown {
     position: relative;
-  }
-  
-  /* Burger-Button (Mobile) – standardmäßig versteckt */
-  .burger-button.mobile {
+}
+
+/* Burger-Button (Mobile) – standardmäßig versteckt */
+.burger-button.mobile {
     display: none;
     background: none;
     border: none;
     cursor: pointer;
-  }
-  
-  /* Burger-Icon */
-  .burger-icon {
+}
+
+/* Burger-Icon */
+.burger-icon {
     display: block;
     width: 25px;
     height: 3px;
     background: #333;
     position: relative;
-  }
-  .burger-icon::before,
-  .burger-icon::after {
-    content: '';
+}
+.burger-icon::before,
+.burger-icon::after {
+    content: "";
     position: absolute;
     width: 25px;
     height: 3px;
     background: #333;
     left: 0;
-  }
-  .burger-icon::before { top: -8px; }
-  .burger-icon::after { top: 8px; }
-  
-  /* Mobiles Menü (unterhalb der Icon-Leiste) */
-  .mobile-menu {
+}
+.burger-icon::before {
+    top: -8px;
+}
+.burger-icon::after {
+    top: 8px;
+}
+
+/* Mobiles Menü (unterhalb der Icon-Leiste) */
+.mobile-menu {
     background: var(--navbar-bg);
     border-top: 1px solid #ddd;
     padding: 0.5rem 15px;
     display: none; /* Wird per Alpine (x-show) gesteuert */
-  }
-  
-  /* Mobile-Navigation-Icons: im Mobile-Menü vertikal angeordnet */
-  .nav-buttons.mobile {
+}
+
+/* Mobile-Navigation-Icons: im Mobile-Menü vertikal angeordnet */
+.nav-buttons.mobile {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
-  .nav-buttons.mobile .btn {
+}
+.nav-buttons.mobile .btn {
     width: 100%;
     text-align: left;
-  }
-  
-  /* Responsive Anpassungen: ab max-width 600px */
-  @media (max-width: 600px) {
+}
+
+/* Responsive Anpassungen: ab max-width 600px */
+@media (max-width: 600px) {
     /* Breadcrumbs und Icon-Leiste bleiben sichtbar, aber die Desktop-Icons werden ausgeblendet */
-    .nav-buttons.desktop {
-      display: none;
-    }
+
     /* Burger-Button anzeigen */
     .burger-button.mobile {
-      display: block;
+        display: block;
     }
     /* Mobile-Menü als Block anzeigen (wird via Alpine x-show gesteuert) */
     .mobile-menu {
-      display: block;
+        display: block;
     }
-  }
-  
+}
