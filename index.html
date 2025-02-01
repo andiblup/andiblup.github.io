@@ -42,6 +42,15 @@
 }" :data-colorize="colorize">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BL20JSE6C4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BL20JSE6C4');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title x-text="pageTitle"></title>
@@ -78,9 +87,9 @@
 
     <div id="root">
         <div id="sidebar" class="navbar collapsed"
-            :style="{'padding-top': (globalScreenSize < 600) ? '50px' : '-50px'}"  >
+            :style="{'padding-top': (globalScreenSize < 600) ? '50px' : '-50px'}">
             <ul class="nav mb-5 mx-2 scrollbar-none w-100 flex-column elevated-shadow"
-            x-data="{openProjects: false, openDemos: false}">
+                x-data="{openProjects: false, openDemos: false}">
                 <li class="ps-2 pe-3 nav-item elevated">
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/"
                         x-text="pageLang.sidebar.home">Home</a>
@@ -320,7 +329,7 @@
                 <div class="icon-barw-100" x-show="burgerClicked">
                     <nav class="w-100">
                         <div class="d-flex align-items-center justify-content-evenly">
-                    <!-- <nav class="d-flex align-items-center justify-content-evenly w-100 nav-buttons desktop">
+                            <!-- <nav class="d-flex align-items-center justify-content-evenly w-100 nav-buttons desktop">
                         <div class="d-flex align-items-center gap-2"> -->
                             <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank">
                                 <i class="bi bi-grad bi-file-earmark-person"></i>
@@ -336,8 +345,8 @@
                                     :class="{ 'cursor-pointer': true, 'bi-sun-fill': darkMode, 'bi-moon-fill': !darkMode }"></i>
                             </a>
                             <div class="language-dropdown">
-                                <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a :data-tooltip="pageLang.nav.language" class="btn dropdown-toggle"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-grad bi-translate"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -873,6 +882,8 @@
                 </div>
             </div>
 
+            <div id="analyticsData">Lade Analytics-Daten...</div>
+
 
 
             <footer style="border-radius: 0px;" x-data="{ 
@@ -936,6 +947,7 @@
     <script src="/js/theme.js"></script>
 
     <script src="/js/carousel.js"></script>
+    <script src="/js/analytics.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
