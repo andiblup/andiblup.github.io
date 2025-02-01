@@ -589,6 +589,8 @@ function processTestAnalyticsData(data) {
  */
 function displayTestAnalyticsData(testData) {
   const container = document.getElementById("analyticsTestData");
+  console.log("testData", testData);
+  
   if (!container) {
     console.error("Container für Test Analytics-Daten nicht gefunden.");
     return;
