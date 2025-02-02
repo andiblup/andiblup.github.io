@@ -9,5 +9,6 @@
     "/projects/badui": "/pages/projects/badui.html",
     "/projects/doGether": "/pages/projects/doGether.html",
     "/projects/fantasyQuest": "/pages/projects/fantasyQuest.html",
-    "/projects/pma": "/pages/projects/pma.html"
+    "/projects/pma": "/pages/projects/pma.html",
+    "/demos/analytics": "/pages/demos/analytics.html"
   }

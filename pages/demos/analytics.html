@@ -1,0 +1,35 @@
+<section x-data="{ 
+    pageLang: {},
+    async init() {
+
+    breadCrumbs = getBreadCrumbsArray();
+    
+
+    const lang = localStorage.getItem('appLang') || 'en';
+    const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase();
+// console.log(breadCrumbs[breadCrumbs.length - 1].name.toLowerCase());
+
+    const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    this.pageLang = await response.json();
+    document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+
+    }
+ }" x-init="init()">
+
+    <div class="">Dashboard</div>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="card ms-3">
+        <p>Google Analytics Data</p>
+        <div id="analyticsData">
+            <mod-spinner data-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
+        </div>
+
+
+
+    </div>
+
+</section>
+<script defer src="/js/analytics.js"></script>
