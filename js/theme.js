@@ -5,7 +5,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // const icon = toggleButton.firstChild.firstChild;
 
     // Check Local Storage for theme preference    
-    const currentTheme = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'dark';
+    const preferedTheme = localStorage.getItem('theme');
+    let currentTheme = '';
+    if (!preferedTheme) {
+        currentTheme = localStorage.getItem('theme') || window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'dark';
+    } else {
+        currentTheme = preferedTheme;
+    }
+   
     if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
         toggleIcon.classList.remove('bi-moon-fill');

@@ -16,24 +16,46 @@
     }
  }" x-init="init()">
 
-    <div class="">Dashboard</div>
+    <div class="container pt-5">
+        <h1 class="text-center mb-3" class="">Dashboard</h1>
+        <div class="card mb-2" x-data="{
+        testData: {},
+        async submitTest() {
+            gtag('event', 'test_click', {
+                'event_category': 'Test',
+                'event_label': 'Test-Button-Klick'
+            });
+            console.log('Test-Event wurde ausgelöst.');
+        }
+    }">
+            <a class="btn" @click="submitTest()">
+                Send Test event
+                <i class="bi bi-grad bi-bar-chart-fill"></i>
+            </a>
+        </div>
 
 
-    <!-- Container für den allgemeinen Report (z. B. Seitenaufrufe über die Zeit) -->
-    <div class="card">
-        <canvas id="generalChart"></canvas>
+        <!-- Container für den allgemeinen Report (z. B. Seitenaufrufe über die Zeit) -->
+        <div class="card">
+            <canvas id="generalChart"></canvas>
+        </div>
+
+        <!-- Container für die Länder-Aufschlüsselung (Engagierte Sitzungen) -->
+        <div class="card my-3">
+            <canvas id="testEventChart"></canvas>
+        </div>
+
+        <!-- Container für die Länder-Aufschlüsselung (Engagierte Sitzungen) -->
+        <div class="card my-3">
+            <canvas id="countryChart"></canvas>
+        </div>
+
+        <!-- Container für die Gerätetyp-Aufschlüsselung (Engagierte Sitzungen) -->
+        <div class="card">
+            <canvas id="deviceChart"></canvas>
+        </div>
+
     </div>
-
-    <!-- Container für die Länder-Aufschlüsselung (Engagierte Sitzungen) -->
-    <div class="card my-3">
-        <canvas id="countryChart"></canvas>
-    </div>
-
-    <!-- Container für die Gerätetyp-Aufschlüsselung (Engagierte Sitzungen) -->
-    <div class="card">
-        <canvas id="deviceChart"></canvas>
-    </div>
-
 </section>
 
 <script>

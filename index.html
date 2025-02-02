@@ -72,6 +72,7 @@
     <link rel="stylesheet" href="/css/toast.css">
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/alert.css">
 
 
 
@@ -265,8 +266,9 @@
                         }" class="d-flex align-items-center">
                             <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank"><i
                                     class="bi bi-grad bi-file-earmark-person"></i></a>
-                            <a :data-tooltip="pageLang.nav.privacy" class="btn" data-modal="privacyModal"
-                                class="modal-trigger"><i class="bi bi-grad bi-shield-shaded"></i></a>
+                            <span id="privacyModalContainer"><a :data-tooltip="pageLang.nav.privacy" class="btn"
+                                    data-modal="privacyModal" class="modal-trigger"><i
+                                        class="bi bi-grad bi-shield-shaded"></i></a></span>
                             <a :data-tooltip="pageLang.nav.colorize" class="btn" x-on:click="colorize = !colorize;"><i
                                     class="bi bi-grad bi-palette"></i></a>
                             <a :data-tooltip="pageLang.nav.theme" class="btn" id="theme-toggle-button">
@@ -464,428 +466,8 @@
 
 
             <!-- DATA PRIVACY MODAL -->
-            <!-- Button zum Öffnen des Modals -->
-            <!-- <button data-modal="privacyModal" class="modal-trigger" >Datenschutzerklärung anzeigen</button> -->
 
-            <!-- Datenschutzerklärungs-Modal -->
-            <!-- <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
-                data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
-                aria-labelledby="modal-title-privacy" x-data="{
-                sections: {
-                einleitung: false,
-                verantwortlicheStelle: false,
-                datenerfassung: false,
-                keinePersoenlichenDaten: false,
-                datenLoeschen: false,
-                nutzerRechte: false,
-                aenderungen: false,
-                kontakt: false
-                },
-                consent: false,
-                sessionStorageVar: 'privacyConsent',
-                init() {
 
-                this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
-                console.log('consent');
-                console.log(consent);
-                
-                if (!consent) {
-                Modal.open('privacyModal');
-
-                } 
-                },
-                toggleSection(section) {
-                this.sections[section] = !this.sections[section];
-                },
-                isSectionOpen(section) {
-                return this.sections[section];
-                },
-                accept() {
-                sessionStorage.setItem(this.sessionStorageVar, 'true');
-                const modal = document.getElementById('privacyModal');
-                Modal.close(modal);
-                },
-                handleOverlayClick(event) {
-                const modal = document.getElementById('privacyModal');
-
-                this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
-                modal.setAttribute('data-close-on-overlay', `${this.consent}`);
-                },
-                handleEscape(event) {
-                this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
-                if (this.consent) {
-                Modal.close(modal);
-                }
-                }
-                }" x-init="init()">
-                <div class="custom-modal-content" style="max-height: 90vh; overflow-y: auto;"
-                    :style="{'max-width': (globalScreenWidth < 689) ? '95%' : '60%'}"
-                    @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
-
-                    <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold">Datenschutzerklärung</h2>
-
-                    <div class="space-y-4">
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer"  @click="toggleSection('einleitung')" class="accordion-button">
-                                <span>1. Einleitung</span>
-
-                            </p>
-                            <div x-show="isSectionOpen('einleitung')" class="accordion-content" x-cloak>
-                                <p>
-                                    Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln
-                                    Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen
-                                    Datenschutzvorschriften sowie dieser Datenschutzerklärung. In dieser Erklärung
-                                    informieren wir Sie über die Art, den Umfang und Zweck der Erhebung, Verarbeitung
-                                    und Nutzung Ihrer Daten auf unserer Website.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer" @click="toggleSection('verantwortlicheStelle')" >
-                                <span>2. Verantwortliche Stelle</span><i class="bi no-grad ms-2"></i>
-
-                            </p>
-                            <div x-show="isSectionOpen('verantwortlicheStelle')" class="accordion-content" x-cloak>
-                                <p>
-                                    Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:
-                                    <br><br>
-                                    [Ihr Unternehmensname]<br>
-                                    [Ihre Adresse]<br>
-                                    [PLZ, Ort]<br>
-                                    [E-Mail-Adresse]<br>
-                                    [Telefonnummer]
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p @click="toggleSection('datenerfassung')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
-                                <span>3. Datenerfassung auf dieser Website</span>
-                            </p>
-                            <div x-show="isSectionOpen('datenerfassung')" class="accordion-content" x-cloak>
-                                <p>
-                                    Unsere Website verwendet den sogenannten <strong>Local Storage</strong>, um
-                                    bestimmte Einstellungen wie das Theme (Design) und die Sprache Ihrer
-                                    Benutzeroberfläche zu speichern. Diese Daten helfen uns dabei, Ihre Präferenzen zu
-                                    merken und Ihnen ein personalisiertes Nutzungserlebnis zu bieten.
-                                </p>
-
-                                <h3 class="font-semibold">3.1. Was ist Local Storage?</h3>
-                                <p>
-                                    Der <strong>Local Storage</strong> ist eine Funktion moderner Webbrowser, die es
-                                    ermöglicht, Daten lokal auf Ihrem Gerät zu speichern. Im Gegensatz zu Cookies können
-                                    mit dem Local Storage größere Datenmengen gespeichert werden, und diese Daten
-                                    bleiben auch nach dem Schließen des Browsers erhalten, bis sie explizit gelöscht
-                                    werden.
-                                </p>
-
-                                <h3 class="font-semibold">3.2. Verwendung von Local Storage auf unserer Website</h3>
-                                <p>
-                                    Auf unserer Website nutzen wir den Local Storage ausschließlich für folgende Zwecke:
-                                </p>
-                                <ul class="list-disc list-inside">
-                                    <li><strong>Speichern des gewählten Themes:</strong> Damit wir das von Ihnen
-                                        bevorzugte Design (z.B. helles oder dunkles Theme) beim nächsten Besuch
-                                        automatisch anwenden können.</li>
-                                    <li><strong>Speichern der bevorzugten Sprache:</strong> Damit die Benutzeroberfläche
-                                        in der von Ihnen gewählten Sprache angezeigt wird.</li>
-                                </ul>
-                                <p>
-                                    Diese gespeicherten Daten umfassen lediglich Ihre Präferenzen und keine
-                                    personenbezogenen Informationen wie Name, E-Mail-Adresse oder andere
-                                    identifizierende Daten.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p @click="toggleSection('keinePersoenlichenDaten')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
-                                <span>4. Keine Erhebung persönlicher Daten</span>
-
-                            </p>
-                            <div x-show="isSectionOpen('keinePersoenlichenDaten')" class="accordion-content" x-cloak>
-                                <p>
-                                    Wir möchten ausdrücklich darauf hinweisen, dass wir keinerlei personenbezogene Daten
-                                    über Sie erheben, speichern oder verarbeiten. Die im Local Storage gespeicherten
-                                    Informationen dienen ausschließlich der Verbesserung Ihres Nutzungserlebnisses auf
-                                    unserer Website und enthalten keine Informationen, die Rückschlüsse auf Ihre
-                                    Identität zulassen.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p @click="toggleSection('datenLoeschen')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
-                                <span>5. Wie Sie Ihre Daten löschen können</span>
-
-                            </p>
-                            <div x-show="isSectionOpen('datenLoeschen')" class="accordion-content" x-cloak>
-                                <p>
-                                    Da die gespeicherten Informationen im Local Storage keinerlei persönliche Daten
-                                    enthalten, können Sie diese jederzeit problemlos löschen. Hier erfahren Sie, wie Sie
-                                    den Local Storage in den gängigsten Browsern leeren können:
-                                </p>
-
-                                <h3 class="font-semibold">Google Chrome:</h3>
-                                <ol class="list-decimal list-inside">
-                                    <li>Klicken Sie auf das Drei-Punkte-Menü oben rechts und wählen Sie „Einstellungen“.
-                                    </li>
-                                    <li>Scrollen Sie nach unten und klicken Sie auf „Erweitert“.</li>
-                                    <li>Unter „Datenschutz und Sicherheit“ wählen Sie „Browserdaten löschen“.</li>
-                                    <li>Wählen Sie den Zeitraum und stellen Sie sicher, dass „Cookies und andere
-                                        Websitedaten“ sowie „Bilder und Dateien im Cache“ ausgewählt sind.</li>
-                                    <li>Klicken Sie auf „Daten löschen“.</li>
-                                </ol>
-
-                                <h3 class="font-semibold">Mozilla Firefox:</h3>
-                                <ol class="list-decimal list-inside">
-                                    <li>Klicken Sie auf das Hamburger-Menü oben rechts und wählen Sie „Einstellungen“.
-                                    </li>
-                                    <li>Gehen Sie zu „Datenschutz & Sicherheit“.</li>
-                                    <li>Unter „Cookies und Website-Daten“ klicken Sie auf „Daten verwalten“.</li>
-                                    <li>Wählen Sie die entsprechenden Daten aus und klicken Sie auf „Entfernen“.</li>
-                                </ol>
-
-                                <h3 class="font-semibold">Microsoft Edge:</h3>
-                                <ol class="list-decimal list-inside">
-                                    <li>Klicken Sie auf das Drei-Punkte-Menü oben rechts und wählen Sie „Einstellungen“.
-                                    </li>
-                                    <li>Gehen Sie zu „Datenschutz, Suche und Dienste“.</li>
-                                    <li>Unter „Browserdaten löschen“ klicken Sie auf „Zu löschendes Element auswählen“.
-                                    </li>
-                                    <li>Wählen Sie die gewünschten Daten aus und klicken Sie auf „Jetzt löschen“.</li>
-                                </ol>
-
-                                <h3 class="font-semibold">Safari (Mac):</h3>
-                                <ol class="list-decimal list-inside">
-                                    <li>Gehen Sie zu „Safari“ > „Einstellungen“.</li>
-                                    <li>Navigieren Sie zum Tab „Datenschutz“.</li>
-                                    <li>Klicken Sie auf „Websitedaten verwalten“.</li>
-                                    <li>Wählen Sie die gewünschten Daten aus und klicken Sie auf „Entfernen“.</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p @click="toggleSection('nutzerRechte')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
-                                <span>6. Rechte der Nutzer</span>
-
-                            </p>
-                            <div x-show="isSectionOpen('nutzerRechte')" class="accordion-content" x-cloak>
-                                <p>
-                                    Auch wenn wir keine personenbezogenen Daten erheben, möchten wir Sie darüber
-                                    informieren, dass Sie folgende Rechte haben:
-                                </p>
-                                <ul class="list-disc list-inside">
-                                    <li><strong>Recht auf Auskunft:</strong> Sie können jederzeit Auskunft darüber
-                                        verlangen, welche Daten wir speichern.</li>
-                                    <li><strong>Recht auf Löschung:</strong> Sie können die Löschung der gespeicherten
-                                        Daten im Local Storage verlangen.</li>
-                                    <li><strong>Recht auf Berichtigung:</strong> Sollten die gespeicherten Daten
-                                        fehlerhaft sein, haben Sie das Recht, deren Berichtigung zu verlangen.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p @click="toggleSection('aenderungen')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
-                                <span>7. Änderungen dieser Datenschutzerklärung</span>
-
-                            </p>
-                            <div x-show="isSectionOpen('aenderungen')" class="accordion-content" x-cloak>
-                                <p>
-                                    Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit mit Wirkung für
-                                    die Zukunft zu ändern. Eine jeweils aktuelle Version ist auf unserer Website
-                                    verfügbar. Bitte überprüfen Sie die Datenschutzerklärung regelmäßig, um sich über
-                                    etwaige Änderungen zu informieren.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p @click="toggleSection('kontakt')"  :class="{'fs-small': globalScreenWidth < 689 }" class="mt-1 accordion-button cursor-pointer">
-                                <span>8. Kontakt</span>
-
-                            </p>
-                            <div x-show="isSectionOpen('kontakt')" class="accordion-content" x-cloak>
-                                <p>
-                                    Wenn Sie Fragen zum Datenschutz haben oder Ihre Rechte in Anspruch nehmen möchten,
-                                    können Sie sich jederzeit an uns wenden:
-                                    <br><br>
-                                    [E-Mail-Adresse]<br>
-                                    [Telefonnummer]<br>
-                                    [Adresse]
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="mt-6 text-right">
-                        <a @click="accept()"  :class="{'fs-small': globalScreenWidth < 689 }" class="px-4 py-2 btn btn-success">Verstanden</a>
-                    </div>
-                </div>
-            </div> -->
-            <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
-                data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
-                aria-labelledby="modal-title-privacy" x-data="{
-         sections: {
-             introduction: false,
-             responsibleParty: false,
-             dataCollection: false,
-             noPersonalData: false,
-             deleteData: false,
-             userRights: false,
-             changes: false,
-             contact: false
-         },
-         consent: false,
-         sessionStorageVar: 'privacyConsent',
-         init() {
-             // Prüfe, ob bereits Consent im Session Storage gesetzt ist
-             this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
-             console.log('consent', this.consent);
-             
-             if (!this.consent) {
-                 // Öffne das Modal, falls noch kein Consent erteilt wurde
-                 Modal.open('privacyModal');
-             }
-         },
-         toggleSection(section) {
-             this.sections[section] = !this.sections[section];
-         },
-         isSectionOpen(section) {
-             return this.sections[section];
-         },
-         accept() {
-             // Speichere das Einverständnis im Session Storage
-             sessionStorage.setItem(this.sessionStorageVar, 'true');
-             // Schließe das Modal
-             Modal.close(document.getElementById('privacyModal'));
-         },
-         handleOverlayClick(event) {
-             const modal = document.getElementById('privacyModal');
-             this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
-             modal.setAttribute('data-close-on-overlay', `${this.consent}`);
-         },
-         handleEscape(event) {
-             this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
-             if (this.consent) {
-                 Modal.close(document.getElementById('privacyModal'));
-             }
-         }
-     }" x-init="init()">
-                <!-- Modal Content -->
-                <div class="custom-modal-content" style="max-height: 90vh; overflow-y: auto;"
-                    :style="{'max-width': (globalScreenWidth < 689) ? '95%' : '60%'}"
-                    @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
-
-                    <!-- Modal Title -->
-                    <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold"
-                        x-html="pageLang.privacyModal.header">
-                    </h2>
-
-                    <!-- Accordion Container -->
-                    <div class="space-y-4">
-
-                        <!-- Section 1: Introduction -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('introduction')">
-                                <span x-html="pageLang.privacyModal.sections.introduction.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('introduction')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.introduction.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 2: Responsible Party -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('responsibleParty')">
-                                <span x-html="pageLang.privacyModal.sections.responsibleParty.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('responsibleParty')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.responsibleParty.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 3: Data Collection on this Website -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('dataCollection')">
-                                <span x-html="pageLang.privacyModal.sections.dataCollection.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('dataCollection')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.dataCollection.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 4: No Collection of Personal Data -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('noPersonalData')">
-                                <span x-html="pageLang.privacyModal.sections.noPersonalData.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('noPersonalData')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.noPersonalData.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 5: How to Delete Your Data -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('deleteData')">
-                                <span x-html="pageLang.privacyModal.sections.deleteData.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('deleteData')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.deleteData.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 6: User Rights -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('userRights')">
-                                <span x-html="pageLang.privacyModal.sections.userRights.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('userRights')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.userRights.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 7: Changes to this Privacy Policy -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('changes')">
-                                <span x-html="pageLang.privacyModal.sections.changes.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('changes')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.changes.content"></p>
-                            </div>
-                        </div>
-
-                        <!-- Section 8: Contact -->
-                        <div>
-                            <p :class="{'fs-small': globalScreenWidth < 689 }"
-                                class="mt-1 accordion-button cursor-pointer" @click="toggleSection('contact')">
-                                <span x-html="pageLang.privacyModal.sections.contact.title"></span>
-                            </p>
-                            <div x-show="isSectionOpen('contact')" class="accordion-content" x-cloak>
-                                <p x-html="pageLang.privacyModal.sections.contact.content"></p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Accept Button -->
-                    <div class="mt-6 text-right">
-                        <a @click="accept()" :class="{'fs-small': globalScreenWidth < 689 }"
-                            class="px-4 py-2 btn btn-success" x-html="pageLang.privacyModal.acceptButton"></a>
-                    </div>
-                </div>
-            </div>
 
 
             <!-- <div class="card ms-3">
@@ -898,25 +480,21 @@
 
             </div> -->
 
-            <div class="card ms-2" x-data="{
+            <!-- <div class="card ms-2" x-data="{
                 testData: {},
                 async submitTest() {
-                    // Sende das Test-Event; stelle sicher, dass 'gtag' global verfügbar ist.
                     gtag('event', 'test_click', {
                         'event_category': 'Test',
                         'event_label': 'Test-Button-Klick'
                     });
                     console.log('Test-Event wurde ausgelöst.');
-                    // Optional: Rufe anschließend die Funktion zum Abrufen der Testdaten auf:
-                    await initTestAnalytics();
                 }
             }">
-                <h3>Google Analytics Test Data</h3>
                 <a class="btn" @click="submitTest()">
+                    Send Test event 
                     <i class="bi bi-grad bi-bar-chart-fill"></i>
                 </a>
-                <div id="analyticsTestData"></div>
-            </div>
+            </div> -->
 
 
 
@@ -1003,13 +581,257 @@
 
     <script src="/js/toast.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (sessionStorage.getItem('privacyConsent') !== 'true') {
 
-                document.querySelector('[data-modal="privacyModal"]').click();
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Beim Laden: Zeige das Modal, wenn noch kein Consent vorhanden ist
+            if (sessionStorage.getItem('privacyConsent') !== 'true') {
+                showPrivacyModal(false);
             }
+
+            // MutationObserver: Beobachtet, ob das Modal entfernt wird.
+            const observer = new MutationObserver((mutationsList) => {
+                mutationsList.forEach((mutation) => {
+                    mutation.removedNodes.forEach((removedNode) => {
+                        if (removedNode.id === "privacyModal") {
+                            // Falls das Modal gelöscht wurde und noch kein Consent vorliegt,
+                            // zeige zusätzlich einen Error-Alert (falls gewünscht) und erstelle das Modal neu.
+                            if (sessionStorage.getItem('privacyConsent') !== 'true') {
+                                showErrorAlert();
+                                showPrivacyModal(true);
+                            }
+                        }
+                    });
+                });
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // Fallback: Überprüfe alle 5s, ob das Modal existiert, und falls nicht und Consent fehlt, erstelle es neu.
+            setInterval(function () {
+                if (sessionStorage.getItem('privacyConsent') !== 'true' && !document.getElementById('privacyModal')) {
+                    showPrivacyModal(true);
+                }
+            }, 5000);
         });
+
+        // Fallback-Funktion, um einen Error-Alert anzuzeigen, wenn der Nutzer das Modal löscht
+        function showErrorAlert() {
+            let alertEl = document.getElementById('consentPrivacyPolicy');
+            if (!alertEl) {
+                // Falls der Error-Alert nicht existiert, erstellen wir ihn:
+                alertEl = document.createElement('div');
+                alertEl.id = 'consentPrivacyPolicy';
+                alertEl.className = 'error-alert';
+                alertEl.innerText = 'Error: The privacy modal was deleted!';
+                document.body.insertAdjacentElement('afterbegin', alertEl);
+            } else {
+                // Falls er existiert, lasse ihn blinken (als Hinweis)
+                let count = 6;
+                const intervalId = setInterval(() => {
+                    if (count > 0) {
+                        alertEl.classList.toggle('blink');
+                        count--;
+                    } else {
+                        clearInterval(intervalId);
+                    }
+                }, 600);
+            }
+        }
+
+        // Hilfsfunktionen zum Parsen und Vergleichen von DOM-Inhalten (falls benötigt)
+        function parseHTML(htmlString) {
+            const parser = new DOMParser();
+            return parser.parseFromString(htmlString, "text/html").body;
+        }
+
+        function compareDOM(element1, element2) {
+            return element1.innerHTML.trim() === element2.innerHTML.trim();
+        }
+
+        // Funktion zum Anzeigen/Erstellen des Privacy Modals
+        function showPrivacyModal(showAlertParam, btnClick = true) {
+            // Suche nach dem Modal-Element
+            let modal = document.getElementById('privacyModal');
+            // Erzeuge den HTML-Code als Template-String
+            const modalHTML = `
+      <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
+           data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
+           aria-labelledby="modal-title-privacy" x-data="{
+                showAlert: ${showAlertParam},
+                sections: {
+                 introduction: false,
+                 responsibleParty: false,
+                 dataCollection: false,
+                 noPersonalData: false,
+                 deleteData: false,
+                 userRights: false,
+                 changes: false,
+                 contact: false
+               },
+               consent: false,
+               granularConsent: sessionStorage.getItem('granularConsent') === 'true',
+               sessionStorageVar: 'privacyConsent',
+               init() {
+                 this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
+                 console.log('consent', this.consent);
+                 if (!this.consent) {
+                   Modal.open('privacyModal');
+                 }
+               },
+               toggleSection(section) {
+                 this.sections[section] = !this.sections[section];
+               },
+               isSectionOpen(section) {
+                 return this.sections[section];
+               },
+               accept() {
+                 sessionStorage.setItem(this.sessionStorageVar, 'true');
+                 Modal.close(document.getElementById('privacyModal'));
+               },
+               handleOverlayClick(event) {
+                 const modal = document.getElementById('privacyModal');
+                 this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
+                 modal.setAttribute('data-close-on-overlay', this.consent ? 'true' : 'false');
+               },
+               handleEscape(event) {
+                 this.consent = sessionStorage.getItem(this.sessionStorageVar) === 'true';
+                 if (this.consent) {
+                   Modal.close(document.getElementById('privacyModal'));
+                 }
+               },
+               updateGranularConsent() {
+                 sessionStorage.setItem('granularConsent', this.granularConsent ? 'true' : 'false');
+                 if (window.gtag) {
+                   window.gtag('consent', 'update', {
+                     'analytics_storage': this.granularConsent ? 'granted' : 'denied'
+                   });
+                 }
+               }
+           }" x-init="init()">
+        <div class="custom-modal-content" style="max-height: 90vh; overflow-y: auto;"
+             :style="{'max-width': (globalScreenWidth < 689) ? '95%' : '60%'}"
+             @click.away="handleOverlayClick($event)" @keydown.escape.window="handleEscape($event)">
+          <h2 id="modal-title-privacy" class="mb-4 text-xl font-semibold" x-html="pageLang.privacyModal.header"></h2>
+          <div x-show="showAlert" @click="showAlert = !showAlert; let count = 6; setInterval(() => {if (count > 0) {document.getElementById('consentPrivacyPolicy').classList.toggle('blink'); count--;} else {return;}}, 600)" class="error-alert">You attempted to delete the modal!</div>
+          <div class="space-y-4">
+            <!-- Hier folgen alle Accordion-Abschnitte -->
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('introduction')">
+                <span x-html="pageLang.privacyModal.sections.introduction.title"></span>
+              </p>
+              <div x-show="isSectionOpen('introduction')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.introduction.content"></p>
+              </div>
+            </div>
+            <!-- Weitere Abschnitte (responsibleParty, dataCollection, noPersonalData, deleteData, userRights, changes, contact) -->
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('responsibleParty')">
+                <span x-html="pageLang.privacyModal.sections.responsibleParty.title"></span>
+              </p>
+              <div x-show="isSectionOpen('responsibleParty')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.responsibleParty.content"></p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('dataCollection')">
+                <span x-html="pageLang.privacyModal.sections.dataCollection.title"></span>
+              </p>
+              <div x-show="isSectionOpen('dataCollection')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.dataCollection.content"></p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('noPersonalData')">
+                <span x-html="pageLang.privacyModal.sections.noPersonalData.title"></span>
+              </p>
+              <div x-show="isSectionOpen('noPersonalData')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.noPersonalData.content"></p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('deleteData')">
+                <span x-html="pageLang.privacyModal.sections.deleteData.title"></span>
+              </p>
+              <div x-show="isSectionOpen('deleteData')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.deleteData.content"></p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('userRights')">
+                <span x-html="pageLang.privacyModal.sections.userRights.title"></span>
+              </p>
+              <div x-show="isSectionOpen('userRights')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.userRights.content"></p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('changes')">
+                <span x-html="pageLang.privacyModal.sections.changes.title"></span>
+              </p>
+              <div x-show="isSectionOpen('changes')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.changes.content"></p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-1 accordion-button cursor-pointer" :class="{'fs-small': globalScreenWidth < 689}"
+                 @click="toggleSection('contact')">
+                <span x-html="pageLang.privacyModal.sections.contact.title"></span>
+              </p>
+              <div x-show="isSectionOpen('contact')" class="accordion-content" x-cloak>
+                <p x-html="pageLang.privacyModal.sections.contact.content"></p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="granularConsentToggle" class="toggle-label" style="cursor: pointer; display: inline-flex; align-items: center;">
+              <input id="granularConsentToggle" type="checkbox" x-model="granularConsent" @change="updateGranularConsent()" style="display: none;">
+              <span class="bi toggle-icon" :class="{' bi-toggle-on': granularConsent, 'bi-toggle-off': !granularConsent}" style="font-size: 2rem;"></span>
+              <span style="margin-left: 0.5rem;" x-text="granularConsent ? 'Granular data collection enabled' : 'Granular data collection disabled'"></span>
+            </label>
+          </div>
+          <div class="mt-6 text-right">
+            <a id="consentPrivacyPolicy" @click="accept()" :class="{'fs-small': globalScreenWidth < 689}" class="px-4 py-2 btn btn-success" x-html="pageLang.privacyModal.acceptButton"></a>
+          </div>
+        </div>
+      </div>
+    `;
+            // Wenn ein Modal bereits existiert, vergleichen wir den bestehenden mit dem neuen
+            if (modal) {
+                if (!compareDOM(parseHTML(modal), parseHTML(modalHTML))) {
+                    modal.remove();
+                    document.body.insertAdjacentHTML('beforeend', modalHTML);
+                }
+            } else {
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                modal = document.getElementById('privacyModal');
+            }
+
+            // Falls der Button zum Öffnen des Modals fehlt, füge einen Fallback ein
+            let btn = document.querySelector('[data-modal="privacyModal"]');
+            if (!btn) {
+                let container = document.querySelector('#privacyModalContainer');
+                if (!container) {
+                    container = document.createElement('div');
+                    container.id = 'privacyModalContainer';
+                    document.body.appendChild(container);
+                }
+                container.insertAdjacentHTML('beforeend', `<a data-tooltip="Privacy" class="btn modal-trigger" data-modal="privacyModal"><i class="bi bi-shield-shaded"></i></a>`);
+                btn = document.querySelector('[data-modal="privacyModal"]');
+            }
+
+            // Falls btnClick true ist, simuliere einen Klick, um das Modal zu öffnen
+            if (btnClick) {
+                btn.click();
+            }
+        }
+
     </script>
 
 </body>
