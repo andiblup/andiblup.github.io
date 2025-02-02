@@ -6,7 +6,7 @@
     },
     "warning": {
       "title": "Current in development",
-      "content": "It is still under development, not every styling, functionally and content has been added yet.<br>Feel free to contact me alfred.narjes@gmail.com."
+      "content": "It is still under development, not every styling, function or content has been added yet.<br>Feel free to contact me at alfred.narjes@gmail.com."
     },
     "info": {
       "title": "Click me",
@@ -23,7 +23,7 @@
   "sidebar": {
     "home": "Home",
     "about": "About Me",
-    "projects": "Projects<i :class=\"{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}\"style=\"font-size: inherit; display: inline-block; vertical-align: middle;\"></i>",
+    "projects": "Projects<i :class=\"{'bi no-grad': true, 'bi-chevron-down': !openProjects, 'bi-chevron-up': openProjects}\" style=\"font-size: inherit; display: inline-block; vertical-align: middle;\"></i>",
     "overview": "Overview",
     "contact": "Contact"
   },
@@ -40,7 +40,7 @@
       },
       "dataCollection": {
         "title": "3. Data Collection on this Website",
-        "content": "Our website uses the so-called <strong>Local Storage</strong> to store certain settings such as the theme (design) and the language of your user interface. This data helps us remember your preferences and provide you with a personalized experience.<br><br><strong>3.1. What is Local Storage?</strong><br>Local Storage is a feature of modern web browsers that allows data to be stored locally on your device. Unlike cookies, Local Storage can store larger amounts of data, and the data remains available even after the browser is closed, until it is explicitly deleted.<br><br><strong>3.2. Use of Local Storage on our Website</strong><br>We use Local Storage on our website exclusively for the following purposes:<ul><li><strong>Storing the selected theme:</strong> So that the design (e.g., light or dark mode) you prefer can be automatically applied on your next visit.</li><li><strong>Storing the preferred language:</strong> So that the user interface is displayed in your chosen language.</li></ul>This stored data only includes your preferences and no personal information."
+        "content": "Our website uses the so-called <strong>Local Storage</strong> to store certain settings such as the theme (design) and the language of your user interface. This data helps us remember your preferences and provide you with a personalized experience.<br><br><strong>3.1. What is Local Storage?</strong><br>Local Storage is a feature of modern web browsers that allows data to be stored locally on your device. Unlike cookies, Local Storage can store larger amounts of data, and the data remains available even after the browser is closed until it is explicitly deleted.<br><br><strong>3.2. Use of Local Storage on our Website</strong><br>We use Local Storage on our website exclusively for the following purposes:<ul><li><strong>Storing the selected theme:</strong> So that the design (e.g., light or dark mode) you prefer can be automatically applied on your next visit.</li><li><strong>Storing the preferred language:</strong> So that the user interface is displayed in your chosen language.</li></ul><br><strong>3.3. Use of Google Analytics</strong><br>In addition, we use Google Analytics, a web analytics service provided by Google Inc. (“Google”), to collect anonymized information about the use of our website. With Google Analytics, the following data is collected:<ul><li><strong>Page views with date:</strong> The date and time a page is viewed is recorded. This data is displayed in aggregate (e.g., on 02.02.2025, the page was viewed by 5 users).</li></ul>This data is used solely for analyzing and improving the website and is not linked with other data sources. For further information, please refer to the Google Analytics privacy policy."
       },
       "noPersonalData": {
         "title": "4. No Collection of Personal Data",
