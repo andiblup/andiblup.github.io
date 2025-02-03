@@ -597,8 +597,13 @@
                             // Falls das Modal gelöscht wurde und noch kein Consent vorliegt,
                             // zeige zusätzlich einen Error-Alert (falls gewünscht) und erstelle das Modal neu.
                             if (sessionStorage.getItem('privacyConsent') !== 'true') {
-                                showErrorAlert();
+                                // showErrorAlert();
                                 showPrivacyModal(true);
+                            } else {
+                                console.log('Privacy Modal wurde gelöscht, aber Consent liegt vor.');
+
+                                buildPrivacyModal();
+
                             }
                         }
                     });
@@ -611,32 +616,13 @@
                 if (sessionStorage.getItem('privacyConsent') !== 'true' && !document.getElementById('privacyModal')) {
                     showPrivacyModal(true);
                 }
+                if (!document.getElementById('privacyModal')) {
+                    console.log('Privacy Modal existiert nicht, wird neu erstellt.');
+
+                    buildPrivacyModal();
+                }
             }, 5000);
         });
-
-        // Fallback-Funktion, um einen Error-Alert anzuzeigen, wenn der Nutzer das Modal löscht
-        function showErrorAlert() {
-            let alertEl = document.getElementById('consentPrivacyPolicy');
-            if (!alertEl) {
-                // Falls der Error-Alert nicht existiert, erstellen wir ihn:
-                alertEl = document.createElement('div');
-                alertEl.id = 'consentPrivacyPolicy';
-                alertEl.className = 'error-alert';
-                alertEl.innerText = 'Error: The privacy modal was deleted!';
-                document.body.insertAdjacentElement('afterbegin', alertEl);
-            } else {
-                // Falls er existiert, lasse ihn blinken (als Hinweis)
-                let count = 6;
-                const intervalId = setInterval(() => {
-                    if (count > 0) {
-                        alertEl.classList.toggle('blink');
-                        count--;
-                    } else {
-                        clearInterval(intervalId);
-                    }
-                }, 600);
-            }
-        }
 
         // Hilfsfunktionen zum Parsen und Vergleichen von DOM-Inhalten (falls benötigt)
         function parseHTML(htmlString) {
@@ -649,11 +635,45 @@
         }
 
         // Funktion zum Anzeigen/Erstellen des Privacy Modals
-        function showPrivacyModal(showAlertParam, btnClick = true) {
+        function showPrivacyModal(showAlert = false, btnClick = true) {
             // Suche nach dem Modal-Element
             let modal = document.getElementById('privacyModal');
             // Erzeuge den HTML-Code als Template-String
-            const modalHTML = `
+
+            const modalHTML = createPrivacyModal(showAlert);
+
+            // Wenn ein Modal bereits existiert, vergleichen wir den bestehenden mit dem neuen
+            if (modal) {
+                if (!compareDOM(parseHTML(modal), parseHTML(modalHTML))) {
+                    modal.remove();
+                    document.body.insertAdjacentHTML('beforeend', modalHTML);
+                }
+            } else {
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                modal = document.getElementById('privacyModal');
+            }
+
+            // Falls der Button zum Öffnen des Modals fehlt, füge einen Fallback ein
+            let btn = document.querySelector('[data-modal="privacyModal"]');
+            if (!btn) {
+                let container = document.querySelector('#privacyModalContainer');
+                if (!container) {
+                    container = document.createElement('div');
+                    container.id = 'privacyModalContainer';
+                    document.body.appendChild(container);
+                }
+                container.insertAdjacentHTML('beforeend', `<a data-tooltip="Privacy" class="btn modal-trigger" data-modal="privacyModal"><i class="bi bi-shield-shaded"></i></a>`);
+                btn = document.querySelector('[data-modal="privacyModal"]');
+            }
+
+            // Falls btnClick true ist, simuliere einen Klick, um das Modal zu öffnen
+            if (btnClick) {
+                btn.click();
+            }
+        }
+
+        function createPrivacyModal(showAlertParam = false) {
+            return `
       <div id="privacyModal" class="custom-modal" data-animation-in="animate-bounceIn"
            data-animation-out="animate-fadeOut" data-close-on-overlay="false" aria-hidden="true" role="dialog"
            aria-labelledby="modal-title-privacy" x-data="{
@@ -792,7 +812,7 @@
           <div>
             <label for="granularConsentToggle" class="toggle-label" style="cursor: pointer; display: inline-flex; align-items: center;">
               <input id="granularConsentToggle" type="checkbox" x-model="granularConsent" @change="updateGranularConsent()" style="display: none;">
-              <span class="bi toggle-icon" :class="{' bi-toggle-on': granularConsent, 'bi-toggle-off': !granularConsent}" style="font-size: 2rem;"></span>
+              <span class="bi bi-grad toggle-icon" :class="{' bi-toggle-on': granularConsent, 'bi-toggle-off': !granularConsent}" style="font-size: 2rem;"></span>
               <span style="margin-left: 0.5rem;" x-text="granularConsent ? 'Granular data collection enabled' : 'Granular data collection disabled'"></span>
             </label>
           </div>
@@ -802,34 +822,14 @@
         </div>
       </div>
     `;
-            // Wenn ein Modal bereits existiert, vergleichen wir den bestehenden mit dem neuen
-            if (modal) {
-                if (!compareDOM(parseHTML(modal), parseHTML(modalHTML))) {
-                    modal.remove();
-                    document.body.insertAdjacentHTML('beforeend', modalHTML);
-                }
-            } else {
-                document.body.insertAdjacentHTML('beforeend', modalHTML);
-                modal = document.getElementById('privacyModal');
-            }
+        }
 
-            // Falls der Button zum Öffnen des Modals fehlt, füge einen Fallback ein
-            let btn = document.querySelector('[data-modal="privacyModal"]');
-            if (!btn) {
-                let container = document.querySelector('#privacyModalContainer');
-                if (!container) {
-                    container = document.createElement('div');
-                    container.id = 'privacyModalContainer';
-                    document.body.appendChild(container);
-                }
-                container.insertAdjacentHTML('beforeend', `<a data-tooltip="Privacy" class="btn modal-trigger" data-modal="privacyModal"><i class="bi bi-shield-shaded"></i></a>`);
-                btn = document.querySelector('[data-modal="privacyModal"]');
-            }
+        function buildPrivacyModal() {
+            document.body.insertAdjacentHTML('beforeend', createPrivacyModal());
+        };
 
-            // Falls btnClick true ist, simuliere einen Klick, um das Modal zu öffnen
-            if (btnClick) {
-                btn.click();
-            }
+        if (!document.getElementById('privacyModal')) {
+            buildPrivacyModal();
         }
 
     </script>
