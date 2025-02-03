@@ -179,9 +179,9 @@ const handleLocation = async () => {
     app.innerHTML = html;
 
     // Führe alle Script-Tags im geladenen HTML aus
-    executeInlineScripts(app);
+    //executeInlineScripts(app);
     // Nachdem der HTML-Inhalt eingefügt wurde, wird das zugehörige Modul geladen
-    loadRouteModule();
+    //loadRouteModule();
 
 
     // Nach dem Laden der Route, SVGs einfärben

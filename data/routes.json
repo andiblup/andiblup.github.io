@@ -10,5 +10,6 @@
     "/projects/doGether": "/pages/projects/doGether.html",
     "/projects/fantasyQuest": "/pages/projects/fantasyQuest.html",
     "/projects/pma": "/pages/projects/pma.html",
-    "/demos/analytics": "/pages/demos/analytics.html"
+    "/demos/analytics": "/pages/demos/analytics.html",
+    "/demos/aiChat": "/pages/demos/aiChat.html"
   }
