@@ -9,9 +9,9 @@
     const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase();
 // console.log(breadCrumbs[breadCrumbs.length - 1].name.toLowerCase());
 
-    // const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
-    // this.pageLang = await response.json();
-    // document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+    const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    this.pageLang = await response.json();
+    document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
 
     }
  }" x-init="init()">
@@ -36,24 +36,28 @@
 
 
         <!-- Container für den allgemeinen Report (z. B. Seitenaufrufe über die Zeit) -->
-        <div class="card">
+        <div class="card d-flex justify-content-center align-items-center my-3 p-4">
+            <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
             <canvas id="generalChart"></canvas>
         </div>
 
         <!-- Container für die Länder-Aufschlüsselung (Engagierte Sitzungen) -->
-        <div class="card my-3">
+        <div class="card d-flex justify-content-center align-items-center my-3 p-4">
+            <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
             <canvas id="testEventChart"></canvas>
         </div>
 
         <!-- Container für die Länder-Aufschlüsselung (Engagierte Sitzungen) -->
-        <div class="card my-3">
+        <div class="card d-flex justify-content-center align-items-center my-3 p-4">
             <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
+            <!-- <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner> -->
             <canvas id="countryChart"></canvas>
         </div>
 
         <!-- Container für die Gerätetyp-Aufschlüsselung (Engagierte Sitzungen) -->
-        <div class="card">
-            <canvas id="deviceChart"></canvas>
+        <div class="card d-flex justify-content-center align-items-center my-3 p-4">
+            <mod-spinner flare-spinner-gradient="#667eea, #764ba2, #6b8dd6, #8e37d7"></mod-spinner>
+            <canvas id="deviceChart">no data</canvas>
         </div>
 
     </div>
@@ -62,6 +66,5 @@
 <script>
 
     console.log('INLINE: analytics page');
-
 
 </script>

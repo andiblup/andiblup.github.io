@@ -1,1 +1,23 @@
-{}
+{
+    "noData": "Keine Daten verfügbar",
+    "devices": "Geräte",
+    "countries": "Länder",
+    "charts": {
+        "general": {
+            "label": "Seitenaufrufe",
+            "title": "Seitenaufrufe (Letzte 7 Tage)"
+        },
+        "testEvents": {
+            "label": "Test-Events",
+            "title": "Anzahl Test-Events (Letzte 7 Tage)"
+        },
+        "countries": {
+            "label": "Sitzungen (Sessions)",
+            "title": "Sitzungen nach Land"
+        },
+        "devices": {
+            "label": "Sitzungen (Sessions)",
+            "title": "Sitzungen nach Gerätetyp"
+        }
+    }
+}

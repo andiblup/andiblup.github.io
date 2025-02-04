@@ -1,1 +1,23 @@
-{}
+{
+    "noData": "No data available",
+    "devices": "Devices",
+    "countries": "Countries",
+    "charts": {
+        "general": {
+            "label": "Pageviews",
+            "title": "Pageviews (Last 7 Days)"
+        },
+        "testEvents": {
+            "label": "Test Events",
+            "title": "Number of Test Events (Last 7 Days)"
+        },
+        "countries": {
+            "label": "Sessions",
+            "title": "Sessions by Country"
+        },
+        "devices": {
+            "label": "Sessions",
+            "title": "Sessions by Device Type"
+        }
+    }
+}

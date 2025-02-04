@@ -34,7 +34,8 @@
         { "class": "devicon-jira-plain", "label": "Jira" },
         { "class": "devicon-slack-plain", "label": "Slack" },
         { "class": "devicon-markdown-plain", "label": "Markdown" },
-        { "class": "icons-custom-mapbox", "label": "Mapbox" }
+        { "class": "icons-custom-mapbox", "label": "Mapbox" },
+        { "class": "devicon-cloudflare-plain", "label": "Cloudflare" }
     ],
     "portfolio": [
         { "class": "devicon-html5-plain", "label": "HTML" },
