@@ -1,5 +1,6 @@
 <section x-data="{ 
     pageLang: {}, 
+    readme: null,
     async init() { 
         breadCrumbs = getBreadCrumbsArray(); 
         const lang = localStorage.getItem('appLang') || 'en'; 
@@ -10,8 +11,22 @@
         this.pageLang = await response.json(); 
         document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
         console.log(this.pageLang);
-        
-        
+
+        //? Fetch the README file from the assets folder
+        // const res = await fetch('/assets/README.md');
+        // if (res.ok) {
+        //     const text = await res.text();
+        //     this.readme = marked(text); // convert Markdown to HTML
+        // } else {
+        //     console.error('Error fetching README:', res.statusText);
+        // }
+        // fetch('/assets/README.md')
+        // .then(response => response.json())
+        // .then(data => {
+        //     const markdown = atob(data.content); // decode the base64 content
+        //     this.readme = marked(markdown); // convert Markdown to HTML
+        // })
+        // .catch(error => console.error('Error fetching README:', error));
 
     } 
 }" x-init="init()" class="py-5">
@@ -111,12 +126,12 @@
                             </ul>
                             <ol class="ps-4">
                                 <template x-for="step in pageLang.installation.steps">
-                                    <li>
+                                    <li style="margin-bottom: 16px;">
                                         <div class="fw-bold" x-text="step.title"></div>
                                         <!-- <div x-text="step.description"></div> -->
-                                         <template x-for="desc in step.description">
+                                        <template x-for="desc in step.description">
                                             <div x-text="desc"></div>
-                                         </template>
+                                        </template>
                                     </li>
                                 </template>
                                 <!-- <li x-text="pageLang.installation.step1"></li>
@@ -133,5 +148,10 @@
             </div>
         </div>
     </div>
+
+    <div id="readme-container" x-html="readme"></div>
+
+
+
 
 </section>

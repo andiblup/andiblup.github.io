@@ -55,7 +55,8 @@
                 "title": "Start Development Server",
                 "description": [
                     "To start the development server, run the following command: `npm run dev`.",
-                    "The server should now be running, and you can access Meet Note in your browser at `http://localhost:3000`."
+                    "The server should now be running, and you can access Meet Note through your browser using the local IP address of the host machine (the IP address displayed in the console).",
+                    "Alternatively, you can also access the server using any local IP address or 'localhost' (127.0.0.1:6060) as long as you are on the host machine."
                 ]
             },
             {

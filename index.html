@@ -75,8 +75,9 @@
     <link rel="stylesheet" href="/css/alert.css">
     <link rel="stylesheet" href="/css/aiChat.css">
 
-
-<script>window.charts = {};</script>
+    <!-- FOR MARKDOWN TO HTML CONVERTION -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <script>window.charts = {};</script>
 </head>
 
 <body id="body" class="scrollbar-none">
@@ -93,136 +94,136 @@
 
     <div id="root">
 
-            
-            <!-- Chat-Sidebar -->
-            <div id="chat-sidebar" style="display: none;">
-                <div id="chat-header">
-                    <span>Deepseekr1 Chat</span>
-                    <button onclick="toggleChat()" id="chat-close">✕</button>
-                </div>
-                <div id="chat-body">
-                    <textarea id="inputText" placeholder="Deine Nachricht..."></textarea>
-                    <button onclick="sendRequestDeepSeek()" id="sendButton">Senden</button>
-                    <div id="message-container">
-                        <pre id="temp" class="output">Antwort wird hier angezeigt...</pre>
-                    </div>
-                </div>
-                <div id="chat-resizer"></div>
+
+        <!-- Chat-Sidebar -->
+        <div id="chat-sidebar" style="display: none;">
+            <div id="chat-header">
+                <span>Deepseekr1 Chat</span>
+                <button onclick="toggleChat()" id="chat-close">✕</button>
             </div>
-         
-               <script>
-                  // API-Konfiguration (für Demo – in einer echten Anwendung über einen Proxy schützen!)
-                //   const API_TOKEN = "";
-                //   const API_URL = "https://openrouter.ai/api/v1/chat/completions";
-            
-                  // Elemente
-                  const toggleChatBtn = document.getElementById("toggleChatBtn");
+            <div id="chat-body">
+                <textarea id="inputText" placeholder="Deine Nachricht..."></textarea>
+                <button onclick="sendRequestDeepSeek()" id="sendButton">Senden</button>
+                <div id="message-container">
+                    <pre id="temp" class="output">Antwort wird hier angezeigt...</pre>
+                </div>
+            </div>
+            <div id="chat-resizer"></div>
+        </div>
 
-                  
-                  const chatSidebar = document.getElementById("chat-sidebar");
-                  const chatCloseBtn = document.getElementById("chat-close");
-                  const sendButton = document.getElementById("sendButton");
-                  const inputTextEl = document.getElementById("inputText");
-                  const messageContainer = document.getElementById("message-container");
-                  const chatResizer = document.getElementById("chat-resizer");
-                  
-                  let isChatVisible = false;
-            
+        <script>
+            // API-Konfiguration (für Demo – in einer echten Anwendung über einen Proxy schützen!)
+            //   const API_TOKEN = "";
+            //   const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
-            
-                  // Toggle-Funktion: Sidebar ein- bzw. ausblenden
-                  function toggleChat() {
-                    isChatVisible = !isChatVisible;
-                    if (isChatVisible) {
-                      chatSidebar.style.display = "flex";
-                      document.body.style.marginRight = chatSidebar.offsetWidth + "px";
+            // Elemente
+            const toggleChatBtn = document.getElementById("toggleChatBtn");
+
+
+            const chatSidebar = document.getElementById("chat-sidebar");
+            const chatCloseBtn = document.getElementById("chat-close");
+            const sendButton = document.getElementById("sendButton");
+            const inputTextEl = document.getElementById("inputText");
+            const messageContainer = document.getElementById("message-container");
+            const chatResizer = document.getElementById("chat-resizer");
+
+            let isChatVisible = false;
+
+
+
+            // Toggle-Funktion: Sidebar ein- bzw. ausblenden
+            function toggleChat() {
+                isChatVisible = !isChatVisible;
+                if (isChatVisible) {
+                    chatSidebar.style.display = "flex";
+                    document.body.style.marginRight = chatSidebar.offsetWidth + "px";
                     //   toggleChatBtn.textContent = "Chat verstecken";
-                    } else {
-                      chatSidebar.style.display = "none";
-                      document.body.style.marginRight = "0px";
+                } else {
+                    chatSidebar.style.display = "none";
+                    document.body.style.marginRight = "0px";
                     //   toggleChatBtn.textContent = "Chat anzeigen";
-                    }
-                  }
-            
-                //   toggleChatBtn.addEventListener("click", toggleChat);
-                //   chatCloseBtn.addEventListener("click", toggleChat);
-            
-                  // Funktion, um den API-Request abzuschicken (hier wird die echte API verwendet)
-                  async function sendRequestDeepSeek() {
-                    // Entferne den Standard-Pre, falls vorhanden
-                    const temp = document.getElementById("temp");
-                    if (temp) {
-                      temp.remove();
-                    }
-                    // Zeige einen einfachen Spinner (optional)
-                    messageContainer.insertAdjacentHTML('beforeend', '<div class="spinner"></div>');
-                    const userMessage = inputTextEl.value.trim();
-                    if (!userMessage) {
-                      alert("Bitte gib eine Nachricht ein.");
-                      return;
-                    }
-                    try {
-                      const response = await fetch('https://quiet-limit-f8b1.alfred-narjes.workers.dev/', {
+                }
+            }
+
+            //   toggleChatBtn.addEventListener("click", toggleChat);
+            //   chatCloseBtn.addEventListener("click", toggleChat);
+
+            // Funktion, um den API-Request abzuschicken (hier wird die echte API verwendet)
+            async function sendRequestDeepSeek() {
+                // Entferne den Standard-Pre, falls vorhanden
+                const temp = document.getElementById("temp");
+                if (temp) {
+                    temp.remove();
+                }
+                // Zeige einen einfachen Spinner (optional)
+                messageContainer.insertAdjacentHTML('beforeend', '<div class="spinner"></div>');
+                const userMessage = inputTextEl.value.trim();
+                if (!userMessage) {
+                    alert("Bitte gib eine Nachricht ein.");
+                    return;
+                }
+                try {
+                    const response = await fetch('https://quiet-limit-f8b1.alfred-narjes.workers.dev/', {
                         method: 'POST',
                         headers: {
-                          "Content-Type": "application/json"
+                            "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                          "model": "openai/gpt-3.5-turbo",
-                          "messages": [{
-                            "role": "user",
-                            "content": userMessage
-                          }]
+                            "model": "openai/gpt-3.5-turbo",
+                            "messages": [{
+                                "role": "user",
+                                "content": userMessage
+                            }]
                         })
-                      });
-                      const data = await response.json();
-                      // Entferne den Spinner
-                      document.querySelectorAll('.spinner').forEach(e => e.remove());
-                      const result = marked.parse(data.choices[0].message.content);
-                      const newPre = document.createElement("pre");
-                      newPre.classList.add("output");
-                      newPre.innerHTML = result;
-                      messageContainer.appendChild(newPre);
-                    } catch (error) {
-                      const newPre = document.createElement("pre");
-                      newPre.classList.add("output");
-                      newPre.textContent = "Fehler bei der API-Anfrage: " + error;
-                      messageContainer.appendChild(newPre);
-                    }
-                  }
-            
-                  sendButton.addEventListener("click", sendRequestDeepSeek);
-            
-                  // Senden per Enter (ohne Shift) in der Textarea
-                  inputTextEl.addEventListener("keydown", function(event) {
-                    if (event.key === "Enter" && !event.shiftKey) {
-                      event.preventDefault();
-                      sendRequestDeepSeek();
-                    }
-                  });
-            
-                  // Resizer-Funktionalität
-                  let isResizing = false;
-                  chatResizer.addEventListener("mousedown", function(e) {
-                    isResizing = true;
-                    document.body.style.cursor = "ew-resize";
-                  });
-                  document.addEventListener("mousemove", function(e) {
-                    if (!isResizing) return;
-                    const newWidth = window.innerWidth - e.clientX;
-                    if (newWidth > 250 && newWidth < window.innerWidth * 0.8) {
-                      chatSidebar.style.width = newWidth + "px";
-                      document.body.style.marginRight = newWidth + "px";
-                    }
-                  });
-                  document.addEventListener("mouseup", function() {
-                    if (isResizing) {
-                      isResizing = false;
-                      document.body.style.cursor = "default";
-                    }
-                  });
-                
-              </script>
+                    });
+                    const data = await response.json();
+                    // Entferne den Spinner
+                    document.querySelectorAll('.spinner').forEach(e => e.remove());
+                    const result = marked.parse(data.choices[0].message.content);
+                    const newPre = document.createElement("pre");
+                    newPre.classList.add("output");
+                    newPre.innerHTML = result;
+                    messageContainer.appendChild(newPre);
+                } catch (error) {
+                    const newPre = document.createElement("pre");
+                    newPre.classList.add("output");
+                    newPre.textContent = "Fehler bei der API-Anfrage: " + error;
+                    messageContainer.appendChild(newPre);
+                }
+            }
+
+            sendButton.addEventListener("click", sendRequestDeepSeek);
+
+            // Senden per Enter (ohne Shift) in der Textarea
+            inputTextEl.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    sendRequestDeepSeek();
+                }
+            });
+
+            // Resizer-Funktionalität
+            let isResizing = false;
+            chatResizer.addEventListener("mousedown", function (e) {
+                isResizing = true;
+                document.body.style.cursor = "ew-resize";
+            });
+            document.addEventListener("mousemove", function (e) {
+                if (!isResizing) return;
+                const newWidth = window.innerWidth - e.clientX;
+                if (newWidth > 250 && newWidth < window.innerWidth * 0.8) {
+                    chatSidebar.style.width = newWidth + "px";
+                    document.body.style.marginRight = newWidth + "px";
+                }
+            });
+            document.addEventListener("mouseup", function () {
+                if (isResizing) {
+                    isResizing = false;
+                    document.body.style.cursor = "default";
+                }
+            });
+
+        </script>
 
 
         <div id="sidebar" class="navbar collapsed"
@@ -273,7 +274,8 @@
                     <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects/pma">PMA</a>
                 </li>
                 <li x-show="openProjects" class="ps-2 pe-3 nav-item ms-2 elevated">
-                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects/meet_note">Meet Note</a>
+                    <a class="nav-link d-flex btn btn-nav" onclick="route(event)" href="#/projects/meet_note">Meet
+                        Note</a>
                 </li>
 
                 <li class="ps-2 pe-3 nav-item elevated">
@@ -382,7 +384,7 @@
             </div> -->
 
 
-            
+
 
             <div class="topbar" x-data="{ 
                 menuOpen: false, 
@@ -413,11 +415,11 @@
                         }" class="d-flex align-items-center">
                             <!-- <a id="toggleChatBtn" @click="document.getElementById('chat-sidebar').style.display = 'block';" data-tooltip="DeepSeek Chat" class="btn" ><i
                                     class="bi bi-grad bi-chat-dots"></i></a> -->
-                                    <!-- <div class="container"> -->
-                                        <a :data-tooltip="pageLang.nav.chat" class="btn" onclick="toggleChat()" id="toggleChatBtn">
-                                        <i class="bi bi-grad bi-chat-dots"></i></a>
-                                        <!-- <i class="bi bi-grad bi-chat-dots" onclick="toggleChat()" id="toggleChatBtn"></i> -->
-                                    <!-- </div> -->
+                            <!-- <div class="container"> -->
+                            <a :data-tooltip="pageLang.nav.chat" class="btn" onclick="toggleChat()" id="toggleChatBtn">
+                                <i class="bi bi-grad bi-chat-dots"></i></a>
+                            <!-- <i class="bi bi-grad bi-chat-dots" onclick="toggleChat()" id="toggleChatBtn"></i> -->
+                            <!-- </div> -->
                             <a :data-tooltip="pageLang.nav.cv" class="btn" href="/assets/cv.pdf" target="_blank"><i
                                     class="bi bi-grad bi-file-earmark-person"></i></a>
                             <span id="privacyModalContainer"><a :data-tooltip="pageLang.nav.privacy" class="btn"

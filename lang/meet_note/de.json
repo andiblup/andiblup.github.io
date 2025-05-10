@@ -39,7 +39,7 @@
                 "title": "Repository klonen",
                 "description": [
                     "Öffne dein Terminal oder deine Kommandozeile.",
-                    "Klonen des Meet Note-Repositorys von GitHub: `git clone https://github.com/your-username/meet-note.git`.",
+                    "Klonen des Meet Note-Repositorys von GitHub: `git clone https://github.com/andiblup/meet-note.git`.",
                     "Wechsel in das Verzeichnis des Projekts: `cd meet-note`."
                 ]
             },
@@ -55,7 +55,8 @@
                 "title": "Entwicklungsserver starten",
                 "description": [
                     "Um den Entwicklungsserver zu starten, führe folgenden Befehl aus: `npm run dev`.",
-                    "Der Server sollte jetzt laufen, und du kannst Meet Note über deinen Browser unter `http://localhost:3000` aufrufen."
+                    "Der Server sollte jetzt laufen, und du kannst Meet Note über deinen Browser unter der lokalen IP-Adresse des Hostgeräts aufrufen (die IP-Adresse, die in der Konsole angezeigt wird).",
+                    "Alternativ kannst du den Server auch unter allen lokalen IP-Adressen sowie unter 'localhost' (127.0.0.1:6060) erreichen, solange du dich auf dem Host-Gerät befindest."
                 ]
             },
             {
