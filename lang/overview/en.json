@@ -22,6 +22,10 @@
         "pma": {
             "title": "PMA",
             "description": "A project management application for you to manage your projects."
+        },
+        "meet_note": {
+            "title": "Meet Note",
+            "description": "Meet Note is a modern, secure, and modular network note-taking app that allows teams to create, manage, and share notes in meetings or projects - anytime, anywhere. Privacy and offline functionality are its core principles."
         }
     }
 

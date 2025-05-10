@@ -1,0 +1,21 @@
+<section x-data="{ 
+    pageLang: {}, 
+    async init() { 
+        breadCrumbs = getBreadCrumbsArray(); 
+        const lang = localStorage.getItem('appLang') || 'en'; 
+        const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase(); 
+        console.log('/lang/' + fileName + '/' + lang + '.json');
+        
+        const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
+        this.pageLang = await response.json(); 
+        document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+        console.log(this.pageLang);
+        
+        
+
+    } 
+}" x-init="init()" class="py-5">
+
+ananas
+
+</section>
