@@ -40,6 +40,7 @@
     "portfolio": [
         { "class": "devicon-html5-plain", "label": "HTML" },
         { "class": "devicon-css3-plain", "label": "CSS" },
+        { "class": "devicon-javascript-plain", "label": "JS" },
         { "class": "devicon-bootstrap-plain", "label": "Bootstrap" },
         { "class": "devicon-alpinejs-plain", "label": "Alpine.js" },
         { "class": "devicon-git-plain", "label": "Git" },
@@ -77,6 +78,35 @@
         { "class": "devicon-mariadb-plain", "label": "MariaDB" },
         { "class": "devicon-git-plain", "label": "Git" },
         { "class": "devicon-gitlab-plain", "label": "Gitlab" },
+        { "class": "devicon-vscode-plain", "label": "VS Code" }
+    ],
+    "pma": [
+        { "class": "devicon-html5-plain", "label": "HTML" },
+        { "class": "devicon-css3-plain", "label": "CSS" },
+        { "class": "devicon-javascript-plain", "label": "JS" },
+        { "class": "devicon-alpinejs-plain", "label": "Alpine.js" },
+        { "class": "devicon-laravel-plain", "label": "Laravel" },
+        { "class": "devicon-mariadb-plain", "label": "MariaDB" },
+        { "class": "devicon-bootstrap-plain", "label": "Bootstrap" },
+        { "class": "devicon-git-plain", "label": "Git" },
+        { "class": "devicon-gitlab-plain", "label": "Gitlab" },
+        { "class": "devicon-vscode-plain", "label": "VS Code" }
+
+    ],
+    "meet_note": [
+        { "class": "devicon-html5-plain", "label": "HTML" },
+        { "class": "devicon-css3-plain", "label": "CSS" },
+        { "class": "devicon-javascript-plain", "label": "JS" },
+        { "class": "devicon-nodejs-plain-wordmark", "label": "Node JS" },
+        { "class": "devicon-express-original", "label": "Express" },
+        { "class": "devicon-electron-original", "label": "Electron"},
+        { "class": "devicon-tailwindcss-original", "label": "Tailwind CSS"},
+        { "class": "icons-custom-daisyui", "label": "daisyUI" },
+        { "class": "devicon-socketio-original", "label": "Socket.IO"},
+        { "class": "devicon-postcss-original", "label": "PostCSS"},
+        { "class": "devicon-json-plain", "label": "JSON"},
+        { "class": "devicon-git-plain", "label": "Git" },
+        { "class": "devicon-github-plain", "label": "Github" },
         { "class": "devicon-vscode-plain", "label": "VS Code" }
     ]
 }

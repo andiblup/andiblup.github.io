@@ -1,0 +1,88 @@
+{
+    "header": "Meet Note",
+    "description": "Meet Note is an innovative note-taking app specifically designed to meet the needs of meetings, projects, and distributed teams. It offers a fast, user-friendly way to create and manage notes that are accessible on a local network or over the internet. With a strong focus on privacy and full GDPR compliance, users retain full control over their data. The app supports offline use and features a modular architecture that allows for future extensions and customizations. Key features include a custom editor for text and code, flexible export options, and real-time synchronization using Socket.IO. Thanks to its offline-first philosophy and intuitive design, Meet Note is ideal for both personal projects and professional teams.",
+    "features": {
+        "title": "Features",
+        "groups": "Create and join groups via local IP or mDNS for easy network connections with no additional configuration required.",
+        "filters": "Versatile search and filter options, including the ability to filter notes by title, activity, time, location, and required number of participants.",
+        "personalization": "Personalize profiles and app settings, including theme switching (Light/Dark), primary and secondary colors, and custom adjustments.",
+        "posts": "Create and edit notes with support for rich text, code blocks, tables, media embeds, and more. Notes can be exported as PDFs.",
+        "offline": "Offline availability with full PWA (Progressive Web App) support. All data remains locally stored and accessible even without an internet connection.",
+        "access": "Access control with planned password and token-based rooms that secure access to private notes and sessions.",
+        "sync": "Real-time synchronization of notes via Socket.IO, ensuring changes are visible to all participants immediately.",
+        "export": "Notes can be exported as PDFs, with planned export options to Markdown and OneNote.",
+        "files": "File explorer for managing and sharing notes and other documents. Allows downloading notes and sharing files.",
+        "notifications": "Push notifications for tasks and reminders that are shown directly on mobile devices.",
+        "security": "Security features like HTTPS, bcrypt, and SHA-256 for secure transport and authentication. All data is stored locally and GDPR-compliant.",
+        "modular": "Modular and extensible architecture that easily integrates future features and plug-ins."
+    },
+    "installation": {
+        "title": "Installation Guide for Meet Note",
+        "requirements_title": "System Requirements",
+        "requirements": [
+            "Node.js (current LTS version)",
+            "npm (Node Package Manager)",
+            "Git (optional, but recommended)"
+        ],
+        "steps": [
+            {
+                "step": 1,
+                "title": "Install Node.js and npm",
+                "description": [
+                    "Visit the official Node.js website and download the LTS version (Long Term Support).",
+                    "Install Node.js, which will automatically install npm as well.",
+                    "After installation, check if Node.js and npm are installed correctly: `node -v` and `npm -v`."
+                ]
+            },
+            {
+                "step": 2,
+                "title": "Clone the Repository",
+                "description": [
+                    "Open your terminal or command line.",
+                    "Clone the Meet Note repository from GitHub: `git clone https://github.com/your-username/meet-note.git`.",
+                    "Change into the project directory: `cd meet-note`."
+                ]
+            },
+            {
+                "step": 3,
+                "title": "Install Dependencies",
+                "description": [
+                    "Install all required dependencies using npm: `npm install`."
+                ]
+            },
+            {
+                "step": 4,
+                "title": "Start Development Server",
+                "description": [
+                    "To start the development server, run the following command: `npm run dev`.",
+                    "The server should now be running, and you can access Meet Note in your browser at `http://localhost:3000`."
+                ]
+            },
+            {
+                "step": 5,
+                "title": "Start Electron App (optional)",
+                "description": [
+                    "To run the desktop version with Electron, execute the following command: `npm run electron`.",
+                    "The application will then open in a new window."
+                ]
+            }
+        ],
+        "future_steps": [
+            {
+                "title": "Release for Windows, macOS, and Linux (Desktop)",
+                "description": [
+                    "In the future, Meet Note will be available as a standalone desktop app for Windows, macOS, and Linux.",
+                    "The installation files will likely be offered as installers (Windows), DMG (macOS), and AppImage/DEB/RPM (Linux).",
+                    "Visit the official Meet Note website or the GitHub release section to download the appropriate installation packages for your operating system."
+                ]
+            },
+            {
+                "title": "Release as App and on Play Store (Future)",
+                "description": [
+                    "In the future, Meet Note will also be available as a PWA (Progressive Web App) that can be installed on both iOS and Android.",
+                    "The mobile app may also be available on the Google Play Store and Apple App Store with native support via CapacitorJS."
+                ]
+            }
+        ]
+    }
+}

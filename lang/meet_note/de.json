@@ -1,0 +1,88 @@
+{
+    "header": "Meet Note",
+    "description": "Meet Note ist eine innovative Notiz-App, die speziell für die Bedürfnisse von Meetings, Projekten und verteilten Teams entwickelt wurde. Sie bietet eine schnelle, benutzerfreundliche Möglichkeit, Notizen zu erstellen und zu verwalten, die auf einem lokalen Netzwerk oder über das Internet zugänglich sind. Mit einem starken Fokus auf Datenschutz und vollständiger DSGVO-Konformität bleibt die Kontrolle über alle Daten stets beim Nutzer. Die App unterstützt Offline-Nutzung und bietet eine modulare Architektur, die zukünftige Erweiterungen und Anpassungen ermöglicht. Die Features umfassen unter anderem einen benutzerdefinierten Editor für Text und Code, eine flexible Exportfunktion und eine Echtzeit-Synchronisation über Socket.IO. Dank der Offline-First-Philosophie und einer einfachen Bedienung eignet sich Meet Note sowohl für private Projekte als auch für professionelle Teams.",
+    "features": {
+        "title": "Funktionen",
+        "groups": "Erstellen und beitreten von Gruppen über lokale IP oder mDNS für einfache Netzwerkverbindungen ohne zusätzliche Konfiguration.",
+        "filters": "Vielseitige Such- und Filteroptionen, einschließlich der Möglichkeit, Notizen nach Titel, Aktivität, Zeit, Ort und Teilnehmeranzahl zu filtern.",
+        "personalization": "Personalisierung des Profils und der App, einschließlich Themenwechsel (Light/Dark), Primär- und Sekundärfarben sowie benutzerdefinierter Anpassungen.",
+        "posts": "Erstellen und Bearbeiten von Notizen mit Unterstützung für Rich-Text, Codeblöcke, Tabellen, Medien-Embeds und vieles mehr. Notizen können als PDF exportiert werden.",
+        "offline": "Offline-Verfügbarkeit durch die vollständige Unterstützung von PWA (Progressive Web App). Alle Daten bleiben lokal gespeichert und sind auch ohne Internetzugang verfügbar.",
+        "access": "Zugangskontrolle durch geplante Passwort- und Token-basierte Räume, die den Zugriff auf private Notizen und Sitzungen sichern.",
+        "sync": "Echtzeit-Synchronisation von Notizen über Socket.IO, um Änderungen sofort für alle Teilnehmer sichtbar zu machen.",
+        "export": "Notizen können als PDF exportiert werden, mit geplanten Exportmöglichkeiten nach Markdown und OneNote.",
+        "files": "Datei-Explorer für das Verwalten und Teilen von Notizen und anderen Dokumenten. Ermöglicht das Herunterladen von Notizen und das Teilen von Dateien.",
+        "notifications": "Push-Benachrichtigungen für Aufgaben und Erinnerungen, die direkt auf mobilen Geräten angezeigt werden.",
+        "security": "Sicherheitsfunktionen wie HTTPS, bcrypt und SHA-256 für sicheren Transport und Authentifizierung. Alle Daten werden lokal und DSGVO-konform gespeichert.",
+        "modular": "Modulare und erweiterbare Architektur, die zukünftige Funktionen und Plug-ins problemlos integrieren lässt."
+    },
+    "installation": {
+        "title": "Installationsanleitung für Meet Note",
+        "requirements_title": "Systemanforderungen",
+        "requirements": [
+            "Node.js (aktuelle LTS-Version)",
+            "npm (Node Package Manager)",
+            "Git (optional, aber empfohlen)"
+        ],
+        "steps": [
+            {
+                "step": 1,
+                "title": "Node.js und npm installieren",
+                "description": [
+                    "Besuche die offizielle Node.js-Website und lade die LTS-Version (Long Term Support) herunter.",
+                    "Installiere Node.js, was automatisch auch npm mitinstalliert.",
+                    "Überprüfe nach der Installation, ob Node.js und npm korrekt installiert sind: `node -v` und `npm -v`."
+                ]
+            },
+            {
+                "step": 2,
+                "title": "Repository klonen",
+                "description": [
+                    "Öffne dein Terminal oder deine Kommandozeile.",
+                    "Klonen des Meet Note-Repositorys von GitHub: `git clone https://github.com/your-username/meet-note.git`.",
+                    "Wechsel in das Verzeichnis des Projekts: `cd meet-note`."
+                ]
+            },
+            {
+                "step": 3,
+                "title": "Abhängigkeiten installieren",
+                "description": [
+                    "Installiere alle benötigten Abhängigkeiten mit npm: `npm install`."
+                ]
+            },
+            {
+                "step": 4,
+                "title": "Entwicklungsserver starten",
+                "description": [
+                    "Um den Entwicklungsserver zu starten, führe folgenden Befehl aus: `npm run dev`.",
+                    "Der Server sollte jetzt laufen, und du kannst Meet Note über deinen Browser unter `http://localhost:3000` aufrufen."
+                ]
+            },
+            {
+                "step": 5,
+                "title": "Electron-App starten (optional)",
+                "description": [
+                    "Um die Desktop-Version mit Electron zu starten, führe folgenden Befehl aus: `npm run electron`.",
+                    "Die Anwendung wird dann in einem neuen Fenster geöffnet."
+                ]
+            }
+        ],
+        "future_steps": [
+            {
+                "title": "Veröffentlichung für Windows, macOS und Linux (Desktop)",
+                "description": [
+                    "Zukünftig wird Meet Note als eigenständige Desktop-App für Windows, macOS und Linux verfügbar sein.",
+                    "Die Installationsdateien werden voraussichtlich als Installer (Windows), DMG (macOS) und AppImage/DEB/RPM (Linux) angeboten.",
+                    "Besuche die offizielle Meet Note-Website oder den GitHub-Release-Bereich, um die passenden Installationspakete für dein Betriebssystem herunterzuladen."
+                ]
+            },
+            {
+                "title": "Veröffentlichung als App und im Play Store (Zukünftig)",
+                "description": [
+                    "Zukünftig wird Meet Note auch als PWA (Progressive Web App) zur Verfügung stehen, die sowohl auf iOS als auch Android installiert werden kann.",
+                    "Die mobile App wird möglicherweise auch im Google Play Store und im Apple App Store verfügbar sein, mit nativer Unterstützung durch CapacitorJS."
+                ]
+            }
+        ]
+    }
+}
