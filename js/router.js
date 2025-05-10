@@ -9,6 +9,8 @@
 //   "/projects/example": "/pages/projects/example.html"
 // }
 
+// import { initTooltips } from './tooltip';
+
 if (window.location === 'https://andiblup.github.io/portfolio/' || window.location === 'https://andiblup.github.io/portfolio') {
   window.location.href = 'https://andiblup.github.io/';
 } else if (window.location.href === '127.0.0.1:5500/portfolio' || window.location.href === '127.0.0.1:5500/portfolio/') {
@@ -180,6 +182,7 @@ const handleLocation = async () => {
 
     // Führe alle Script-Tags im geladenen HTML aus
     executeInlineScripts(app);
+    // window.initTooltips();
     // Nachdem der HTML-Inhalt eingefügt wurde, wird das zugehörige Modul geladen
     loadRouteModule();
 

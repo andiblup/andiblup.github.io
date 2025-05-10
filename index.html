@@ -5,14 +5,14 @@
     globalScreenSize: window.innerWidth,
     breadCrumbs: [],
     // currentLang: navigator.language || navigator.userLanguage || 'en',
-    currentLang:   ((localStorage.getItem('appLang') 
-                   || navigator.language 
-                   || navigator.userLanguage 
-                   || 'en')
-                  .slice(0,2)
-                  .toLowerCase() === 'de') 
-                ? 'de' 
-                : 'en',
+    currentLang:    ((localStorage.getItem('appLang') 
+                    || navigator.language 
+                    || navigator.userLanguage 
+                    || 'en')
+                    .slice(0,2)
+                    .toLowerCase() === 'de') 
+                    ? 'de' 
+                    : 'en',
     pageLang: {},
 
     changeLang(newLang) {
@@ -292,10 +292,10 @@
                     <a class="nav-link d-flex btn btn-nav text-start"
                         href="#/demos/analytics">Analytics<br>Demo<br>Dashboard</a>
                 </li>
-                <li x-show="openDemos" class="ps-2 pe-3 nav-item ms-2 elevated">
+                <!-- <li x-show="openDemos" class="ps-2 pe-3 nav-item ms-2 elevated">
                     <a class="nav-link d-flex btn btn-nav text-start" href="#/demos/aiChat">Chrome<br>Extension<br>AI
                         Chat</a>
-                </li>
+                </li> -->
 
 
                 <li class="ps-2 pe-3 nav-item elevated">
@@ -411,7 +411,7 @@
                             <!-- <a id="toggleChatBtn" @click="document.getElementById('chat-sidebar').style.display = 'block';" data-tooltip="DeepSeek Chat" class="btn" ><i
                                     class="bi bi-grad bi-chat-dots"></i></a> -->
                                     <!-- <div class="container"> -->
-                                        <a class="btn" onclick="toggleChat()" id="toggleChatBtn">
+                                        <a :data-tooltip="pageLang.nav.chat" class="btn" onclick="toggleChat()" id="toggleChatBtn">
                                         <i class="bi bi-grad bi-chat-dots"></i></a>
                                         <!-- <i class="bi bi-grad bi-chat-dots" onclick="toggleChat()" id="toggleChatBtn"></i> -->
                                     <!-- </div> -->
@@ -574,7 +574,10 @@
 
 
             </div>
-
+            <a class="btn text-center" href="demos/badui/main/main.html" target="_blank"
+            :data-tooltip="pageLang.icons.demo">
+              <i class="bi bi-grad bi-globe"></i>
+            </a>
 
             <!-- <div id="tooltip" class="tooltip"></div> -->
             <div id="tooltip" class="tooltip">

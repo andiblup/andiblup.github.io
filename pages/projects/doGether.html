@@ -206,7 +206,8 @@ x-data="{
     <div class="d-flex align-items-center justify-content-center">
       <h1 class="text-center me-2" x-text="pageLang.header"></h1>
       <span class="mt-3 me-3">together</span>
-      <a class="btn text-center" href="" target="_blank"><i class="bi bi-grad bi-gitlab"></i></a>
+      <a :data-tooltip="pageLang.header"
+      class="btn text-center" target="_blank" style="cursor: not-allowed;"><i class="bi bi-grad bi-gitlab"></i></a>
 
     </div>
     <p class="text-center mt-1 mb-4" x-text="pageLang.description"></p>
@@ -455,3 +456,4 @@ x-data="{
     </div>
   </div>
 </section>
+

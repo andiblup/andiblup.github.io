@@ -7,7 +7,8 @@
     const lang = localStorage.getItem('appLang') || 'en';
     const fileName = breadCrumbs[breadCrumbs.length - 1].name.toLowerCase();
 
-    const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    // const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
+    const response = await fetch('/lang/badui/' + lang + '.json');
     this.pageLang = await response.json();
     document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
 
@@ -20,10 +21,16 @@
       <h1 class="text-center me-2">BadUI</h1>
       <!-- Links -->
       <span class="mt-3 me-3 d-flex">
-        <a class="btn text-center" href="/pages/demos/dino/dino.html" target="_blank">
+        <a class="btn text-center" href="demos/badui/main/main.html" target="_blank"
+        :data-tooltip="pageLang.icons.demo">
           <i class="bi bi-grad bi-globe"></i>
         </a>
-        <a class="btn text-center ms-2" href="https://github.com/andiblup/Bad-UI-UX/" target="_blank">
+        <a class="btn text-center" href="demos/dino/dino.html" target="_blank"
+        :data-tooltip="pageLang.icons.game">
+          <i class="bi bi-grad bi-controller"></i>
+        </a>
+        <a class="btn text-center ms-2" href="https://github.com/andiblup/Bad-UI-UX/" target="_blank"
+        :data-tooltip="pageLang.icons.github">
           <i class="bi bi-grad bi-github"></i>
         </a>
       </span>
