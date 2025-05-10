@@ -180,8 +180,7 @@
 
 
 
-<section
-x-data="{ 
+<section x-data="{ 
     pageLang: {}, 
     async init() { 
         breadCrumbs = getBreadCrumbsArray(); 
@@ -197,17 +196,14 @@ x-data="{
         
 
     } 
-}"
-  x-init="init()"
-  class="py-5"
->
+}" x-init="init()" class="py-5">
   <!-- TOP CONTAINER: Header & Description -->
   <div class="container mb-5">
     <div class="d-flex align-items-center justify-content-center">
       <h1 class="text-center me-2" x-text="pageLang.header"></h1>
       <span class="mt-3 me-3">together</span>
-      <a :data-tooltip="pageLang.header"
-      class="btn text-center" target="_blank" style="cursor: not-allowed;"><i class="bi bi-grad bi-gitlab"></i></a>
+      <a :data-tooltip="pageLang.header" class="btn text-center" target="_blank" style="cursor: not-allowed;"><i
+          class="bi bi-grad bi-gitlab"></i></a>
 
     </div>
     <p class="text-center mt-1 mb-4" x-text="pageLang.description"></p>
@@ -237,23 +233,21 @@ x-data="{
 </div> -->
 
   <!-- TECH STACK CARD -->
-   <!-- card-icons-top makes gradient, still dont know if i want it -->
+  <!-- card-icons-top makes gradient, still dont know if i want it -->
   <div class="container mb-4">
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8">
         <div :class="{'card shadow border': true, 'card-icons-top': colorize }" style="border-radius: 25px;">
           <div class="card-body" x-data="{ showTechstack: true }">
-            
+
             <div class="d-flex align-items-center justify-content-between">
               <h2 class="card-title mb-0 " x-text="pageLang.techstack.title"></h2>
-              <i
-                class="bi cursor-pointer ms-2 bi-grad"
+              <i class="bi cursor-pointer ms-2 bi-grad"
                 :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
-                @click="showTechstack = !showTechstack"
-              ></i>
+                @click="showTechstack = !showTechstack"></i>
             </div>
 
-           
+
             <div x-show="showTechstack" class="mt-3">
               <div id="iconCarousel" class="inline-card mb-3" data-icon-list="doGether"></div>
             </div>
@@ -265,18 +259,15 @@ x-data="{
 
   <!-- FEATURES & INSTALLATION ROW -->
   <div class="container mb-5">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      <!-- FEATURES CARD -->
-      <div class="col">
-        <div class="card shadow border h-100" style="border-radius: 25px;">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;">
           <div class="card-body d-flex flex-column" x-data="{ showFeatures: true }">
-            <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center justify-content-between">
               <h2 class="card-title mb-0" x-text="pageLang.features.title"></h2>
-              <i
-                class="bi bi-grad cursor-pointer ms-2"
+              <i class="bi bi-grad cursor-pointer ms-2"
                 :class="{'bi-chevron-up': showFeatures, 'bi-chevron-down': !showFeatures}"
-                @click="showFeatures = !showFeatures"
-              ></i>
+                @click="showFeatures = !showFeatures"></i>
             </div>
 
             <ul x-show="showFeatures" class="ps-4">
@@ -288,18 +279,20 @@ x-data="{
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- INSTALLATION CARD -->
-      <div class="col">
-        <div class="card shadow border h-100" style="border-radius: 25px;">
+  <!-- INSTALLATION CARD -->
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;">
           <div class="card-body d-flex flex-column" x-data="{ showInstallation: true }">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <h2 class="card-title mb-0" x-text="pageLang.installation.title"></h2>
-              <i
-                class="bi bi-grad cursor-pointer ms-2"
+              <i class="bi bi-grad cursor-pointer ms-2"
                 :class="{'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"
-                @click="showInstallation = !showInstallation"
-              ></i>
+                @click="showInstallation = !showInstallation"></i>
             </div>
 
             <ol x-show="showInstallation" class="ps-4">
@@ -315,6 +308,8 @@ x-data="{
       </div>
     </div>
   </div>
+  
+  <div class="container card shadow border my-4" style="border-radius: 25px;" x-data="{ }"></div>
 
   <!-- IMAGES / CAROUSEL CARD -->
   <div class="container">
@@ -325,11 +320,9 @@ x-data="{
             <!-- Title + Toggle Icon -->
             <div class="d-flex align-items-center justify-content-between">
               <h2 class="card-title mb-0" x-text="pageLang.images.title"></h2>
-              <i
-                class="bi bi-grad cursor-pointer ms-2"
+              <i class="bi bi-grad cursor-pointer ms-2"
                 :class="{'bi-chevron-up': showImages, 'bi-chevron-down': !showImages}"
-                @click="showImages = !showImages"
-              ></i>
+                @click="showImages = !showImages"></i>
             </div>
 
             <!-- Carousel -->
@@ -338,20 +331,14 @@ x-data="{
                 <!-- Indicators -->
                 <div class="carousel-indicators mt-5 mb-0">
                   <template x-for="n in 9" :key="n">
-                    <button
-                      :class="n===1 ? 'active' : ''"
-                      :aria-current="n===1 ? 'true' : 'false'"
-                      :data-bs-slide-to="n-1"
-                      data-bs-target="#carouselExampleCaptions"
-                      :aria-label="'Slide ' + n">
+                    <button :class="n===1 ? 'active' : ''" :aria-current="n===1 ? 'true' : 'false'"
+                      :data-bs-slide-to="n-1" data-bs-target="#carouselExampleCaptions" :aria-label="'Slide ' + n">
                     </button>
                   </template>
                 </div>
 
                 <!-- Carousel Inner -->
-                <div
-                  class="carousel-inner"
-                  x-data="{ 
+                <div class="carousel-inner" x-data="{ 
                     images: [],
                     async init() {
                       // fetch the same JSON
@@ -409,18 +396,11 @@ x-data="{
                         }
                       ];
                     }
-                  }"
-                  x-init="init()"
-                >
+                  }" x-init="init()">
                   <template x-for="(image, idx) in images" :key="idx">
                     <div :class="idx === 0 ? 'carousel-item active' : 'carousel-item'">
-                      <img
-                        :src="image.path"
-                        class="d-block w-100"
-                        style="border-radius: 12px; object-fit: cover;"
-                        alt="Slide"
-                        loading="lazy"
-                      >
+                      <img :src="image.path" class="d-block w-100" style="border-radius: 12px; object-fit: cover;"
+                        alt="Slide" loading="lazy">
                       <div class="d-flex flex-column align-items-center justify-content-center mt-2">
                         <h5 class="mb-0" x-text="image.title"></h5>
                         <p x-text="image.description"></p>
@@ -430,21 +410,13 @@ x-data="{
                 </div>
 
                 <!-- Controls -->
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide="prev"
-                >
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide="next"
-                >
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
@@ -456,4 +428,3 @@ x-data="{
     </div>
   </div>
 </section>
-
