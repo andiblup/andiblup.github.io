@@ -1,21 +1,57 @@
 {
     "header": "Meet Note",
     "description": "Meet Note ist eine innovative Notiz-App, die speziell für die Bedürfnisse von Meetings, Projekten und verteilten Teams entwickelt wurde. Sie bietet eine schnelle, benutzerfreundliche Möglichkeit, Notizen zu erstellen und zu verwalten, die auf einem lokalen Netzwerk oder über das Internet zugänglich sind. Mit einem starken Fokus auf Datenschutz und vollständiger DSGVO-Konformität bleibt die Kontrolle über alle Daten stets beim Nutzer. Die App unterstützt Offline-Nutzung und bietet eine modulare Architektur, die zukünftige Erweiterungen und Anpassungen ermöglicht. Die Features umfassen unter anderem einen benutzerdefinierten Editor für Text und Code, eine flexible Exportfunktion und eine Echtzeit-Synchronisation über Socket.IO. Dank der Offline-First-Philosophie und einer einfachen Bedienung eignet sich Meet Note sowohl für private Projekte als auch für professionelle Teams.",
-    "features": {
-        "title": "Funktionen",
-        "groups": "Erstellen und beitreten von Gruppen über lokale IP oder mDNS für einfache Netzwerkverbindungen ohne zusätzliche Konfiguration.",
-        "filters": "Vielseitige Such- und Filteroptionen, einschließlich der Möglichkeit, Notizen nach Titel, Aktivität, Zeit, Ort und Teilnehmeranzahl zu filtern.",
-        "personalization": "Personalisierung des Profils und der App, einschließlich Themenwechsel (Light/Dark), Primär- und Sekundärfarben sowie benutzerdefinierter Anpassungen.",
-        "posts": "Erstellen und Bearbeiten von Notizen mit Unterstützung für Rich-Text, Codeblöcke, Tabellen, Medien-Embeds und vieles mehr. Notizen können als PDF exportiert werden.",
-        "offline": "Offline-Verfügbarkeit durch die vollständige Unterstützung von PWA (Progressive Web App). Alle Daten bleiben lokal gespeichert und sind auch ohne Internetzugang verfügbar.",
-        "access": "Zugangskontrolle durch geplante Passwort- und Token-basierte Räume, die den Zugriff auf private Notizen und Sitzungen sichern.",
-        "sync": "Echtzeit-Synchronisation von Notizen über Socket.IO, um Änderungen sofort für alle Teilnehmer sichtbar zu machen.",
-        "export": "Notizen können als PDF exportiert werden, mit geplanten Exportmöglichkeiten nach Markdown und OneNote.",
-        "files": "Datei-Explorer für das Verwalten und Teilen von Notizen und anderen Dokumenten. Ermöglicht das Herunterladen von Notizen und das Teilen von Dateien.",
-        "notifications": "Push-Benachrichtigungen für Aufgaben und Erinnerungen, die direkt auf mobilen Geräten angezeigt werden.",
-        "security": "Sicherheitsfunktionen wie HTTPS, bcrypt und SHA-256 für sicheren Transport und Authentifizierung. Alle Daten werden lokal und DSGVO-konform gespeichert.",
-        "modular": "Modulare und erweiterbare Architektur, die zukünftige Funktionen und Plug-ins problemlos integrieren lässt."
-    },
+    "features_title": "Funktionen",
+    "features": [
+        {
+            "title": "Gruppen",
+            "desc": "Erstellen und beitreten von Gruppen über lokale IP oder mDNS für einfache Netzwerkverbindungen ohne zusätzliche Konfiguration."
+        },
+        {
+            "title": "Filter",
+            "desc": "Vielseitige Such- und Filteroptionen, einschließlich der Möglichkeit, Notizen nach Titel, Aktivität, Zeit, Ort und Teilnehmeranzahl zu filtern."
+        },
+        {
+            "title": "Personalisierung",
+            "desc": "Personalisierung des Profils und der App, einschließlich Themenwechsel (Light/Dark), Primär- und Sekundärfarben sowie benutzerdefinierter Anpassungen."
+        },
+        {
+            "title": "Notizen",
+            "desc": "Erstellen und Bearbeiten von Notizen mit Unterstützung für Rich-Text, Codeblöcke, Tabellen, Medien-Embeds und vieles mehr. Notizen können als PDF exportiert werden."
+        },
+        {
+            "title": "Offline",
+            "desc": "Offline-Verfügbarkeit durch die vollständige Unterstützung von PWA (Progressive Web App). Alle Daten bleiben lokal gespeichert und sind auch ohne Internetzugang verfügbar."
+        },
+        {
+            "title": "Zugriff",
+            "desc": "Zugangskontrolle durch geplante Passwort- und Token-basierte Räume, die den Zugriff auf private Notizen und Sitzungen sichern."
+        },
+        {
+            "title": "Synchronisation",
+            "desc": "Echtzeit-Synchronisation von Notizen über Socket.IO, um Änderungen sofort für alle Teilnehmer sichtbar zu machen."
+        },
+        {
+            "title": "Export",
+            "desc": "Notizen können als PDF exportiert werden, mit geplanten Exportmöglichkeiten nach Markdown und OneNote."
+        },
+        {
+            "title": "Dateien",
+            "desc": "Datei-Explorer für das Verwalten und Teilen von Notizen und anderen Dokumenten. Ermöglicht das Herunterladen von Notizen und das Teilen von Dateien."
+        },
+        {
+            "title": "Benachrichtigungen",
+            "desc": "Push-Benachrichtigungen für Aufgaben und Erinnerungen, die direkt auf mobilen Geräten angezeigt werden."
+        },
+        {
+            "title": "Sicherheit",
+            "desc": "Sicherheitsfunktionen wie HTTPS, bcrypt und SHA-256 für sicheren Transport und Authentifizierung. Alle Daten werden lokal und DSGVO-konform gespeichert."
+        },
+        {
+            "title": "Modular",
+            "desc": "Modulare und erweiterbare Architektur, die zukünftige Funktionen und Plug-ins problemlos integrieren lässt."
+        }
+    ],
     "installation": {
         "title": "Installationsanleitung für Meet Note",
         "requirements_title": "Systemanforderungen",

@@ -44,13 +44,14 @@
         { "class": "devicon-bootstrap-plain", "label": "Bootstrap" },
         { "class": "devicon-alpinejs-plain", "label": "Alpine.js" },
         { "class": "devicon-git-plain", "label": "Git" },
-        { "class": "devicon-github-plain", "label": "Github" }
+        { "class": "devicon-github-plain", "label": "Github" },
+        { "class": "devicon-vscode-plain", "label": "VS Code" }
+
     ],
     "badui": [
         {"class": "devicon-html5-plain", "label": "HTML"},
         {"class": "devicon-css3-plain", "label": "CSS"},
-        {"class": "devicon-javascript-plain", "label": "JS"},
-        {"class": "devicon-bootstrap-plain", "label": "Bootstrap"}
+        {"class": "devicon-javascript-plain", "label": "JS"}
     ],
     "fantasyQuest": [
         { "class": "devicon-java-plain", "label": "Java" },

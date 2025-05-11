@@ -1,21 +1,57 @@
 {
     "header": "Meet Note",
     "description": "Meet Note is an innovative note-taking app specifically designed to meet the needs of meetings, projects, and distributed teams. It offers a fast, user-friendly way to create and manage notes that are accessible on a local network or over the internet. With a strong focus on privacy and full GDPR compliance, users retain full control over their data. The app supports offline use and features a modular architecture that allows for future extensions and customizations. Key features include a custom editor for text and code, flexible export options, and real-time synchronization using Socket.IO. Thanks to its offline-first philosophy and intuitive design, Meet Note is ideal for both personal projects and professional teams.",
-    "features": {
-        "title": "Features",
-        "groups": "Create and join groups via local IP or mDNS for easy network connections with no additional configuration required.",
-        "filters": "Versatile search and filter options, including the ability to filter notes by title, activity, time, location, and required number of participants.",
-        "personalization": "Personalize profiles and app settings, including theme switching (Light/Dark), primary and secondary colors, and custom adjustments.",
-        "posts": "Create and edit notes with support for rich text, code blocks, tables, media embeds, and more. Notes can be exported as PDFs.",
-        "offline": "Offline availability with full PWA (Progressive Web App) support. All data remains locally stored and accessible even without an internet connection.",
-        "access": "Access control with planned password and token-based rooms that secure access to private notes and sessions.",
-        "sync": "Real-time synchronization of notes via Socket.IO, ensuring changes are visible to all participants immediately.",
-        "export": "Notes can be exported as PDFs, with planned export options to Markdown and OneNote.",
-        "files": "File explorer for managing and sharing notes and other documents. Allows downloading notes and sharing files.",
-        "notifications": "Push notifications for tasks and reminders that are shown directly on mobile devices.",
-        "security": "Security features like HTTPS, bcrypt, and SHA-256 for secure transport and authentication. All data is stored locally and GDPR-compliant.",
-        "modular": "Modular and extensible architecture that easily integrates future features and plug-ins."
-    },
+    "features_title": "Features",
+    "features": [
+        {
+            "title": "Groups",
+            "desc": "Create and join groups via local IP or mDNS for easy network connections with no additional configuration required."
+        },
+        {
+            "title": "Filters",
+            "desc": "Versatile search and filter options, including the ability to filter notes by title, activity, time, location, and required number of participants."
+        },
+        {
+            "title": "Personalization",
+            "desc": "Personalize profiles and app settings, including theme switching (Light/Dark), primary and secondary colors, and custom adjustments."
+        },
+        {
+            "title": "Posts",
+            "desc": "Create and edit notes with support for rich text, code blocks, tables, media embeds, and more. Notes can be exported as PDFs."
+        },
+        {
+            "title": "Offline",
+            "desc": "Offline availability with full PWA (Progressive Web App) support. All data remains locally stored and accessible even without an internet connection."
+        },
+        {
+            "title": "Access",
+            "desc": "Access control with planned password and token-based rooms that secure access to private notes and sessions."
+        },
+        {
+            "title": "Sync",
+            "desc": "Real-time synchronization of notes via Socket.IO, ensuring changes are visible to all participants immediately."
+        },
+        {
+            "title": "Export",
+            "desc": "Notes can be exported as PDFs, with planned export options to Markdown and OneNote."
+        },
+        {
+            "title": "Files",
+            "desc": "File explorer for managing and sharing notes and other documents. Allows downloading notes and sharing files."
+        },
+        {
+            "title": "Notifications",
+            "desc": "Push notifications for tasks and reminders that are shown directly on mobile devices."
+        },
+        {
+            "title": "Security",
+            "desc": "Security features like HTTPS, bcrypt, and SHA-256 for secure transport and authentication. All data is stored locally and GDPR-compliant."
+        },
+        {
+            "title": "Modular",
+            "desc": "Modular and extensible architecture that easily integrates future features and plug-ins."
+        }
+    ],
     "installation": {
         "title": "Installation Guide for Meet Note",
         "requirements_title": "System Requirements",

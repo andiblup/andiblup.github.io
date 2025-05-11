@@ -1,6 +1,126 @@
 {
-    "title": "Die Seite konnte nicht gefunden werden!",
-    "description": "Entschuldigung, die angeforderte Seite existiert nicht. Bitte überprüfen Sie die URL oder gehen Sie zur Startseite.",
-    "button": "Zur Startseite"
-  }
-  
+  "header": "Portfolio Seite",
+  "description": [
+    "Die Portfolio Seite."
+  ],
+  "features_title": "Funktionen",
+  "features": [
+    {
+      "title": "Großteils Vanilla",
+      "desc": [
+        "Sowohl CSS als auch JS wurden zu großen Teilen aus Vanilla Code erstellt.",
+        "Bootstrap wurde nur für spacing, dropdowns (Tooltips sind vanilla) und Bildkarussels verwendet.",
+        "Alpine.js wurde für alle Interaktiven Logiken und Datenzugänglichkeiten in spezifischen Kontexten verwendet."
+      ]
+    },
+    {
+      "title": "Themen",
+      "desc": [
+        "Die Portfolio Seite hat ein dunkles und ein helles Thema.",
+        "Die Themes wurden mit CSS-Variablen erstellt."
+      ]
+    },
+    {
+      "title": "Responsive",
+      "desc": [
+        "Die Portfolio Seite ist vollständig responsiv.",
+        "Die Seite wurde mit einem 12-Spalten-Raster erstellt."
+      ]
+    },
+    {
+      "title": "Modular",
+      "desc": [
+        "Modularer und erweiterbarer Aufbau, der zukünftige Funktionen problemlos integriert.",
+        "Aufbau einer einfach verwaltbaren Verzeichnisstruktur."
+      ]
+    },
+    {
+      "title": "SPA",
+      "desc": [
+        "Die Portfolio Seite ist eine Single Page Application.",
+        "Auf dieser Seite wird die Navigation mittels Hash-Routing und einem 404 Redirect geregelt.",
+        "Die Seite verwendet den History API, um die Navigation zu ermöglichen.",
+        "Die Inhalte werden mit Fetch-API geladen und ermöglichen somit eine Lazy-Loading Funktionalität."
+      ]
+    },
+    {
+      "title": "Duale Sprachunterstützung (Deutsch & Englisch)",
+      "desc": [
+        "Die Portfolio Seite unterstützt sowohl Deutsch als auch Englisch.",
+        "Die Textinhalte einer jeden Ansicht werden dynamisch über die Sprache geladen.",
+        "Die Sprache wird automatisch anhand der Browsereinstellungen des Benutzers ausgewählt.",
+        "Die Sprache kann jedoch auch manuell über die Navigation geändert werden."
+      ]
+    },
+    {
+      "title": "Toast Benachrichtigungen",
+      "desc": [
+        "Die Seite verwendet selbstgebaute Toast Nachrichten.",
+        "Die Toastnachrichten können angepinnt, angeclickt und gelöscht werden.",
+        "Bei einer Löschung mittels Rechtsklick werden die Taosnachrichten mit einer Animation gelöscht."
+      ]
+    },
+    {
+      "title": "Navigationsleiste",
+      "desc": [
+        "Wie die meisten anderen Dinge auf dieser Seite wurde auch die Navigationsleiste selbstgebaut.",
+        "Sie verfügt über eine Burger-Menü funktinoalität für kleine Bildschirme."
+      ]
+    },
+    {
+      "title": "Breadcrumbs",
+      "desc": [
+        "Zur einfachen Navigation zwischen den Seiten wurden Breadcrumbs implementiert.",
+        "Hierfür wurde eine Allgemeingültige Funktion erstellt um diese zu generieren."
+      ]
+    },
+    {
+      "title": "Icon Karoussel",
+      "desc": [
+        "Ein automatisch rotierendes Karoussel mit Icons wurde erstellt.",
+        "Dieses lässt icons mit einer Beschriftung innerhalb der Grenzen des Elternelements rotieren."
+      ]
+    },
+    {
+      "title": "Icon Farbe & Animation",
+      "desc": [
+        "Alle Icons (außer innerhalb des Karoussel) sind mit einem Farbübergang, welcher beim Hovern animiert wird, versehen.",
+        "Dies kann aus und wieder eingeschalten werden."
+      ]
+    },
+    {
+      "title": "Datenschutz",
+      "desc": [
+        "Es wurde eine unumgängliche Datenschutzerklärung erstellt (Sie können gerne probieren die Seite zu benutzen ohne diese Anzunehmen oder Abzulehnen).",
+        "Diese muss akzeptiert oder abgelehnt werden.",
+        "Darin wird auch erklärt,wie Daten gespeichert werden, zu welchen Zwecken Daten gespeichert werden und wie man diese wieder löschen kann."
+      ]
+    },
+    {
+      "title": "Chatbot",
+      "desc": [
+        "Auf der Seite ist ein DeepSeek Chatbot eingebaut.",
+        "Dieser benutz eine Freie API zu einem DeepSeek Fork.",
+        "Der Dienst wird von einem meiner Cloudflare Worker bereitgestellt (da ich meinen API Key nicht öffentlich zugänglich machen möchte).",
+        "Diese von mir gebaute freie Chatbot Frontend war im April/März für ein paar Wochen als Chrome Extension verfügbar (Ich musste es leider auf Grund einer Security Vorschrift und einer sonstigen Verletzung des Produktrechts wieder aus dem Store nehmen :( )."
+      ]
+    },
+    {
+      "title": "Sidebar",
+      "desc": [
+        "Eine ein und aufklappbare Sidebar zur Navigation der Pages wurde erstellt."
+      ]
+    },
+    {
+      "title": "Google Analytic",
+      "desc": [
+        "Die neueste Version von Google Analytics wurde eingebunden.",
+        "Sammelt die Anzahl der Besucher und wie oft ein spezifischer Test Event Knopf gedrückt wurde.",
+        "Diese Daten sind anonym und nur ein Woche lang gespeichert.",
+        "Die Daten werden mittels Chart.js visualisiert.",
+        "Derzeit kann es aufgrund einer änderung bei der API zu problemen kommen!"
+      ]
+    }
+
+  ]
+}
