@@ -1,126 +1,127 @@
 {
-  "header": "Portfolio Seite",
+  "header": "Portfolio-Seite",
   "description": [
-    "Die Portfolio Seite."
+    "Diese Portfolio-Seite ist eine moderne, vollständig responsive Single Page Application (SPA), die überwiegend mit Vanilla JavaScript und CSS entwickelt wurde.",
+    "Sie kombiniert eine klare Struktur mit zweisprachiger Unterstützung (Deutsch & Englisch), dynamischem Theme-Wechsel (Hell/Dunkel) und einem modularen Aufbau für zukunftssichere Erweiterbarkeit.",
+    "Eigens entwickelte UI-Komponenten wie Navigationsleiste, Sidebar, Toast-Benachrichtigungen und Breadcrumbs ergänzen Features wie ein Icon-Karussell, eine umfassende Datenschutzerklärung, einen integrierten Chatbot sowie eine Google-Analytics-Auswertung mit Chart.js."
   ],
   "features_title": "Funktionen",
   "features": [
     {
       "title": "Großteils Vanilla",
       "desc": [
-        "Sowohl CSS als auch JS wurden zu großen Teilen aus Vanilla Code erstellt.",
-        "Bootstrap wurde nur für spacing, dropdowns (Tooltips sind vanilla) und Bildkarussels verwendet.",
-        "Alpine.js wurde für alle Interaktiven Logiken und Datenzugänglichkeiten in spezifischen Kontexten verwendet."
+        "Sowohl CSS als auch JavaScript wurden größtenteils in reinem Vanilla-Code umgesetzt.",
+        "Bootstrap kam lediglich für Abstände, Dropdowns (die Tooltips sind in Vanilla realisiert) und Bildkarussells zum Einsatz.",
+        "Alpine.js steuert alle interaktiven Logiken und den Zugriff auf Daten in spezifischen Kontexten."
       ]
     },
     {
       "title": "Themen",
       "desc": [
-        "Die Portfolio Seite hat ein dunkles und ein helles Thema.",
-        "Die Themes wurden mit CSS-Variablen erstellt."
+        "Die Portfolio-Seite unterstützt sowohl ein helles als auch ein dunkles Design.",
+        "Die Themen wurden vollständig über CSS-Variablen umgesetzt."
       ]
     },
     {
       "title": "Responsive",
       "desc": [
-        "Die Portfolio Seite ist vollständig responsiv.",
-        "Die Seite wurde mit einem 12-Spalten-Raster erstellt."
+        "Die Seite ist vollständig responsiv gestaltet.",
+        "Sie basiert auf einem flexiblen 12-Spalten-Rasterlayout."
       ]
     },
     {
       "title": "Modular",
       "desc": [
-        "Modularer und erweiterbarer Aufbau, der zukünftige Funktionen problemlos integriert.",
-        "Aufbau einer einfach verwaltbaren Verzeichnisstruktur."
+        "Der modulare Aufbau ermöglicht eine einfache Erweiterung um zukünftige Funktionen.",
+        "Die Projektstruktur ist übersichtlich und gut wartbar angelegt."
       ]
     },
     {
       "title": "SPA",
       "desc": [
-        "Die Portfolio Seite ist eine Single Page Application.",
-        "Auf dieser Seite wird die Navigation mittels Hash-Routing und einem 404 Redirect geregelt.",
-        "Die Seite verwendet den History API, um die Navigation zu ermöglichen.",
-        "Die Inhalte werden mit Fetch-API geladen und ermöglichen somit eine Lazy-Loading Funktionalität."
+        "Die Seite ist als Single Page Application (SPA) realisiert.",
+        "Navigation erfolgt über Hash-Routing mit 404-Redirect-Handling.",
+        "Die History API wird genutzt, um nahtlose Navigation zu ermöglichen.",
+        "Inhalte werden per Fetch-API geladen und unterstützen Lazy-Loading."
       ]
     },
     {
       "title": "Duale Sprachunterstützung (Deutsch & Englisch)",
       "desc": [
-        "Die Portfolio Seite unterstützt sowohl Deutsch als auch Englisch.",
-        "Die Textinhalte einer jeden Ansicht werden dynamisch über die Sprache geladen.",
-        "Die Sprache wird automatisch anhand der Browsereinstellungen des Benutzers ausgewählt.",
-        "Die Sprache kann jedoch auch manuell über die Navigation geändert werden."
+        "Die Seite unterstützt sowohl Deutsch als auch Englisch.",
+        "Texte werden je nach Spracheinstellung dynamisch geladen.",
+        "Die Sprache wird standardmäßig über die Browsereinstellungen ermittelt, kann aber manuell geändert werden."
       ]
     },
     {
-      "title": "Toast Benachrichtigungen",
+      "title": "Toast-Benachrichtigungen",
       "desc": [
-        "Die Seite verwendet selbstgebaute Toast Nachrichten.",
-        "Die Toastnachrichten können angepinnt, angeclickt und gelöscht werden.",
-        "Bei einer Löschung mittels Rechtsklick werden die Taosnachrichten mit einer Animation gelöscht."
+        "Individuell entwickelte Toast-Nachrichten informieren über Systemereignisse.",
+        "Diese können angepinnt, angeklickt oder gelöscht werden.",
+        "Ein Rechtsklick löscht sie mit einer Animation."
       ]
     },
     {
       "title": "Navigationsleiste",
       "desc": [
-        "Wie die meisten anderen Dinge auf dieser Seite wurde auch die Navigationsleiste selbstgebaut.",
-        "Sie verfügt über eine Burger-Menü funktinoalität für kleine Bildschirme."
+        "Die Navigationsleiste wurde vollständig eigenständig entwickelt.",
+        "Sie enthält ein Burger-Menü für kleinere Bildschirme."
       ]
     },
     {
       "title": "Breadcrumbs",
       "desc": [
-        "Zur einfachen Navigation zwischen den Seiten wurden Breadcrumbs implementiert.",
-        "Hierfür wurde eine Allgemeingültige Funktion erstellt um diese zu generieren."
+        "Zur Orientierung wurde eine Breadcrumb-Navigation integriert.",
+        "Diese wird über eine generische Funktion automatisch erzeugt."
       ]
     },
     {
-      "title": "Icon Karoussel",
+      "title": "Icon-Karussell",
       "desc": [
-        "Ein automatisch rotierendes Karoussel mit Icons wurde erstellt.",
-        "Dieses lässt icons mit einer Beschriftung innerhalb der Grenzen des Elternelements rotieren."
+        "Ein automatisch rotierendes Karussell zeigt Icons mit Beschriftung.",
+        "Die Animation bleibt innerhalb der Grenzen des Elternelements."
       ]
     },
     {
-      "title": "Icon Farbe & Animation",
+      "title": "Icon-Farbe & Animation",
       "desc": [
-        "Alle Icons (außer innerhalb des Karoussel) sind mit einem Farbübergang, welcher beim Hovern animiert wird, versehen.",
-        "Dies kann aus und wieder eingeschalten werden."
+        "Alle Icons (außer im Karussell) verfügen über animierte Farbübergänge beim Hover-Effekt.",
+        "Diese Animationen können ein- und ausgeschaltet werden."
       ]
     },
     {
       "title": "Datenschutz",
       "desc": [
-        "Es wurde eine unumgängliche Datenschutzerklärung erstellt (Sie können gerne probieren die Seite zu benutzen ohne diese Anzunehmen oder Abzulehnen).",
-        "Diese muss akzeptiert oder abgelehnt werden.",
-        "Darin wird auch erklärt,wie Daten gespeichert werden, zu welchen Zwecken Daten gespeichert werden und wie man diese wieder löschen kann."
+        "Eine verpflichtende Datenschutzerklärung muss akzeptiert oder abgelehnt werden.",
+        "Darin wird erklärt, welche Daten wie und zu welchem Zweck gespeichert werden und wie man diese löschen kann.",
+        "Die Seite ist ohne Interaktion mit der Datenschutzerklärung nicht nutzbar."
       ]
     },
     {
       "title": "Chatbot",
       "desc": [
-        "Auf der Seite ist ein DeepSeek Chatbot eingebaut.",
-        "Dieser benutz eine Freie API zu einem DeepSeek Fork.",
-        "Der Dienst wird von einem meiner Cloudflare Worker bereitgestellt (da ich meinen API Key nicht öffentlich zugänglich machen möchte).",
-        "Diese von mir gebaute freie Chatbot Frontend war im April/März für ein paar Wochen als Chrome Extension verfügbar (Ich musste es leider auf Grund einer Security Vorschrift und einer sonstigen Verletzung des Produktrechts wieder aus dem Store nehmen :( )."
+        "Ein DeepSeek-basierter Chatbot ist integriert.",
+        "Dieser verwendet eine freie API eines DeepSeek-Forks.",
+        "Bereitgestellt wird der Dienst über einen eigenen Cloudflare Worker, um den API-Schlüssel zu schützen.",
+        "Das Frontend war kurzzeitig als Chrome-Erweiterung verfügbar, wurde jedoch aus regulatorischen Gründen entfernt."
       ]
     },
     {
       "title": "Sidebar",
       "desc": [
-        "Eine ein und aufklappbare Sidebar zur Navigation der Pages wurde erstellt."
+        "Eine ein- und ausklappbare Sidebar erleichtert die Navigation zwischen Seiten."
       ]
     },
     {
-      "title": "Google Analytic",
+      "title": "Google Analytics",
       "desc": [
-        "Die neueste Version von Google Analytics wurde eingebunden.",
-        "Sammelt die Anzahl der Besucher und wie oft ein spezifischer Test Event Knopf gedrückt wurde.",
-        "Diese Daten sind anonym und nur ein Woche lang gespeichert.",
-        "Die Daten werden mittels Chart.js visualisiert.",
-        "Derzeit kann es aufgrund einer änderung bei der API zu problemen kommen!"
+        "Die aktuelle Version von Google Analytics ist eingebunden.",
+        "Es wird erfasst, wie viele Besucher die Seite aufrufen und wie oft bestimmte Events ausgelöst werden.",
+        "Die Daten sind anonymisiert und werden nur für eine Woche gespeichert.",
+        "Visualisierung erfolgt mit Chart.js.",
+        "Aktuell kann es durch API-Änderungen zu Einschränkungen kommen."
       ]
     }
-
   ]
+  
 }

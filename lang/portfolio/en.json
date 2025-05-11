@@ -1,14 +1,126 @@
 {
-    "header": "Portfolio Side",
+    "header": "Portfolio Page",
     "description": [
-      "The Portfolio side."
+        "This portfolio page is a modern, fully responsive single-page application (SPA) developed primarily using vanilla JavaScript and CSS.",
+        "It combines a clean structure with bilingual support (German & English), dynamic theme switching (light/dark), and a modular architecture designed for long-term scalability.",
+        "Custom-built UI components such as the navigation bar, sidebar, toast notifications, and breadcrumbs are complemented by features like an icon carousel, a comprehensive privacy policy, an integrated chatbot, and Google Analytics visualization via Chart.js."
     ],
     "features_title": "Features",
     "features": [
-      {
-        "title": "Foo",
-        "desc": "Lorem ipsum foo!"
-      }
+        {
+            "title": "Mostly Vanilla",
+            "desc": [
+                "Both CSS and JavaScript are largely written in plain vanilla code.",
+                "Bootstrap is used only for spacing, dropdowns (tooltips are vanilla), and image carousels.",
+                "Alpine.js manages all interactive logic and data access within specific contexts."
+            ]
+        },
+        {
+            "title": "Themes",
+            "desc": [
+                "The portfolio page supports both light and dark themes.",
+                "Themes are implemented entirely using CSS variables."
+            ]
+        },
+        {
+            "title": "Responsive",
+            "desc": [
+                "The site is fully responsive.",
+                "It is based on a flexible 12-column grid layout."
+            ]
+        },
+        {
+            "title": "Modular",
+            "desc": [
+                "The modular structure allows for easy integration of future features.",
+                "The directory layout is clean and easy to maintain."
+            ]
+        },
+        {
+            "title": "SPA",
+            "desc": [
+                "The site is implemented as a Single Page Application (SPA).",
+                "Navigation uses hash routing with 404 redirect handling.",
+                "The History API enables seamless navigation.",
+                "Content is loaded using the Fetch API with lazy-loading support."
+            ]
+        },
+        {
+            "title": "Bilingual Support (German & English)",
+            "desc": [
+                "The page supports both German and English.",
+                "Text content is loaded dynamically based on the selected language.",
+                "Language is selected automatically via browser settings but can be changed manually."
+            ]
+        },
+        {
+            "title": "Toast Notifications",
+            "desc": [
+                "Custom toast messages provide system feedback.",
+                "They can be pinned, clicked, or removed.",
+                "Right-clicking triggers a removal animation."
+            ]
+        },
+        {
+            "title": "Navigation Bar",
+            "desc": [
+                "The navigation bar is fully custom-built.",
+                "It includes a burger menu for small screens."
+            ]
+        },
+        {
+            "title": "Breadcrumbs",
+            "desc": [
+                "Breadcrumb navigation is implemented for orientation.",
+                "Breadcrumbs are generated dynamically using a universal function."
+            ]
+        },
+        {
+            "title": "Icon Carousel",
+            "desc": [
+                "An auto-rotating carousel displays labeled icons.",
+                "The animation remains within the boundaries of the parent element."
+            ]
+        },
+        {
+            "title": "Icon Color & Animation",
+            "desc": [
+                "All icons (except in the carousel) feature animated color transitions on hover.",
+                "These animations can be toggled on or off."
+            ]
+        },
+        {
+            "title": "Privacy",
+            "desc": [
+                "A mandatory privacy policy must be accepted or declined.",
+                "It explains what data is stored, for what purpose, and how it can be deleted.",
+                "The site cannot be used without interacting with the privacy dialog."
+            ]
+        },
+        {
+            "title": "Chatbot",
+            "desc": [
+                "A chatbot based on DeepSeek is integrated.",
+                "It uses a public API of a DeepSeek fork.",
+                "The service is provided via a custom Cloudflare Worker to protect the API key.",
+                "The chatbot frontend was briefly available as a Chrome extension but was removed due to compliance issues."
+            ]
+        },
+        {
+            "title": "Sidebar",
+            "desc": [
+                "A collapsible sidebar facilitates page navigation."
+            ]
+        },
+        {
+            "title": "Google Analytics",
+            "desc": [
+                "The latest version of Google Analytics is integrated.",
+                "It tracks the number of visitors and specific test event triggers.",
+                "Data is anonymized and stored for one week only.",
+                "Visualization is done using Chart.js.",
+                "Current API changes may temporarily affect functionality."
+            ]
+        }
     ]
 }
-  
