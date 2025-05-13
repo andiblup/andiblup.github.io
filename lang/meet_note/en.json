@@ -1,6 +1,13 @@
 {
     "header": "Meet Note",
-    "description": "Meet Note is an innovative note-taking app specifically designed to meet the needs of meetings, projects, and distributed teams. It offers a fast, user-friendly way to create and manage notes that are accessible on a local network or over the internet. With a strong focus on privacy and full GDPR compliance, users retain full control over their data. The app supports offline use and features a modular architecture that allows for future extensions and customizations. Key features include a custom editor for text and code, flexible export options, and real-time synchronization using Socket.IO. Thanks to its offline-first philosophy and intuitive design, Meet Note is ideal for both personal projects and professional teams.",
+    "description": [
+        "Meet Note is an innovative note-taking app specifically designed to meet the needs of meetings, projects, and distributed teams.",
+        "It offers a fast, user-friendly way to create and manage notes that are accessible on a local network or over the internet.",
+        "With a strong focus on privacy and full GDPR compliance, users retain full control over their data.",
+        "The app supports offline use and features a modular architecture that allows for future extensions and customizations.",
+        "Key features include a custom editor for text and code, flexible export options, and real-time synchronization using Socket.IO.",
+        "Thanks to its offline-first philosophy and intuitive design, Meet Note is ideal for both personal projects and professional teams."
+    ],
     "features_title": "Features",
     "features": [
         {

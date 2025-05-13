@@ -1,6 +1,13 @@
 {
     "header": "Meet Note",
-    "description": "Meet Note ist eine innovative Notiz-App, die speziell für die Bedürfnisse von Meetings, Projekten und verteilten Teams entwickelt wurde. Sie bietet eine schnelle, benutzerfreundliche Möglichkeit, Notizen zu erstellen und zu verwalten, die auf einem lokalen Netzwerk oder über das Internet zugänglich sind. Mit einem starken Fokus auf Datenschutz und vollständiger DSGVO-Konformität bleibt die Kontrolle über alle Daten stets beim Nutzer. Die App unterstützt Offline-Nutzung und bietet eine modulare Architektur, die zukünftige Erweiterungen und Anpassungen ermöglicht. Die Features umfassen unter anderem einen benutzerdefinierten Editor für Text und Code, eine flexible Exportfunktion und eine Echtzeit-Synchronisation über Socket.IO. Dank der Offline-First-Philosophie und einer einfachen Bedienung eignet sich Meet Note sowohl für private Projekte als auch für professionelle Teams.",
+    "description": [
+        "Meet Note ist eine innovative Notiz-App, die speziell für die Bedürfnisse von Meetings, Projekten und verteilten Teams entwickelt wurde.",
+        "Sie bietet eine schnelle, benutzerfreundliche Möglichkeit, Notizen zu erstellen und zu verwalten, die auf einem lokalen Netzwerk oder über das Internet zugänglich sind.",
+        "Mit einem starken Fokus auf Datenschutz und vollständiger DSGVO-Konformität bleibt die Kontrolle über alle Daten stets beim Nutzer.",
+        "Die App unterstützt Offline-Nutzung und bietet eine modulare Architektur, die zukünftige Erweiterungen und Anpassungen ermöglicht.",
+        "Die Features umfassen unter anderem einen benutzerdefinierten Editor für Text und Code, eine flexible Exportfunktion und eine Echtzeit-Synchronisation über Socket.IO.",
+        "Dank der Offline-First-Philosophie und einer einfachen Bedienung eignet sich Meet Note sowohl für private Projekte als auch für professionelle Teams."
+    ],
     "features_title": "Funktionen",
     "features": [
         {
@@ -121,5 +128,28 @@
                 ]
             }
         ]
+    },
+    "images": {
+        "title": "Screenshots",
+        "home": {
+            "path": "/assets/img/doGether/home.png",
+            "title": "Meet Note Screenshot",
+            "description": "Meet Note Screenshot"
+        },
+        "register": {
+            "path": "/assets/img/doGether/register.png",
+            "title": "Meet Note Screenshot",
+            "description": "Meet Note Screenshot"
+        },
+        "post1": {
+            "path": "/assets/img/doGether/post1.png",
+            "title": "Meet Note Screenshot",
+            "description": "Meet Note Screenshot"
+        },
+        "post2": {
+            "path": "/assets/img/doGether/post2.png",
+            "title": "Meet Note Screenshot",
+            "description": "Meet Note Screenshot"
+        }
     }
 }

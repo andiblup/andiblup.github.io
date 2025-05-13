@@ -54,7 +54,7 @@
                     <template x-for="desc in pageLang.description">
                         <p x-html="desc"></p>
                     </template>
-                    </p>
+                    <!-- </p> -->
                 </div>
             </div>
         </div>
@@ -103,9 +103,9 @@
                                 <li class="mb-2" style="list-style: none;">
                                     <div class="fw-bold" x-text="feature.title"></div>
                                     <!-- <div x-text="feature.desc"></div> -->
-                                     <template x-for="desc in feature.desc">
+                                    <template x-for="desc in feature.desc">
                                         <div x-html="desc"></div>
-                                     </template>
+                                    </template>
                                 </li>
 
                             </template>
@@ -117,5 +117,5 @@
     </div>
 
 
-    
+
 </section>
