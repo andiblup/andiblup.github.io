@@ -1,6 +1,12 @@
 {
     "header": "Welcome to Fantasy Quest!",
-    "description": "The idea behind the app was to create a combination of Pokémon Go, the original Pokémon games, and Final Fantasy 1. Players can create characters and choose from four roles: Dark Mage, Warrior, Healer, or Thief. Characters can move around the overworld and encounter enemies after traveling a specific distance. There are three different enemy types with unique stats and attacks. Note: This app is a prototype and does not include all planned features.",
+    "description": [
+      "The idea behind the app was to create a combination of Pokémon Go, the original Pokémon games, and Final Fantasy 1.",
+      "Players can create characters and choose from four roles: Dark Mage, Warrior, Healer, or Thief.",
+      "Characters can move around the overworld and encounter enemies after traveling a specific distance.",
+      "There are three different enemy types with unique stats and attacks.",
+      "Note: This app is a prototype and does not include all planned features."
+    ],
     "features": {
       "title": "Features",
       "roles": "Character creation with four roles: Dark Mage, Warrior, Healer, and Thief.",

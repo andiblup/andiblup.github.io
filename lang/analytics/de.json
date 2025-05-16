@@ -1,5 +1,5 @@
 {
-    "noData": "Keine Daten verfügbar",
+    "noData": "Keine Daten verfügbar (nichts gesammelt)",
     "devices": "Geräte",
     "countries": "Länder",
     "charts": {
@@ -13,11 +13,11 @@
         },
         "countries": {
             "label": "Sitzungen (Sessions)",
-            "title": "Sitzungen nach Land"
+            "title": "Sitzungen nach Land (Letzte 7 Tage)"
         },
         "devices": {
             "label": "Sitzungen (Sessions)",
-            "title": "Sitzungen nach Gerätetyp"
+            "title": "Sitzungen nach Gerätetyp (Letzte 7 Tage)"
         }
     }
 }

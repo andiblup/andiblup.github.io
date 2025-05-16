@@ -1,5 +1,5 @@
 {
-    "noData": "No data available",
+    "noData": "No data available (nothing collected)",
     "devices": "Devices",
     "countries": "Countries",
     "charts": {
@@ -13,11 +13,11 @@
         },
         "countries": {
             "label": "Sessions",
-            "title": "Sessions by Country"
+            "title": "Sessions by Country (Last 7 Days)"
         },
         "devices": {
             "label": "Sessions",
-            "title": "Sessions by Device Type"
+            "title": "Sessions by Device Type (Last 7 Days)"
         }
     }
 }

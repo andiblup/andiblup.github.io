@@ -10,7 +10,7 @@
         const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
         this.pageLang = await response.json(); 
         document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
-        console.log(this.pageLang);
+        // console.log(this.pageLang);
 
         //? Fetch the README file from the assets folder
         // const res = await fetch('/assets/README.md');
