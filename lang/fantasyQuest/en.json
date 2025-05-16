@@ -1,32 +1,153 @@
 {
-    "header": "Welcome to Fantasy Quest!",
-    "description": [
-      "The idea behind the app was to create a combination of Pokémon Go, the original Pokémon games, and Final Fantasy 1.",
-      "Players can create characters and choose from four roles: Dark Mage, Warrior, Healer, or Thief.",
-      "Characters can move around the overworld and encounter enemies after traveling a specific distance.",
-      "There are three different enemy types with unique stats and attacks.",
-      "Note: This app is a prototype and does not include all planned features."
-    ],
-    "features": {
-      "title": "Features",
-      "roles": "Character creation with four roles: Dark Mage, Warrior, Healer, and Thief.",
-      "overworld": "Overworld exploration with enemy encounters based on movement.",
-      "enemies": "Three enemy types with unique stats and attacks.",
-      "technology": "Built in Kotlin with Mapbox API for map rendering and a Spring Boot API for backend data processing.",
-      "database": "Uses MariaDB for data storage."
+  "header": "Welcome to Fantasy Quest!",
+  "description": [
+    "Fantasy Quest combines elements from Pokémon Go, classic Pokémon games, and Final Fantasy I.",
+    "Players create characters who take on one of four roles: Dark Mage, Warrior, Healer, or Thief.",
+    "Characters move through the overworld and encounter enemies by walking a certain distance.",
+    "There are three enemy types, each with unique stats and attacks.",
+    "This app is a prototype and does not yet include all planned features."
+  ],
+  "features_title": "Features",
+  "features": [
+    {
+      "title": "Roles",
+      "desc": "Create characters with one of four roles: Dark Mage, Warrior, Healer, or Thief."
     },
-    "installation": {
-      "title": "Installation",
-      "step1": "Recommended software: XAMPP, IntelliJ, Android Studio (Version Giraffe 2022.3.1 Patch 4).",
-      "step2": "Why XAMPP? MySQL and Tomcat are required.",
-      "step3": "Start the Spring Boot backend.",
-      "step4": "Find your local IP address and update it in the frontend code.",
-      "step5": "Update the frontend code: Open the app in Android Studio, locate the file 'HostIP.kt', and replace the 'hostIP' variable with your local IP address.",
-      "step6": "Start the MariaDB server on your local machine (recommended: XAMPP, or configure manually).",
-      "step7": "Seed the database: Make an HTTP GET request to the following URL (local development environment): http://localhost:8080/api/init.",
-      "step8": "Create a Mapbox API Key and add it to the 'settings.gradle.kts' file. Enter the username (Mapbox) and API Key under credentials.",
-      "step9": "After installing the app: Enable app permissions on your phone (location access). Go to App Info -> Permissions -> Location -> 'Allow all the time' or 'Allow only while using the app'. Enable 'Use precise location'.",
-      "step10": "For users 'a' and 'testuser', a 'Play' button is visible in the overworld view to initiate battles."
+    {
+      "title": "Overworld",
+      "desc": "Move through the real world to trigger enemy encounters."
+    },
+    {
+      "title": "Enemies",
+      "desc": "Three distinct enemy types with different attributes and attacks."
+    },
+    {
+      "title": "Technology",
+      "desc": "Built with Kotlin using Mapbox for maps and Spring Boot for backend logic."
+    },
+    {
+      "title": "Database",
+      "desc": "Data is stored using a MariaDB database."
+    }
+  ],
+  "installation_title": "Installation",
+  "installation": {
+    "title": "Fantasy Quest Installation Guide",
+    "requirements_title": "System Requirements",
+    "requirements": [
+      "Java SDK (LTS version recommended, at least OpenJDK 17)",
+      "Database (XAMPP recommended for MariaDB & Tomcat)",
+      "Git (optional, but recommended)",
+      "IDE (IntelliJ or Eclipse), Android Studio (recommended: Giraffe 2022.3.1 Patch 4)"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "title": "Software Installation and GitLab Fork",
+        "desc": [
+          "Clone the repository: git clone https://gitlab.com/andiblup/fantasyquest.git",
+          "Download XAMPP, IntelliJ, and Android Studio (Giraffe 2022.3.1 Patch 4 is recommended; newer versions may work but could cause build issues)."
+        ]
+      },
+      {
+        "step": 2,
+        "title": "Start MariaDB Server",
+        "desc": [
+          "Use XAMPP or manually configure IP and port in the code.",
+          "Launch MySQL via XAMPP. Test by starting Apache and clicking 'Admin' → phpMyAdmin should open.",
+          "Check that MySQL is running on port 3306 (default)."
+        ]
+      },
+      {
+        "step": 3,
+        "title": "Start Spring Boot Backend",
+        "desc": [
+          "Open the backend in an IDE (e.g., IntelliJ or Eclipse) and start it. Alternatively, run via the main method in the console."
+        ]
+      },
+      {
+        "step": 4,
+        "title": "Find Local IP Address",
+        "desc": [
+          "Use `ipconfig` (Windows) or `ifconfig` (Linux/Mac) in the terminal.",
+          "Note your IPv4 address, typically starting with 192.168.x.x or 10.x.x.x.",
+          "Use this address in the next step to configure the frontend."
+        ]
+      },
+      {
+        "step": 5,
+        "title": "Update Frontend IP",
+        "desc": [
+          "In Android Studio, open 'HostIP.kt' and set the variable 'hostIP' to your local IP address."
+        ]
+      },
+      {
+        "step": 6,
+        "title": "Seed the Database",
+        "desc": [
+          "Send a GET request to the following URL: http://localhost:8080/api/init"
+        ]
+      },
+      {
+        "step": 7,
+        "title": "Create Mapbox API Key",
+        "desc": [
+          "Create a Mapbox account and add your API key to your Gradle credentials."
+        ]
+      },
+      {
+        "step": 8,
+        "title": "Grant App Permissions",
+        "desc": [
+          "Enable location permissions on your device.",
+          "Go to App Info → Permissions → Location → 'Allow all the time' or 'Allow only while using the app'. Enable 'Precise location'."
+        ]
+      },
+      {
+        "step": 9,
+        "title": "Use Test Accounts",
+        "desc": [
+          "Use the 'Play' button with users 'a' or 'testuser' to quickly start battles in the overworld."
+        ]
+      }
+    ]
+  },
+  "images": {
+    "title": "Pictures",
+    "home": {
+        "path": "/assets/img/doGether/home.png",
+        "title": "Meet Note Screenshot",
+        "description": "Meet Note Screenshot"
+    },
+    "register": {
+        "path": "/assets/img/doGether/register.png",
+        "title": "Meet Note Screenshot",
+        "description": "Meet Note Screenshot"
+    },
+    "post1": {
+        "path": "/assets/img/doGether/post1.png",
+        "title": "Meet Note Screenshot",
+        "description": "Meet Note Screenshot"
+    },
+    "post2": {
+        "path": "/assets/img/doGether/post2.png",
+        "title": "Meet Note Screenshot",
+        "description": "Meet Note Screenshot"
+    }
+  },
+  "powerpoint": {
+    "title": "PowerPoint Presentation",
+    "desc": [
+      "The PowerPoint presentation is shown via the Microsoft Live Office API.",
+      "It provides an overview of the app's features and design.",
+      "The powerpoint is in German, but the app is in English.",
+      "You can find the presentation in the repository root directory."
+    ],
+    "tooltips": {
+      "fullscreen": "Fullscreen",
+      "cinema": "Cinema Mode",
+      "restart": "Restart",
+      "close": "Close"
     }
   }
-  
+}

@@ -31,72 +31,72 @@
     } 
 }" x-init="init()" class="py-5">
 
-    <!-- <div class="container m-5 me-4"> -->
+  <!-- <div class="container m-5 me-4"> -->
 
-    <div class="container mb-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <div class="container w-100 d-flex justify-content-center align-items-center flex-column">
-                    <div class="d-flex align-items-center justify-content-center">
-                        <!-- Haupt-Titel -->
-                        <h1 class="text-center me-2" x-text="pageLang.header"></h1>
-                        <!-- Links -->
-                        <span class="mt-3 me-3 d-flex">
-                            <a class="btn text-center ms-2" href="https://github.com/andiblup/meet_note" target="_blank"
-                                data-tooltip="Github" data-tooltip-position="bottom">
-                                <i class="bi bi-grad bi-github"></i>
-                            </a>
-                        </span>
-                    </div>
-                    <!-- Beschreibung / Einleitungstext -->
-                    <!-- <p class="text-center" x-text="pageLang.description"></p> -->
-                    <template x-for="desc in pageLang.description">
-                        <p x-html="desc"></p>
-                    </template>
-                </div>
-            </div>
+  <div class="container mb-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="container w-100 d-flex justify-content-center align-items-center flex-column">
+          <div class="d-flex align-items-center justify-content-center">
+            <!-- Haupt-Titel -->
+            <h1 class="text-center me-2" x-text="pageLang.header"></h1>
+            <!-- Links -->
+            <span class="mt-3 me-3 d-flex">
+              <a class="btn text-center ms-2" href="https://github.com/andiblup/meet_note" target="_blank"
+                data-tooltip="Github" data-tooltip-position="bottom">
+                <i class="bi bi-grad bi-github"></i>
+              </a>
+            </span>
+          </div>
+          <!-- Beschreibung / Einleitungstext -->
+          <!-- <p class="text-center" x-text="pageLang.description"></p> -->
+          <template x-for="desc in pageLang.description">
+            <p x-html="desc"></p>
+          </template>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- TECH STACK CARD -->
-    <div class="container mb-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <div :class="{'card shadow border': true, 'card-icons-top': colorize }" style="border-radius: 25px;">
-                    <div class="card-body" x-data="{ showTechstack: true }">
-                        <!-- Titel + Toggle-Icon -->
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="card-title mb-0">Techstack</h2>
-                            <i class="bi bi-grad cursor-pointer ms-2"
-                                :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
-                                @click="showTechstack = !showTechstack"></i>
-                        </div>
-                        <!-- Inhalt: Icon-Carousel -->
-                        <div x-show="showTechstack" class="mt-3">
-                            <div id="iconCarousel" class="inline-card mb-3" data-icon-list="meet_note"></div>
-                        </div>
-                    </div>
-                </div>
+  <!-- TECH STACK CARD -->
+  <div class="container mb-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div :class="{'card shadow border': true, 'card-icons-top': colorize }" style="border-radius: 25px;">
+          <div class="card-body" x-data="{ showTechstack: true }">
+            <!-- Titel + Toggle-Icon -->
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0">Techstack</h2>
+              <i class="bi bi-grad cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
+                @click="showTechstack = !showTechstack"></i>
             </div>
+            <!-- Inhalt: Icon-Carousel -->
+            <div x-show="showTechstack" class="mt-3">
+              <div id="iconCarousel" class="inline-card mb-3" data-icon-list="meet_note"></div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- FEATURES ROW -->
-    <div class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <div class="card shadow border" style="border-radius: 25px;">
-                    <div class="card-body d-flex flex-column" x-data="{ showFeatures: true }">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="card-title mb-0" x-text="pageLang.features_title"></h2>
-                            <i class="bi bi-grad cursor-pointer ms-2"
-                                :class="{'bi-chevron-up': showFeatures, 'bi-chevron-down': !showFeatures}"
-                                @click="showFeatures = !showFeatures"></i>
-                        </div>
+  <!-- FEATURES ROW -->
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;">
+          <div class="card-body d-flex flex-column" x-data="{ showFeatures: true }">
+            <div class="d-flex align-items-center justify-content-between">
+              <h2 class="card-title mb-0" x-text="pageLang.features_title"></h2>
+              <i class="bi bi-grad cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showFeatures, 'bi-chevron-down': !showFeatures}"
+                @click="showFeatures = !showFeatures"></i>
+            </div>
 
-                        <ul x-show="showFeatures" class="ps-4">
-                            <hr>
-                            <!-- <li x-text="pageLang.features.groups"></li>
+            <ul x-show="showFeatures" class="ps-4">
+              <hr>
+              <!-- <li x-text="pageLang.features.groups"></li>
                             <li x-text="pageLang.features.filters"></li>
                             <li x-text="pageLang.features.personalization"></li>
                             <li x-text="pageLang.features.posts"></li>
@@ -108,70 +108,64 @@
                             <li x-text="pageLang.features.notifications"></li>
                             <li x-text="pageLang.features.security"></li>
                             <li x-text="pageLang.features.modular"></li> -->
-                            <template x-for="feature in pageLang.features">
-                                <!--  style="list-style: none;" -->
-                                <li class="mb-2" style="list-style: none;">
-                                    <div class="fw-bold" x-text="feature.title"></div>
-                                    <div x-text="feature.desc"></div>
-                                </li>
+              <template x-for="feature in pageLang.features">
+                <!--  style="list-style: none;" -->
+                <li class="mb-2" style="list-style: none;">
+                  <div class="fw-bold" x-text="feature.title"></div>
+                  <div x-text="feature.desc"></div>
+                </li>
 
-                            </template>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+              </template>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- INSTALLATION CARD -->
-    <div class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <div class="card shadow border" style="border-radius: 25px;">
-                    <div class="card-body d-flex flex-column" x-data="{ showInstallation: true }">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <h2 class="card-title mb-0" x-text="pageLang.installation.title"></h2>
-                            <i class="bi bi-grad cursor-pointer ms-2"
-                                :class="{'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"
-                                @click="showInstallation = !showInstallation"></i>
-                        </div>
-
-                        <div class="" x-show="showInstallation">
-                            <hr>
-                            <h4 x-text="pageLang.installation.requirements_title"></h4>
-                            <ul>
-                                <template x-for="requirement in pageLang.installation.requirements">
-                                    <li x-text="requirement"></li>
-                                </template>
-                            </ul>
-                            <ol class="ps-4">
-                                <template x-for="step in pageLang.installation.steps">
-                                    <li style="margin-bottom: 16px;">
-                                        <div class="fw-bold" x-text="step.title"></div>
-                                        <!-- <div x-text="step.description"></div> -->
-                                        <template x-for="desc in step.description">
-                                            <div x-text="desc"></div>
-                                        </template>
-                                    </li>
-                                </template>
-                                <!-- <li x-text="pageLang.installation.step1"></li>
-                                <li x-text="pageLang.installation.step2"></li>
-                                <li x-text="pageLang.installation.step3"></li>
-                                <li x-text="pageLang.installation.step4"></li>
-                                <li x-text="pageLang.installation.step5"></li>
-                                <li x-text="pageLang.installation.step6"></li> -->
-                            </ol>
-                        </div>
-
-                    </div>
-                </div>
+  <!-- INSTALLATION CARD -->
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow border" style="border-radius: 25px;">
+          <div class="card-body d-flex flex-column" x-data="{ showInstallation: true }">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h2 class="card-title mb-0" x-text="pageLang.installation.title"></h2>
+              <i class="bi bi-grad cursor-pointer ms-2"
+                :class="{'bi-chevron-up': showInstallation, 'bi-chevron-down': !showInstallation}"
+                @click="showInstallation = !showInstallation"></i>
             </div>
+
+            <div class="" x-show="showInstallation">
+              <hr>
+              <h4 x-text="pageLang.installation.requirements_title"></h4>
+              <ul>
+                <template x-for="requirement in pageLang.installation.requirements">
+                  <li x-text="requirement"></li>
+                </template>
+              </ul>
+              <ol class="ps-4">
+                <template x-for="step in pageLang.installation.steps">
+                  <li style="margin-bottom: 16px;">
+                    <div class="fw-bold" x-text="step.title"></div>
+                    <!-- <div x-text="step.description"></div> -->
+                    <template x-for="desc in step.description">
+                      <div x-text="desc"></div>
+                    </template>
+                  </li>
+                </template>
+              </ol>
+            </div>
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- <div id="readme-container" x-html="readme"></div> -->
+  <!-- <div id="readme-container" x-html="readme"></div> -->
 
-    <div class="container card shadow border my-4" style="border-radius: 25px;" x-data="{ }"></div>
+  <div class="container card shadow border my-4" style="border-radius: 25px;" x-data="{ }"></div>
 
   <!-- IMAGES / CAROUSEL CARD -->
   <div class="container">
@@ -227,7 +221,7 @@
                 <!-- Indicators -->
                 <div class="carousel-indicators mt-5 mb-0">
                   <template x-for="n in images.length" :key="n">
-                  <!-- <template x-for="n in 9" :key="n"> -->
+                    <!-- <template x-for="n in 9" :key="n"> -->
                     <button :class="n===1 ? 'active' : ''" :aria-current="n===1 ? 'true' : 'false'"
                       :data-bs-slide-to="n-1" data-bs-target="#carouselExampleCaptions" :aria-label="'Slide ' + n">
                     </button>
