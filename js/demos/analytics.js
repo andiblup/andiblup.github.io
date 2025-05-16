@@ -121,6 +121,20 @@ export async function init() {
                     testEventLabels.push(date);
                     testEventValues.push(views);
                 });
+
+                const combinedTestEvents = testEventLabels.map((label, index) => ({
+                    label,
+                    value: testEventValues[index],
+                    rawDate: data.general.rows[index].dimensionValues[0].value  // yyyymmdd
+                }));
+
+                // Sortiere nach dem ursprünglichen Datum
+                combinedTestEvents.sort((a, b) => a.rawDate.localeCompare(b.rawDate));
+
+                // Extrahiere sortierte Labels und Werte zurück
+                sortedTestEventLabels = combinedTestEvents.map(item => item.label);
+                sortedTestEventValues = combinedTestEvents.map(item => item.value);
+
                 // const combinedTestEvents = testEventLabels.map((label, index) => ({
                 //     label,
                 //     value: testEventValues[index],
@@ -180,8 +194,8 @@ export async function init() {
             // renderCountryChart(countryLabels, countryValues, countryValues.length === 0);
             // renderDeviceChart(deviceLabels, deviceValues, deviceValues.length === 0);
             renderGeneralChart(sortedGeneralLabels, sortedGeneralValues, generalValues.length === 0);
-            // renderTestEventChart(sortedTestEventLabels, sortedTestEventValues, testEventValues.length === 0);
-            renderTestEventChart(testEventLabels, testEventValues, testEventValues.length === 0);
+            renderTestEventChart(sortedTestEventLabels, sortedTestEventValues, testEventValues.length === 0);
+            // renderTestEventChart(testEventLabels, testEventValues, testEventValues.length === 0);
             renderCountryChart(countryLabels, countryValues, countryValues.length === 0);
             renderDeviceChart(deviceLabels, deviceValues, deviceValues.length === 0);
 
