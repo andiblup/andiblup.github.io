@@ -124,7 +124,7 @@
                             <div class="card-img-top position-relative" style="height: 150px; overflow: hidden;">
                                 <img src="/assets/img/meet_note.png" alt=""
                                     style="width: 100%; object-fit: cover; height: 100%; border-top-left-radius: 25px; border-top-right-radius: 25px;">
-    
+
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title" x-text="overviewPageLang.projects.meet_note.title"></h2>
@@ -137,14 +137,468 @@
 
         </div>
     </div>
+    <style>
+        .overall-galaxy {
+            margin: 0;
+            margin-left: -20px;
+            margin-right: -30px;
+            padding: 0;
+            color: #eee;
+            background: #1c1c1c;
+            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+            overflow: hidden;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
+        header {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* Navigation */
+        nav {
+            margin-bottom: 10px;
+        }
+
+        nav button {
+            background: transparent;
+            border: 2px solid #0ff;
+            color: #0ff;
+            margin: 0 8px;
+            padding: 6px 14px;
+            font-size: 1rem;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav button.active,
+        nav button:hover {
+            background: #0ff;
+            color: #000;
+        }
+
+        /* Container für das Sonnensystem */
+        .galaxy-container {
+            width: 700px;
+            height: 700px;
+            position: relative;
+        }
+
+        .galaxy {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-out;
+            position: relative;
+        }
+
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background:
+                radial-gradient(circle, #00ffc8 0%, #00887a 60%, transparent 90%);
+            border-radius: 50%;
+            box-shadow:
+                0 0 30px #00ffc8,
+                inset 0 0 25px #00ffc8;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            z-index: 100;
+        }
+
+        /* Orbits (Schalen) */
+        .orbit-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1.5px dotted rgba(0, 255, 200, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-sizing: border-box;
+        }
+
+        .orbit-ring-grad {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1.5px dotted rgba(0, 255, 200, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-sizing: border-box;
+        }
+
+        /* Unterschiedliche Ringgrößen */
+        .orbit-ring.inner {
+            width: 220px;
+            height: 220px;
+        }
+
+        .orbit-ring.middle {
+            width: 360px;
+            height: 360px;
+        }
+
+        .orbit-ring.outer {
+            width: 520px;
+            height: 520px;
+        }
+
+        /* Technologies in rings */
+        .tech-in-orbit {
+            position: absolute;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            color: #0ff;
+            
+            cursor: default;
+            filter: drop-shadow(0 0 6px #0ff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            user-select: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+
+        }
+
+        .tech-in-orbit-grad {
+            position: absolute;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            cursor: default;
+            filter: drop-shadow(0 0 6px rgb(0, 0, 0));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .tech-in-orbit:hover {
+            color: #00ffc8;
+            transform: scale(1.7) translateZ(20px);
+            z-index: 10;
+        }
+
+        .tech-in-orbit-grad:hover {
+            transform: scale(1.7) translateZ(20px);
+            z-index: -10;
+        }
+
+        .tech-in-orbit .label {
+            font-size: 0.6rem;
+            margin-top: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 750px) {
+            .galaxy-container {
+                width: 95vw;
+                height: 95vw;
+            }
+
+            .sun {
+                width: 60px;
+                height: 60px;
+            }
+
+            .tech-in-orbit {
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+        }
+
+        .icons-custom-mapbox {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='cyan' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .icons-custom-mapbox:hover {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='aquamarine' d='m12 0c-6.628 0-12 5.372-12 12s5.372 12 12 12 12-5.372 12-12-5.372-12-12-12zm5.696 14.943c-4.103 4.103-11.433 2.794-11.433 2.794s-1.323-7.316 2.794-11.433c2.281-2.281 6.061-2.187 8.45.189s2.471 6.168.189 8.45zm-4.319-7.91-1.174 2.416-2.416 1.174 2.416 1.174 1.174 2.416 1.174-2.416 2.416-1.174-2.416-1.174z'/%3E%3C/svg%3E");
+        }
+
+        .icons-custom-daisyui {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../assets/img/icons/daisyUI-dark.svg");
+        }
+
+        .icons-custom-inertia {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g transform='translate(0,200) scale(0.1,-0.1)' fill='cyan' stroke='none'><path d='M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m900 205 l205 -205 -205 -205 -205 -205 -213 0 -214 0 196 201 c108 110 196 205 196 209 0 4 -88 99 -196 209 l-196 201 214 0 213 0 205 -205z m636 0 l203 -205 -203 -205 -203 -205 -212 0 c-116 0 -211 3 -211 7 0 4 89 97 197 205 l198 198 -198 198 c-108 108 -197 201 -197 205 0 4 95 7 212 7 l211 0 203 -205z'/></g></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        .icons-custom-inertia:hover {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g transform='translate(0,200) scale(0.1,-0.1)' fill='aquamarine' stroke='none'><path d='M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m900 205 l205 -205 -205 -205 -205 -205 -213 0 -214 0 196 201 c108 110 196 205 196 209 0 4 -88 99 -196 209 l-196 201 214 0 213 0 205 -205z m636 0 l203 -205 -203 -205 -203 -205 -212 0 c-116 0 -211 3 -211 7 0 4 89 97 197 205 l198 198 -198 198 c-108 108 -197 201 -197 205 0 4 95 7 212 7 l211 0 203 -205z'/></g></svg>");
+        }
+    </style>
 
 
     <div class="d-flex justify-content-center text-center pt-3">
         <h1 class="">Techstack</h1>
     </div>
-    <div :class="{'card-icons-top': colorize}" id="iconCarousel" data-icon-list="home"></div>
 
+    <div class="overall-galaxy" x-data="{
+    activeSystem: 'core',
+    currentTime: 0,
+    orbitRadii: {
+      inner: 110,
+      middle: 180,
+      outer: 260
+    },
+    rotationDurations: {
+      inner: 8,
+      middle: 15,
+      outer: 25
+    },
+    systems: {
+      sprachen: {
+        inner: [
+          { class: 'devicon-javascript-plain colorize', label: 'JS' },
+          { class: 'devicon-java-plain', label: 'Java' },
+            { class: 'devicon-markdown-original', label: 'Markdown' },
+          { class: 'devicon-html5-plain', label: 'HTML5' },
+          { class: 'devicon-css3-plain', label: 'CSS3' }
+        ],
+        middle: [
+          { class: 'devicon-sass-original', label: 'SASS' },
+          { class: 'devicon-php-plain', label: 'PHP' },
+          { class: 'devicon-dart-plain', label: 'Dart' },
+            { class: 'devicon-xml-plain', label: 'XML' },
+            { class: 'devicon-json-plain', label: 'JSON' },
+            { class: 'devicon-yaml-plain', label: 'YAML' }
+        ],
+        outer: [
+          { class: 'devicon-kotlin-plain', label: 'Kotlin' },
+          { class: 'devicon-python-plain', label: 'Python' },
+            { class: 'devicon-typescript-plain', label: 'TypeScript' },
+            { class: 'devicon-groovy-plain', label: 'Groovy' }
+        ]
+      },
+      core: {
+        inner: [
+            { class: 'devicon-alpinejs-original', label: 'Alpine.js' },
+            { class: 'devicon-laravel-plain', label: 'Laravel' },
+            { class: 'devicon-bootstrap-plain', label: 'Bootstrap' },
+            { class: 'devicon-vuejs-plain', label: 'Vue.js' },
+            { class: 'devicon-spring-original', label: 'Spring' }
+        ],
+        middle: [
+          { class: 'devicon-vuetify-plain', label: 'Vuetify' },
+          { class: 'icons-custom-daisyui', label: 'daisyUI'},
+            { class: 'devicon-tailwindcss-plain', label: 'Tailwind CSS' }
+        ],
+        outer: [
+          { class: 'devicon-electron-original', label: 'Electron' },
+          { class: 'devicon-vitejs-plain', label: 'Vite.js' },
+          { class: 'devicon-flutter-plain', label: 'Flutter' }
+        ]
+      },
+      frontend: {
+        inner: [
+            { class: 'devicon-vuejs-plain', label: 'Vue.js' },
+          { class: 'devicon-vuetify-plain', label: 'Vuetify' },
+          { class: 'devicon-alpinejs-original', label: 'Alpine.js' },
+          { class: 'devicon-bootstrap-plain', label: 'Bootstrap' }
+        ],
+        middle: [
+          { class: 'devicon-sass-original', label: 'SASS' },
+          { class: 'devicon-postcss-original', label: 'PostCSS' },
+          { class: 'devicon-flutter-plain', label: 'Flutter' },
+          { class: 'devicon-jetpackcompose-plain', label: 'Android Jetpack Compose' },
+            { class: 'icons-custom-daisyui', label: 'daisyUI' },
+            { class: 'devicon-tailwindcss-plain', label: 'Tailwind CSS' }
+        ],
+        outer: [
+            { class: 'devicon-electron-original', label: 'Electron' },
+            { class: 'devicon-vitejs-plain', label: 'Vite.js' },
+            { class: 'devicon-jquery-plain', label: 'jQuery' },
+            { class: 'devicon-axios-plain', label: 'Axios' },
+            { class: 'icons-custom-inertia', label: 'Inertia.js' }
+        ]
+      },
+      backend: {
+        inner: [
+          { class: 'devicon-spring-original', label: 'Spring' },
+          { class: 'devicon-laravel-plain', label: 'Laravel' },
+          { class: 'devicon-mariadb-original', label: 'MariaDB' }
+        ],
+        middle: [
+          { class: 'devicon-nodejs-plain-wordmark', label: 'Node.js' },
+          { class: 'devicon-express-original', label: 'Express' },
+          { class: 'devicon-socketio-original', label: 'Socket.io' },
+          { class: 'devicon-hibernate-plain', label: 'Hibernate' }
+        ],
+        outer: [
+          { class: 'devicon-kotlin-plain', label: 'Kotlin' },
+          { class: 'devicon-python-plain', label: 'Python' },
+            { class: 'devicon-postgresql-plain', label: 'PostgreSQL' },
+            { class: 'devicon-discordjs-plain', label: 'Discord.js' }
+        ]
+      },
+      tools: {
+        inner: [
+          { class: 'devicon-postman-plain', label: 'Postman' },
+        { class: 'icons-custom-mapbox', label: 'Mapbox'},
+          { class: 'devicon-git-plain', label: 'Git' },
+          { class: 'devicon-github-original', label: 'GitHub' },
+          { class: 'devicon-gitlab-plain', label: 'GitLab' }
+        ],
+        middle: [
+        {class: 'devicon-cloudflare-plain', label: 'Cloudflare'},
+          { class: 'devicon-trello-plain', label: 'Trello' },
+          { class: 'devicon-jira-plain', label: 'Jira' },
+            { class: 'devicon-gradle-plain', label: 'Gradle' },
+            { class: 'devicon-maven-plain', label: 'Maven' }
+        ],
+        outer: [
+            { class: 'devicon-slack-plain', label: 'Slack' },
+          { class: 'devicon-canva-plain', label: 'Canva' },
+          { class: 'devicon-figma-plain', label: 'Figma' }
+        ]
+      },
+      env: {
+        inner: [
+          { class: 'devicon-vscode-plain', label: 'VS Code' },
+            { class: 'devicon-androidstudio-plain', label: 'Android Studio' },
+            { class: 'devicon-intellij-plain', label: 'IntelliJ' },
+          { class: 'devicon-windows11-original' , label: 'Windows 10 & 11' },
+            { class: 'devicon-chrome-plain', label: 'Chrome' }
+        ],
+        middle: [
+            { class: 'devicon-linux-plain', label: 'Linux' },
+            { class: 'devicon-debian-plain', label: 'Debian' },
+            { class: 'devicon-firefox-plain', label: 'Firefox' }
+
+        ],
+        outer: [
+            { class: 'devicon-eclipse-plain', label: 'Eclipse' },
+            { class: 'devicon-ubuntu-plain', label: 'Ubuntu' },
+            { class: 'devicon-archlinux-plain', label: 'Arch Linux' }
+        ]
+      },
+    },
+computeIconPosition(orbit, index, total) {
+          const radius = this.orbitRadii[orbit];
+          const duration = this.rotationDurations[orbit];
+          const now = this.currentTime;
+
+          const baseAngle = (360 / total) * index;
+          const rotateAngle = (now * 360) / duration;
+          const totalAngle = (baseAngle + rotateAngle) % 360;
+          const rad = totalAngle * (Math.PI / 180);
+
+          const centerX = 350;
+          const centerY = 350;
+
+          const x = centerX + radius * Math.cos(rad) - 25;
+          const y = centerY + radius * Math.sin(rad) - 25;
+
+          return `left: ${x}px; top: ${y}px;`;
+        },
+        setActiveSystem(system) {
+          this.activeSystem = system;
+        },
+        init() {
+          const update = () => {
+            this.currentTime = performance.now() / 1000;
+            requestAnimationFrame(update);
+          };
+          update();
+        }
+  }" x-init="init()">
+
+        <header>
+            <nav>
+                <button :class="{ active: activeSystem === 'core' }" @click="setActiveSystem('core')">Core</button>
+                <button :class="{ active: activeSystem === 'frontend' }"
+                    @click="setActiveSystem('frontend')">Frontend</button>
+                <button :class="{ active: activeSystem === 'sprachen' }"
+                    @click="setActiveSystem('sprachen')">Sprachen</button>
+                <button :class="{ active: activeSystem === 'backend' }"
+                    @click="setActiveSystem('backend')">Backend</button>
+                <button :class="{ active: activeSystem === 'tools' }" @click="setActiveSystem('tools')">Tools</button>
+                <button :class="{ active: activeSystem === 'env' }" @click="setActiveSystem('env')">Umgebungen</button>
+            </nav>
+        </header>
+
+        <div class="galaxy-container">
+            <div class="galaxy" id="galaxy">
+                <div class="sun"></div>
+                <div class="orbit-ring inner"></div>
+                <div class="orbit-ring middle"></div>
+                <div class="orbit-ring outer"></div>
+
+                <!-- Tech Icons -->
+                <template x-for="(tech, index) in systems[activeSystem].inner" :key="'inner-'+index">
+                    <div class="tech-in-orbit"
+                        :style="computeIconPosition('inner', index, systems[activeSystem].inner.length)"
+                        :title="tech.label">
+                        <i :class="tech.class"></i>
+                        <div class="label" x-text="tech.label"></div>
+                    </div>
+                </template>
+
+                <template x-for="(tech, index) in systems[activeSystem].middle" :key="'middle-'+index">
+                    <div class="tech-in-orbit"
+                        :style="computeIconPosition('middle', index, systems[activeSystem].middle.length)"
+                        :title="tech.label">
+                        <i :class="tech.class"></i>
+                        <div class="label" x-text="tech.label"></div>
+                    </div>
+                </template>
+
+                <template x-for="(tech, index) in systems[activeSystem].outer" :key="'outer-'+index">
+                    <div class="tech-in-orbit"
+                        :style="computeIconPosition('outer', index, systems[activeSystem].outer.length)"
+                        :title="tech.label">
+                        <i :class="tech.class"></i>
+                        <div class="label" x-text="tech.label"></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div :class="{'card-icons-top': colorize}" id="iconCarousel" data-icon-list="home"></div>
 
     <div class="container pt-5">
         <div class="row justify-content-center">
@@ -266,6 +720,6 @@
                 </a>
             </div>
     </div> -->
-<!-- <div class="card my-2"></div> -->
+    <!-- <div class="card my-2"></div> -->
 
 </section>

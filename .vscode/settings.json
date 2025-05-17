@@ -1,4 +1,7 @@
 {
-    "liveServer.settings.file": "index.html"
+  "liveServer.settings.host": "127.0.0.1", // To use the localhost / It still publishes the server on the local ip in the network
+  "liveServer.settings.port": 12345,
+  "liveServer.settings.useLocalIp": false, // To use the 127.0.0.1
+  "liveServer.settings.open": false 
   }
   

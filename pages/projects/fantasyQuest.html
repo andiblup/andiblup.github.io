@@ -71,10 +71,10 @@
                                 @click="showFeatures = !showFeatures"></i>
                         </div>
 
-                        <ul x-show="showFeatures" class="ps-4">
+                        <ul x-show="showFeatures" class="ps-0">
                             <hr>
                             <template x-for="feature in pageLang.features">
-                                <li class="mb-2" style="list-style: none;">
+                                <li class="mb-2 ms-2" style="list-style: none;">
                                     <div class="fw-bold" x-text="feature.title"></div>
                                     <div x-text="feature.desc"></div>
                                 </li>

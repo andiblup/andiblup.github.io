@@ -115,24 +115,24 @@
   "images": {
     "title": "Bilder",
     "home": {
-        "path": "/assets/img/doGether/home.png",
-        "title": "Meet Note Screenshot",
-        "description": "Meet Note Screenshot"
+      "path": "/assets/img/doGether/home.png",
+      "title": "Meet Note Screenshot",
+      "description": "Meet Note Screenshot"
     },
     "register": {
-        "path": "/assets/img/doGether/register.png",
-        "title": "Meet Note Screenshot",
-        "description": "Meet Note Screenshot"
+      "path": "/assets/img/doGether/register.png",
+      "title": "Meet Note Screenshot",
+      "description": "Meet Note Screenshot"
     },
     "post1": {
-        "path": "/assets/img/doGether/post1.png",
-        "title": "Meet Note Screenshot",
-        "description": "Meet Note Screenshot"
+      "path": "/assets/img/doGether/post1.png",
+      "title": "Meet Note Screenshot",
+      "description": "Meet Note Screenshot"
     },
     "post2": {
-        "path": "/assets/img/doGether/post2.png",
-        "title": "Meet Note Screenshot",
-        "description": "Meet Note Screenshot"
+      "path": "/assets/img/doGether/post2.png",
+      "title": "Meet Note Screenshot",
+      "description": "Meet Note Screenshot"
     }
   },
   "powerpoint": {
