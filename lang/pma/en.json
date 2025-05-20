@@ -1,0 +1,259 @@
+{
+    "header": "PMA",
+    "description": [
+        "Project Management Assistant (PMA) is a powerful tool for structured management of project-specific data – across multiple projects.",
+        "All relevant information from your projects can be centrally organized, viewed, and maintained in one place.",
+        "The core feature of PMA is the centralized management of specific data from multiple projects through a clear and consistent interface.",
+        "The application is especially designed for project managers working on multiple projects simultaneously, offering a structured overview of data gathered during project progress or in meetings."
+    ],
+    "features_title": "Features",
+    "features": [
+        {
+            "title": "Centralized Data Management",
+            "desc": "Manage all project-specific content like tasks, contacts, notes, risks, decisions, and more in a single, centralized platform."
+        },
+        {
+            "title": "Modular Data Model",
+            "desc": "The application is based on a flexible and scalable data model. New data types can be added easily without disrupting existing structures."
+        },
+        {
+            "title": "Multi-Project Support",
+            "desc": "Manage multiple projects in parallel. Each project has its own data structure. Switching between projects is fast and intuitive."
+        },
+        {
+            "title": "Project-Specific and Cross-Project Views",
+            "desc": "PMA allows detailed views of individual projects as well as aggregated overviews across projects. For example, you can display all tasks of one project or view all tasks from all projects together."
+        },
+        {
+            "title": "Cross-Project Reporting",
+            "desc": "Enables evaluations across multiple projects, e.g., for tasks, risks, or contacts – ideal for project portfolio management and controlling."
+        },
+        {
+            "title": "Fine-Grained Data Filtering",
+            "desc": "Use powerful filter functions in the list view to efficiently search content and analyze large volumes of data."
+        },
+        {
+            "title": "Flexible Data Presentation",
+            "desc": "Data can be displayed in two views: a classic, filterable list view with search, pagination, and export options (Copy, CSV, Excel, PDF), and a modern tile view for quick content overviews."
+        },
+        {
+            "title": "Data Export",
+            "desc": "Easily export your data in various formats like CSV, Excel, or PDF – ideal for further processing or sharing with external stakeholders."
+        },
+        {
+            "title": "Task Deadline Tracking",
+            "desc": "Overdue or soon-to-be-due tasks are visually highlighted – enabling proactive action without additional configuration."
+        },
+        {
+            "title": "Decision Tracking",
+            "desc": "Record decisions with time context, status, and responsible contacts – ideal for traceable decision-making processes."
+        },
+        {
+            "title": "Risk Management",
+            "desc": "Evaluate risks based on type, probability, risk weighting, and countermeasures – for active and documented risk management."
+        },
+        {
+            "title": "Contacts with Role Context",
+            "desc": "Manage project participants with roles, company affiliations, and contact details – fully linked with other data like decisions or notes."
+        },
+        {
+            "title": "Company Management",
+            "desc": "Maintain company-specific information such as address, language, currency, and communication channels – linkable with projects and contacts."
+        },
+        {
+            "title": "Systematic Note Management",
+            "desc": "Record meeting notes, status updates, or thoughts per project and always stay in control with editing histories."
+        },
+        {
+            "title": "User-Friendly Modals for Data Entry",
+            "desc": "All input forms are loaded as modal dialogs to ensure a smooth workflow and seamless user experience."
+        },
+        {
+            "title": "Customizable Themes",
+            "desc": "Choose between light and dark themes to suit your personal preferences or work environment."
+        },
+        {
+            "title": "Multilingual Support",
+            "desc": "PMA supports multiple languages. Currently, German and English are available. Language can be changed anytime in the settings."
+        },
+        {
+            "title": "Responsive Design",
+            "desc": "The app works seamlessly on desktop, tablet, smartphone, and interactive whiteboards. It's optimized for screen sizes from 4 to 80 inches and various resolutions (720p to 4K) and DPI combinations."
+        },
+        {
+            "title": "Scalability & Extensibility",
+            "desc": "Thanks to its structured database architecture (including 3rd normal form), PMA is technically prepared for future expansions and large volumes of data."
+        },
+        {
+            "title": "High-Performance Database",
+            "desc": "The application uses a MariaDB database with over 50 tables, mostly in third normal form. Exceptions are made deliberately to optimize performance for large data volumes and for archiving. The database structure is modular and easily expandable."
+        },
+        {
+            "title": "Server-Side Rendering with SPA Experience",
+            "desc": "PMA is based on Laravel Blade templating and uses classic Server Side Rendering (SSR). With AJAX for interactive features like creating and editing records, a fluid user experience similar to a Single Page Application (SPA) is achieved. Input forms are loaded in modal windows."
+        }
+    ],
+    "data_title": "Managed Data Types",
+    "data": [
+        {
+            "title": "To-Dos",
+            "desc": "Task management per project with comprehensive status and deadline control.",
+            "data": [
+                "Title",
+                "Project Name",
+                "Description",
+                "Start Date",
+                "End Date",
+                "Status",
+                "Priority"
+            ],
+            "functions": [
+                "Tasks can be completed, edited, or canceled",
+                "Automatic highlighting of overdue or soon-due tasks"
+            ],
+            "views": [
+                "Project-Specific",
+                "Cross-Project"
+            ]
+        },
+        {
+            "title": "Contacts",
+            "desc": "Manage all relevant project stakeholders with full communication details.",
+            "data": [
+                "Name",
+                "Assigned Projects",
+                "Email",
+                "Phone Number",
+                "Company/Companies",
+                "Role",
+                "Gender"
+            ],
+            "functions": [
+                "Contacts can be edited or deleted"
+            ],
+            "views": [
+                "Project-Specific",
+                "Cross-Project"
+            ]
+        },
+        {
+            "title": "Notes",
+            "desc": "Record and structure meeting notes, ideas, and logs per project.",
+            "data": [
+                "Title",
+                "Project Name",
+                "Status",
+                "Last Edited"
+            ],
+            "functions": [
+                "Notes can be edited or deleted"
+            ],
+            "views": [
+                "Project-Specific",
+                "Cross-Project"
+            ]
+        },
+        {
+            "title": "Companies",
+            "desc": "Maintain company data for your project partners, service providers, or clients.",
+            "data": [
+                "Name",
+                "Website",
+                "Address",
+                "Language",
+                "Currency",
+                "Phone Number(s)",
+                "Email Address(es)"
+            ],
+            "functions": [
+                "Company data can be edited or deleted"
+            ],
+            "views": [
+                "Project-Specific",
+                "Cross-Project"
+            ]
+        },
+        {
+            "title": "Decisions",
+            "desc": "Document decisions with responsible persons and status.",
+            "data": [
+                "Title",
+                "Project Name",
+                "Description",
+                "Decision Makers (linked contacts)",
+                "Date",
+                "Status"
+            ],
+            "functions": [
+                "Decisions can be edited or deleted"
+            ],
+            "views": [
+                "Project-Specific"
+            ]
+        },
+        {
+            "title": "Risks",
+            "desc": "Record risks to actively manage potential project obstacles.",
+            "data": [
+                "Title",
+                "Project Name",
+                "Description",
+                "Risk Type",
+                "Probability",
+                "Risk Weighting",
+                "Countermeasures",
+                "Impact"
+            ],
+            "functions": [
+                "Risks can be edited or deleted"
+            ],
+            "views": [
+                "Project-Specific",
+                "Cross-Project"
+            ]
+        }
+    ],
+    "images": {
+        "title": "Screenshots",
+        "auth": {
+            "path": "/assets/img/pma/auth.png",
+            "title": "PMA Landing Page",
+            "description": "The landing page of PMA featuring login and registration options."
+        },
+        "pma": {
+            "path": "/assets/img/pma/pma.png",
+            "title": "PMA Main Page",
+            "description": "The main interface of PMA displaying a list of all todos on the left and projects on the right, along with their statuses."
+        },
+        "decision": {
+            "path": "/assets/img/pma/decision.png",
+            "title": "Create Decision Modal",
+            "description": "Project overview page for a specific project with the 'Create Decision' modal open."
+        },
+        "editProject": {
+            "path": "/assets/img/pma/editProject.png",
+            "title": "Edit Project Modal",
+            "description": "The 'Edit Project' modal is shown. The page also displays the main PMA interface with todos on the left and projects on the right. A tooltip is visible over the edit button of a specific project."
+        },
+        "language": {
+            "path": "/assets/img/pma/language.png",
+            "title": "Language Selection",
+            "description": "Language selection menu within the settings dropdown."
+        },
+        "settings": {
+            "path": "/assets/img/pma/settings.png",
+            "title": "Settings Dropdown",
+            "description": "Settings dropdown shown on a smaller screen to demonstrate responsive behavior."
+        },
+        "projectView": {
+            "path": "/assets/img/pma/projectView.png",
+            "title": "Project Overview Page",
+            "description": "Project overview page for a specific project, displaying all related todos, notes, decisions, and more."
+        },
+        "tables": {
+            "path": "/assets/img/pma/tables.png",
+            "title": "Datatables View",
+            "description": "Datatables view of the main PMA page, listing all todos on the left and projects on the right, along with their statuses."
+        }
+    }
+}

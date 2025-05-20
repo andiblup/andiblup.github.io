@@ -7,31 +7,257 @@
         const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
         this.pageLang = await response.json(); 
         document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
-
     } 
-}" x-init="init()">
+}" x-init="init()" class="py-5">
 
-    <div class="card py-2">
-        <h1 class="ms-3" x-text="'Project Management Assistant'"></h1>
-        <p class="ms-3" x-text="pageLang.description"></p>
-        
- 
-
-        <div class="mb-3" x-data="{showTechstack: true}">
-            <h2 class="ms-3">
-                <span x-text="'Techstack'"></span>
-                <span class="cursor-pointer" @click="showTechstack = !showTechstack">
-                    <i :class="{'bi': true, 'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"></i>
-                </span>
-            </h2>
-            <div x-show="showTechstack">
-                <ul>
-                
-                </ul>
-                <div id="iconCarousel" class="inline-card mb-3" data-icon-list="fantasyQuest"></div>
-
+    <div class="container mb-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="container w-100 d-flex justify-content-center flex-column">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <!-- Haupt-Titel -->
+                        <h1 class="text-center me-2" x-text="pageLang.header"></h1>
+                        <!-- Links -->
+                        <span class="mt-3 me-3 d-flex">
+                            <a class="btn text-center ms-2" href="https://gitlab.com/FailedCreature/pm_assistant"
+                                target="_blank" data-tooltip="Gitlab" data-tooltip-position="bottom" style="cursor: not-allowed;"
+                                onclick="{
+                                    event.preventDefault();
+                                    if (localStorage.appLang === 'de') {
+                                        window.Toast.show('error', 'Zugriff verweigert', 'Der Zugriff auf den Quellcode ist derzeit aufgrund unternehmens- und datenschutzbezogener Richtlinien eingeschränkt.');
+                                    } else {
+                                        window.Toast.show('error', 'Access Denied', 'Access to the source code is currently restricted due to corporate and privacy-related policies.');
+                                    }
+                                }"> 
+                                <i class="bi bi-grad bi-gitlab"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <!-- Beschreibung / Einleitungstext -->
+                    <!-- <p class="text-center" x-text="pageLang.description"></p> -->
+                    <template x-for="desc in pageLang.description">
+                        <p x-html="desc"></p>
+                    </template>
+                </div>
             </div>
         </div>
-        
     </div>
+
+    <!-- TECH STACK CARD -->
+    <div class="container mb-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div :class="{'card shadow border': true, 'card-icons-top': colorize }" style="border-radius: 25px;">
+                    <div class="card-body" x-data="{ showTechstack: true }">
+                        <!-- Titel + Toggle-Icon -->
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="card-title mb-0">Techstack</h2>
+                            <i class="bi bi-grad cursor-pointer ms-2"
+                                :class="{'bi-chevron-up': showTechstack, 'bi-chevron-down': !showTechstack}"
+                                @click="showTechstack = !showTechstack"></i>
+                        </div>
+                        <!-- Inhalt: Icon-Carousel -->
+                        <div x-show="showTechstack" class="mt-3">
+                            <div id="iconCarousel" class="inline-card mb-3" data-icon-list="pma"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES ROW -->
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="card shadow border" style="border-radius: 25px;">
+                    <div class="card-body d-flex flex-column" x-data="{ showFeatures: true }">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="card-title mb-0" x-text="pageLang.features_title"></h2>
+                            <i class="bi bi-grad cursor-pointer ms-2"
+                                :class="{'bi-chevron-up': showFeatures, 'bi-chevron-down': !showFeatures}"
+                                @click="showFeatures = !showFeatures"></i>
+                        </div>
+
+                        <ul x-show="showFeatures" class="ps-0">
+                            <hr>
+                            <template x-for="feature in pageLang.features">
+                                <li class="mb-2 ms-2" style="list-style: none;">
+                                    <div class="fw-bold" x-text="feature.title"></div>
+                                    <div x-text="feature.desc"></div>
+                                </li>
+
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div id="readme-container" x-html="readme"></div> -->
+
+    <div class="container card shadow border my-4" style="border-radius: 25px;" x-data="{ }"></div>
+
+    <!-- IMAGES / CAROUSEL CARD -->
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="card shadow border" style="border-radius: 25px;" x-data="{ showImages: true }">
+                    <div class="card-body">
+                        <!-- Title + Toggle Icon -->
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h2 class="card-title mb-0" x-text="pageLang.images.title"></h2>
+                            <i class="bi bi-grad cursor-pointer ms-2"
+                                :class="{'bi-chevron-up': showImages, 'bi-chevron-down': !showImages}"
+                                @click="showImages = !showImages"></i>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="mt-3" x-show="showImages">
+                            <hr>
+                            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" x-data="{ 
+            images: [],
+            async init() {
+                
+                // Needs new internal fetch
+
+              const lang = localStorage.getItem('appLang') || 'en';
+              const response = await fetch('/lang/pma/' + lang + '.json'); 
+              const data = await response.json();
+
+                // data.images.forEach(element => {
+                    this.images = [
+                        {
+                            path: data.images.auth.path,
+                            description: data.images.auth.description,
+                            title: data.images.auth.title
+                        },
+                        {
+                            path: data.images.pma.path,
+                            description: data.images.pma.description,
+                            title: data.images.pma.title
+                        },
+                        {
+                            path: data.images.decision.path,
+                            description: data.images.decision.description,
+                            title: data.images.decision.title
+                        },
+                        {
+                            path: data.images.editProject.path,
+                            description: data.images.editProject.description,
+                            title: data.images.editProject.title
+                        },
+                        {
+                            path: data.images.language.path,
+                            description: data.images.language.description,
+                            title: data.images.language.title
+                        },
+                        {
+                            path: data.images.settings.path,
+                            description: data.images.settings.description,
+                            title: data.images.settings.title
+                        },
+                        {
+                            path: data.images.projectView.path,
+                            description: data.images.projectView.description,
+                            title: data.images.projectView.title
+                        },
+                        {
+                            path: data.images.tables.path,
+                            description: data.images.tables.description,
+                            title: data.images.tables.title
+                        },
+                    ]
+
+
+                // });
+
+            //   this.images = [
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //     {
+            //       path: '/assets/img/pma/auth.png',
+            //       description: data.images.auth.description,
+            //       title: data.images.auth.title
+            //     },
+            //   ];
+            }
+          }" x-init="init()">
+                                <!-- Indicators -->
+                                <div class="carousel-indicators mt-5 mb-0">
+                                    <template x-for="n in images.length" :key="n">
+                                        <!-- <template x-for="n in 9" :key="n"> -->
+                                        <button :class="n===1 ? 'active' : ''" :aria-current="n===1 ? 'true' : 'false'"
+                                            :data-bs-slide-to="n-1" data-bs-target="#carouselExampleCaptions"
+                                            :aria-label="'Slide ' + n">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Carousel Inner -->
+                                <div class="carousel-inner">
+                                    <template x-for="(image, idx) in images" :key="idx">
+                                        <div :class="idx === 0 ? 'carousel-item active' : 'carousel-item'">
+                                            <img :src="image.path" class="d-block w-100"
+                                                style="border-radius: 12px; object-fit: cover;" alt="Slide"
+                                                loading="lazy">
+                                            <div
+                                                class="d-flex flex-column align-items-center justify-content-center mt-2">
+                                                <h5 class="mb-0" x-text="image.title"></h5>
+                                                <p x-text="image.description"></p>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Controls -->
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div> <!-- end carousel -->
+                        </div> <!-- end showImages -->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card -->
+            </div>
+        </div>
+    </div>
+
+
 </section>

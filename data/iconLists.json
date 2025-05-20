@@ -110,6 +110,9 @@
         { "class": "devicon-laravel-plain", "label": "Laravel" },
         { "class": "devicon-mariadb-plain", "label": "MariaDB" },
         { "class": "devicon-bootstrap-plain", "label": "Bootstrap" },
+        { "class": "devicon-sass-original", "label": "SASS" },
+        { "class": "devicon-axios-plain", "label": "Axios" },
+        { "class": "devicon-vitejs-plain", "label": "Vitejs" },
         { "class": "devicon-git-plain", "label": "Git" },
         { "class": "devicon-gitlab-plain", "label": "Gitlab" },
         { "class": "devicon-vscode-plain", "label": "VS Code" }

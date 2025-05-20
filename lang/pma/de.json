@@ -1,0 +1,259 @@
+{
+    "header": "PMA",
+    "description": [
+        "Project Management Assistant (PMA) ist ein leistungsstarkes Tool zur strukturierten Verwaltung projektspezifischer Daten – und das über mehrere Projekte hinweg.",
+        "Alle relevanten Informationen Ihrer Projekte können zentral an einem Ort organisiert, eingesehen und gepflegt werden.",
+        "Das zentrale Merkmal von PMA ist die gebündelte Verwaltung spezifischer Daten mehrerer Projekte in einer klaren und einheitlichen Oberfläche.",
+        "Die Applikation richtet sich insbesondere an Projektmanager:innen, die parallel an mehreren Projekten arbeiten und eine strukturierte Übersicht über im Projektverlauf oder in Meetings gesammelte Daten benötigen."
+    ],
+    "features_title": "Funktionen",
+    "features": [
+        {
+            "title": "Zentrale Datenverwaltung",
+            "desc": "Verwalten Sie alle projektspezifischen Inhalte wie Aufgaben, Kontakte, Notizen, Risiken, Entscheidungen und mehr in einer einzigen, zentralen Plattform."
+        },
+        {
+            "title": "Modulares Datenmodell",
+            "desc": "Die Anwendung basiert auf einem flexiblen und skalierbaren Datenmodell. Neue Datentypen können einfach ergänzt werden, ohne bestehende Strukturen zu beeinträchtigen."
+        },
+        {
+            "title": "Unterstützung mehrerer Projekte",
+            "desc": "Verwalten Sie mehrere Projekte parallel. Jedes Projekt besitzt eine eigene Datenstruktur. Der Wechsel zwischen Projekten erfolgt schnell und intuitiv."
+        },
+        {
+            "title": "Projektspezifische und übergreifende Ansichten",
+            "desc": "PMA ermöglicht sowohl den detaillierten Blick auf ein einzelnes Projekt als auch eine aggregierte Übersicht über projektübergreifende Daten. Beispielsweise können Sie alle Aufgaben eines Projekts anzeigen lassen oder eine Gesamtschau aller Aufgaben aller Projekte erhalten."
+        },
+        {
+            "title": "Projektübergreifendes Reporting",
+            "desc": "Ermöglicht projektübergreifende Auswertungen z. B. aller Aufgaben, Risiken oder Kontakte – ideal für Projektportfoliomanagement und Controlling."
+        },
+        {
+            "title": "Feingranulare Datenfilterung",
+            "desc": "Nutzen Sie leistungsfähige Filterfunktionen in der Listenansicht, um gezielt nach Inhalten zu suchen und große Datenmengen effizient zu analysieren."
+        },
+        {
+            "title": "Flexible Datendarstellung",
+            "desc": "Daten lassen sich in zwei Ansichten anzeigen: einer klassischen, filterbaren Listenansicht mit Suchfunktion, Paginierung und Exportmöglichkeiten (Kopieren, CSV, Excel, PDF) sowie einer modernen Kachelansicht für einen schnellen Überblick über alle erfassten Inhalte."
+        },
+        {
+            "title": "Datenexport",
+            "desc": "Exportieren Sie Ihre Daten bequem in verschiedenen Formaten wie CSV, Excel oder PDF. Ideal zur Weiterverarbeitung oder für die Weitergabe an externe Beteiligte."
+        },
+        {
+            "title": "Aufgaben-Deadline-Tracking",
+            "desc": "Überfällige oder bald fällige Aufgaben werden visuell hervorgehoben – für proaktives Handeln ohne zusätzliche Konfiguration."
+        },
+        {
+            "title": "Entscheidungsnachverfolgung",
+            "desc": "Erfassen Sie Entscheidungen mit zeitlichem Kontext, Status und verantwortlichen Kontakten – ideal für nachvollziehbare Entscheidungsprozesse."
+        },
+        {
+            "title": "Risikomanagement",
+            "desc": "Bewerten Sie Risiken anhand von Typ, Eintrittswahrscheinlichkeit, Risikogewichtung und Gegenmaßnahmen – für aktives und dokumentiertes Risikomanagement."
+        },
+        {
+            "title": "Kontakte mit Rollenbezug",
+            "desc": "Verwalten Sie Projektbeteiligte mit Rollen, Firmenzugehörigkeit und Kontaktinformationen – vollständig verknüpft mit anderen Daten wie Entscheidungen oder Notizen."
+        },
+        {
+            "title": "Firmenmanagement",
+            "desc": "Pflegen Sie firmenspezifische Informationen wie Adresse, Sprache, Währung und Kommunikationskanäle – verknüpfbar mit Projekten und Kontakten."
+        },
+        {
+            "title": "Systematisches Notizmanagement",
+            "desc": "Erfassen Sie Besprechungsnotizen, Statusnotizen oder Gedanken pro Projekt und behalten Sie mit Bearbeitungsverläufen stets die Kontrolle."
+        },
+        {
+            "title": "Benutzerfreundliche Modale für Dateneingabe",
+            "desc": "Alle Eingabemasken werden als modale Dialoge geladen, um den Arbeitsfluss nicht zu unterbrechen und eine flüssige Bedienung zu ermöglichen."
+        },
+        {
+            "title": "Individuelle Designs (Themes)",
+            "desc": "Wählen Sie zwischen einem hellen und einem dunklen Design, um die App an Ihre persönlichen Präferenzen oder Arbeitsumgebung anzupassen."
+        },
+        {
+            "title": "Mehrsprachigkeit",
+            "desc": "PMA unterstützt mehrere Sprachen. Aktuell sind Deutsch und Englisch verfügbar. Die Sprache kann jederzeit in den Einstellungen gewechselt werden."
+        },
+        {
+            "title": "Responsives Design",
+            "desc": "Die App funktioniert nahtlos auf Desktop, Tablet, Smartphone und interaktiven Whiteboards. Sie wurde für Bildschirmgrößen von 4 bis 80 Zoll sowie verschiedene Auflösungen (720p bis 4K) und DPI-Kombinationen optimiert."
+        },
+        {
+            "title": "Skalierbarkeit & Erweiterbarkeit",
+            "desc": "Dank strukturierter Datenbankarchitektur (inkl. 3. Normalform) ist PMA technisch auf künftige Erweiterungen und große Datenmengen vorbereitet."
+        },
+        {
+            "title": "Leistungsfähige Datenbank",
+            "desc": "Die Anwendung nutzt eine MariaDB-Datenbank mit über 50 Tabellen, größtenteils in dritter Normalform. Abweichungen wurden gezielt zur Performanceoptimierung bei großen Datenmengen und zur Archivierung eingesetzt. Die Datenbankstruktur ist modular und leicht erweiterbar."
+        },
+        {
+            "title": "Server-Side Rendering mit SPA-Erlebnis",
+            "desc": "PMA basiert auf Laravel Blade Templating und verwendet klassisches Server Side Rendering (SSR). Durch den Einsatz von AJAX bei interaktiven Funktionen wie dem Erstellen und Bearbeiten von Datensätzen entsteht ein flüssiges Nutzungserlebnis ähnlich einer Single Page Application (SPA). Eingabemasken werden über modale Fenster geladen."
+        }
+    ],
+    "data_title": "Verwaltete Datentypen",
+    "data": [
+        {
+            "title": "To-Dos",
+            "desc": "Aufgabenmanagement für jedes Projekt mit umfassender Status- und Fristenkontrolle.",
+            "data": [
+                "Titel",
+                "Projektname",
+                "Beschreibung",
+                "Startdatum",
+                "Enddatum",
+                "Status",
+                "Priorität"
+            ],
+            "functions": [
+                "Aufgaben können abgeschlossen, bearbeitet oder abgebrochen werden",
+                "Automatische Hervorhebung überfälliger oder bald fälliger Aufgaben"
+            ],
+            "views": [
+                "Projektspezifisch",
+                "Projektübergreifend"
+            ]
+        },
+        {
+            "title": "Kontakte",
+            "desc": "Verwaltung aller relevanten Projektbeteiligten mit vollständigen Kommunikationsdaten.",
+            "data": [
+                "Name",
+                "Zugeordnete Projekte",
+                "E-Mail",
+                "Telefonnummer",
+                "Firma/Firmen",
+                "Rolle",
+                "Geschlecht"
+            ],
+            "functions": [
+                "Kontakte können bearbeitet oder gelöscht werden"
+            ],
+            "views": [
+                "Projektspezifisch",
+                "Projektübergreifend"
+            ]
+        },
+        {
+            "title": "Notizen",
+            "desc": "Erfassen und strukturieren Sie Meetingnotizen, Ideen und Protokolle je Projekt.",
+            "data": [
+                "Titel",
+                "Projektname",
+                "Status",
+                "Letzte Bearbeitung"
+            ],
+            "functions": [
+                "Notizen können bearbeitet oder gelöscht werden"
+            ],
+            "views": [
+                "Projektspezifisch",
+                "Projektübergreifend"
+            ]
+        },
+        {
+            "title": "Firmen",
+            "desc": "Pflege von Unternehmensdaten für Ihre Projektpartner, Dienstleister oder Kunden.",
+            "data": [
+                "Name",
+                "Webseite",
+                "Adresse",
+                "Sprache",
+                "Währung",
+                "Telefonnummer(n)",
+                "E-Mail-Adresse(n)"
+            ],
+            "functions": [
+                "Firmendaten können bearbeitet oder gelöscht werden"
+            ],
+            "views": [
+                "Projektspezifisch",
+                "Projektübergreifend"
+            ]
+        },
+        {
+            "title": "Entscheidungen",
+            "desc": "Dokumentation von getroffenen Entscheidungen mit Verantwortlichen und Status.",
+            "data": [
+                "Titel",
+                "Projektname",
+                "Beschreibung",
+                "Entscheidungsträger (verknüpfte Kontakte)",
+                "Datum",
+                "Status"
+            ],
+            "functions": [
+                "Entscheidungen können bearbeitet oder gelöscht werden"
+            ],
+            "views": [
+                "Projektspezifisch"
+            ]
+        },
+        {
+            "title": "Risiken",
+            "desc": "Risikoerfassung zur aktiven Steuerung potenzieller Projekthindernisse.",
+            "data": [
+                "Titel",
+                "Projektname",
+                "Beschreibung",
+                "Risikoart",
+                "Eintrittswahrscheinlichkeit",
+                "Risikogewichtung",
+                "Gegenmaßnahmen",
+                "Auswirkung (Impact)"
+            ],
+            "functions": [
+                "Risiken können bearbeitet oder gelöscht werden"
+            ],
+            "views": [
+                "Projektspezifisch",
+                "Projektübergreifend"
+            ]
+        }
+    ],
+    "images_title": "Screenshots",
+    "images": {
+        "auth": {
+            "path": "/assets/img/pma/auth.png",
+            "title": "PMA Startseite",
+            "description": "Die Startseite von PMA mit Optionen zur Anmeldung und Registrierung."
+        },
+        "pma": {
+            "path": "/assets/img/pma/pma.png",
+            "title": "PMA Hauptansicht",
+            "description": "Die Hauptansicht von PMA mit einer Liste aller To-Dos auf der linken Seite und Projekte auf der rechten Seite, jeweils mit ihren Statusangaben."
+        },
+        "decision": {
+            "path": "/assets/img/pma/decision.png",
+            "title": "Entscheidung erstellen (Modal)",
+            "description": "Projektübersichtsseite eines spezifischen Projekts mit geöffnetem Modal zur Erstellung einer Entscheidung."
+        },
+        "editProject": {
+            "path": "/assets/img/pma/editProject.png",
+            "title": "Projekt bearbeiten (Modal)",
+            "description": "Das Modal zum Bearbeiten eines Projekts ist geöffnet. Zusätzlich ist die Hauptansicht mit To-Dos (links) und Projekten (rechts) sichtbar. Ein Tooltip über dem Bearbeiten-Button eines bestimmten Projekts wird angezeigt."
+        },
+        "language": {
+            "path": "/assets/img/pma/language.png",
+            "title": "Sprachauswahl",
+            "description": "Sprachauswahl im Dropdown-Menü der Einstellungen."
+        },
+        "settings": {
+            "path": "/assets/img/pma/settings.png",
+            "title": "Einstellungs-Dropdown",
+            "description": "Das Einstellungs-Dropdown auf einer kleineren Bildschirmgröße zur Demonstration des responsiven Verhaltens."
+        },
+        "projectView": {
+            "path": "/assets/img/pma/projectView.png",
+            "title": "Projektübersicht",
+            "description": "Übersichtsseite eines spezifischen Projekts mit allen zugehörigen To-Dos, Notizen, Entscheidungen usw."
+        },
+        "tables": {
+            "path": "/assets/img/pma/tables.png",
+            "title": "Tabellenansicht",
+            "description": "Tabellenansicht der Hauptseite von PMA mit einer Liste aller To-Dos (links) und Projekte (rechts) samt Status."
+        }
+    }
+}
