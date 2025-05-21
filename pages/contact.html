@@ -94,16 +94,20 @@
 
   async init() {
         window.recaptchaVerified = () => {
-      this.captchaPassed = true;
-    }
+            this.captchaPassed = true;
+        };
+        window.recaptchaExpired = () => {
+            this.captchaPassed = false;
+        };
   },
 
   async sendMessage(event) {
     event.preventDefault();
         if (!this.captchaPassed) {
-      window.Toast.show('error', pageLang.captcha.title, pageLang.captcha.content);
-      return;
-    }
+            window.Toast.show('error', pageLang.captcha.title, pageLang.captcha.content);
+            return;
+        }
+        
 
     try {
 
@@ -283,7 +287,8 @@
                                             <div class="recaptcha-wrapper">
                                                 <div class="g-recaptcha"
                                                     data-sitekey="6LdQpEIrAAAAAIRglU6qq7adkKFas7XElNqdqyXB"
-                                                    data-callback="recaptchaVerified">
+                                                    data-callback="recaptchaVerified"
+                                                    data-expired-callback="recaptchaExpired">
                                                 </div>
                                             </div>
                                         </div>
