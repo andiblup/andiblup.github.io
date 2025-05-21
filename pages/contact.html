@@ -100,17 +100,18 @@
         // const token = await grecaptcha.execute('6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP', { action: 'submit' });
 
 
-      const form = event.target;
-      const tokenInput = document.createElement('input');
-      tokenInput.type = 'hidden';
-      tokenInput.name = 'g-recaptcha-response';
-      tokenInput.value = token;
-      form.appendChild(tokenInput);
+    //   const form = event.target;
+    //   const tokenInput = document.createElement('input');
+    //   tokenInput.type = 'hidden';
+    //   tokenInput.name = 'g-recaptcha-response';
+    //   tokenInput.value = token;
+    //   form.appendChild(tokenInput);
 
       await emailjs.sendForm(
         'service_ej8oi9n',
         'template_0dtap7s',
-        form
+        // form
+        event.target
       );
         await emailjs.sendForm(
         'service_ej8oi9n',
