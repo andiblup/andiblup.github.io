@@ -14,11 +14,12 @@
 
     }
  }" x-init="init()" class="py-5">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> -->
 
-    <!-- <script src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
 
+    <!-- v3 -->
     <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP"></script> -->
+
+    <!-- v2 -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <div class="container mb-4">
@@ -80,7 +81,6 @@
   captchaPassed: false,
 
   async init() {
-    // emailjs.init('t5UW8Ux7a97B73XRT');
         window.recaptchaVerified = () => {
       this.captchaPassed = true;
     }
@@ -89,8 +89,6 @@
   async sendMessage(event) {
     event.preventDefault();
         if (!this.captchaPassed) {
-    //   event.preventDefault();
-    //   alert('reCAPTCHA!');
       window.Toast.show('error', 'Bitte bestätigen Sie das reCAPTCHA!', 'Bitte bestätigen Sie das Sie ein Mensch sind, indem Sie das reCAPTCHA lösen!');
       return;
     }
@@ -99,7 +97,7 @@
 
         // const token = await grecaptcha.execute('6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP', { action: 'submit' });
 
-
+//! For v3 only 
     //   const form = event.target;
     //   const tokenInput = document.createElement('input');
     //   tokenInput.type = 'hidden';
@@ -110,7 +108,7 @@
       await emailjs.sendForm(
         'service_ej8oi9n',
         'template_0dtap7s',
-        // form
+        // form // for v3 only
         event.target
       );
         await emailjs.sendForm(
@@ -119,16 +117,6 @@
         event.target  
       );
 
-    //   await emailjs.sendForm(
-    //     'service_ej8oi9n',
-    //     'template_0dtap7s',
-    //     event.target  
-    //   );
-    //   await emailjs.sendForm(
-    //     'service_ej8oi9n',
-    //     'template_0d5w815',
-    //     event.target  
-    //   );
 
       this.success = true;
       this.error = false;
@@ -159,7 +147,9 @@
                                         <textarea id="message" name="message" rows="5" required></textarea>
                                     </div>
 
-                                    <div class="g-recaptcha" data-sitekey="6LdQpEIrAAAAAIRglU6qq7adkKFas7XElNqdqyXB"  data-callback="recaptchaVerified"></div>
+                                    <!-- v2 -->
+                                    <div class="g-recaptcha" data-sitekey="6LdQpEIrAAAAAIRglU6qq7adkKFas7XElNqdqyXB"
+                                        data-callback="recaptchaVerified"></div>
 
                                     <button type="submit" :disabled="!captchaPassed">Absenden</button>
 
