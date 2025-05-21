@@ -7,6 +7,7 @@
         const response = await fetch('/lang/' + fileName + '/' + lang + '.json'); 
         this.pageLang = await response.json(); 
         document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
+        
     } 
 }" x-init="init()" class="py-5">
 
@@ -108,7 +109,7 @@
                     <div class="card-body">
                         <!-- Title + Toggle Icon -->
                         <div class="d-flex align-items-center justify-content-between">
-                            <h2 class="card-title mb-0" x-text="pageLang.images.title"></h2>
+                            <h2 class="card-title mb-0" x-text="pageLang.images_title"></h2>
                             <i class="bi bi-grad cursor-pointer ms-2"
                                 :class="{'bi-chevron-up': showImages, 'bi-chevron-down': !showImages}"
                                 @click="showImages = !showImages"></i>
@@ -170,47 +171,6 @@
                             title: data.images.tables.title
                         },
                     ]
-
-
-                // });
-
-            //   this.images = [
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //     {
-            //       path: '/assets/img/pma/auth.png',
-            //       description: data.images.auth.description,
-            //       title: data.images.auth.title
-            //     },
-            //   ];
             }
           }" x-init="init()">
                                 <!-- Indicators -->

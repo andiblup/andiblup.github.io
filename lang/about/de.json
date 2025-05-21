@@ -1,5 +1,55 @@
 {
-    "header": "Über",
-    "tagline": "Ich bin ein Entwickler mit Leidenschaft für kreative Lösungen und Technologie."
-  }
-  
+  "header": "Über mich",
+  "description": [
+    "Ich bin ein leidenschaftlicher Entwickler mit Fokus auf kreative und technisch anspruchsvolle Lösungen.",
+    "Meine Erfahrung umfasst verschiedene Programmiersprachen und Technologien, insbesondere JavaScript, Java und PHP.",
+    "Als Fullstack-Webentwickler liegt mein Schwerpunkt auf ganzheitlichen Anwendungen, wobei ich auch gerne mobile Apps entwickle.",
+    "In meiner Freizeit erweitere ich kontinuierlich mein Wissen durch das Erlernen neuer Technologien und Programmiersprachen.",
+    "Neben der Programmierung spiele ich Videospiele, gehe skaten oder verbringe Zeit mit Freunden.",
+    "Ich bin stets auf der Suche nach neuen Herausforderungen, um meine Fähigkeiten weiterzuentwickeln und innovative Projekte umzusetzen."
+  ],
+  "journey_title": "Meine Reise als Entwickler",
+  "journey": [
+    {
+      "title": "Weiterbildung in über 50 Udemy-Kursen",
+      "start": "11.2021",
+      "end": "Heute",
+      "desc": "In den letzten fast vier Jahren habe ich mehr als 50 Udemy-Kurse absolviert, um meine Kenntnisse in diversen Programmiersprachen und Technologien zu vertiefen. Dazu zählen unter anderem JavaScript, Java, PHP und Python sowie verschiedene Frameworks. Diese Weiterbildung hat meine Fähigkeiten als Entwickler nachhaltig gestärkt."
+    },
+    {
+      "title": "Edley Python Kurs",
+      "start": "02.2022",
+      "end": "08.2022",
+      "desc": "Ich absolvierte einen Python-Kurs bei Edley, um fundierte Grundlagen sowie Kenntnisse in Frameworks wie Django und Flask zu erlangen. Nach erfolgreichem Abschluss der Prüfung erhielt ich ein Zertifikat."
+    },
+    {
+      "title": "Edley Java Kurs & Python Zertifikat",
+      "start": "07.2022",
+      "desc": "Zur Vorbereitung auf meine Fachinformatiker-Ausbildung besuchte ich einen Java-Kurs bei Edley, in dem ich die Grundlagen von Java erlernte."
+    },
+    {
+      "title": "CODERS.BAY Vienna",
+      "start": "08.2022",
+      "end": "10.2024",
+      "desc": "Nach einem fünfwöchigen Bootcamp begann ich meine Fachinformatiker-Ausbildung als Applikationsentwickler bei CODERS.BAY Vienna. Während dieser zweijährigen intensiven Ausbildung sammelte ich praktische Erfahrungen in der Fullstack-Entwicklung, arbeitete an Webanwendungen, mobilen Apps, Backend-Systemen, APIs und Datenbankintegration. Die Ausbildung schloss ich mit gutem Erfolg ab."
+    },
+    {
+      "title": "Praktikum bei Botforce GmbH",
+      "start": "04.2024",
+      "end": "07.2024",
+      "desc": "Im Rahmen meines Praktikums bei Botforce GmbH entwickelte ich gemeinsam mit einer Kollegin einen umfangreichen Prototyp nach den Anforderungen des Kunden."
+    },
+    {
+      "title": "Fullstack Entwickler bei Botforce GmbH",
+      "start": "08.2024",
+      "end": "01.2025",
+      "desc": "Als Fullstack-Entwickler bei Botforce GmbH arbeitete ich an verschiedenen Projekten, darunter die Erstellung der Unternehmenshomepage und die Weiterentwicklung einer Applikation basierend auf unserem Prototypen. Zusätzlich leitete ich ein Team von vier Praktikantinnen und unterstützte sie bei der Umsetzung ihrer Projekte."
+    },
+    {
+      "title": "Eigene Projekte",
+      "start": "01.2025",
+      "end": "Heute",
+      "desc": "Seit Anfang des Jahres beschäftige ich mich mit eigenen Projekten, darunter die Entwicklung eines leichten SPA-Frameworks für klassisches Webhosting (ohne Node.js, nur per CDN oder Serverinstallation), meine Portfolioseite, die auf einem früheren Prototyp basiert, sowie ein weiteres Herzensprojekt in der frühen Entwicklungsphase. Zudem erweitere ich kontinuierlich mein Wissen über neue Technologien und Frameworks."
+    }
+  ]
+}

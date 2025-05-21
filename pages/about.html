@@ -1,18 +1,284 @@
 <section x-data="{ 
     pageLang: {},
+    homePageLang: {},
     async init() {
 
     breadCrumbs = getBreadCrumbsArray();
     
     const lang = localStorage.getItem('appLang') || 'en';
     const fileName = breadCrumbs[breadCrumbs.length - 1].path.substring(2, breadCrumbs[breadCrumbs.length - 1].length);
-
     const response = await fetch('/lang/' + fileName + '/' + lang + '.json');
     this.pageLang = await response.json();
+    this.homePageLang = await fetch('/lang/home/' + lang + '.json').then(response => response.json());
     document.title = breadCrumbs[breadCrumbs.length - 1].name || 'Portfolio';
 
     }
- }" x-init="init()">
-    <h1 x-text="pageLang.header"></h1>
-    <p x-text="pageLang.tagline"></p>
+ }" x-init="init()" class="py-5">
+
+    <div class="container mb-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="container w-100 d-flex justify-content-center flex-column">
+                    <div class="d-flex align-items-center justify-content-center pb-2">
+                        <!-- Haupt-Titel -->
+                        <h1 class="text-center me-2" x-text="pageLang.header"></h1>
+                        <!-- Links -->
+                        <span class="mt-3 me-3 d-flex">
+                            <a class="btn text-center ms-2" href="https://gitlab.com/andiblup" target="_blank"
+                                data-tooltip="Gitlab" data-tooltip-position="bottom">
+                                <i class="bi bi-grad bi-gitlab"></i>
+                            </a>
+                            <a class="btn text-center ms-2" href="https://github.com/andiblup" target="_blank"
+                                data-tooltip="Github" data-tooltip-position="bottom">
+                                <i class="bi bi-grad bi-github"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <template x-for="desc in pageLang.description">
+                        <p x-html="desc"></p>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div x-text="breadcrumbs"></div>
+
+    <div class="container pb-5 pt-3">
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+                <div class="card p-2" style="border-radius: 12px;">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
+                                aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
+                                aria-label="Slide 8"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8"
+                                aria-label="Slide 9"></button>
+                        </div>
+                        <div class="carousel-inner" x-data="{
+                            isFirst: true,
+                            images: [
+                                '/assets/img/pictures/sp.png',
+                                '/assets/img/pictures/1.jpg',
+                                '/assets/img/pictures/0.jpg',
+                                '/assets/img/pictures/2.jpg',
+                                '/assets/img/pictures/3.jpg',
+                                '/assets/img/pictures/4.jpg',
+                                '/assets/img/pictures/5.jpg',
+                                '/assets/img/pictures/6.png',
+                                '/assets/img/pictures/7.jpg',
+
+                            ],
+                        }">
+                            <template x-for="(image, index) in images" :key="index">
+                                <div :class="index === 0 ? 'carousel-item active' : 'carousel-item'">
+                                    <img style="border-radius: 12px;" :src="image" class="d-block w-100" loading="lazy"
+                                        alt="Slide">
+                                </div>
+                            </template>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"
+                                style="background-color: rgba(0, 0, 0, 0.4); border-radius: 50%;"
+                                aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"
+                                style="background-color: rgba(0, 0, 0, 0.4); border-radius: 50%;"
+                                aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                            <!-- <div class="d-flex jusify-content-center align-items-center" style="width: 2.5rem; height: 2.5rem; border-radius: 50%; background-color: rgba(200, 200, 200, 0.9);">
+                                <span class="carousel-control-next-icon bi bi-chevron-right bi-grad" aria-hidden="true"></span>
+                            </div> -->
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" x-text="homePageLang.title"></h5>
+                        <p class="card-text" x-text="homePageLang.description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 60px;
+        }
+
+        /* Vertikale Linie */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .event {
+            position: relative;
+            display: flex;
+            margin-bottom: 2.5rem;
+        }
+
+        .event:last-child {
+            margin-bottom: 0;
+        }
+
+        .event-marker {
+            position: absolute;
+            left: -38px;
+            top: 0.6em;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-point {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-date {
+            max-width: 60px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-left: 12px;
+            white-space: nowrap;
+        }
+
+        .event-content {
+            padding-left: 60px;
+            margin-top: 0.3rem;
+            max-width: 700px;
+        }
+
+        .event-text {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .event-content {
+                padding-left: 0px;
+                margin-top: 34px;
+                /* margin-top: 90px; */
+            }
+
+
+            .timeline::before {
+                left: 8px;
+            }
+        }
+    </style>
+
+    <h2 x-text="pageLang.journey_title"></h2>
+
+    <div class="timeline">
+
+        <!-- <div class="event">
+      <div class="event-marker">
+        <div class="event-point"></div>
+        <div class="event-date">02.2022</div>
+      </div>
+      <div class="event-content">
+        <div class="event-text">
+          
+        </div>
+      </div>
+    </div> -->
+        <template x-for="event in pageLang.journey">
+            <div class="event">
+                <div class="event-marker">
+                    <div class="event-point"></div>
+                    <div class="event-date" ><p x-html="event.start"></p></div>
+                </div>
+                <div class="event-content">
+                    <div class="event-text">
+                        <p style="margin: 0;"><b x-text="event.title"></b></p>
+                        <br>
+                        <p x-text="event.desc"></p>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- <div class="event">
+      <div class="event-marker">
+        <div class="event-point"></div>
+        <div class="event-date">06.2020</div>
+      </div>
+      <div class="event-content">
+        <div class="event-text">
+          Abschluss der Designphase. Erste Prototypen wurden getestet und Feedback eingeholt. Entscheidung für Tech Stack.
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-marker">
+        <div class="event-point"></div>
+        <div class="event-date">01.2021</div>
+      </div>
+      <div class="event-content">
+        <div class="event-text">
+          Veröffentlichung der Beta-Version mit eingeschränkten Funktionen. Erste Nutzergruppe testet und meldet Bugs.
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-marker">
+        <div class="event-point"></div>
+        <div class="event-date">06.2021</div>
+      </div>
+      <div class="event-content">
+        <div class="event-text">
+          Finaler Release mit vollständigem Funktionsumfang. Marketing-Kampagne gestartet und Support eingerichtet.
+        </div>
+      </div>
+    </div> -->
+
+    </div>
 </section>

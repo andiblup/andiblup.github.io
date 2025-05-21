@@ -1,5 +1,55 @@
 {
-    "header": "About",
-    "tagline": "I am a developer with a passion for creative solutions and technology."
-  }
-  
+  "header": "About Me",
+  "description": [
+    "I am a passionate developer focused on creating innovative and technically sophisticated solutions.",
+    "My experience spans various programming languages and technologies, particularly JavaScript, Java, and PHP.",
+    "As a fullstack web developer, I specialize in comprehensive applications, while also enjoying mobile app development.",
+    "In my free time, I continuously expand my knowledge by learning new technologies and programming languages.",
+    "Outside of programming, I enjoy playing video games, skateboarding, and spending time with friends.",
+    "I am always seeking new challenges to further develop my skills and work on innovative projects."
+  ],
+  "journey_title": "My Journey as a Developer",
+  "journey": [
+    {
+      "title": "Completed over 50 Udemy Courses",
+      "start": "11.2021",
+      "end": "Present",
+      "desc": "Over the past nearly four years, I have completed more than 50 Udemy courses to deepen my knowledge in various programming languages and technologies. These include JavaScript, Java, PHP, Python, and several frameworks. This continuous learning has significantly enhanced my development skills."
+    },
+    {
+      "title": "Edley Python Course",
+      "start": "02.2022",
+      "end": "08.2022",
+      "desc": "I undertook a Python course at Edley to gain solid foundations and learn frameworks such as Django and Flask. After successfully passing the final exam, I received a certificate."
+    },
+    {
+      "title": "Edley Java Course & Python Certificate",
+      "start": "07.2022",
+      "desc": "To prepare for my IT specialist training, I attended a Java course at Edley where I learned the basics of Java."
+    },
+    {
+      "title": "CODERS.BAY Vienna",
+      "start": "08.2022",
+      "end": "10.2024",
+      "desc": "Following a five-week bootcamp, I began my apprenticeship as an application developer at CODERS.BAY Vienna. During this intensive two-year program, I gained hands-on experience as a fullstack developer, working on web applications, mobile apps, backend systems, API development, and database integration. I successfully completed the apprenticeship with good results."
+    },
+    {
+      "title": "Internship at Botforce GmbH",
+      "start": "04.2024",
+      "end": "07.2024",
+      "desc": "During my internship at Botforce GmbH, I collaborated with a colleague to develop a comprehensive prototype tailored to the client’s requirements."
+    },
+    {
+      "title": "Fullstack Developer at Botforce GmbH",
+      "start": "08.2024",
+      "end": "01.2025",
+      "desc": "As a fullstack developer at Botforce GmbH, I worked on various projects including the company homepage and the further development of an application based on our prototype. Additionally, I led a team of four interns and supported them in executing their projects."
+    },
+    {
+      "title": "Personal Projects",
+      "start": "01.2025",
+      "end": "Present",
+      "desc": "Since the beginning of the year, I have been working on several personal projects, including the development of a lightweight SPA framework for classic web hosting (without Node.js, using only CDN or server installation), my portfolio website based on an earlier prototype, and another passion project currently in early development. I continuously expand my knowledge of new technologies and frameworks."
+    }
+  ]
+}
