@@ -71,35 +71,35 @@
                             <hr>
 
 <div class="contact-container" x-data="{
-    success: false,
-    error: false,
+  success: false,
+  error: false,
 
-    async init() {
-      emailjs.init('t5UW8Ux7a97B73XRT'); // Dein EmailJS Public Key
-    },
+  async init() {
+    emailjs.init('t5UW8Ux7a97B73XRT');
+  },
 
-async sendMessage(event) {
-  event.preventDefault();
+  async sendMessage(event) {
+    event.preventDefault();
 
-  try {
-    const token = await grecaptcha.execute('6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP', {action: 'submit'});
-    this.$refs.form.querySelector('input[name="g-recaptcha-response"]').value = token;
+    try {
+      const token = await grecaptcha.execute('6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP', {action: 'submit'});
+      this.$refs.form.querySelector('input[name=\"g-recaptcha-response\"]').value = token;
 
-    await emailjs.sendForm(
-      'service_ej8oi9n',
-      'template_0dtap7s',
-      this.$refs.form
-    );
+      await emailjs.sendForm(
+        'service_ej8oi9n',
+        'template_0dtap7s',
+        this.$refs.form
+      );
 
-    this.success = true;
-    this.error = false;
-    this.$refs.form.reset();
-  } catch (err) {
-    console.error(err);
-    this.success = false;
-    this.error = true;
+      this.success = true;
+      this.error = false;
+      this.$refs.form.reset();
+    } catch (err) {
+      console.error(err);
+      this.success = false;
+      this.error = true;
+    }
   }
-}
 }" x-init="init()">
 
                                 <h2>Kontakt</h2>
