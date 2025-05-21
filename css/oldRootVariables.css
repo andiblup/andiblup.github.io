@@ -1,0 +1,81 @@
+:root {
+    /* Light Mode Colors */
+    --primary-color: #008080; /* Teal */
+    --secondary-color: #5f6f81; /* Grau-Blau */
+    --background-color: #c3c3c3; /* Hellgrau */
+    --text-color: #212529; /* Dunkelgrau-Schwarz */
+    --button-text-color: #ffffff;
+    --button-text-hover-color: #e0e0e0; /* Helles Grau für Hover */
+    --navbar-bg-color: #e0e0e0; /* Hellgrau, dunkler als main-content */
+    --popover-bg-color: #ffffff;
+    --card-bg-color: #e0e0e0;
+    --icon-bg-color: #ffffff;
+    --icon-color: #212529;
+    --background-color-hover: #7700ff;
+    --success-color: #28a745;
+    --success-hover-color: #218838;
+    --warning-color: #ffc107;
+    --warning-hover-color: #ffd54f;
+    --error-color: #dc3545;
+    --error-hover-color: #c82333;
+    --info-color: #17a2b8;
+    --info-hover-color: #138496;
+
+
+    /* Dark Mode Colors */
+    --primary-color-dark: #006666; /* Dunkleres Teal */
+    --secondary-color-dark: #4a5568; /* Dunkleres Grau-Blau */
+    --background-color-dark: #1c1c1c; /* Sehr Dunkelgrau */
+    --text-color-dark: #e0e0e0; /* Hellgrau */
+    --button-text-color-dark: #ffffff;
+    --button-text-hover-color-dark: #c2c2c2; /* Dunkleres Grau für Hover */
+    --navbar-bg-color-dark: #2a2a2a; /* Dunkelgrau */
+    --popover-bg-color-dark: #343a40;
+    --card-bg-color-dark: #2e2e2e; /* Etwas dunkleres Grau für Karten */
+    --card-text-color-dark: #f5f5f5; /* Hellgrau für Text in Karten */
+    --icon-bg-color-dark: #3e3e3e;
+    --icon-color-dark: #e0e0e0;
+    --background-color-hover-dark: #3c3c3c;
+
+    /* Default Colors */
+    --primary: var(--primary-color);
+    --secondary: var(--secondary-color);
+    --background: var(--background-color);
+    --text: var(--text-color);
+    --button-text: var(--button-text-color);
+    --button-text-hover: var(--button-text-hover-color);
+    --navbar-bg: var(--navbar-bg-color);
+    --popover-bg: var(--popover-bg-color);
+    --card-bg: var(--card-bg-color);
+    --icon-bg: var(--icon-bg-color);
+    --icon-color: var(--icon-color);
+    --background-color-hover: var(--background-color-hover);
+    --success: var(--success-color);
+    --success-hover: var(--success-hover-color);
+    --warning: var(--warning-color);
+    --warning-hover: var(--warning-hover-color);
+    --error: var(--error-color);
+    --error-hover: var(--error-hover-color);
+    --info: var(--info-color);
+    --info-hover: var(--info-hover-color);
+
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    --primary: var(--primary-color-dark);
+    --secondary: var(--secondary-color-dark);
+    --background: var(--background-color-dark);
+    --text: var(--text-color-dark);
+    --button-text: var(--button-text-color-dark);
+    --button-text-hover: var(--button-text-hover-color-dark);
+    --navbar-bg: var(--navbar-bg-color-dark);
+    --popover-bg: var(--popover-bg-color-dark);
+    --card-bg: var(--card-bg-color-dark);
+    --icon-bg: var(--icon-bg-color-dark);
+    --icon-color: var(--icon-color-dark);
+    --card-text-color: var(--card-text-color-dark);
+    --background-color-hover: var(--background-color-hover-dark);
+
+    --bs-btn-color: var(--text-color-dark) !important;
+}

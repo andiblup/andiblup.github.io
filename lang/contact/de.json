@@ -1,0 +1,35 @@
+{
+    "header": "Kontakt",
+    "description": [
+        "Haben Sie Fragen oder Anregungen?",
+        "Kontaktieren Sie uns über das folgende Formular oder über die hier stehenden Sozialen Medien."
+    ],
+    "form_title": "Kontaktformular",
+    "form_description": [
+        "Ich freue mich über Ihr Feedback und Ihre Fragen.",
+        "Bitte füllen Sie das folgende Formular aus, um mich zu kontaktieren."
+    ],
+    "form": {
+        "name": "Name",
+        "email": "E-Mail",
+        "subject": "Betreff",
+        "message_placeholder": "Geben Sie hier Ihre Nachricht ein...",
+        "message": "Nachricht",
+        "submit": "Absenden"
+    },
+    "captcha": {
+        "title": "reCAPTCHA!",
+        "content": "Bitte bestätigen Sie das Sie ein Mensch sind, indem Sie das reCAPTCHA lösen!"
+    },
+    "feedback": {
+        "success": {
+            "title": "Nachricht gesendet",
+            "content": "Vielen Dank für Ihre Nachricht! Ich werde mich so schnell wie möglich bei Ihnen melden."
+        },
+        "error": {
+            "title": "Fehler",
+            "content": "Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später noch einmal."
+        }
+    }
+
+}

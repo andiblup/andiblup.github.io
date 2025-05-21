@@ -1,17 +1,18 @@
 :root {
     /* Light Mode Colors */
-    --primary-color: #008080; /* Teal */
-    --secondary-color: #5f6f81; /* Grau-Blau */
-    --background-color: #c3c3c3; /* Hellgrau */
-    --text-color: #212529; /* Dunkelgrau-Schwarz */
-    --button-text-color: #ffffff;
-    --button-text-hover-color: #e0e0e0; /* Helles Grau für Hover */
-    --navbar-bg-color: #e0e0e0; /* Hellgrau, dunkler als main-content */
-    --popover-bg-color: #ffffff;
-    --card-bg-color: #e0e0e0;
-    --icon-bg-color: #ffffff;
-    --icon-color: #212529;
-    --background-color-hover: #d1d1d1;
+    --primary-color-light: #008080; /* Teal */
+    --secondary-color-light: #5f6f81; /* Grau-Blau */
+    --background-color-light: #c3c3c3; /* Hellgrau */
+    --text-color-light: #212529; /* Dunkelgrau-Schwarz */
+    --button-text-color-light: #ffffff;
+    --button-text-hover-color-light: #e0e0e0; /* Helles Grau für Hover */
+    --navbar-bg-color-light: #e0e0e0; /* Hellgrau, dunkler als main-content */
+    --popover-bg-color-light: #ffffff;
+    --card-bg-color-light: #e0e0e0;
+    --icon-bg-color-light: #ffffff;
+    --icon-color-light: #212529;
+    --background-color-hover-light: #ffffff;
+
     --success-color: #28a745;
     --success-hover-color: #218838;
     --warning-color: #ffc107;
@@ -21,35 +22,19 @@
     --info-color: #17a2b8;
     --info-hover-color: #138496;
 
-
-    /* Dark Mode Colors */
-    --primary-color-dark: #006666; /* Dunkleres Teal */
-    --secondary-color-dark: #4a5568; /* Dunkleres Grau-Blau */
-    --background-color-dark: #1c1c1c; /* Sehr Dunkelgrau */
-    --text-color-dark: #e0e0e0; /* Hellgrau */
-    --button-text-color-dark: #ffffff;
-    --button-text-hover-color-dark: #c2c2c2; /* Dunkleres Grau für Hover */
-    --navbar-bg-color-dark: #2a2a2a; /* Dunkelgrau */
-    --popover-bg-color-dark: #343a40;
-    --card-bg-color-dark: #2e2e2e; /* Etwas dunkleres Grau für Karten */
-    --card-text-color-dark: #f5f5f5; /* Hellgrau für Text in Karten */
-    --icon-bg-color-dark: #3e3e3e;
-    --icon-color-dark: #e0e0e0;
-    --background-color-hover-dark: #3c3c3c;
-
-    /* Default Colors */
-    --primary: var(--primary-color);
-    --secondary: var(--secondary-color);
-    --background: var(--background-color);
-    --text: var(--text-color);
-    --button-text: var(--button-text-color);
-    --button-text-hover: var(--button-text-hover-color);
-    --navbar-bg: var(--navbar-bg-color);
-    --popover-bg: var(--popover-bg-color);
-    --card-bg: var(--card-bg-color);
-    --icon-bg: var(--icon-bg-color);
-    --icon-color: var(--icon-color);
-    --background-color-hover: var(--background-color-hover);
+    /* Default: Light Mode */
+    --primary: var(--primary-color-light);
+    --secondary: var(--secondary-color-light);
+    --background: var(--background-color-light);
+    --text: var(--text-color-light);
+    --button-text: var(--button-text-color-light);
+    --button-text-hover: var(--button-text-hover-color-light);
+    --navbar-bg: var(--navbar-bg-color-light);
+    --popover-bg: var(--popover-bg-color-light);
+    --card-bg: var(--card-bg-color-light);
+    --icon-bg: var(--icon-bg-color-light);
+    --icon-color: var(--icon-color-light);
+    --background-color-hover: var(--background-color-hover-light);
     --success: var(--success-color);
     --success-hover: var(--success-hover-color);
     --warning: var(--warning-color);
@@ -58,27 +43,27 @@
     --error-hover: var(--error-hover-color);
     --info: var(--info-color);
     --info-hover: var(--info-hover-color);
-
 }
 
 /* Dark Mode Styles */
 .dark-mode {
-    --primary: var(--primary-color-dark);
-    --secondary: var(--secondary-color-dark);
-    --background: var(--background-color-dark);
-    --text: var(--text-color-dark);
-    --button-text: var(--button-text-color-dark);
-    --button-text-hover: var(--button-text-hover-color-dark);
-    --navbar-bg: var(--navbar-bg-color-dark);
-    --popover-bg: var(--popover-bg-color-dark);
-    --card-bg: var(--card-bg-color-dark);
-    --icon-bg: var(--icon-bg-color-dark);
-    --icon-color: var(--icon-color-dark);
-    --card-text-color: var(--card-text-color-dark);
-    --background-color-hover: var(--background-color-hover-dark);
+    --primary: #006666; /* Dunkleres Teal */
+    --secondary: #4a5568; /* Dunkleres Grau-Blau */
+    --background: #1c1c1c; /* Sehr Dunkelgrau */
+    --text: #e0e0e0; /* Hellgrau */
+    --button-text: #ffffff;
+    --button-text-hover: #c2c2c2; /* Dunkleres Grau für Hover */
+    --navbar-bg: #2a2a2a; /* Dunkelgrau */
+    --popover-bg: #343a40;
+    --card-bg: #2e2e2e; /* Etwas dunkleres Grau für Karten */
+    --icon-bg: #3e3e3e;
+    --icon-color: #e0e0e0;
+    --card-text-color: #f5f5f5; /* Hellgrau für Text in Karten */
+    --background-color-hover: #3c3c3c;
 
-    --bs-btn-color: var(--text-color-dark) !important;
+    --bs-btn-color: var(--text) !important;
 }
+
 
 /* Override Bootstrap Variables */
 
@@ -278,11 +263,14 @@ input[type="number"] {
     display: inline-block;
     margin: 1rem 0;
     font-family: sans-serif;
+    /* display: flex;
+    justify-content: center;
+    width: 100%; */
 }
 
 /* Das eigentliche Input */
 .md-input-field {
-    width: 200px; /* Beispielbreite, anpassbar */
+    min-width: 200px;
     padding: 0.75rem 0.75rem 0.75rem 0.75rem;
     border: 1px solid var(--card-bg);
     border-radius: 4px;
@@ -290,33 +278,50 @@ input[type="number"] {
     outline: none;
     transition: border-color 0.2s ease;
     color: var(--text);
-    background: var(--card-bg);
+    /* background: var(--card-bg); */
+    background-color: var(--background-color-hover);
+    /* width: 75%; */
 }
 
 .md-input-field:focus {
     border-color: var(--text);
+    background-color: var(--icon-bg);
 }
 
 /* Das Label */
 .md-label {
-    position: absolute;
+    /* position: absolute;
     top: -8px;
     left: 0px;
-    pointer-events: none; /* Klicks gehen durchs Label hindurch */
+    pointer-events: none;
     font-size: 1rem;
     transition: 0.2s ease all;
     background: none;
-    padding: 2px;
+    padding: 2px; */
     /*! overflow hidden and max-height < 2 * fontsize dastroys overflow */
-    overflow: hidden;
+    /* overflow: hidden;
     max-height: 1.5rem;
+    font-weight: bold; */
+        position: absolute;
+    top: -8px;
+    left: 12.5%; /* 100% - 75% / 2 = 12.5% vom Wrapper */
+    width: 75%;   /* gleiche Breite wie das Input */
+    text-align: left;
+    pointer-events: none;
+    font-size: 1rem;
+    transition: 0.2s ease all;
+    padding: 0 0.25rem;
+    font-weight: bold;
+    background-color: inherit;
+    z-index: 1;
 }
+
 
 /* Wenn das Label "floated" ist (Input-Fokus oder Wert vorhanden) */
 .label-float {
-    top: -10px; /* Schwebe über dem Input */
-    background-color: var(--card-bg);
-    /* opacity: 0.8; */
+    top: -15px; /* Schwebe über dem Input */
+    /* background-color: var(--card-bg); */
+    border-radius: 2px;
 }
 
 #no-grad-icon {
@@ -592,6 +597,22 @@ footer {
 .cursor-pointer {
     cursor: pointer;
 }
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+/* button:disabled {
+    cursor: not-allowed!important;
+} */
+ .btn:disabled {
+    cursor: not-allowed!important;
+
+    pointer-events: visible !important;
+ }
+
+ button{
+    color: var(--text) !important;
+    /* border: 1px solid var(--text) !important; */
+ }
 
 /* angularly */
 /* .tooltip {
