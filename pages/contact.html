@@ -86,9 +86,9 @@
   },
 
   async sendMessage(event) {
-    // event.preventDefault();
+    event.preventDefault();
         if (!this.captchaPassed) {
-      event.preventDefault();
+    //   event.preventDefault();
     //   alert('reCAPTCHA!');
       window.Toast.show('error', 'Bitte bestätigen Sie das reCAPTCHA!', 'Bitte bestätigen Sie das Sie ein Mensch sind, indem Sie das reCAPTCHA lösen!');
       return;
@@ -130,7 +130,7 @@
 
       this.success = true;
       this.error = false;
-      event.target.reset();  // Formular zurücksetzen
+      event.target.reset(); 
     } catch (err) {
       console.error(err);
       this.success = false;
