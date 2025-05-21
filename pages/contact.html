@@ -17,7 +17,7 @@
  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> -->
  
     <!-- <script src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
-     <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP"></script> -->
+     <script src="https://www.google.com/recaptcha/api.js?render=6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP"></script>
     <div class="container mb-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
@@ -83,16 +83,37 @@
     event.preventDefault();
 
     try {
+
+        const token = await grecaptcha.execute('6Ld-eEIrAAAAAKgFKGe6nuZUwN2b0XeZh9mJirWP', { action: 'submit' });
+
+      const form = event.target;
+      const tokenInput = document.createElement('input');
+      tokenInput.type = 'hidden';
+      tokenInput.name = 'g-recaptcha-response';
+      tokenInput.value = token;
+      form.appendChild(tokenInput);
+
       await emailjs.sendForm(
         'service_ej8oi9n',
         'template_0dtap7s',
-        event.target  // <-- Hier statt this.$refs.form
+        form
       );
-      await emailjs.sendForm(
+        await emailjs.sendForm(
         'service_ej8oi9n',
         'template_0d5w815',
         event.target  
       );
+
+    //   await emailjs.sendForm(
+    //     'service_ej8oi9n',
+    //     'template_0dtap7s',
+    //     event.target  
+    //   );
+    //   await emailjs.sendForm(
+    //     'service_ej8oi9n',
+    //     'template_0d5w815',
+    //     event.target  
+    //   );
 
       this.success = true;
       this.error = false;
